@@ -55,6 +55,7 @@ theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("1_bj1uy")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/focus = SubResource("StyleBoxTexture_fa1tu")
+action_mode = 0
 text = "Nueva partida"
 flat = true
 
@@ -97,7 +98,7 @@ theme_override_font_sizes/font_size = 26
 text = "Continuar"
 flat = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Button2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -105,20 +106,20 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -135.0
-offset_top = -79.5
+offset_top = -19.5
 offset_right = 135.0
-offset_bottom = -34.5
+offset_bottom = 25.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 180
 
-[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button2/HBoxContainer2"]
+[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button2/HBoxContainer"]
 visible = false
 layout_mode = 2
 texture = ExtResource("4_ns3he")
 expand_mode = 3
 
-[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button2/HBoxContainer2"]
+[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button2/HBoxContainer"]
 visible = false
 layout_mode = 2
 texture = ExtResource("4_ns3he")
@@ -136,7 +137,7 @@ theme_override_font_sizes/font_size = 26
 text = "Coleccionista"
 flat = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/Button3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -144,20 +145,20 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -135.0
-offset_top = -136.5
+offset_top = -20.5
 offset_right = 135.0
-offset_bottom = -91.5
+offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 180
 
-[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button3/HBoxContainer3"]
+[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button3/HBoxContainer"]
 visible = false
 layout_mode = 2
 texture = ExtResource("4_ns3he")
 expand_mode = 3
 
-[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button3/HBoxContainer3"]
+[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button3/HBoxContainer"]
 visible = false
 layout_mode = 2
 texture = ExtResource("4_ns3he")
@@ -175,7 +176,7 @@ theme_override_font_sizes/font_size = 26
 text = "Ajustes"
 flat = true
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/Button4"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -183,20 +184,20 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -135.0
-offset_top = -193.5
+offset_top = -19.5
 offset_right = 135.0
-offset_bottom = -148.5
+offset_bottom = 25.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 180
 
-[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button4/HBoxContainer4"]
+[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button4/HBoxContainer"]
 visible = false
 layout_mode = 2
 texture = ExtResource("4_ns3he")
 expand_mode = 3
 
-[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button4/HBoxContainer4"]
+[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button4/HBoxContainer"]
 visible = false
 layout_mode = 2
 texture = ExtResource("4_ns3he")
@@ -214,7 +215,7 @@ theme_override_font_sizes/font_size = 26
 text = "Salir"
 flat = true
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/Button5"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button5"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -222,20 +223,20 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -135.0
-offset_top = -250.5
+offset_top = -24.5
 offset_right = 135.0
-offset_bottom = -205.5
+offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 180
 
-[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button5/HBoxContainer5"]
+[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button5/HBoxContainer"]
 visible = false
 layout_mode = 2
 texture = ExtResource("4_ns3he")
 expand_mode = 3
 
-[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button5/HBoxContainer5"]
+[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button5/HBoxContainer"]
 visible = false
 layout_mode = 2
 texture = ExtResource("4_ns3he")
