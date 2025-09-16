@@ -46,8 +46,6 @@ script = ExtResource("2_ul6ys")
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_focus_color = Color(0.892168, 0.640858, 3.85046e-07, 1)
-theme_override_colors/font_pressed_color = Color(0.892329, 0.612657, 3.85046e-07, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 30
 theme_override_constants/align_to_largest_stylebox = 0
