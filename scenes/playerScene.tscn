@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://d30vdm7b5ol13"]
+
+[ext_resource type="Script" uid="uid://dho5usdjhy24p" path="res://script/player/playerController.gd" id="1_x1fr4"]
+[ext_resource type="PackedScene" uid="uid://5w2ydsw7ckss" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
+[ext_resource type="Script" uid="uid://dj6tskuwgd3by" path="res://script/state_machine.gd" id="2_smhll"]
+[ext_resource type="Script" uid="uid://du2me2k5gbhr2" path="res://script/player/states/idle.gd" id="3_a2p6p"]
+[ext_resource type="Script" uid="uid://gh7pcjeeplme" path="res://script/player/states/falling.gd" id="4_up5yo"]
+[ext_resource type="Script" uid="uid://diypgbryv22jw" path="res://script/player/states/jumping.gd" id="5_up5yo"]
+[ext_resource type="Script" uid="uid://cv572jyf4wyaa" path="res://script/player/states/runningleft.gd" id="7_72l0f"]
+[ext_resource type="Script" uid="uid://b750y2nfq03tt" path="res://script/player/states/runningright.gd" id="7_bubm6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x1fr4"]
+radius = 0.366705
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 2
+script = ExtResource("1_x1fr4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.993354, 0)
+shape = SubResource("CapsuleShape3D_x1fr4")
+
+[node name="Sprite3D" parent="." instance=ExtResource("2_72l0f")]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_smhll")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_a2p6p")
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource("4_up5yo")
+
+[node name="Jumping" type="Node" parent="StateMachine"]
+script = ExtResource("5_up5yo")
+
+[node name="runningRight" type="Node" parent="StateMachine"]
+script = ExtResource("7_bubm6")
+
+[node name="runningLeft" type="Node" parent="StateMachine"]
+script = ExtResource("7_72l0f")
+
+[node name="CoyoteTimer" type="Timer" parent="."]
