@@ -1,4 +1,11 @@
-[gd_scene format=3 uid="uid://3gsem80abifn"]
+[gd_scene load_steps=4 format=3 uid="uid://3gsem80abifn"]
+
+[ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="1_bj1uy"]
+[ext_resource type="Script" uid="uid://cibja7hbknlt6" path="res://button.gd" id="2_gmcsc"]
+
+[sub_resource type="Environment" id="Environment_gmcsc"]
+glow_enabled = true
+glow_intensity = 2.74
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
@@ -8,18 +15,96 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -94.0
-offset_top = -39.0
-offset_right = 94.0
-offset_bottom = 39.0
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -275.0
+offset_right = 86.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("1_bj1uy")
+theme_override_font_sizes/font_size = 26
 text = "Nueva partida"
 flat = true
+script = ExtResource("2_gmcsc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/Button"]
+environment = SubResource("Environment_gmcsc")
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("1_bj1uy")
+theme_override_font_sizes/font_size = 26
+text = "Continuar"
+flat = true
+script = ExtResource("2_gmcsc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/Button2"]
+environment = SubResource("Environment_gmcsc")
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("1_bj1uy")
+theme_override_font_sizes/font_size = 26
+text = "Coleccionista"
+flat = true
+script = ExtResource("2_gmcsc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/Button3"]
+environment = SubResource("Environment_gmcsc")
+
+[node name="Button4" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("1_bj1uy")
+theme_override_font_sizes/font_size = 26
+text = "Ajustes"
+flat = true
+script = ExtResource("2_gmcsc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/Button4"]
+environment = SubResource("Environment_gmcsc")
+
+[node name="Button5" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("1_bj1uy")
+theme_override_font_sizes/font_size = 26
+text = "Salir"
+flat = true
+script = ExtResource("2_gmcsc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/Button5"]
+environment = SubResource("Environment_gmcsc")
