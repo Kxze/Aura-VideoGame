@@ -1,4 +1,11 @@
-[gd_scene format=3 uid="uid://c561pllw6xd2"]
+[gd_scene load_steps=5 format=3 uid="uid://c561pllw6xd2"]
+
+[ext_resource type="Script" uid="uid://beohbrgbek4n" path="res://scenes/menu_tap_1.gd" id="1_dueho"]
+[ext_resource type="Texture2D" uid="uid://dn0mr82j64b7l" path="res://Fondos/Portada.png" id="2_8wkdk"]
+[ext_resource type="FontFile" uid="uid://dbh86xghk3btv" path="res://Fonts/DarumadropOne-Regular.ttf" id="3_m24ha"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aww4a"]
+texture = ExtResource("2_8wkdk")
 
 [node name="MenuTap1" type="Control"]
 layout_mode = 3
@@ -7,3 +14,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dueho")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_aww4a")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.5
+offset_top = -123.0
+offset_right = 183.5
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_m24ha")
+theme_override_font_sizes/font_size = 23
+text = "Presiona cualquier tecla para comenzar"
