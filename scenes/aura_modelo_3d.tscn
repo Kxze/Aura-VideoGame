@@ -63,48 +63,47 @@ backlight = Color(1, 1, 1, 1)
 [node name="AuraModelo3D" instance=ExtResource("1_lqm01")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(-0.0295963, 0, 0)
-bones/2/rotation = Quaternion(-5.23813e-10, 1.05232e-07, 0.00442102, 0.99999)
-bones/3/rotation = Quaternion(1.05411e-09, 1.39755e-08, -0.0047433, 0.999989)
-bones/5/rotation = Quaternion(-5.22499e-07, 1.24178e-07, 0.867241, 0.497889)
-bones/7/rotation = Quaternion(3.88985e-07, 2.42069e-07, 0.85397, -0.520322)
-bones/10/position = Vector3(-0.441438, 2.15891, -2.20065e-07)
-bones/10/rotation = Quaternion(0.632738, -0.315662, -0.632738, -0.315662)
-bones/12/position = Vector3(0.0739924, 2.60203, -1.74692e-07)
-bones/12/rotation = Quaternion(0.633276, 0.314582, -0.633276, 0.314582)
+bones/2/rotation = Quaternion(-4.94526e-10, 1.05232e-07, 0.00469932, 0.999989)
+bones/3/rotation = Quaternion(1.05473e-09, 1.39755e-08, -0.00469932, 0.999989)
+bones/5/rotation = Quaternion(-6.14619e-07, -3.63741e-08, 0.990386, 0.138334)
+bones/7/rotation = Quaternion(4.49516e-07, 2.09059e-08, 0.976699, -0.214613)
+bones/10/position = Vector3(-1.22227, 1.29132, -3.36634e-07)
+bones/10/rotation = Quaternion(0.707086, 0.00539171, -0.707086, 0.0053917)
+bones/12/position = Vector3(0.464408, 1.34403, -3.43715e-07)
+bones/12/rotation = Quaternion(0.707086, 0.00539171, -0.707086, 0.0053917)
 
 [node name="Cabeza_001" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(14.5896, 6.76914e-09, -0.0094039, -0.0094039, 2.01073e-09, -14.5896, -6.76732e-09, 14.5896, 2.0151e-09, -1.43963, 23.0361, 2.13522e-08)
+transform = Transform3D(14.5896, 6.79483e-09, 2.03817e-08, 2.03817e-08, 3.2522e-15, -14.5896, -6.79438e-09, 14.5896, 8.09877e-15, -1.41691, 23.0352, 2.28078e-08)
 
 [node name="Cabeza_001" parent="Armature/Skeleton3D/Cabeza_001" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_qkddc")
 
 [node name="Brazo1_001" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(7.12899, -9.37873e-07, -6.84838, -6.84839, 1.49914e-06, -7.129, 1.76394e-06, 9.8855, 6.81041e-08, -5.81543, 17.0911, 0.251298)
+transform = Transform3D(9.88549, -2.64808e-06, 4.76837e-06, -4.76837e-06, 5.90536e-08, -9.88549, 2.6971e-06, 9.8855, -3.04229e-07, -3.24606, 14.9277, 0.251297)
 
 [node name="Brazo1_001" parent="Armature/Skeleton3D/Brazo1_001" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_b4sro")
 
 [node name="Brazo2" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(7.77754, -1.05976e-06, 6.05251, 6.05251, -7.85438e-07, -7.77754, 1.38623e-06, 9.8551, 3.31408e-07, 5.27447, 17.1991, 0.106588)
+transform = Transform3D(9.8551, -4.76065e-07, 1.43051e-06, -9.53672e-07, -2.46222e-07, -9.8551, 5.43566e-07, 9.8551, 5.41907e-08, 3.11442, 15.0719, 0.106588)
 
 [node name="Brazo2" parent="Armature/Skeleton3D/Brazo2" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_ac677")
 
 [node name="Vestido_001" parent="Armature/Skeleton3D" index="3"]
-transform = Transform3D(14.5896, -2.41569e-08, -0.00812057, -0.00812054, 3.48006e-06, -14.5896, 1.39185e-08, 14.5896, 2.63939e-06, 0.082175, 13.7904, 0.145896)
+transform = Transform3D(14.5896, -2.60679e-08, -1.49006e-08, 1.49012e-08, 3.47834e-06, -14.5896, 1.38928e-08, 14.5896, 2.63768e-06, 0.110274, 13.7905, 0.145896)
 
 [node name="Vestido_001" parent="Armature/Skeleton3D/Vestido_001" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_gtq4f")
 
 [node name="Pie1_002" parent="Armature/Skeleton3D" index="4"]
-transform = Transform3D(8.59585, 0, -11.7885, -11.7885, 0, -8.59585, 0, 14.5896, 0, -2.62541, 8.54981, 0.0924368)
+transform = Transform3D(14.5896, -8.69607e-07, 2.48849e-06, 2.07126e-06, -4.07628e-08, -14.5896, -8.70128e-07, 14.5896, -2.74971e-08, -0.31941, 7.15381, 0.0924366)
 
 [node name="Pie1_002" parent="Armature/Skeleton3D/Pie1_002" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_eawf1")
 
 [node name="Pie1_001" parent="Armature/Skeleton3D" index="5"]
-transform = Transform3D(8.99061, -3.35173e-07, 11.4902, 11.4902, 2.43668e-06, -8.99061, -1.73921e-06, 14.5896, 1.73921e-06, 3.04951, 10.2665, 8.58067e-07)
+transform = Transform3D(14.5896, -1.76594e-06, 2.45869e-06, 2.17557e-06, 1.67721e-06, -14.5896, 1.7384e-06, 14.5896, 1.659e-06, 1.11887, 7.12186, 8.51892e-07)
 
 [node name="Pie1_001" parent="Armature/Skeleton3D/Pie1_001" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_gm7xn")

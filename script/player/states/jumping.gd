@@ -2,12 +2,9 @@ extends PlayerState
 
 
 func enter(previous_state_path: String, data := {}) -> void:
-	jump()
-	player.animation_player.play("jump")
-	if player.jump_Buffer:
+	if player.jumpAvailable:
 		jump()
-		player.jump_Buffer = false
-		
+		player.animation_player.play("jump")
 	else:
 		player.jump_Buffer = true
 		get_tree().create_timer(player.jump_Buffer_Time).timeout.connect(on_jump_buffer_timeout)
@@ -24,7 +21,8 @@ func physics_update(delta: float) -> void:
 		finished.emit(FALLING)
 
 func jump()->void:
-		player.velocity.y = player.jumpForce
+		player.velocity.y = player.jumpForce	
+		player.jumpAvailable = false
 		
 func on_jump_buffer_timeout()->void:
 	player.jump_Buffer = false

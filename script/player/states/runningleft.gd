@@ -32,6 +32,7 @@ func physics_update(delta: float) -> void:
 		finished.emit(FALLING)
 	elif Input.is_action_just_pressed("move_up"):
 		finished.emit(JUMPING)
+		
 	elif direction == 0:
 		finished.emit(IDLE)
 	elif direction == 1:
