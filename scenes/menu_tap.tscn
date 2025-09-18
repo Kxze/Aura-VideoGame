@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bj0688j20tttu"]
 
 [ext_resource type="Texture2D" uid="uid://eaa4heu1pxtu" path="res://Fondos/Portada.png" id="1_hbyv2"]
-[ext_resource type="Script" uid="uid://bygdfkx2ce848" path="res://menu_tap.gd" id="2_gvwv1"]
+[ext_resource type="Script" uid="uid://bygdfkx2ce848" path="res://script/menu_tap.gd" id="2_gvwv1"]
 [ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="3_0chui"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0nc16"]

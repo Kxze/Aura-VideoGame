@@ -36,9 +36,11 @@ func _on_nueva_partida_pressed(button):
 
 func _on_continuar_pressed(button):
 	print("Continuar partida (cargar juego)")
+	get_tree().change_scene_to_file("res://scenes/partidas.tscn")
 
 func _on_coleccionista_pressed(button):
 	print("Abrir coleccionista")
+	get_tree().change_scene_to_file("res://scenes/coleccionista.tscn")
 
 func _on_ajustes_pressed(button):
 	print("Abrir ajustes")
