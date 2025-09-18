@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 folder_colors={
 "res://Art/": "red",
+"res://Fondos/": "pink",
+"res://Fonts/": "blue",
 "res://scenes/": "yellow",
 "res://script/": "teal",
 "res://textures/": "purple"

@@ -7,9 +7,8 @@
 [ext_resource type="Shader" uid="uid://b1ouivas7jknv" path="res://scenes/glow_shader.gdshader" id="3_w5ui5"]
 [ext_resource type="Texture2D" uid="uid://2lg1lybcmpjo" path="res://textures/Starr.svg" id="4_486ty"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ns3he"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qcl6i"]
 texture = ExtResource("1_486ty")
-modulate_color = Color(0.720467, 0.720468, 0.720467, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxt0m"]
 texture = ExtResource("2_qcl6i")
@@ -59,21 +58,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ns3he")
+theme_override_styles/panel = SubResource("StyleBoxTexture_qcl6i")
 
 [node name="Panel" type="Panel" parent="Panel"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -196.25
-offset_top = -182.0
-offset_right = 196.25
-offset_bottom = -42.0
+offset_left = -181.5
+offset_top = 133.0
+offset_right = 181.5
+offset_bottom = 273.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_nxt0m")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
