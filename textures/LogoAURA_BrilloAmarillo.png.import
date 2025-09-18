@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkg5b86eruiqk"
-path.s3tc="res://.godot/imported/Vestido.png-4b31c2b046fe15fb23d79f223e084b81.s3tc.ctex"
+uid="uid://c2lu64lmj3asw"
+path="res://.godot/imported/LogoAURA_BrilloAmarillo.png-53a9eb3a3897ccfb77633776449fd655.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Model3D/textures/Vestido.png"
-dest_files=["res://.godot/imported/Vestido.png-4b31c2b046fe15fb23d79f223e084b81.s3tc.ctex"]
+source_file="res://textures/LogoAURA_BrilloAmarillo.png"
+dest_files=["res://.godot/imported/LogoAURA_BrilloAmarillo.png-53a9eb3a3897ccfb77633776449fd655.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -24,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -38,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
