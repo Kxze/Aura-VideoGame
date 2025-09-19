@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d30vdm7b5ol13"]
 
 [ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
-[ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
+[ext_resource type="PackedScene" uid="uid://5w2ydsw7ckss" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
 [ext_resource type="Script" uid="uid://dr7rgqi3nwgnn" path="res://script/player/StateMachine/state_machine.gd" id="3_gyu2u"]
 [ext_resource type="Script" uid="uid://c8eyghbe7qgll" path="res://script/player/StateMachine/idle.gd" id="4_smhll"]
 [ext_resource type="Script" uid="uid://nt4wu5jck2ag" path="res://script/player/StateMachine/walking.gd" id="5_a2p6p"]
@@ -14,13 +14,12 @@ radius = 0.366705
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 2
 script = ExtResource("1_72l0f")
-speed = 6
-
-[node name="Aura" parent="." instance=ExtResource("2_72l0f")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.993354, 0)
 shape = SubResource("CapsuleShape3D_x1fr4")
+
+[node name="Sprite3D" parent="." instance=ExtResource("2_72l0f")]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_gyu2u")
