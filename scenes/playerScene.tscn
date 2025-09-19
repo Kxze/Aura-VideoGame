@@ -35,10 +35,15 @@ script = ExtResource("4_up5yo")
 [node name="Jumping" type="Node" parent="StateMachine"]
 script = ExtResource("5_up5yo")
 
+[node name="CoyoteTimer" type="Timer" parent="StateMachine/Jumping"]
+
+[node name="jumpBufferTimer" type="Timer" parent="StateMachine/Jumping"]
+
 [node name="runningRight" type="Node" parent="StateMachine"]
 script = ExtResource("7_bubm6")
 
 [node name="runningLeft" type="Node" parent="StateMachine"]
 script = ExtResource("7_72l0f")
 
-[node name="CoyoteTimer" type="Timer" parent="."]
+[connection signal="timeout" from="StateMachine/Jumping/CoyoteTimer" to="StateMachine/Jumping" method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Jumping/jumpBufferTimer" to="StateMachine/Jumping" method="_on_jump_buffer_timer_timeout"]

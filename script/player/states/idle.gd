@@ -12,8 +12,8 @@ func physics_update(_delta: float) -> void:
 	# --- Transiciones de estado ---
 	if not player.is_on_floor():
 		finished.emit(FALLING)
-	elif Input.is_action_just_pressed("move_up"):
-		finished.emit(JUMPING)
+	elif Input.is_action_just_pressed("move_up") and player.is_on_floor():
+		finished.emit((JUMPING),{"jump" : true}) 
 	elif Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"):
 		finished.emit(RUNNINGLEFT)
 	elif Input.is_action_pressed("move_right") and not Input.is_action_pressed("move_left"):

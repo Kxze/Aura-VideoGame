@@ -13,4 +13,4 @@ var jumpAvailable: bool = true
 var jump_Buffer :  bool = false
 @onready var coyote_timer: Timer = $CoyoteTimer
 var was_on_floor = is_on_floor()
-var direction : Vector3
+var direction := Vector3.ZERO
