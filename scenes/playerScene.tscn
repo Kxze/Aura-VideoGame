@@ -35,6 +35,14 @@ script = ExtResource("5_a2p6p")
 [node name="InAir" type="Node" parent="StateMachine"]
 script = ExtResource("6_72l0f")
 
+[node name="CoyoteTimer" type="Timer" parent="StateMachine/InAir"]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpBufferTimer" type="Timer" parent="StateMachine/InAir"]
+wait_time = 0.1
+one_shot = true
+
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("7_bubm6")
 
@@ -42,3 +50,6 @@ script = ExtResource("7_bubm6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34525, 0)
 pixel_size = 0.01
 text = "state"
+
+[connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="StateMachine/InAir/JumpBufferTimer" to="StateMachine/InAir" method="_on_jump_buffer_timer_timeout"]

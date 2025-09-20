@@ -1,8 +1,8 @@
 class_name Player extends CharacterBody3D
 @export var speed := 4
-@export var jump := 15
+@export var jump := 20
 var movInput : Vector2 = Vector2.ZERO
-@export var GRAVITY := -14
+@export var GRAVITY := -1.3 
 
 
 @onready var aura: Node3D = $Aura/AuraModelo3D
