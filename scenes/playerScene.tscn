@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d30vdm7b5ol13"]
+[gd_scene load_steps=14 format=3 uid="uid://d30vdm7b5ol13"]
 
 [ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
 [ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
@@ -7,9 +7,26 @@
 [ext_resource type="Script" uid="uid://nt4wu5jck2ag" path="res://script/player/StateMachine/walking.gd" id="5_a2p6p"]
 [ext_resource type="Script" uid="uid://bfqlf2fvawniw" path="res://script/player/StateMachine/in_air.gd" id="6_72l0f"]
 [ext_resource type="Script" uid="uid://c75jo2lrdevvu" path="res://script/player/StateMachine/dash.gd" id="7_bubm6"]
+[ext_resource type="Script" uid="uid://b00wqsvy0gjsd" path="res://script/trail_clone.gd" id="8_bubm6"]
+[ext_resource type="Shader" uid="uid://bnqk5eyqtlgrj" path="res://Shaders/clone_fresnel.gdshader" id="9_cxkpp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x1fr4"]
 radius = 0.366705
+
+[sub_resource type="Gradient" id="Gradient_3o7wo"]
+offsets = PackedFloat32Array(0, 0.455224, 0.947761)
+colors = PackedColorArray(0.141176, 0.00392157, 0.258824, 1, 0.619335, 0.568234, 0.922293, 1, 1, 0.331667, 0.818983, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jn7dq"]
+gradient = SubResource("Gradient_3o7wo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0eca"]
+render_priority = 0
+shader = ExtResource("9_cxkpp")
+shader_parameter/opacity = 1.0
+shader_parameter/fresnel_power = 0.236
+shader_parameter/color_gradiant = SubResource("GradientTexture1D_jn7dq")
+shader_parameter/_emission = 1.386
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 2
@@ -50,6 +67,10 @@ script = ExtResource("7_bubm6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34525, 0)
 pixel_size = 0.01
 text = "state"
+
+[node name="Trail" type="Node3D" parent="."]
+script = ExtResource("8_bubm6")
+source_material = SubResource("ShaderMaterial_i0eca")
 
 [connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/JumpBufferTimer" to="StateMachine/InAir" method="_on_jump_buffer_timer_timeout"]

@@ -38,12 +38,17 @@ func physics_update(delta: float):
 
 
 func handled_input(_event: InputEvent):
+	# Salto
 	if Input.is_action_just_pressed("ui_accept"):
 		if player.is_on_floor() or canReadJumpCoyote:
 			emit_signal("finished", "InAir", {"Jump" : true})
 		else:
 			buffered_jump = true
 			Jump_buffer_timer.start()
+
+	# Dash (en aire o en piso)
+	if Input.is_action_just_pressed("dash"): # Asegúrate de mapear "dash" a la tecla E en InputMap
+		emit_signal("finished", "Dash") # Esto cambia al estado Dash directamente
 
 
 func _on_coyote_timer_timeout() -> void:
