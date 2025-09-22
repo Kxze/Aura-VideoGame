@@ -1,7 +1,8 @@
 extends PlayerState
 
 func enter(previous_state_path : String, data := {}):
-	player.animationPlayer.play("walk")
+	player.animationPlayer.play("Walk")
+	
 
 func physics_update(delta: float):
 	if !player.is_on_floor():

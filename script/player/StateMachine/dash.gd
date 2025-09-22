@@ -3,63 +3,61 @@ extends PlayerState
 var dash_time := 0.3
 var dash_speed := 15.0
 var timer := 0.0
-var dash_dir := 1  # dirección fija del dash
-var suspend_air_time := 0.5  # tiempo que se queda suspendido en el aire
+var dash_dir := 1
+var suspend_air_time := 0.5
 var suspended := false
 
-# Cooldown
-var dash_cooldown := .5  # segundos
-var can_dash := true  # indica si el jugador puede hacer dash
+var dash_cooldown := 0.5
 
 func enter(previous_state_path: String, data := {}):
-	if not can_dash:
+	if not player.can_dash:
 		emit_signal("finished", "Idle")
 		return
 
 	timer = 0.0
-	player.animationPlayer.play("dash")
-	can_dash = false
-
 	dash_dir = player.last_facing
+	player.is_dashing = true
+	player.can_dash = false
 
-	# Activar Trail
-	var trail_node = player.get_node("Trail") # ajusta la ruta si es diferente
-	if trail_node:
-		trail_node.start_trail()
+	# Reproducir animación Dash
+	if player.animationPlayer:
+		player.animationPlayer.play("Dash")
 
-	# Suspensión en el aire
+	# Suspensión en aire
 	if not player.is_on_floor():
 		suspended = true
 		player.velocity.y = 0
 		await get_tree().create_timer(suspend_air_time).timeout
 		suspended = false
+		player.jump_locked = true  # Bloquear salto tras dash aéreo
 
 	reset_dash_cooldown()
 
 func physics_update(delta: float):
 	timer += delta
-
-	# Velocidad horizontal fija
 	player.velocity.x = dash_dir * dash_speed
 
-	# Gravedad solo si no está suspendido
 	if not suspended:
 		player.velocity.y += player.GRAVITY
 
 	player.move_and_slide()
 
+	# Desbloquear salto al tocar piso
+	if player.is_on_floor():
+		player.jump_locked = false
+
 	# Terminar dash
 	if timer >= dash_time:
-		emit_signal("finished", "Idle")
+		player.is_dashing = false
+		if player.is_on_floor():
+			if player.animationPlayer:
+				player.animationPlayer.play("Idle")
+			emit_signal("finished", "Idle")
+		else:
+			if player.animationPlayer:
+				player.animationPlayer.play("Fall")
+			emit_signal("finished", "InAir", {"FromDash": true})
 
-
-func exit():
-	# Desactivar Trail
-	var trail_node = player.get_node("Trail") # ajusta la ruta si es diferente
-	if trail_node:
-		trail_node.stop_trail()
-
-# Función para resetear el dash
 func reset_dash_cooldown():
 	await get_tree().create_timer(dash_cooldown).timeout
-	can_dash = true
+	player.can_dash = true

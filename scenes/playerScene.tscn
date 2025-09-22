@@ -35,6 +35,25 @@ speed = 6
 
 [node name="Aura" parent="." instance=ExtResource("2_72l0f")]
 
+[node name="Skeleton3D" parent="Aura/player/Armature" index="0"]
+bones/1/rotation = Quaternion(0.68775, -0.164317, 0.68775, 0.164317)
+bones/2/rotation = Quaternion(-0.289625, 8.07932e-08, 5.52477e-08, 0.95714)
+bones/3/rotation = Quaternion(0.701045, 1.99665e-08, -2.02282e-07, 0.713117)
+bones/4/position = Vector3(-0.405631, 0.322711, 3.44742e-08)
+bones/4/rotation = Quaternion(0.653343, 0.270451, 0.653342, -0.270451)
+bones/4/scale = Vector3(1.06318, 1.06318, 1.06318)
+bones/5/rotation = Quaternion(-0.245888, 2.01764e-07, 6.80468e-09, 0.969298)
+bones/6/rotation = Quaternion(0.645059, -7.83183e-08, -1.01797e-07, 0.764133)
+bones/7/position = Vector3(0, 1.0204, 0)
+bones/7/rotation = Quaternion(-3.47048e-18, 3.27987e-09, -0.0244113, 0.999702)
+bones/8/rotation = Quaternion(-2.28839e-09, 1.16608e-07, 0.0191964, 0.999816)
+bones/9/rotation = Quaternion(3.7544e-07, -2.4911e-07, 0.951602, 0.307335)
+bones/12/rotation = Quaternion(3.85618e-07, -2.39245e-07, 0.961611, 0.274417)
+bones/13/rotation = Quaternion(6.15874e-08, 5.57938e-07, -0.0227107, 0.999742)
+
+[node name="Player" parent="Aura/player/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1.0704, 0, 0, 0, 1.0704, 0, 0, 0, 1.0704, 0, 0, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.993354, 0)
 shape = SubResource("CapsuleShape3D_x1fr4")
@@ -68,9 +87,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34525, 0)
 pixel_size = 0.01
 text = "state"
 
-[node name="Trail" type="Node3D" parent="."]
+[node name="Trail" type="Node3D" parent="." node_paths=PackedStringArray("source_mesh")]
 script = ExtResource("8_bubm6")
+source_mesh = NodePath("../Aura/player/Armature/Skeleton3D/Player")
 source_material = SubResource("ShaderMaterial_i0eca")
 
 [connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/JumpBufferTimer" to="StateMachine/InAir" method="_on_jump_buffer_timer_timeout"]
+
+[editable path="Aura"]
+[editable path="Aura/player"]

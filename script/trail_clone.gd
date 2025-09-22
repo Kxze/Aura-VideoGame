@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var source_mesh: Node3D = $Aura/AuraModelo3D
+@export var source_mesh: MeshInstance3D
 @export var copy_interval: float = 0.1
 @export var max_copies: int = 5
 @export var source_material: ShaderMaterial
@@ -30,8 +30,8 @@ func copy_mesh() -> void:
 	if not source_mesh:
 		return
 
-	var pckdscene: PackedScene = load("res://scenes/aura_modelo_3d.tscn")
-	var cloned_mesh: Node3D = pckdscene.instantiate()
+	var pckdscene: PackedScene = load("res://scenes/aura_clone.tscn")
+	var cloned_mesh: CloneContainer = pckdscene.instantiate()
 
 	# Clonar la malla actual
 	

@@ -1,45 +1,66 @@
-[gd_scene load_steps=5 format=3 uid="uid://t2m7hqcpi1rb"]
+[gd_scene load_steps=7 format=3 uid="uid://t2m7hqcpi1rb"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_014kd"]
+[ext_resource type="PackedScene" uid="uid://bdfat0fcg3hs" path="res://Art/Levels/blocking.blend" id="1_rus8k"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_bswci"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_bswci"]
-size = Vector3(10, 0.5, 2)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bswci"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rus8k"]
-size = Vector3(10, 0.5, 2)
+[sub_resource type="Sky" id="Sky_rus8k"]
+sky_material = SubResource("ProceduralSkyMaterial_bswci")
+
+[sub_resource type="Environment" id="Environment_5xbjy"]
+background_mode = 2
+sky = SubResource("Sky_rus8k")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="level1" type="Node3D"]
 
+[node name="blocking" parent="." instance=ExtResource("1_rus8k")]
+
+[node name="castillo" parent="blocking" index="0"]
+transform = Transform3D(13.8636, 0, 0, 0, 0, -1.22923, 0, 2.97503, 0, 67.2204, -4.82102, -1.40639)
+
+[node name="StaticBody3D" parent="blocking/castillo" index="0"]
+collision_layer = 2
+
+[node name="Libros" parent="blocking" index="1"]
+transform = Transform3D(-1.47724, -10.5643, -3.08177e-07, 2.22532e-06, -6.63197e-14, -10.667, 10.5643, -1.47724, 2.20388e-06, 6.14693, -5.14047, -3.66756)
+
+[node name="StaticBody3D" parent="blocking/Libros" index="0"]
+collision_layer = 2
+
+[node name="Escritorio" parent="blocking" index="2"]
+transform = Transform3D(1.17012, 0, 0, 0, 0, -19.3253, 0, 17.6023, 0, 23.5371, 2.93545, -9.18898)
+
+[node name="StaticBody3D" parent="blocking/Escritorio" index="0"]
+collision_layer = 2
+
+[node name="silla" parent="blocking" index="3"]
+transform = Transform3D(6.86498, 4.80947e-07, 0, 0, 0, -0.540015, -4.80947e-07, 6.86498, 0, 19.9536, 0.342523, 6.35234)
+
+[node name="StaticBody3D" parent="blocking/silla" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="blocking/cama" index="0"]
+collision_layer = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5xbjy")
+
 [node name="Player" parent="." instance=ExtResource("1_014kd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51731, -0.0446367, 0.0222168)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.249709, -0.00101006)
-collision_layer = 2
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_bswci")
-skeleton = NodePath("../CollisionShape3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_rus8k")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31715, 1.41979, 0)
-collision_layer = 2
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
-mesh = SubResource("BoxMesh_bswci")
-skeleton = NodePath("../CollisionShape3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-shape = SubResource("BoxShape3D_rus8k")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1689, -0.044652, 0.020874)
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 6)
+transform = Transform3D(1, 0, 0, 0, 0.972496, 0.232919, 0, -0.232919, 0.972496, -15.1327, 5.48914, 16.8395)
+keep_aspect = 0
+fov = 80.0
 script = ExtResource("2_bswci")
 target = NodePath("../Player")
+follow_speed = 12.0
+offset = Vector3(0, 5, 14)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.983584, 0.18045, 0, -0.18045, 0.983584, 0, 4.86428, 0)
+[editable path="blocking"]
