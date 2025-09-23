@@ -13,6 +13,7 @@ func enter(previous_state_path: String, data := {}):
 	# Saltar solo si viene de comando Jump
 	if data.has("Jump"):
 		_do_jump()
+		player.animationPlayer.play("Jump")
 
 	# Iniciar coyote solo si no viene de Dash
 	if not data.has("FromDash"):

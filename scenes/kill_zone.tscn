@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bkaqsx7rdepoy" path="res://kill_zone.gd" id="1_kebdr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l4ff3"]
-size = Vector3(86.7976, 4.36182, 23.2132)
 
 [node name="KillZone" type="Area3D"]
 script = ExtResource("1_kebdr")

@@ -1,18 +1,24 @@
 extends PlayerState
-
+var isRunning : bool = false
 func enter(previous_state_path : String, data := {}):
 	player.animationPlayer.play("Walk")
-	
+	isRunning = false
 
 func physics_update(delta: float):
 	if !player.is_on_floor():
 		emit_signal("finished", "InAir")
-	if player.movInput.x == 0:
-		emit_signal("finished", "Idle")
 	#Aqui se resetea la velocidad de cuando el jugador deja de presionar shift
 	player.speed = player.speed_normal
 	if Input.is_action_pressed("run"):
+		isRunning = true
 		player.speed = player.speed_run
+		if isRunning:
+			player.animationPlayer.play("Run")
+	elif player.movInput.x > 0 or player.movInput.x < 0:
+		isRunning = false
+		player.animationPlayer.play("Walk")
+	elif player.movInput.x == 0:
+		emit_signal("finished", "Idle")
 	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
 		emit_signal("finished", "InAir", {"Jump" : true})
 		
