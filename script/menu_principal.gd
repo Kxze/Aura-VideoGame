@@ -29,6 +29,11 @@ func _ready():
 		_hide_stars(b)
 		_enable_glow(b, false)
 
+	# --- Nuevo: focus inicial en el primer botón ---
+	if _buttons.size() > 0:
+		_buttons[0].grab_focus()                # ahora ya puedes usar teclado directo
+		_on_button_focus_entered(_buttons[0])   # activa glow y estrellas en el primero
+
 # --- Acciones de los botones ---
 func _on_nueva_partida_pressed(button):
 	print("Abrir Nueva Partida")
