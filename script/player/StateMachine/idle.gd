@@ -17,6 +17,7 @@ func physics_update(delta: float):
 func update(_delta:float):
 	if player.movInput.x != 0:
 		emit_signal("finished","Walking")
+		
 
 #Esta funcion sobreescribe la funcion Input
 func handled_input(_event: InputEvent):

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://neveo5lry8eu"]
+
+[ext_resource type="Texture2D" uid="uid://dnqs2kt1u3ls3" path="res://scenes/BasePared.JPG" id="1_4hnwb"]
+
+[node name="paredBase" type="Sprite3D"]
+texture = ExtResource("1_4hnwb")

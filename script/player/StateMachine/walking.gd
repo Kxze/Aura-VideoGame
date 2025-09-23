@@ -9,6 +9,10 @@ func physics_update(delta: float):
 		emit_signal("finished", "InAir")
 	if player.movInput.x == 0:
 		emit_signal("finished", "Idle")
+	#Aqui se resetea la velocidad de cuando el jugador deja de presionar shift
+	player.speed = player.speed_normal
+	if Input.is_action_pressed("run"):
+		player.speed = player.speed_run
 	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
 		emit_signal("finished", "InAir", {"Jump" : true})
 		
@@ -46,8 +50,12 @@ func flip_character(target_scale: int):
 	tween.parallel().tween_property(player.aura, "scale:y", 1, 0.13) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-func handled_input(_event: InputEvent):
-	pass
+func accelerate(movInput: Vector2):
+	player.velocity = player.velocity.move_toward(player.speed + player.movInput, player.acceleration)
+
+func apply_friction():
+	player.velocity = player.velocity.move_toward(Vector3.ZERO, player.friction)
+
 
 func exit():
 	pass

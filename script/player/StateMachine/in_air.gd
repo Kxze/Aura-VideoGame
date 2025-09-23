@@ -29,10 +29,11 @@ func physics_update(delta: float):
 		player.jump_locked = false
 	else:
 		player.velocity.y += player.GRAVITY
-
+	if !player.is_on_floor():
+		player.velocity.x = lerp(player.prevVelocity.x, player.movInput.x, 0.1)
 	if player.movInput.x != 0:
 		player.velocity.x = player.movInput.x * player.speed
-
+	player.prevVelocity = player.movInput
 	player.move_and_slide()
 
 func handled_input(_event: InputEvent):
@@ -60,3 +61,5 @@ func _on_jump_buffer_timer_timeout() -> void:
 func _do_jump():
 	isJumping = true
 	player.velocity.y = player.jump
+
+		

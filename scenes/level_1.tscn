@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://t2m7hqcpi1rb"]
+[gd_scene load_steps=8 format=3 uid="uid://t2m7hqcpi1rb"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_014kd"]
 [ext_resource type="PackedScene" uid="uid://bdfat0fcg3hs" path="res://Art/Levels/blocking.blend" id="1_rus8k"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_bswci"]
+[ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="4_5xbjy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bswci"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -16,6 +17,10 @@ background_mode = 2
 sky = SubResource("Sky_rus8k")
 tonemap_mode = 2
 glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.348954, 0.367572, 0.366425, 1)
+fog_light_energy = 1.72
+fog_height_density = 0.3368
 
 [node name="level1" type="Node3D"]
 
@@ -55,12 +60,29 @@ environment = SubResource("Environment_5xbjy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1689, -0.044652, 0.020874)
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 0.972496, 0.232919, 0, -0.232919, 0.972496, -15.1327, 5.48914, 16.8395)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0189, 1.78535, 9.61088)
 keep_aspect = 0
 fov = 80.0
 script = ExtResource("2_bswci")
 target = NodePath("../Player")
 follow_speed = 12.0
-offset = Vector3(0, 5, 14)
+offset = Vector3(0.15, 1.83, 9.59)
+
+[node name="SpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1689, -0.044652, 0.020874)
+
+[node name="KillZone" parent="." node_paths=PackedStringArray("spawnPoint") instance=ExtResource("4_5xbjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.5948, 0)
+collision_layer = 4
+spawnPoint = NodePath("../SpawnPoint")
+
+[node name="CollisionShape3D" parent="KillZone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0271, -6.01817, -2.02809)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_color = Color(0.443137, 0.364706, 0.662745, 1)
+light_energy = 1.808
+light_indirect_energy = 2.939
 
 [editable path="blocking"]
+[editable path="KillZone"]
