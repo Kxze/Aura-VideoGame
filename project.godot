@@ -15,11 +15,6 @@ run/main_scene="uid://t2m7hqcpi1rb"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
-
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/stretch/mode="canvas_items"
 
 [file_customization]
 
@@ -27,6 +22,7 @@ folder_colors={
 "res://Art/": "red",
 "res://Fondos/": "pink",
 "res://Fonts/": "blue",
+"res://Temas/": "gray",
 "res://scenes/": "yellow",
 "res://script/": "teal",
 "res://textures/": "purple"
