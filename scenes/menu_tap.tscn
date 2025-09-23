@@ -28,7 +28,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_0nc16")
 script = ExtResource("2_gvwv1")
 
 [node name="Label" type="Label" parent="."]
-modulate = Color(0, 0, 0, 0.3137255)
+modulate = Color(0, 0, 0, 0.313726)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
