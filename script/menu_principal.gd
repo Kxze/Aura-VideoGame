@@ -1,7 +1,6 @@
 extends VBoxContainer
 
 var _buttons = []
-@onready var ajustes_popup = get_node("/root/MenuPrincipal/Popup_Ajustes")
 
 func _ready():
 	# Guardamos los botones en una lista
@@ -30,6 +29,11 @@ func _ready():
 		_hide_stars(b)
 		_enable_glow(b, false)
 
+	# --- Nuevo: focus inicial en el primer botón ---
+	if _buttons.size() > 0:
+		_buttons[0].grab_focus()                # ahora ya puedes usar teclado directo
+		_on_button_focus_entered(_buttons[0])   # activa glow y estrellas en el primero
+
 # --- Acciones de los botones ---
 func _on_nueva_partida_pressed(button):
 	print("Abrir Nueva Partida")
@@ -45,8 +49,6 @@ func _on_coleccionista_pressed(button):
 
 func _on_ajustes_pressed(button):
 	print("Abrir ajustes")
-	ajustes_popup.popup_centered()
-	ajustes_popup.show()
 
 func _on_salir_pressed(button):
 	print("Salir del juego")
