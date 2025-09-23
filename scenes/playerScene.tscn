@@ -1,44 +1,82 @@
-[gd_scene load_steps=10 format=3 uid="uid://d30vdm7b5ol13"]
+[gd_scene load_steps=14 format=3 uid="uid://d30vdm7b5ol13"]
 
-[ext_resource type="Script" uid="uid://dho5usdjhy24p" path="res://script/player/playerController.gd" id="1_x1fr4"]
-[ext_resource type="PackedScene" uid="uid://5w2ydsw7ckss" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
-[ext_resource type="Script" uid="uid://dj6tskuwgd3by" path="res://script/state_machine.gd" id="2_smhll"]
-[ext_resource type="Script" uid="uid://du2me2k5gbhr2" path="res://script/player/states/idle.gd" id="3_a2p6p"]
-[ext_resource type="Script" uid="uid://gh7pcjeeplme" path="res://script/player/states/falling.gd" id="4_up5yo"]
-[ext_resource type="Script" uid="uid://diypgbryv22jw" path="res://script/player/states/jumping.gd" id="5_up5yo"]
-[ext_resource type="Script" uid="uid://cv572jyf4wyaa" path="res://script/player/states/runningleft.gd" id="7_72l0f"]
-[ext_resource type="Script" uid="uid://b750y2nfq03tt" path="res://script/player/states/runningright.gd" id="7_bubm6"]
+[ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
+[ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
+[ext_resource type="Script" uid="uid://dr7rgqi3nwgnn" path="res://script/player/StateMachine/state_machine.gd" id="3_gyu2u"]
+[ext_resource type="Script" uid="uid://c8eyghbe7qgll" path="res://script/player/StateMachine/idle.gd" id="4_smhll"]
+[ext_resource type="Script" uid="uid://nt4wu5jck2ag" path="res://script/player/StateMachine/walking.gd" id="5_a2p6p"]
+[ext_resource type="Script" uid="uid://bfqlf2fvawniw" path="res://script/player/StateMachine/in_air.gd" id="6_72l0f"]
+[ext_resource type="Script" uid="uid://c75jo2lrdevvu" path="res://script/player/StateMachine/dash.gd" id="7_bubm6"]
+[ext_resource type="Script" uid="uid://b00wqsvy0gjsd" path="res://script/trail_clone.gd" id="8_bubm6"]
+[ext_resource type="Shader" uid="uid://bnqk5eyqtlgrj" path="res://Shaders/clone_fresnel.gdshader" id="9_cxkpp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x1fr4"]
 radius = 0.366705
 
+[sub_resource type="Gradient" id="Gradient_3o7wo"]
+offsets = PackedFloat32Array(0, 0.455224, 0.947761)
+colors = PackedColorArray(0.141176, 0.00392157, 0.258824, 1, 0.619335, 0.568234, 0.922293, 1, 1, 0.331667, 0.818983, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jn7dq"]
+gradient = SubResource("Gradient_3o7wo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0eca"]
+render_priority = 0
+shader = ExtResource("9_cxkpp")
+shader_parameter/opacity = 1.0
+shader_parameter/fresnel_power = 0.236
+shader_parameter/color_gradiant = SubResource("GradientTexture1D_jn7dq")
+shader_parameter/_emission = 1.386
+
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 2
-script = ExtResource("1_x1fr4")
+script = ExtResource("1_72l0f")
+speed_normal = 15.0
+speed_run = 24.0
+jump = 25.0
+
+[node name="Aura" parent="." instance=ExtResource("2_72l0f")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.993354, 0)
 shape = SubResource("CapsuleShape3D_x1fr4")
 
-[node name="Sprite3D" parent="." instance=ExtResource("2_72l0f")]
-
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_smhll")
+script = ExtResource("3_gyu2u")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("3_a2p6p")
+script = ExtResource("4_smhll")
 
-[node name="Falling" type="Node" parent="StateMachine"]
-script = ExtResource("4_up5yo")
+[node name="Walking" type="Node" parent="StateMachine"]
+script = ExtResource("5_a2p6p")
 
-[node name="Jumping" type="Node" parent="StateMachine"]
-script = ExtResource("5_up5yo")
+[node name="InAir" type="Node" parent="StateMachine"]
+script = ExtResource("6_72l0f")
 
-[node name="runningRight" type="Node" parent="StateMachine"]
+[node name="CoyoteTimer" type="Timer" parent="StateMachine/InAir"]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpBufferTimer" type="Timer" parent="StateMachine/InAir"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("7_bubm6")
 
-[node name="runningLeft" type="Node" parent="StateMachine"]
-script = ExtResource("7_72l0f")
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34525, 0)
+pixel_size = 0.01
+text = "state"
 
-[node name="CoyoteTimer" type="Timer" parent="."]
+[node name="Trail" type="Node3D" parent="." node_paths=PackedStringArray("source_mesh")]
+script = ExtResource("8_bubm6")
+source_mesh = NodePath("../Aura/player/Armature/Skeleton3D/Player")
+source_material = SubResource("ShaderMaterial_i0eca")
+
+[connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="StateMachine/InAir/JumpBufferTimer" to="StateMachine/InAir" method="_on_jump_buffer_timer_timeout"]
+
+[editable path="Aura"]
+[editable path="Aura/player"]

@@ -1,13 +1,6 @@
 class_name PlayerState extends State
 
-const IDLE = "Idle"
-const RUNNINGRIGHT = "runningRight"
-const RUNNINGLEFT = "runningLeft"
-const JUMPING = "Jumping"
-const FALLING = "Falling"
-
 var player: Player
-
 
 func _ready() -> void:
 	await owner.ready

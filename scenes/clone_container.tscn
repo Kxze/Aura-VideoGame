@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bigtifs8y3j3f"]
+
+[ext_resource type="Script" uid="uid://c8qo3yqxdmvuq" path="res://script/clone_container.gd" id="1_ag12u"]
+
+[node name="clone_container" type="MeshInstance3D"]
+script = ExtResource("1_ag12u")

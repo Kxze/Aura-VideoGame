@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://5w2ydsw7ckss"]
+[gd_scene load_steps=2 format=3 uid="uid://d3ssyl05c7cbh"]
 
-[ext_resource type="PackedScene" uid="uid://cgp45s1k35xr0" path="res://scenes/aura_modelo_3d.tscn" id="1_atsli"]
+[ext_resource type="PackedScene" uid="uid://c48o6pl2jaqnu" path="res://scenes/Aura.tscn" id="1_atsli"]
 
 [node name="Sprite3D" type="Sprite3D"]
 
-[node name="AuraModelo3D" parent="." instance=ExtResource("1_atsli")]
+[node name="player" parent="." instance=ExtResource("1_atsli")]
