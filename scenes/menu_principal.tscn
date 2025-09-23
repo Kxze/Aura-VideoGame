@@ -1,25 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dw0p74lmevffi"]
+[gd_scene load_steps=13 format=3 uid="uid://dw0p74lmevffi"]
 
-[ext_resource type="Texture2D" uid="uid://daxcp3lrk7c2a" path="res://PortadaMainMenu.png" id="1_486ty"]
+[ext_resource type="Texture2D" uid="uid://daxcp3lrk7c2a" path="res://Fondos/PortadaMainMenu.png" id="1_486ty"]
 [ext_resource type="Texture2D" uid="uid://c2lu64lmj3asw" path="res://textures/LogoAURA_BrilloAmarillo.png" id="2_qcl6i"]
 [ext_resource type="Script" uid="uid://7avlqe3u305i" path="res://script/v_box_container.gd" id="2_w5ui5"]
 [ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="3_qcl6i"]
 [ext_resource type="Shader" uid="uid://b1ouivas7jknv" path="res://scenes/glow_shader.gdshader" id="3_w5ui5"]
 [ext_resource type="Texture2D" uid="uid://2lg1lybcmpjo" path="res://textures/Starr.svg" id="4_486ty"]
-[ext_resource type="PackedScene" uid="uid://dpk60od5hwtsw" path="res://scenes/ajustes.tscn" id="7_nxt0m"]
-
-[sub_resource type="GDScript" id="GDScript_nxt0m"]
-script/source = "extends Control
-@onready var ajustes_popup = $Popup_Ajustes
-
-func _ready():
-	# Opcional: hacer que empiece oculto
-	ajustes_popup.hide()
-
-func _on_settings_button_pressed():
-	# Muestra el popup centrado en pantalla
-	ajustes_popup.popup_centered()
-"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qcl6i"]
 texture = ExtResource("1_486ty")
@@ -61,10 +47,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_nxt0m")
-
-[node name="Popup_Ajustes" parent="." instance=ExtResource("7_nxt0m")]
-visible = false
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -117,7 +99,7 @@ theme_override_constants/icon_max_width = 30
 theme_override_constants/align_to_largest_stylebox = 0
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("3_qcl6i")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 26
 theme_override_styles/focus = SubResource("StyleBoxTexture_fa1tu")
 action_mode = 0
 text = "Nueva partida"
@@ -161,7 +143,7 @@ theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("3_qcl6i")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 26
 text = "Continuar"
 flat = true
 
@@ -203,7 +185,7 @@ theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("3_qcl6i")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 26
 text = "Coleccionista"
 flat = true
 
@@ -245,7 +227,7 @@ theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("3_qcl6i")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 26
 text = "Ajustes"
 flat = true
 
@@ -286,7 +268,7 @@ theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("3_qcl6i")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 26
 text = "Salir"
 flat = true
 
