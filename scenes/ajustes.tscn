@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpk60od5hwtsw"]
+[gd_scene load_steps=13 format=3 uid="uid://dpk60od5hwtsw"]
 
 [ext_resource type="Script" uid="uid://chakal7t46oo1" path="res://script/Ajustes.gd" id="1_4g77v"]
 [ext_resource type="Theme" uid="uid://bjq2bm6qrncn" path="res://Temas/ajustes.tres" id="1_jg833"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dsbabnmoa87vh" path="res://textures/banner1.png" id="5_evvml"]
 [ext_resource type="Texture2D" uid="uid://b4g5ryiky25wt" path="res://textures/banner3.png" id="6_jg833"]
 [ext_resource type="Texture2D" uid="uid://cwhigfsda2j0i" path="res://textures/banner2.png" id="7_o5kyp"]
+[ext_resource type="Texture2D" uid="uid://bk7gg1q3ju07i" path="res://textures/Home.svg" id="8_o5kyp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4g77v"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -198,12 +199,13 @@ offset_top = 62.999996
 offset_right = 4432.0
 offset_bottom = 2119.0
 scale = Vector2(0.08, 0.08)
-theme_override_colors/font_color = Color(0.1764706, 0.12156863, 0.05882353, 1)
+theme_override_colors/font_color = Color(0.6784314, 0.34117648, 0.36078432, 1)
 theme_override_font_sizes/font_size = 400
 icon = ExtResource("5_evvml")
 flat = true
 
 [node name="BtnRegresar2" type="Button" parent="Panel"]
+visible = false
 layout_mode = 0
 offset_left = 756.0
 offset_top = 145.0
@@ -216,6 +218,7 @@ icon = ExtResource("6_jg833")
 flat = true
 
 [node name="BtnRegresar3" type="Button" parent="Panel"]
+visible = false
 layout_mode = 0
 offset_left = 756.0
 offset_top = 227.0
@@ -225,6 +228,15 @@ scale = Vector2(0.08, 0.08)
 theme_override_colors/font_color = Color(0.1764706, 0.12156863, 0.05882353, 1)
 theme_override_font_sizes/font_size = 400
 icon = ExtResource("7_o5kyp")
+flat = true
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 116.0
+offset_right = 856.0
+offset_bottom = 172.0
+icon = ExtResource("8_o5kyp")
 flat = true
 
 [connection signal="value_changed" from="Panel/MarginContainer/GridContainer/SliderBR" to="." method="_on_slider_br_value_changed"]
