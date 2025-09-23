@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_014kd"]
 [ext_resource type="PackedScene" uid="uid://bdfat0fcg3hs" path="res://Art/Levels/blocking.blend" id="1_rus8k"]
-[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_bswci"]
-[ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="4_5xbjy"]
+[ext_resource type="Script" path="res://scenes/CameraFollow.gd" id="2_bswci"]
+[ext_resource type="PackedScene" path="res://scenes/kill_zone.tscn" id="4_5xbjy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bswci"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
