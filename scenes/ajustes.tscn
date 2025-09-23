@@ -1,0 +1,231 @@
+[gd_scene load_steps=12 format=3 uid="uid://dpk60od5hwtsw"]
+
+[ext_resource type="Script" uid="uid://chakal7t46oo1" path="res://script/Ajustes.gd" id="1_4g77v"]
+[ext_resource type="Theme" uid="uid://bjq2bm6qrncn" path="res://Temas/ajustes.tres" id="1_jg833"]
+[ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="2_3a1hb"]
+[ext_resource type="Texture2D" uid="uid://dxub6b2xwlc70" path="res://Fondos/tarjeta_ajustes.png" id="3_4g77v"]
+[ext_resource type="Texture2D" uid="uid://dsbabnmoa87vh" path="res://textures/banner1.png" id="5_evvml"]
+[ext_resource type="Texture2D" uid="uid://b4g5ryiky25wt" path="res://textures/banner3.png" id="6_jg833"]
+[ext_resource type="Texture2D" uid="uid://cwhigfsda2j0i" path="res://textures/banner2.png" id="7_o5kyp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4g77v"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_4g77v"]
+Label/colors/font_color = Color(0.17591247, 0.12139597, 0.058000438, 1)
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("2_3a1hb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ipv1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_jg833"]
+Button/colors/font_outline_color = Color(1, 0.16862746, 0.77254903, 0.7137255)
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("2_3a1hb")
+Button/styles/normal = SubResource("StyleBoxFlat_7ipv1")
+
+[node name="Popup_Ajustes" type="Popup"]
+oversampling_override = 1.0
+size = Vector2i(1152, 727)
+visible = true
+theme = ExtResource("1_jg833")
+script = ExtResource("1_4g77v")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 124.0
+offset_top = 2.0
+offset_right = 1048.0
+offset_bottom = 649.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4g77v")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 6.0
+offset_right = 1792.0
+offset_bottom = 1260.0
+scale = Vector2(0.42, 0.49)
+texture = ExtResource("3_4g77v")
+
+[node name="Ajustes" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 377.0
+offset_top = 88.0
+offset_right = 534.0
+offset_bottom = 161.0
+size_flags_horizontal = 8
+theme = SubResource("Theme_4g77v")
+theme_override_font_sizes/font_size = 40
+text = "Ajustes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = -153.5
+offset_right = 282.0
+offset_bottom = 226.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.82, 0.82)
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="VolumenGeneral" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Volumen General   "
+vertical_alignment = 1
+
+[node name="SliderVG" type="HSlider" parent="Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+mouse_default_cursor_shape = 6
+ticks_position = 3
+
+[node name="Musica" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Música   "
+
+[node name="SliderM" type="HSlider" parent="Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 6
+ticks_position = 3
+
+[node name="SFX" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "SFX   "
+
+[node name="SliderSFX" type="HSlider" parent="Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 6
+ticks_position = 3
+
+[node name="Subtitulos" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Subtítulos"
+
+[node name="CheckSUB" type="CheckButton" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+clip_text = true
+
+[node name="Brillo" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Brillo"
+
+[node name="SliderBR" type="HSlider" parent="Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 6
+max_value = 0.0
+ticks_position = 3
+
+[node name="Resolucion" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Resolución"
+
+[node name="OptionRES" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+selected = 2
+item_count = 3
+popup/item_0/text = "1920 x 1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600 x 900"
+popup/item_1/id = 1
+popup/item_2/text = "1152 x 648"
+popup/item_2/id = 2
+
+[node name="Calidad" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Calidad"
+
+[node name="OptionQUAL" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+selected = 2
+item_count = 3
+popup/item_0/text = "Alta"
+popup/item_0/id = 0
+popup/item_1/text = "Media"
+popup/item_1/id = 1
+popup/item_2/text = "Baja"
+popup/item_2/id = 2
+
+[node name="BtnControles" type="Button" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_jg833")
+theme_override_colors/font_color = Color(0.1764706, 0.12156863, 0.05882353, 1)
+text = "Controles
+"
+alignment = 0
+
+[node name="BtnRegresar" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 756.0
+offset_top = 62.999996
+offset_right = 4432.0
+offset_bottom = 2119.0
+scale = Vector2(0.08, 0.08)
+theme_override_colors/font_color = Color(0.1764706, 0.12156863, 0.05882353, 1)
+theme_override_font_sizes/font_size = 400
+icon = ExtResource("5_evvml")
+flat = true
+
+[node name="BtnRegresar2" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 756.0
+offset_top = 145.0
+offset_right = 4432.0
+offset_bottom = 2201.0
+scale = Vector2(0.08, 0.08)
+theme_override_colors/font_color = Color(0.1764706, 0.12156863, 0.05882353, 1)
+theme_override_font_sizes/font_size = 400
+icon = ExtResource("6_jg833")
+flat = true
+
+[node name="BtnRegresar3" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 756.0
+offset_top = 227.0
+offset_right = 4432.0
+offset_bottom = 2283.0
+scale = Vector2(0.08, 0.08)
+theme_override_colors/font_color = Color(0.1764706, 0.12156863, 0.05882353, 1)
+theme_override_font_sizes/font_size = 400
+icon = ExtResource("7_o5kyp")
+flat = true
+
+[connection signal="value_changed" from="Panel/MarginContainer/GridContainer/SliderBR" to="." method="_on_slider_br_value_changed"]
+[connection signal="item_selected" from="Panel/MarginContainer/GridContainer/OptionRES" to="." method="_on_option_res_item_selected"]
