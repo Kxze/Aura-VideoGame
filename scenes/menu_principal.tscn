@@ -1,0 +1,302 @@
+[gd_scene load_steps=13 format=3 uid="uid://dw0p74lmevffi"]
+
+[ext_resource type="Texture2D" uid="uid://daxcp3lrk7c2a" path="res://Fondos/PortadaMainMenu.png" id="1_486ty"]
+[ext_resource type="Texture2D" uid="uid://c2lu64lmj3asw" path="res://textures/LogoAURA_BrilloAmarillo.png" id="2_qcl6i"]
+[ext_resource type="Script" uid="uid://7avlqe3u305i" path="res://script/v_box_container.gd" id="2_w5ui5"]
+[ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="3_qcl6i"]
+[ext_resource type="Shader" uid="uid://b1ouivas7jknv" path="res://scenes/glow_shader.gdshader" id="3_w5ui5"]
+[ext_resource type="Texture2D" uid="uid://2lg1lybcmpjo" path="res://textures/Starr.svg" id="4_486ty"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qcl6i"]
+texture = ExtResource("1_486ty")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qcl6i"]
+shader = ExtResource("3_w5ui5")
+shader_parameter/active = false
+shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
+shader_parameter/glow_strength = 0.5
+shader_parameter/speed = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fa1tu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5ui5"]
+shader = ExtResource("3_w5ui5")
+shader_parameter/active = false
+shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
+shader_parameter/glow_strength = 0.7
+shader_parameter/speed = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxt0m"]
+shader = ExtResource("3_w5ui5")
+shader_parameter/active = false
+shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
+shader_parameter/glow_strength = 0.7
+shader_parameter/speed = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xgxd"]
+shader = ExtResource("3_w5ui5")
+shader_parameter/active = false
+shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
+shader_parameter/glow_strength = 0.7
+shader_parameter/speed = 3.0
+
+[node name="MenuPrincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qcl6i")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.78845
+offset_top = -185.5
+offset_right = 174.78845
+offset_bottom = -48.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qcl6i")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -356.0
+offset_right = 86.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+script = ExtResource("2_w5ui5")
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_qcl6i")
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 0.705882, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 30
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_qcl6i")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxTexture_fa1tu")
+action_mode = 0
+text = "Nueva partida"
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -22.5
+offset_right = 135.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 180
+
+[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_486ty")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_486ty")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_w5ui5")
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_qcl6i")
+theme_override_font_sizes/font_size = 26
+text = "Continuar"
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -21.5
+offset_right = 136.0
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 180
+
+[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button2/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_486ty")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button2/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_486ty")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_nxt0m")
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_qcl6i")
+theme_override_font_sizes/font_size = 26
+text = "Coleccionista"
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -20.5
+offset_right = 136.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 180
+
+[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button3/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_486ty")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button3/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_486ty")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="Button4" type="Button" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_2xgxd")
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_qcl6i")
+theme_override_font_sizes/font_size = 26
+text = "Ajustes"
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -19.5
+offset_right = 136.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 180
+
+[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button4/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_486ty")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button4/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_486ty")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="Button5" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_qcl6i")
+theme_override_font_sizes/font_size = 26
+text = "Salir"
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -22.5
+offset_right = 136.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 180
+
+[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button5/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_486ty")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button5/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_486ty")
+expand_mode = 3
+stretch_mode = 3

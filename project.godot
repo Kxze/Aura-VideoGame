@@ -12,7 +12,7 @@ config_version=5
 
 config/name="AuraV1"
 run/main_scene="uid://t2m7hqcpi1rb"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
@@ -25,6 +25,8 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://Art/": "red",
+"res://Fondos/": "pink",
+"res://Fonts/": "blue",
 "res://scenes/": "yellow",
 "res://script/": "teal",
 "res://textures/": "purple"
