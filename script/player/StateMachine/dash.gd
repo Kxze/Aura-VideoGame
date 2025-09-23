@@ -1,7 +1,7 @@
 extends PlayerState
 
 var dash_time := 0.3
-var dash_speed := 15.0
+var dash_speed := 30
 var timer := 0.0
 var dash_dir := 1
 var suspend_air_time := 0.5

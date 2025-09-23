@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://d30vdm7b5ol13"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_72l0f"]
+[ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
 [ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
 [ext_resource type="Script" uid="uid://dr7rgqi3nwgnn" path="res://script/player/StateMachine/state_machine.gd" id="3_gyu2u"]
 [ext_resource type="Script" uid="uid://c8eyghbe7qgll" path="res://script/player/StateMachine/idle.gd" id="4_smhll"]
 [ext_resource type="Script" uid="uid://nt4wu5jck2ag" path="res://script/player/StateMachine/walking.gd" id="5_a2p6p"]
 [ext_resource type="Script" uid="uid://bfqlf2fvawniw" path="res://script/player/StateMachine/in_air.gd" id="6_72l0f"]
 [ext_resource type="Script" uid="uid://c75jo2lrdevvu" path="res://script/player/StateMachine/dash.gd" id="7_bubm6"]
-[ext_resource type="Script" path="res://script/trail_clone.gd" id="8_bubm6"]
+[ext_resource type="Script" uid="uid://b00wqsvy0gjsd" path="res://script/trail_clone.gd" id="8_bubm6"]
 [ext_resource type="Shader" uid="uid://bnqk5eyqtlgrj" path="res://Shaders/clone_fresnel.gdshader" id="9_cxkpp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x1fr4"]
@@ -70,6 +70,7 @@ script = ExtResource("7_bubm6")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34525, 0)
+visible = false
 pixel_size = 0.01
 text = "state"
 

@@ -1,0 +1,54 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cchvhub8830n6"]
+
+[sub_resource type="Gradient" id="Gradient_l3yxl"]
+offsets = PackedFloat32Array(0.483607, 0.991803, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.942623, 0.942623, 0.942623, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m17cq"]
+fractal_type = 3
+fractal_gain = 0.435
+fractal_weighted_strength = 0.28
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_thm0r"]
+color_ramp = SubResource("Gradient_l3yxl")
+noise = SubResource("FastNoiseLite_m17cq")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_e5ym8"]
+frames = 30
+speed_scale = -7.8
+frame_0/texture = SubResource("NoiseTexture2D_thm0r")
+frame_1/duration = 1.0
+frame_2/duration = 1.0
+frame_3/duration = 1.0
+frame_4/duration = 1.0
+frame_5/duration = 1.0
+frame_6/duration = 1.0
+frame_7/duration = 1.0
+frame_8/duration = 1.0
+frame_9/duration = 1.0
+frame_10/duration = 1.0
+frame_11/duration = 1.0
+frame_12/duration = 1.0
+frame_13/duration = 1.0
+frame_14/duration = 1.0
+frame_15/duration = 1.0
+frame_16/duration = 1.0
+frame_17/duration = 1.0
+frame_18/duration = 1.0
+frame_19/duration = 1.0
+frame_20/duration = 1.0
+frame_21/duration = 1.0
+frame_22/duration = 1.0
+frame_23/duration = 1.0
+frame_24/duration = 1.0
+frame_25/duration = 1.0
+frame_26/duration = 1.0
+frame_27/duration = 1.0
+frame_28/duration = 1.0
+frame_29/duration = 1.0
+
+[resource]
+emission_enabled = true
+emission = Color(0.69395, 0.213821, 1, 1)
+emission_energy_multiplier = 10.03
+emission_texture = SubResource("AnimatedTexture_e5ym8")
