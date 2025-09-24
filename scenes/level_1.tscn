@@ -76,6 +76,14 @@ environment = SubResource("Environment_7gny6")
 [node name="Player" parent="." instance=ExtResource("1_014kd")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 67.831, 1.63346, 0)
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.2, 1.18327)
+light_color = Color(1, 0.945098, 0.831373, 1)
+light_energy = 3.0
+light_specular = 0.0
+spot_range = 14.904
+spot_angle = 56.7094
+
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.801, 7.13846, 31.515)
 keep_aspect = 0
