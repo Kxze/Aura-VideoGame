@@ -57,26 +57,27 @@ roughness = 0.24
 
 [node name="level1" type="Node3D"]
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.90728, -0.0749584, 0.413793, 0.128784, 0.887182, 0.443083, -0.400322, 0.45529, -0.795269, 66, 87.9083, -184.604)
-light_color = Color(0.743864, 0.753099, 0.973633, 1)
-light_energy = 200.0
-light_volumetric_fog_energy = 8.0
+[node name="Ventana" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, -2.23517e-08, 2.98023e-08, -5.75881e-08, 0.866025, 0.5, -8.9407e-08, 0.5, -0.866025, 34, 54.1966, -84.1008)
+light_color = Color(0.79152, 0.7372, 0.97, 1)
+light_energy = 15.0
+light_volumetric_fog_energy = 2.0
 light_projector = ExtResource("1_4nkto")
-light_size = 1.0
 shadow_enabled = true
-shadow_blur = 3.424
-spot_range = 250.0
-spot_angle = 15.91
+shadow_reverse_cull_face = true
+shadow_opacity = 0.0
+spot_range = 150.924
+spot_attenuation = 0.39
+spot_angle = 29.69
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7gny6")
 
 [node name="Player" parent="." instance=ExtResource("1_014kd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -14.1689, -0.044652, 0.020874)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 67.831, 1.63346, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1989, 5.46035, 31.5359)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.801, 7.13846, 31.515)
 keep_aspect = 0
 fov = 80.0
 script = ExtResource("2_bswci")
@@ -133,12 +134,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_2os1m")
 transform = Transform3D(-1.74846e-05, -2.1048e-05, -161.362, 400, 1.36091e-12, -7.05336e-06, 0, -160.507, 2.11601e-05, 282.9, -80.354, -21)
 mesh = SubResource("QuadMesh_2y5yt")
 surface_material_override/0 = SubResource("StandardMaterial3D_2os1m")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.637155, 0, 0.770736, 0, 1, 0, -0.770736, 0, -0.637155, 0, 0, 0)
-light_color = Color(0.7105, 0.686, 0.98, 1)
-light_energy = 2.219
-light_volumetric_fog_energy = 0.1
 
 [node name="serie" type="Node" parent="."]
 
@@ -242,12 +237,12 @@ omni_range = 34.697
 omni_attenuation = 1.606
 
 [node name="luces12" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.233, 50.3929, -74.113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149.233, 50.3929, -53.113)
 light_color = Color(0.574729, 0.476048, 0.452437, 1)
 light_energy = 97.165
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 4.419
-omni_range = 30.0
+omni_range = 66.245
 
 [node name="luna" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 3.29216e-05, 0.000156656, -0.000145623, 0.593479, 0.80485, -6.64751e-05, -0.80485, 0.593479, 33.6887, 237.178, -95.5997)
@@ -266,6 +261,21 @@ transform = Transform3D(86.3587, 0, 0, 0, -1.25549e-08, -75.995, 0, 0.287223, -3
 material_override = SubResource("StandardMaterial3D_5xbjy")
 transparency = 0.65
 mesh = SubResource("BoxMesh_5xbjy")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 21.6618, 71)
+visible = false
+light_color = Color(0.82, 0.581927, 0.2706, 1)
+light_energy = 200.0
+spot_range = 137.547
+spot_angle = 78.92
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7424, 0.656973, -0.131257, 0.495307, -0.406303, 0.767846, 0.451124, -0.635062, -0.627043, 41, 43, -89)
+light_energy = 0.1
+shadow_enabled = true
+shadow_bias = 0.0
+sky_mode = 1
 
 [editable path="KillZone"]
 [editable path="blocking"]

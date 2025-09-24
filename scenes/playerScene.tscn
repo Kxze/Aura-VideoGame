@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d30vdm7b5ol13"]
+[gd_scene load_steps=15 format=3 uid="uid://d30vdm7b5ol13"]
 
 [ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
 [ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
@@ -9,9 +9,10 @@
 [ext_resource type="Script" uid="uid://c75jo2lrdevvu" path="res://script/player/StateMachine/dash.gd" id="7_bubm6"]
 [ext_resource type="Script" uid="uid://b00wqsvy0gjsd" path="res://script/trail_clone.gd" id="8_bubm6"]
 [ext_resource type="Shader" uid="uid://bnqk5eyqtlgrj" path="res://Shaders/clone_fresnel.gdshader" id="9_cxkpp"]
+[ext_resource type="PackedScene" uid="uid://yknlxithgdel" path="res://Art/spritesSheets/AuraSprite.tscn" id="10_i0eca"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x1fr4"]
-radius = 0.366705
+radius = 0.348961
 
 [sub_resource type="Gradient" id="Gradient_3o7wo"]
 offsets = PackedFloat32Array(0, 0.455224, 0.947761)
@@ -37,11 +38,8 @@ jump = 25.0
 
 [node name="Aura" parent="." instance=ExtResource("2_72l0f")]
 
-[node name="AnimationPlayer" parent="Aura/player" index="1"]
-blend_times = [&"Dash", &"Jump", 0.2, &"Dash", &"idle", 0.2, &"Jump", &"Dash", 0.2, &"Jump", &"idle", 0.3, &"Run", &"Jump", 0.5, &"Run", &"Run", 1.0, &"Run", &"Walk", 1.0, &"Run", &"idle", 0.5, &"Walk", &"Jump", 0.5, &"Walk", &"Run", 1.0, &"Walk", &"Walk", 0.5, &"Walk", &"idle", 1.0, &"idle", &"Jump", 0.5, &"idle", &"Walk", 0.5]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.993354, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0075233, 0.993354, 0)
 shape = SubResource("CapsuleShape3D_x1fr4")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -78,6 +76,12 @@ text = "state"
 script = ExtResource("8_bubm6")
 source_mesh = NodePath("../Aura/player/Armature/Skeleton3D/Player")
 source_material = SubResource("ShaderMaterial_i0eca")
+
+[node name="CloneAura" parent="." instance=ExtResource("10_i0eca")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 1.01874, 1.11324, -0.0342956)
+billboard = 0
+alpha_cut = 2
+animation = &"Idle"
 
 [connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/JumpBufferTimer" to="StateMachine/InAir" method="_on_jump_buffer_timer_timeout"]

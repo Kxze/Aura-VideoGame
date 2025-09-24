@@ -3,5 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://c48o6pl2jaqnu" path="res://scenes/Aura.tscn" id="1_atsli"]
 
 [node name="Sprite3D" type="Sprite3D"]
+gi_mode = 0
+pixel_size = 121.091
+billboard = 1
+shaded = true
+alpha_cut = 1
 
 [node name="player" parent="." instance=ExtResource("1_atsli")]

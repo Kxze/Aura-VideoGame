@@ -7230,6 +7230,11 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"nodes": {
+"PATH:Armature/Skeleton3D/Player": {
+"mesh_instance/cast_shadow": 2
+}
 }
 }
 blender/nodes/visible=0
