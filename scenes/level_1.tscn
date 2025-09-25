@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://t2m7hqcpi1rb"]
+[gd_scene load_steps=16 format=3 uid="uid://t2m7hqcpi1rb"]
 
 [ext_resource type="Texture2D" uid="uid://bypn6viaeqnwq" path="res://Art/Assets2D/ventanaMask.jpeg" id="1_4nkto"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_014kd"]
 [ext_resource type="PackedScene" uid="uid://bdfat0fcg3hs" path="res://Art/Levels/blocking.blend" id="1_rus8k"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_bswci"]
+[ext_resource type="Script" uid="uid://bw0vrv4wmpt8" path="res://scenes/changeLight.gd" id="3_pa8r4"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="4_5xbjy"]
 [ext_resource type="Material" uid="uid://cchvhub8830n6" path="res://Materials/emissive.tres" id="6_fcfvj"]
 
@@ -22,6 +23,11 @@ ambient_light_source = 3
 ambient_light_sky_contribution = 0.7
 tonemap_mode = 2
 glow_enabled = true
+glow_normalized = true
+glow_intensity = 3.48
+glow_strength = 0.69
+glow_blend_mode = 1
+glow_hdr_threshold = 0.0
 fog_mode = 1
 fog_light_color = Color(0.403922, 0.419608, 0.741176, 1)
 fog_light_energy = 0.83
@@ -74,18 +80,19 @@ spot_angle = 29.69
 environment = SubResource("Environment_7gny6")
 
 [node name="Player" parent="." instance=ExtResource("1_014kd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 67.831, 1.63346, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -24.3602, 1.63346, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 1.18327)
-light_color = Color(1, 0.945098, 0.831373, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
+light_color = Color(1, 0.969167, 0.63, 1)
 light_energy = 3.0
 light_specular = 0.0
-spot_range = 14.904
-spot_angle = 56.7094
+spot_range = 13.139
+spot_angle = 69.14
+script = ExtResource("3_pa8r4")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.801, 7.13846, 31.515)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3902, 7.13846, 31.515)
 keep_aspect = 0
 fov = 80.0
 script = ExtResource("2_bswci")

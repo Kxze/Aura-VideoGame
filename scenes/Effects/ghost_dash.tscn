@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxiojj86hdb04"]
 
 [ext_resource type="Texture2D" uid="uid://b2smykhuqhjp3" path="res://Art/spritesSheets/Dash.png" id="1_fv2fm"]
-[ext_resource type="Script" uid="uid://d4t3yjfentnb" path="res://AuraRainbow.gd" id="2_4o2tg"]
+[ext_resource type="Script" path="res://dashGhost.gd" id="2_4o2tg"]
 
 [node name="Sprite3D" type="Sprite3D"]
 texture = ExtResource("1_fv2fm")

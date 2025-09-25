@@ -67,10 +67,7 @@ func reset_dash_cooldown():
 	player.can_dash = true
 
 func spawn_dash_trail(num_copies: int = 4) -> void:
-	var fade_time : float = 1.5
-	var delay_step : float = 0.05
 	player.sprite.visible = true
-	var offset_x := .1  # separación inicial de cada copia
 
 	for i in range(num_copies):
 		# Instanciar la escena de trail

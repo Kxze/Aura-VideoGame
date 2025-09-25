@@ -56,7 +56,7 @@ dash_trail_scene = ExtResource("8_elcxt")
 [node name="AuraGhost" parent="." instance=ExtResource("10_i0eca")]
 transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 0.012677, 1.10246, -0.141001)
 visible = false
-modulate = Color(0.558, 0.22, 1, 0.65098)
+modulate = Color(0, 0.783333, 1, 0.870588)
 script = ExtResource("12_nk4e2")
 rainbow_speed = 1.5
 
