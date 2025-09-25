@@ -1,47 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://dw0p74lmevffi"]
+[gd_scene load_steps=10 format=3 uid="uid://dw0p74lmevffi"]
 
 [ext_resource type="Texture2D" uid="uid://daxcp3lrk7c2a" path="res://Fondos/PortadaMainMenu.png" id="1_486ty"]
 [ext_resource type="Texture2D" uid="uid://c2lu64lmj3asw" path="res://textures/LogoAURA_BrilloAmarillo.png" id="2_qcl6i"]
 [ext_resource type="Script" uid="uid://7avlqe3u305i" path="res://script/menu_principal.gd" id="2_w5ui5"]
 [ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="3_qcl6i"]
-[ext_resource type="Shader" uid="uid://b1ouivas7jknv" path="res://scenes/glow_shader.gdshader" id="3_w5ui5"]
 [ext_resource type="Texture2D" uid="uid://2lg1lybcmpjo" path="res://textures/Starr.svg" id="4_486ty"]
 [ext_resource type="PackedScene" uid="uid://lamcax8x6dtt" path="res://scenes/ajustes.tscn" id="7_nxt0m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qcl6i"]
 texture = ExtResource("1_486ty")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qcl6i"]
-shader = ExtResource("3_w5ui5")
-shader_parameter/active = false
-shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
-shader_parameter/glow_strength = 0.5
-shader_parameter/speed = 2.0
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxt0m"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5ui5"]
-shader = ExtResource("3_w5ui5")
-shader_parameter/active = false
-shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
-shader_parameter/glow_strength = 0.7
-shader_parameter/speed = 3.0
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xgxd"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxt0m"]
-shader = ExtResource("3_w5ui5")
-shader_parameter/active = false
-shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
-shader_parameter/glow_strength = 0.7
-shader_parameter/speed = 3.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xgxd"]
-shader = ExtResource("3_w5ui5")
-shader_parameter/active = false
-shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
-shader_parameter/glow_strength = 0.7
-shader_parameter/speed = 3.0
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
@@ -68,9 +39,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -249.0
-offset_top = -232.0
+offset_top = -256.0
 offset_right = 250.0
-offset_bottom = -36.0
+offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.04419, 1.04419)
@@ -85,19 +56,22 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -130.0
-offset_top = -579.0
+offset_top = -603.0
 offset_right = 130.0
-offset_bottom = -204.0
+offset_bottom = -228.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 10
 script = ExtResource("2_w5ui5")
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-material = SubResource("ShaderMaterial_qcl6i")
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 0.705882, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_pressed_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_hover_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 30
 theme_override_constants/align_to_largest_stylebox = 0
@@ -116,13 +90,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -134.0
-offset_top = -22.5
-offset_right = 136.0
-offset_bottom = 22.5
+offset_left = -222.0
+offset_top = -33.5
+offset_right = 7134.0
+offset_bottom = 1100.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 350
+scale = Vector2(0.06, 0.06)
+theme_override_constants/separation = 5000
 
 [node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button/HBoxContainer"]
 visible = false
@@ -139,9 +114,13 @@ expand_mode = 3
 stretch_mode = 3
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
-material = SubResource("ShaderMaterial_w5ui5")
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_pressed_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_hover_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
@@ -159,13 +138,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = -21.5
-offset_right = 137.0
-offset_bottom = 23.5
+offset_left = -222.0
+offset_top = -33.5
+offset_right = 7134.0
+offset_bottom = 1100.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 350
+scale = Vector2(0.06, 0.06)
+theme_override_constants/separation = 5000
 
 [node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button2/HBoxContainer"]
 visible = false
@@ -182,9 +162,13 @@ expand_mode = 3
 stretch_mode = 3
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
-material = SubResource("ShaderMaterial_nxt0m")
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_pressed_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_hover_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
@@ -202,13 +186,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = -20.5
-offset_right = 137.0
-offset_bottom = 24.5
+offset_left = -222.0
+offset_top = -33.5
+offset_right = 7134.0
+offset_bottom = 1100.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 350
+scale = Vector2(0.06, 0.06)
+theme_override_constants/separation = 5000
 
 [node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button3/HBoxContainer"]
 visible = false
@@ -225,9 +210,13 @@ expand_mode = 3
 stretch_mode = 3
 
 [node name="Button4" type="Button" parent="VBoxContainer"]
-material = SubResource("ShaderMaterial_2xgxd")
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_pressed_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_hover_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
@@ -245,13 +234,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = -19.5
-offset_right = 137.0
-offset_bottom = 25.5
+offset_left = -222.0
+offset_top = -33.5
+offset_right = 7134.0
+offset_bottom = 1100.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 350
+scale = Vector2(0.06, 0.06)
+theme_override_constants/separation = 5000
 
 [node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button4/HBoxContainer"]
 visible = false
@@ -270,6 +260,11 @@ stretch_mode = 3
 [node name="Button5" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_pressed_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_hover_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
@@ -287,13 +282,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = -22.5
-offset_right = 137.0
-offset_bottom = 22.5
+offset_left = -149.0
+offset_top = -33.5
+offset_right = 4707.0
+offset_bottom = 1100.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 350
+scale = Vector2(0.06, 0.06)
+theme_override_constants/separation = 2500
 
 [node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button5/HBoxContainer"]
 visible = false
