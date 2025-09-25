@@ -20,12 +20,12 @@ var last_facing := 1  # 1 = derecha, -1 = izquierda
 
 @onready var aura: Node3D = $Aura/player
 @onready var animationPlayer = $Aura/player/AnimationPlayer
-@onready var sprite: Sprite3D = $ClonAura
+@onready var sprite: Sprite3D = $AuraGhost
 func _input(event: InputEvent) -> void:
 	movInput.x = Input.get_axis("ui_left","ui_right")
 
 func _process(delta: float) -> void:
-	$Label3D.text = $StateMachine.state.name
+	pass
 
 func take_damage(damage: int):
 	health -= damage

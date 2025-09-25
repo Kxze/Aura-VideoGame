@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp3114no1thrh"]
+
+[ext_resource type="Script" uid="uid://m0abuv7rf6wd" path="res://script/TrailFollower.gd" id="1_ob6t2"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_ob6t2")

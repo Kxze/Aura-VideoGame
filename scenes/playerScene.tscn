@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d30vdm7b5ol13"]
+[gd_scene load_steps=12 format=3 uid="uid://d30vdm7b5ol13"]
 
 [ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
 [ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
@@ -7,27 +7,12 @@
 [ext_resource type="Script" uid="uid://nt4wu5jck2ag" path="res://script/player/StateMachine/walking.gd" id="5_a2p6p"]
 [ext_resource type="Script" uid="uid://bfqlf2fvawniw" path="res://script/player/StateMachine/in_air.gd" id="6_72l0f"]
 [ext_resource type="Script" uid="uid://c75jo2lrdevvu" path="res://script/player/StateMachine/dash.gd" id="7_bubm6"]
-[ext_resource type="Script" uid="uid://b00wqsvy0gjsd" path="res://script/trail_clone.gd" id="8_bubm6"]
-[ext_resource type="Shader" uid="uid://bnqk5eyqtlgrj" path="res://Shaders/clone_fresnel.gdshader" id="9_cxkpp"]
+[ext_resource type="PackedScene" uid="uid://cp3114no1thrh" path="res://scenes/Effects/trail_scene.tscn" id="8_elcxt"]
 [ext_resource type="PackedScene" uid="uid://dxiojj86hdb04" path="res://scenes/Effects/ghost_dash.tscn" id="10_i0eca"]
+[ext_resource type="Script" uid="uid://duhvl1urrncli" path="res://script/dashAura.gd" id="12_nk4e2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x1fr4"]
 radius = 0.348961
-
-[sub_resource type="Gradient" id="Gradient_3o7wo"]
-offsets = PackedFloat32Array(0, 0.455224, 0.947761)
-colors = PackedColorArray(0.141176, 0.00392157, 0.258824, 1, 0.619335, 0.568234, 0.922293, 1, 1, 0.331667, 0.818983, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jn7dq"]
-gradient = SubResource("Gradient_3o7wo")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0eca"]
-render_priority = 0
-shader = ExtResource("9_cxkpp")
-shader_parameter/opacity = 1.0
-shader_parameter/fresnel_power = 0.236
-shader_parameter/color_gradiant = SubResource("GradientTexture1D_jn7dq")
-shader_parameter/_emission = 1.386
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 2
@@ -66,21 +51,18 @@ one_shot = true
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("7_bubm6")
+dash_trail_scene = ExtResource("8_elcxt")
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34525, 0)
+[node name="AuraGhost" parent="." instance=ExtResource("10_i0eca")]
+transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 0.012677, 1.10246, -0.141001)
 visible = false
-pixel_size = 0.01
-text = "state"
+modulate = Color(0.558, 0.22, 1, 0.65098)
+script = ExtResource("12_nk4e2")
+rainbow_speed = 1.5
 
-[node name="Trail" type="Node3D" parent="." node_paths=PackedStringArray("source_mesh")]
-script = ExtResource("8_bubm6")
-source_mesh = NodePath("../Aura/player/Armature/Skeleton3D/Player")
-source_material = SubResource("ShaderMaterial_i0eca")
-
-[node name="ClonAura" parent="." instance=ExtResource("10_i0eca")]
-transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 0.0169437, 1.0956, -0.0312024)
-visible = false
+[node name="Node3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_elcxt")]
+target = NodePath("../Aura")
+lerp_speed = 5.0
 
 [connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/JumpBufferTimer" to="StateMachine/InAir" method="_on_jump_buffer_timer_timeout"]

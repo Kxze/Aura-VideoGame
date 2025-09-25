@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://n54np7vbb3vp"]
+
+[ext_resource type="Texture2D" uid="uid://b2smykhuqhjp3" path="res://Art/spritesSheets/Dash.png" id="1_0rxqy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn2gk"]
+atlas = ExtResource("1_0rxqy")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt4xr"]
+atlas = ExtResource("1_0rxqy")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifq5t"]
+atlas = ExtResource("1_0rxqy")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b180"]
+atlas = ExtResource("1_0rxqy")
+region = Rect2(3072, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dhfw"]
+atlas = ExtResource("1_0rxqy")
+region = Rect2(0, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qywbu"]
+atlas = ExtResource("1_0rxqy")
+region = Rect2(1024, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nwvk"]
+atlas = ExtResource("1_0rxqy")
+region = Rect2(2048, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crpex"]
+atlas = ExtResource("1_0rxqy")
+region = Rect2(3072, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38qs2"]
+atlas = ExtResource("1_0rxqy")
+region = Rect2(0, 2048, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xkvy"]
+atlas = ExtResource("1_0rxqy")
+region = Rect2(1024, 2048, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bp1y5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn2gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt4xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifq5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b180")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dhfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qywbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nwvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crpex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38qs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xkvy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AuraGhost" type="AnimatedSprite3D"]
+sprite_frames = SubResource("SpriteFrames_bp1y5")
