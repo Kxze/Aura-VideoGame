@@ -18,11 +18,11 @@ func enter(previous_state_path: String, data := {}):
 	dash_dir = player.last_facing
 	player.is_dashing = true
 	player.can_dash = false
-
+	
 	# Reproducir animación Dash
 	if player.animationPlayer:
 		player.animationPlayer.play("Dash")
-
+		spawn_effect()
 	# Suspensión en aire
 	if not player.is_on_floor():
 		suspended = true
@@ -36,7 +36,7 @@ func enter(previous_state_path: String, data := {}):
 func physics_update(delta: float):
 	timer += delta
 	player.velocity.x = dash_dir * dash_speed
-
+	player.sprite.visible = false
 	if not suspended:
 		player.velocity.y += player.GRAVITY
 
@@ -61,3 +61,20 @@ func physics_update(delta: float):
 func reset_dash_cooldown():
 	await get_tree().create_timer(dash_cooldown).timeout
 	player.can_dash = true
+
+func spawn_effect() -> void:
+	var effect : Node3D = Node3D.new()
+	var num_copies : int = 5
+	player.get_parent().add_child( effect )
+	effect.global_position = player.global_position - Vector3(1,0,0)
+	effect.scale = player.scale
+	player.sprite.visible = true
+	
+	
+	var aura_copy : Sprite3D = player.sprite.duplicate(	)
+	effect.add_child(aura_copy)
+	
+	var tween : Tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(effect,"modulate", Color(1,1,1,0.0),2)
+	tween.chain().tween_callback(effect.queue_free)

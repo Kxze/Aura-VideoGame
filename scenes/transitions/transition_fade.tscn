@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl428asq0dquq"]
+
+[ext_resource type="Script" uid="uid://dlsjnkij1qst5" path="res://transition_fade.gd" id="1_psfly"]
+
+[sub_resource type="Animation" id="Animation_psfly"]
+resource_name = "fade_to_black"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.04224, 0.0253, 0.11, 0), Color(0.04224, 0.0253, 0.11, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gvrwg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.04224, 0.0253, 0.11, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iwe4f"]
+resource_name = "fade_to_normal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.04224, 0.0253, 0.11, 1), Color(0.04224, 0.0253, 0.11, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nvhx7"]
+_data = {
+&"RESET": SubResource("Animation_gvrwg"),
+&"fade_to_black": SubResource("Animation_psfly"),
+&"fade_to_normal": SubResource("Animation_iwe4f")
+}
+
+[node name="transition_fade" type="CanvasLayer"]
+script = ExtResource("1_psfly")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.04224, 0.0253, 0.11, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nvhx7")
+}

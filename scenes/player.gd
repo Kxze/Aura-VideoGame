@@ -8,6 +8,7 @@ var speed = speed_normal
 @export var GRAVITY := -1.3
 @export var acceleration: float = 3
 @export var friction: float = 5
+@export var color_ghost : Color
 var jump_locked := false
 var is_dashing := false
 var can_dash := true
@@ -19,7 +20,7 @@ var last_facing := 1  # 1 = derecha, -1 = izquierda
 
 @onready var aura: Node3D = $Aura/player
 @onready var animationPlayer = $Aura/player/AnimationPlayer
-
+@onready var sprite: Sprite3D = $ClonAura
 func _input(event: InputEvent) -> void:
 	movInput.x = Input.get_axis("ui_left","ui_right")
 

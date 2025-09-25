@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d30vdm7b5ol13"]
+[gd_scene load_steps=15 format=3 uid="uid://d30vdm7b5ol13"]
 
 [ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
 [ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c75jo2lrdevvu" path="res://script/player/StateMachine/dash.gd" id="7_bubm6"]
 [ext_resource type="Script" uid="uid://b00wqsvy0gjsd" path="res://script/trail_clone.gd" id="8_bubm6"]
 [ext_resource type="Shader" uid="uid://bnqk5eyqtlgrj" path="res://Shaders/clone_fresnel.gdshader" id="9_cxkpp"]
+[ext_resource type="PackedScene" uid="uid://dxiojj86hdb04" path="res://scenes/Effects/ghost_dash.tscn" id="10_i0eca"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x1fr4"]
 radius = 0.348961
@@ -34,6 +35,7 @@ script = ExtResource("1_72l0f")
 speed_normal = 15.0
 speed_run = 24.0
 jump = 25.0
+color_ghost = Color(0.750736, 0.478994, 1, 1)
 
 [node name="Aura" parent="." instance=ExtResource("2_72l0f")]
 
@@ -75,6 +77,10 @@ text = "state"
 script = ExtResource("8_bubm6")
 source_mesh = NodePath("../Aura/player/Armature/Skeleton3D/Player")
 source_material = SubResource("ShaderMaterial_i0eca")
+
+[node name="ClonAura" parent="." instance=ExtResource("10_i0eca")]
+transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 0.0169437, 1.0956, -0.0312024)
+visible = false
 
 [connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/JumpBufferTimer" to="StateMachine/InAir" method="_on_jump_buffer_timer_timeout"]
