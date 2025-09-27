@@ -129,7 +129,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_2os1m")
 [node name="serie" type="Node" parent="."]
 
 [node name="luces" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.233, 33.4103, -35.113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.192, 33.4103, -35.0896)
 light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
 light_energy = 97.165
 light_indirect_energy = 5.638

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://jh08husfmtny"]
+[gd_scene load_steps=15 format=3 uid="uid://jh08husfmtny"]
 
 [ext_resource type="Material" uid="uid://cinhp85722x2b" path="res://Materials/water_emissive.tres" id="1_qpwj6"]
 [ext_resource type="PackedScene" uid="uid://dnx0mswbxi34" path="res://Art/Levels/blockin_level_2.blend" id="1_ra442"]
@@ -28,10 +28,9 @@ sdfgi_bounce_feedback = 0.46
 sdfgi_min_cell_size = 0.0585938
 glow_enabled = true
 glow_normalized = true
-glow_intensity = 3.48
-glow_strength = 1.2
-glow_bloom = 0.01
-glow_blend_mode = 1
+glow_intensity = 1.63
+glow_strength = 0.99
+glow_bloom = 0.03
 glow_hdr_threshold = 0.08
 glow_hdr_scale = 1.16
 fog_depth_curve = 5.65683
@@ -50,6 +49,17 @@ adjustment_saturation = 1.42
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ibugp"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpwj6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibugp"]
+transparency = 1
+albedo_color = Color(0.658864, 0.847716, 0.964968, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qukl"]
+emission_enabled = true
+emission = Color(0.486068, 0.443641, 0.946757, 1)
+emission_energy_multiplier = 7.11
+
 [node name="Level2" type="Node3D"]
 
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
@@ -62,6 +72,7 @@ light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
+light_bake_mode = 1
 spot_range = 100.0
 spot_angle = 75.86
 
@@ -101,18 +112,18 @@ material_override = ExtResource("1_qpwj6")
 mesh = SubResource("QuadMesh_ibugp")
 
 [node name="Player" parent="." instance=ExtResource("2_fiq81")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 269.245, 35.2824, 1.96833)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 424.521, 68.8494, 1.96833)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
 light_color = Color(1, 0.969167, 0.63, 1)
-light_energy = 3.0
+light_energy = 4.925
 light_specular = 0.0
 spot_range = 13.139
 spot_angle = 69.14
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.593987, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.593994, 1.101, 6.303)
 keep_aspect = 0
 fov = 80.0
 script = ExtResource("3_l37oo")
@@ -121,14 +132,17 @@ follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 31.515)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.688016, -0.630647, 0.359052, 0.569384, -0.162362, 0.805878, -0.449929, 0.758896, 0.470788, 268.478, 47.5881, -1.93951)
-light_color = Color(0.393413, 0.40826, 0.365, 1)
+transform = Transform3D(-0.651601, -0.686825, 0.322005, 0.569384, -0.162362, 0.805879, -0.501216, 0.708457, 0.496862, 268.478, 47.5881, -1.93951)
+light_color = Color(0.401314, 0.611523, 0.502359, 1)
+light_angular_distance = 0.5
 light_specular = 0.0
 shadow_enabled = true
-shadow_blur = 6.162
+shadow_normal_bias = 10.0
+shadow_opacity = 0.45
+shadow_blur = 0.0
 
 [node name="Portal" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.09104e-06, 2.18002, 2.38419e-06, 24.96, -9.52919e-08, -2.07906e-14, 1.42109e-13, 1.19209e-07, -22.6106, -14.0519, 22.9851, -12.9599)
+transform = Transform3D(1.09104e-06, 2.18002, 2.38419e-06, 24.96, -9.52919e-08, -2.07906e-14, 1.42109e-13, 1.19209e-07, -22.6106, -13.6002, 22.9851, 1.98663)
 material_override = ExtResource("4_fiq81")
 mesh = SubResource("PlaneMesh_ibugp")
 skeleton = NodePath("")
@@ -216,6 +230,16 @@ collision_layer = 2
 [node name="StaticBody3D" parent="blockin_level_2/globo5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00205994, -0.00860009, -0.0246363)
 collision_layer = 2
+
+[node name="botella" parent="blockin_level_2" index="102"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qpwj6")
+
+[node name="botellaCristal" parent="blockin_level_2" index="104"]
+transparency = 0.5
+surface_material_override/0 = SubResource("StandardMaterial3D_ibugp")
+
+[node name="AguaBotella" parent="blockin_level_2" index="105"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8qukl")
 
 [node name="lucesOceanoAtras" type="Node" parent="."]
 
@@ -310,74 +334,116 @@ spot_range = 100.0
 spot_attenuation = 0.5
 spot_angle = 70.3009
 
-[node name="luces" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 391.128, 65.1439, 9.28017)
+[node name="velas" type="Node3D" parent="."]
+
+[node name="vela" type="OmniLight3D" parent="velas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.753, 56.322, -9.70091)
+light_color = Color(0.76, 0.5548, 0.3496, 1)
+light_energy = 20.0
+light_indirect_energy = 5.638
+light_volumetric_fog_energy = 4.419
+omni_attenuation = 0.581
+
+[node name="vela2" type="OmniLight3D" parent="velas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.347, 41.5514, -9.70091)
+light_color = Color(0.76, 0.5548, 0.3496, 1)
+light_energy = 20.0
+light_indirect_energy = 5.638
+light_volumetric_fog_energy = 4.419
+omni_attenuation = 0.581
+
+[node name="vela3" type="OmniLight3D" parent="velas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 293.859, 44.0212, 11.5563)
 light_color = Color(0.76, 0.5548, 0.3496, 1)
 light_energy = 11.886
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 4.419
 omni_attenuation = 0.581
 
-[node name="luces2" type="OmniLight3D" parent="."]
+[node name="Farolas" type="Node3D" parent="."]
+
+[node name="luces2" type="OmniLight3D" parent="Farolas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 458.285, 65.1439, 9.28017)
 light_color = Color(0.76, 0.5548, 0.3496, 1)
 light_energy = 11.886
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 4.419
+omni_range = 14.29
 omni_attenuation = 0.581
 
-[node name="luces3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 526.297, 65.1439, 9.28017)
+[node name="luces3" type="OmniLight3D" parent="Farolas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 526.297, 64.1439, 7.28017)
+light_color = Color(0.76, 0.5548, 0.3496, 1)
+light_energy = 20.0
+light_indirect_energy = 5.638
+light_volumetric_fog_energy = 4.419
+omni_range = 17.759
+
+[node name="luces4" type="OmniLight3D" parent="Farolas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 605.859, 64.1439, 9.64301)
+light_color = Color(0.76, 0.5548, 0.3496, 1)
+light_energy = 20.0
+light_indirect_energy = 5.638
+light_volumetric_fog_energy = 4.419
+omni_range = 17.759
+
+[node name="luces" type="OmniLight3D" parent="Farolas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 391.128, 65.1439, 9.28017)
 light_color = Color(0.76, 0.5548, 0.3496, 1)
 light_energy = 11.886
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 4.419
+light_bake_mode = 0
+omni_range = 14.29
 omni_attenuation = 0.581
 
-[node name="luces4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 605.859, 65.1439, 9.28017)
-light_color = Color(0.76, 0.5548, 0.3496, 1)
+[node name="LucesPuestos" type="Node3D" parent="."]
+
+[node name="puestoVerduras" type="OmniLight3D" parent="LucesPuestos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 369.159, 57.058, -0.574768)
+light_color = Color(0.89196, 0.673734, 0.418651, 1)
 light_energy = 11.886
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 4.419
+light_bake_mode = 0
+omni_range = 14.29
 omni_attenuation = 0.581
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, 424.383, 69.0433, 0)
-light_color = Color(1, 0.990782, 0.743246, 1)
-light_energy = 100.0
-spot_range = 28.938
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 1.77636e-15, 0, -1.77636e-15, 1, 1, 4.37114e-08, 7.7647e-23, 369.38, 68.6471, -6.54701)
-light_color = Color(1, 0.990782, 0.743246, 1)
-light_energy = 50.0
-spot_range = 21.9408
-spot_angle = 61.2604
-
-[node name="vela" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.753, 56.322, -9.70091)
-light_color = Color(0.76, 0.5548, 0.3496, 1)
+[node name="Panes" type="OmniLight3D" parent="LucesPuestos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 424.159, 57.058, -0.574768)
+light_color = Color(0.89196, 0.673734, 0.418651, 1)
 light_energy = 11.886
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 4.419
+light_bake_mode = 0
+omni_range = 14.29
 omni_attenuation = 0.581
 
-[node name="vela2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.347, 41.5514, -9.70091)
-light_color = Color(0.76, 0.5548, 0.3496, 1)
-light_energy = 11.886
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
+[node name="Horno" type="OmniLight3D" parent="LucesPuestos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 405.824, 54.7771, -4.54657)
+light_color = Color(0.86, 0.559, 0.258, 1)
+light_energy = 6.876
+light_volumetric_fog_energy = 4.876
+light_specular = 0.0
+light_bake_mode = 0
+shadow_enabled = true
+omni_range = 12.196
 omni_attenuation = 0.581
 
-[node name="vela3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 291.859, 44.0212, 11.5563)
-light_color = Color(0.76, 0.5548, 0.3496, 1)
-light_energy = 11.886
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_attenuation = 0.581
+[node name="Horno2" type="OmniLight3D" parent="LucesPuestos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 447.364, 59.1613, 0.656019)
+light_color = Color(0.92631, 0.546623, 0.612774, 1)
+light_energy = 7.199
+light_indirect_energy = 16.0
+light_specular = 1.202
+light_bake_mode = 0
+shadow_bias = 3.534
+distance_fade_enabled = true
+distance_fade_begin = 81.37
+distance_fade_length = 1168.46
+omni_range = 12.196
+omni_attenuation = 0.394
+omni_shadow_mode = 0
 
 [editable path="KillZone"]
 [editable path="KillZone2"]
