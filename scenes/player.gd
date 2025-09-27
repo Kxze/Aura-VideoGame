@@ -4,7 +4,7 @@ signal respawned()
 @export var speed_normal := 4.0
 var speed = speed_normal
 @export var speed_run := 8.0
-@export var jump := 20.0
+@export var jump := 33
 @export var GRAVITY := -1.3
 @export var acceleration: float = 3
 @export var friction: float = 5

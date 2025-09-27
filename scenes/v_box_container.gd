@@ -34,7 +34,7 @@ func _ready():
 # --- Acciones de los botones ---
 func _on_noche1_pressed():
 	print("Cargar Noche 1")
-	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
+	get_tree().change_scene_to_file(Constants.scene_levels["level_1"])
 
 func _on_nueva_partida1_pressed():
 	print("Crear nueva partida 1")

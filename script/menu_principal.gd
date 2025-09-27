@@ -35,9 +35,9 @@ func _ready():
 		_on_button_focus_entered(_buttons[0])   # activa glow y estrellas en el primero
 
 # --- Acciones de los botones ---
+#func _on_nueva_partida_pressed(button):
 func _on_nueva_partida_pressed(button):
-	print("Abrir Nueva Partida")
-	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
+	get_tree().change_scene_to_file(Constants.scene_levels["level_1"])
 
 func _on_continuar_pressed(button):
 	print("Continuar partida (cargar juego)")

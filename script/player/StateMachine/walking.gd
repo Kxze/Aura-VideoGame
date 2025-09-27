@@ -28,6 +28,7 @@ func physics_update(delta: float):
 
 	player.velocity.x = lerpf(player.velocity.x, player.movInput.x * player.speed, .9)
 	player.move_and_slide()
+	player.global_position.z = 0
 
 # Eliminamos la variable local last_facing
 # var last_facing := 1  # 1 = derecha, -1 = izquierda
