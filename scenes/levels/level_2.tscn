@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://jh08husfmtny"]
+[gd_scene load_steps=13 format=3 uid="uid://jh08husfmtny"]
 
 [ext_resource type="Material" uid="uid://cinhp85722x2b" path="res://Materials/water_emissive.tres" id="1_qpwj6"]
 [ext_resource type="PackedScene" uid="uid://bdj1svdqbupp" path="res://Art/Levels/blockin_level_2.blend" id="1_ra442"]
@@ -49,6 +49,11 @@ adjustment_saturation = 1.42
 [sub_resource type="QuadMesh" id="QuadMesh_ibugp"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ibugp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpwj6"]
+emission_enabled = true
+emission = Color(0.345728, 0.766444, 0.613696, 1)
+emission_energy_multiplier = 10.71
 
 [node name="Level2" type="Node3D"]
 
@@ -101,7 +106,7 @@ material_override = ExtResource("1_qpwj6")
 mesh = SubResource("QuadMesh_ibugp")
 
 [node name="Player" parent="." instance=ExtResource("2_fiq81")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 269.245, 35.2824, 1.96833)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 14.5904, 4.17501, 1.96833)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
@@ -112,7 +117,7 @@ spot_range = 13.139
 spot_angle = 69.14
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59399, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594001, 1.101, 6.303)
 keep_aspect = 0
 fov = 80.0
 script = ExtResource("3_l37oo")
@@ -216,6 +221,12 @@ collision_layer = 2
 [node name="StaticBody3D" parent="blockin_level_2/globo5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00205994, -0.00860009, -0.0246363)
 collision_layer = 2
+
+[node name="botellaCristal" parent="blockin_level_2" index="103"]
+transparency = 0.45
+
+[node name="AguaBotella" parent="blockin_level_2" index="105"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qpwj6")
 
 [node name="lucesOceanoAtras" type="Node" parent="."]
 
@@ -372,7 +383,6 @@ light_volumetric_fog_energy = 4.419
 omni_attenuation = 0.581
 
 [node name="vela3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 291.859, 44.0212, 11.5563)
 light_color = Color(0.76, 0.5548, 0.3496, 1)
 light_energy = 11.886
 light_indirect_energy = 5.638
