@@ -13,6 +13,7 @@ func physics_update(delta: float):
 	
 	player.velocity.x = lerpf(player.velocity.x, 0, .9)
 	player.move_and_slide()
+	player.global_position.z = 0
 #Esta funcion sobreescribe la funcion process
 func update(_delta:float):
 	if player.movInput.x != 0:

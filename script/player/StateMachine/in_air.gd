@@ -36,7 +36,7 @@ func physics_update(delta: float):
 		player.velocity.x = player.movInput.x * player.speed
 	player.prevVelocity = player.movInput
 	player.move_and_slide()
-
+	player.global_position.z = 0
 func handled_input(_event: InputEvent):
 	# Dash primero: si el dash se activa, el salto queda bloqueado este frame
 	if Input.is_action_just_pressed("dash") and player.can_dash and not player.is_dashing:

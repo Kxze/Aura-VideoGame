@@ -11,22 +11,42 @@
 [ext_resource type="PackedScene" uid="uid://dxiojj86hdb04" path="res://scenes/Effects/ghost_dash.tscn" id="10_i0eca"]
 [ext_resource type="Script" uid="uid://duhvl1urrncli" path="res://script/dashAura.gd" id="12_nk4e2"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x1fr4"]
-radius = 0.348961
+[sub_resource type="BoxShape3D" id="BoxShape3D_i0eca"]
+size = Vector3(0.696289, 2.08789, 0.114258)
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 2
 script = ExtResource("1_72l0f")
 speed_normal = 15.0
 speed_run = 24.0
-jump = 25.0
 color_ghost = Color(0.750736, 0.478994, 1, 1)
 
 [node name="Aura" parent="." instance=ExtResource("2_72l0f")]
 
+[node name="Skeleton3D" parent="Aura/player/Armature" index="0"]
+bones/0/position = Vector3(0, 0, -7.10543e-15)
+bones/1/position = Vector3(0.265837, -0.00705576, -9.47949e-10)
+bones/1/rotation = Quaternion(0.707094, 0.00435556, 0.707093, -0.00435565)
+bones/2/rotation = Quaternion(0.00447688, 1.05076e-07, -6.88923e-08, 0.99999)
+bones/4/position = Vector3(-0.446584, -0.0218978, -2.94212e-09)
+bones/4/rotation = Quaternion(0.707094, 0.00435556, 0.707093, -0.00435565)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.00447689, 2.25475e-07, -6.83533e-08, 0.99999)
+bones/6/rotation = Quaternion(0.669244, -7.31047e-08, -1.08675e-07, 0.743043)
+bones/7/position = Vector3(0, 1, -7.10543e-15)
+bones/8/position = Vector3(-0.00680062, 3.41949, 9.3242e-07)
+bones/9/rotation = Quaternion(3.87009e-07, -5.51061e-08, 0.980926, -0.194381)
+bones/11/rotation = Quaternion(5.03176e-09, 7.12931e-08, 0.00517927, 0.999987)
+bones/12/rotation = Quaternion(3.962e-07, -1.94682e-07, 0.988001, 0.154448)
+bones/13/rotation = Quaternion(6.58701e-08, 5.56906e-07, -0.00533034, 0.999986)
+bones/14/rotation = Quaternion(1.48516e-09, -2.12974e-07, -0.0151413, 0.999885)
+
+[node name="AnimationPlayer" parent="Aura/player" index="1"]
+blend_times = [&"Dash", &"Jump", 0.2, &"Dash", &"idle", 0.2, &"Jump", &"Dash", 0.2, &"Jump", &"idle", 0.3, &"Run", &"Jump", 0.5, &"Run", &"Run", 1.0, &"Run", &"Walk", 1.0, &"Run", &"idle", 0.5, &"Walk", &"Jump", 0.5, &"Walk", &"Run", 1.0, &"Walk", &"Walk", 0.5, &"Walk", &"idle", 1.0, &"idle", &"Jump", 0.5, &"idle", &"Walk", 0.5]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0075233, 0.993354, 0)
-shape = SubResource("CapsuleShape3D_x1fr4")
+shape = SubResource("BoxShape3D_i0eca")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_gyu2u")
@@ -58,7 +78,6 @@ transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 0.012677, 1.10246, -
 visible = false
 modulate = Color(0, 0.783333, 1, 0.870588)
 script = ExtResource("12_nk4e2")
-rainbow_speed = 1.5
 
 [node name="Node3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_elcxt")]
 target = NodePath("../Aura")

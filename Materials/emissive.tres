@@ -50,5 +50,5 @@ frame_29/duration = 1.0
 [resource]
 emission_enabled = true
 emission = Color(0.69395, 0.213821, 1, 1)
-emission_energy_multiplier = 10.03
+emission_energy_multiplier = 2.0
 emission_texture = SubResource("AnimatedTexture_e5ym8")

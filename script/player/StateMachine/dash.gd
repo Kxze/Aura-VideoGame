@@ -5,7 +5,7 @@ extends PlayerState
 @export var delay_step := 0.05
 @export var offset_x := 0.5  # distancia entre copias
 var dash_time := 0.3
-var dash_speed := 30
+var dash_speed := 40
 var timer := 0.0
 var dash_dir := 1
 var suspend_air_time := 0.5
@@ -45,7 +45,7 @@ func physics_update(delta: float):
 		player.velocity.y += player.GRAVITY
 
 	player.move_and_slide()
-
+	player.global_position.z = 0
 	# Desbloquear salto al tocar piso
 	if player.is_on_floor():
 		player.jump_locked = false
