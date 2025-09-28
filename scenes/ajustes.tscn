@@ -1,12 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://lamcax8x6dtt"]
+[gd_scene load_steps=11 format=3 uid="uid://lamcax8x6dtt"]
 
 [ext_resource type="Script" uid="uid://j127wrukrjub" path="res://script/Ajustes.gd" id="1_4g77v"]
 [ext_resource type="Theme" uid="uid://dntvqdxo8k3u8" path="res://Temas/ajustes.tres" id="1_jg833"]
 [ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="2_3a1hb"]
 [ext_resource type="Texture2D" uid="uid://jg7d4006vfh8" path="res://Fondos/tarjeta_ajustes.png" id="3_4g77v"]
 [ext_resource type="Texture2D" uid="uid://jur2mcsnwmkx" path="res://textures/banner1.png" id="5_evvml"]
-[ext_resource type="Texture2D" uid="uid://c0l6v58gpx3lu" path="res://textures/banner3.png" id="6_jg833"]
-[ext_resource type="Texture2D" uid="uid://bxsnlumerxpl4" path="res://textures/banner2.png" id="7_o5kyp"]
 [ext_resource type="Texture2D" uid="uid://cfwkrib1d2jn5" path="res://textures/Home.svg" id="8_o5kyp"]
 
 [sub_resource type="Theme" id="Theme_4g77v"]
@@ -34,6 +32,7 @@ func _on_close_button_pressed():
 transparent_bg = true
 mode = 3
 size = Vector2i(1920, 1080)
+visible = true
 transparent = true
 theme = ExtResource("1_jg833")
 script = ExtResource("1_4g77v")
@@ -81,9 +80,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -217.0
+offset_left = -230.0
 offset_top = -153.5
-offset_right = 282.0
+offset_right = 269.0
 offset_bottom = 226.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -127,7 +126,7 @@ value = 30.0
 [node name="SFX" type="Label" parent="Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-text = "SFX   "
+text = "Efectos de sonido   "
 
 [node name="SliderSFX" type="HSlider" parent="Panel/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(250, 0)
@@ -140,20 +139,25 @@ value = 30.0
 
 [node name="Subtitulos" type="Label" parent="Panel/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-text = "Subtítulos"
+size_flags_horizontal = 8
+text = "Subtítulos   "
 
-[node name="CheckSUB" type="CheckButton" parent="Panel/MarginContainer/GridContainer"]
+[node name="OptionQUAL2" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
-clip_text = true
+selected = 2
+item_count = 3
+popup/item_0/text = "Español"
+popup/item_0/id = 1
+popup/item_1/text = "Inglés"
+popup/item_1/id = 2
+popup/item_2/text = "Desactivados"
+popup/item_2/id = 0
 
 [node name="Brillo" type="Label" parent="Panel/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-text = "Brillo"
+size_flags_horizontal = 8
+text = "Brillo   "
 
 [node name="SliderBR" type="HSlider" parent="Panel/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(250, 0)
@@ -165,8 +169,8 @@ max_value = 0.0
 
 [node name="Resolucion" type="Label" parent="Panel/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-text = "Resolución"
+size_flags_horizontal = 8
+text = "Resolución   "
 
 [node name="OptionRES" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -182,8 +186,8 @@ popup/item_2/id = 2
 
 [node name="Calidad" type="Label" parent="Panel/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-text = "Calidad"
+size_flags_horizontal = 8
+text = "Calidad   "
 
 [node name="OptionQUAL" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -197,16 +201,21 @@ popup/item_1/id = 1
 popup/item_2/text = "Baja"
 popup/item_2/id = 2
 
+[node name="Calidad2" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Controles   "
+
 [node name="BtnControles" type="Button" parent="Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme = SubResource("Theme_jg833")
 theme_override_colors/font_color = Color(0.176471, 0.121569, 0.0588235, 1)
-text = "Controles
+text = "Modificar   
 "
 alignment = 0
 
-[node name="BtnRegresar" type="Button" parent="Panel"]
+[node name="Btnlabel" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 1238.0
 offset_top = 282.0
@@ -218,33 +227,7 @@ theme_override_font_sizes/font_size = 400
 icon = ExtResource("5_evvml")
 flat = true
 
-[node name="BtnRegresar2" type="Button" parent="Panel"]
-visible = false
-layout_mode = 0
-offset_left = 756.0
-offset_top = 145.0
-offset_right = 4432.0
-offset_bottom = 2201.0
-scale = Vector2(0.08, 0.08)
-theme_override_colors/font_color = Color(0.176471, 0.121569, 0.0588235, 1)
-theme_override_font_sizes/font_size = 400
-icon = ExtResource("6_jg833")
-flat = true
-
-[node name="BtnRegresar3" type="Button" parent="Panel"]
-visible = false
-layout_mode = 0
-offset_left = 756.0
-offset_top = 227.0
-offset_right = 4432.0
-offset_bottom = 2283.0
-scale = Vector2(0.08, 0.08)
-theme_override_colors/font_color = Color(0.176471, 0.121569, 0.0588235, 1)
-theme_override_font_sizes/font_size = 400
-icon = ExtResource("7_o5kyp")
-flat = true
-
-[node name="Button" type="Button" parent="Panel"]
+[node name="BtnRegresar" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 1267.33
 offset_top = 336.0
@@ -256,4 +239,4 @@ script = SubResource("GDScript_o5kyp")
 
 [connection signal="value_changed" from="Panel/MarginContainer/GridContainer/SliderBR" to="." method="_on_slider_br_value_changed"]
 [connection signal="item_selected" from="Panel/MarginContainer/GridContainer/OptionRES" to="." method="_on_option_res_item_selected"]
-[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/BtnRegresar" to="." method="_on_button_pressed"]
