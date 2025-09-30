@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://73utnectd4wc"]
+
+[ext_resource type="Texture2D" uid="uid://euu3p60mvpex" path="res://Fondos/Cortinas Moradas.png" id="1_g62ie"]
+[ext_resource type="Script" uid="uid://yig7ucdu1dlh" path="res://scenes/coleccionista_3.gd" id="1_orwlj"]
+[ext_resource type="Texture2D" uid="uid://dilytpyn60npi" path="res://textures/pluma.png" id="2_orwlj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5fm7p"]
+texture = ExtResource("1_g62ie")
+
+[node name="Coleccionista3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_orwlj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5fm7p")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_orwlj")
+
+[node name="flecha_izq" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 713.0
+offset_right = 298.0
+offset_bottom = 813.0
+flat = true
+
+[node name="salir" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 1603.0
+offset_top = 169.0
+offset_right = 1738.0
+offset_bottom = 269.0
+flat = true
