@@ -17,7 +17,7 @@ var prevVelocity: Vector2 = Vector2.ZERO
 var health: int = 3
 var movInput: Vector2 = Vector2.ZERO
 var last_facing := 1  # 1 = derecha, -1 = izquierda
-
+static var spawnPoint 
 @onready var aura: Node3D = $Aura/player
 @onready var animationPlayer = $Aura/player/AnimationPlayer
 @onready var sprite: Sprite3D = $AuraGhost

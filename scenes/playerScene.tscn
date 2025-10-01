@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dxiojj86hdb04" path="res://scenes/Effects/ghost_dash.tscn" id="10_i0eca"]
 [ext_resource type="Script" uid="uid://duhvl1urrncli" path="res://script/dashAura.gd" id="12_nk4e2"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_i0eca"]
-size = Vector3(0.696289, 2.08789, 0.114258)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i0eca"]
+height = 2.16536
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 2
@@ -46,7 +46,7 @@ blend_times = [&"Dash", &"Jump", 0.2, &"Dash", &"idle", 0.2, &"Jump", &"Dash", 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0075233, 0.993354, 0)
-shape = SubResource("BoxShape3D_i0eca")
+shape = SubResource("CapsuleShape3D_i0eca")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_gyu2u")
