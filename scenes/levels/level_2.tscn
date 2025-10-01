@@ -197,9 +197,6 @@ collision_layer = 2
 [node name="StaticBody3D" parent="blockin_level_2/Candelabro_base" index="0"]
 collision_layer = 2
 
-[node name="StaticBody3D" parent="blockin_level_2/marcoAgua" index="0"]
-collision_layer = 2
-
 [node name="StaticBody3D" parent="blockin_level_2/nenufarGrande" index="0"]
 collision_layer = 2
 
@@ -215,7 +212,7 @@ collision_layer = 2
 [node name="StaticBody3D" parent="blockin_level_2/Andamios" index="0"]
 collision_layer = 2
 
-[node name="torre" parent="blockin_level_2" index="8"]
+[node name="torre" parent="blockin_level_2" index="7"]
 surface_material_override/0 = SubResource("StandardMaterial3D_8qukl")
 
 [node name="StaticBody3D" parent="blockin_level_2/torre" index="0"]
@@ -261,11 +258,11 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00205994, -0.00860009, -0.0246363)
 collision_layer = 2
 
-[node name="botellaCristal" parent="blockin_level_2" index="103"]
+[node name="botellaCristal" parent="blockin_level_2" index="102"]
 transparency = 0.2
 surface_material_override/0 = SubResource("StandardMaterial3D_ibugp")
 
-[node name="AguaBotella" parent="blockin_level_2" index="105"]
+[node name="AguaBotella" parent="blockin_level_2" index="104"]
 surface_material_override/0 = SubResource("StandardMaterial3D_qpwj6")
 
 [node name="lucesOceanoAtras" type="Node" parent="."]
