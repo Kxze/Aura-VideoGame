@@ -19,11 +19,13 @@ config/icon="res://icon.svg"
 
 Constants="*res://script/Constants/CONSTANTS.gd"
 SceneSwitch="*res://script/Scene_switch.gd"
+GlobalBrightnessWorldEnvironment="*res://scenes/Global_brightness_world_environment.tscn"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [file_customization]
@@ -91,3 +93,7 @@ run={
 3d_physics/layer_1="player"
 3d_physics/layer_2="ground"
 3d_physics/layer_3="killzone"
+
+[rendering]
+
+occlusion_culling/use_occlusion_culling=true

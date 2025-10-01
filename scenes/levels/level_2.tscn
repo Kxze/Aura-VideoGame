@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://jh08husfmtny"]
+[gd_scene load_steps=23 format=3 uid="uid://jh08husfmtny"]
 
 [ext_resource type="PackedScene" uid="uid://bdj1svdqbupp" path="res://Art/Levels/blockin_level_2.blend" id="1_ra442"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_fiq81"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="5_l37oo"]
 [ext_resource type="Texture2D" uid="uid://c6a6ctm1wgvom" path="res://Art/Levels/textures/EntradaTorre.png" id="6_ibugp"]
 [ext_resource type="Texture2D" uid="uid://ooud6k3iv8jc" path="res://Materials/light.jpeg" id="6_qpwj6"]
+[ext_resource type="ArrayOccluder3D" uid="uid://cc4yfamq1tjds" path="res://Occluder_mesh/level_2.occ" id="8_8qukl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l37oo"]
 sky_horizon_color = Color(0.41913, 0.785593, 0.87841, 1)
@@ -156,6 +157,7 @@ spot_angle = 69.14
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59399414, 1.1009979, 6.303001)
 keep_aspect = 0
 fov = 80.0
+far = 125.0
 script = ExtResource("3_l37oo")
 target = NodePath("..")
 follow_speed = 12.0
@@ -180,13 +182,6 @@ collision_layer = 4
 
 [node name="CollisionShape3D" parent="KillZone" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.938, 0, -16.0451)
-
-[node name="KillZone2" parent="." instance=ExtResource("5_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 311.048, 55.1188, 2.13557)
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="KillZone2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.169, 0, -6.70618)
 
 [node name="blockin_level_2" parent="." instance=ExtResource("1_ra442")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
@@ -514,6 +509,8 @@ spot_attenuation = 0.6
 spot_angle = 15.91
 spot_angle_attenuation = 2.37842
 
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("8_8qukl")
+
 [editable path="KillZone"]
-[editable path="KillZone2"]
 [editable path="blockin_level_2"]
