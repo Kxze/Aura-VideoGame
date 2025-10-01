@@ -93,3 +93,7 @@ run={
 3d_physics/layer_1="player"
 3d_physics/layer_2="ground"
 3d_physics/layer_3="killzone"
+
+[rendering]
+
+occlusion_culling/use_occlusion_culling=true
