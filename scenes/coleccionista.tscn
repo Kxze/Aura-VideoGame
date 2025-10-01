@@ -1,11 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://yna2nxe1vu5"]
+[gd_scene load_steps=3 format=3 uid="uid://yna2nxe1vu5"]
 
-[ext_resource type="Script" uid="uid://lqruaab44j4x" path="res://scenes/coleccionista.gd" id="1_78fsh"]
-[ext_resource type="Texture2D" uid="uid://euu3p60mvpex" path="res://Fondos/Cortinas Moradas.png" id="2_lx35c"]
-[ext_resource type="Texture2D" uid="uid://bnrii1rgn6375" path="res://textures/osito.png" id="3_d1tm1"]
+[ext_resource type="Texture2D" uid="uid://daxcp3lrk7c2a" path="res://Fondos/PortadaMainMenu.png" id="1_3skvx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7frec"]
-texture = ExtResource("2_lx35c")
+texture = ExtResource("1_3skvx")
 
 [node name="Coleccionista" type="Control"]
 layout_mode = 3
@@ -14,7 +12,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_78fsh")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -24,25 +21,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7frec")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("3_d1tm1")
-
-[node name="flecha_der" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1605.0
-offset_top = 713.0
-offset_right = 1721.0
-offset_bottom = 813.0
-flat = true
-
-[node name="salir" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1603.0
-offset_top = 169.0
-offset_right = 1738.0
-offset_bottom = 269.0
-flat = true
