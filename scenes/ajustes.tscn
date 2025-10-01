@@ -67,8 +67,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -224.0
 offset_top = -247.0
-offset_right = 226.0
-offset_bottom = 196.0
+offset_right = 215.0
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jg833")
@@ -163,7 +163,7 @@ popup/item_0/text = "     Español"
 popup/item_0/id = 1
 popup/item_1/text = "     English"
 popup/item_1/id = 2
-popup/item_2/text = "Desactivados  "
+popup/item_2/text = " Desactivados     "
 popup/item_2/id = 0
 
 [node name="Brillo" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
@@ -202,7 +202,6 @@ text = "Resolución   "
 
 [node name="OptionRES" type="OptionButton" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 4
 selected = 2
 item_count = 3
@@ -210,7 +209,7 @@ popup/item_0/text = "1152 x 648"
 popup/item_0/id = 2
 popup/item_1/text = "1600 x 900"
 popup/item_1/id = 1
-popup/item_2/text = "1920 x 1080   "
+popup/item_2/text = "1920 x 1080"
 popup/item_2/id = 0
 
 [node name="Calidad" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
@@ -225,11 +224,11 @@ size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 selected = 2
 item_count = 3
-popup/item_0/text = "        Alta     "
+popup/item_0/text = "           Alta"
 popup/item_0/id = 0
-popup/item_1/text = "        Media        "
+popup/item_1/text = "         Media          "
 popup/item_1/id = 1
-popup/item_2/text = "        Baja     "
+popup/item_2/text = "           Baja"
 popup/item_2/id = 2
 
 [node name="Controles" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
@@ -241,7 +240,8 @@ text = "Controles   "
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-text = "              Modificar                 "
+text = "                      Ver                       "
+alignment = 0
 
 [node name="MarginContainerControles" type="MarginContainer" parent="Panel"]
 visible = false
