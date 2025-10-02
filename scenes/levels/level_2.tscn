@@ -13,13 +13,13 @@ sky_horizon_color = Color(0.41913, 0.785593, 0.87841, 1)
 sky_curve = 0.184672
 ground_bottom_color = Color(0.134724, 0.123595, 0.39947, 1)
 
-[sub_resource type="Sky" id="Sky_ibugp"]
+[sub_resource type="Sky" id="Sky_go7sj"]
 sky_material = SubResource("ProceduralSkyMaterial_l37oo")
 
 [sub_resource type="Environment" id="Environment_qpwj6"]
 background_mode = 2
 background_energy_multiplier = 0.2
-sky = SubResource("Sky_ibugp")
+sky = SubResource("Sky_go7sj")
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.7
 tonemap_mode = 2
@@ -51,8 +51,7 @@ adjustment_saturation = 1.42
 noise_type = 2
 frequency = 0.0111
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8qukl"]
-resource_name = "_emission"
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ufgrh"]
 in_3d_space = true
 normalize = false
 noise = SubResource("FastNoiseLite_l6u4m")
@@ -61,7 +60,7 @@ noise = SubResource("FastNoiseLite_l6u4m")
 emission_enabled = true
 emission = Color(0.82589, 0.485887, 0.11304, 1)
 emission_energy_multiplier = 0.01
-emission_texture = SubResource("NoiseTexture2D_8qukl")
+emission_texture = SubResource("NoiseTexture2D_ufgrh")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ibugp"]
 
@@ -79,7 +78,6 @@ frequency = 0.0056
 fractal_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ibugp"]
-resource_name = "_emission"
 normalize = false
 color_ramp = SubResource("Gradient_l37oo")
 noise = SubResource("FastNoiseLite_qpwj6")
