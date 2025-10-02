@@ -1,3 +1,85 @@
-[gd_scene format=3 uid="uid://gj6xmv4ch22p"]
+[gd_scene load_steps=7 format=3 uid="uid://gj6xmv4ch22p"]
+
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_w6h2s"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_ogj6a"]
+[ext_resource type="PackedScene" uid="uid://dmw0q4k8n517g" path="res://Art/Levels/Blocking4.blend" id="3_anwe6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w6h2s"]
+sky_top_color = Color(0.620576, 0.496378, 0.557171, 1)
+sky_horizon_color = Color(0.85169, 0.838406, 0.887522, 1)
+ground_bottom_color = Color(0.186933, 0.257995, 0.393663, 1)
+ground_horizon_color = Color(0.85169, 0.838406, 0.887522, 1)
+
+[sub_resource type="Sky" id="Sky_ogj6a"]
+sky_material = SubResource("ProceduralSkyMaterial_w6h2s")
+
+[sub_resource type="Environment" id="Environment_anwe6"]
+background_mode = 2
+sky = SubResource("Sky_ogj6a")
+tonemap_mode = 2
+sdfgi_enabled = true
+glow_enabled = true
 
 [node name="Level4" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_anwe6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_w6h2s")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 11.552, 3.6, 1.96833)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
+light_color = Color(1, 0.969167, 0.63, 1)
+light_energy = 3.0
+light_specular = 0.0
+spot_range = 13.139
+spot_angle = 69.14
+
+[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.101, 6.303)
+keep_aspect = 0
+fov = 80.0
+far = 250.0
+script = ExtResource("2_ogj6a")
+target = NodePath("..")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="Blocking4" parent="." instance=ExtResource("3_anwe6")]
+
+[node name="StaticBody3D" parent="Blocking4/Armario" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/viga_i" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/viga_d" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/Daga" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/Tocador" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/CartaSuperior" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/Ventana" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/PortaRetratos" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/viga_d2" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/Cartas" index="0"]
+collision_layer = 2
+
+[editable path="Blocking4"]
