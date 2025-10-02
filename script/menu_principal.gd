@@ -27,7 +27,6 @@ func _ready():
 
 		# Al inicio ocultamos las estrellas y el glow
 		_hide_stars(b)
-		_enable_glow(b, false)
 
 	# --- Nuevo: focus inicial en el primer botón ---
 	if _buttons.size() > 0:
@@ -59,11 +58,9 @@ func _on_salir_pressed(button):
 # --- Manejo de estrellas y glow ---
 func _on_button_focus_entered(button):
 	_show_stars(button)
-	_enable_glow(button, true)
 
 func _on_button_focus_exited(button):
 	_hide_stars(button)
-	_enable_glow(button, false)
 
 func _show_stars(button):
 	if button.has_node("HBoxContainer/StarLeft"):
@@ -76,8 +73,3 @@ func _hide_stars(button):
 		button.get_node("HBoxContainer/StarLeft").visible = false
 	if button.has_node("HBoxContainer/StarRight"):
 		button.get_node("HBoxContainer/StarRight").visible = false
-
-# --- Glow del shader ---
-func _enable_glow(button, enabled: bool):
-	if button.material and button.material is ShaderMaterial:
-		button.material.set_shader_parameter("active", enabled)

@@ -6,10 +6,6 @@ var _current_index := 0  # índice del botón seleccionado
 func _ready():
 	_buttons = [$Button, $Button2, $Button3, $regresar]
 
-	# Duplicar material de cada botón (para que el shader no sea compartido)
-	for b in _buttons:
-		if b.material and b.material is ShaderMaterial:
-			b.material = b.material.duplicate()
 
 	# Conectar acciones de los botones
 	_buttons[0].pressed.connect(_on_noche1_pressed)
@@ -25,7 +21,6 @@ func _ready():
 
 		# Al inicio ocultamos estrellas y glow
 		_hide_stars(b)
-		_enable_glow(b, false)
 
 	# Activar el primer botón al inicio
 	_set_active_button(0)
@@ -69,12 +64,10 @@ func _set_active_button(index: int):
 	# Apagar todos
 	for b in _buttons:
 		_hide_stars(b)
-		_enable_glow(b, false)
 
 	# Encender solo el seleccionado
 	var selected = _buttons[index]
 	_show_stars(selected)
-	_enable_glow(selected, true)
 	_current_index = index
 	selected.grab_focus()
 
@@ -91,7 +84,3 @@ func _hide_stars(button):
 		button.get_node("HBoxContainer/StarLeft").visible = false
 	if button.has_node("HBoxContainer/StarRight"):
 		button.get_node("HBoxContainer/StarRight").visible = false
-
-func _enable_glow(button, enabled: bool):
-	if button.material and button.material is ShaderMaterial:
-		button.material.set_shader_parameter("active", enabled)
