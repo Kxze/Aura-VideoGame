@@ -1,13 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://jh08husfmtny"]
+[gd_scene load_steps=24 format=3 uid="uid://jh08husfmtny"]
 
 [ext_resource type="PackedScene" uid="uid://bdj1svdqbupp" path="res://Art/Levels/blockin_level_2.blend" id="1_ra442"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_fiq81"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_l37oo"]
 [ext_resource type="Material" uid="uid://cchvhub8830n6" path="res://Materials/emissive.tres" id="4_fiq81"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="5_l37oo"]
-[ext_resource type="Texture2D" uid="uid://c6a6ctm1wgvom" path="res://Art/Levels/textures/EntradaTorre.png" id="6_ibugp"]
 [ext_resource type="Texture2D" uid="uid://ooud6k3iv8jc" path="res://Materials/light.jpeg" id="6_qpwj6"]
-[ext_resource type="ArrayOccluder3D" uid="uid://cc4yfamq1tjds" path="res://Occluder_mesh/level_2.occ" id="8_8qukl"]
+[ext_resource type="ArrayOccluder3D" uid="uid://d0jfiklbqor6l" path="res://scenes/levels/level_2.occ" id="7_ibugp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l37oo"]
 sky_horizon_color = Color(0.41913, 0.785593, 0.87841, 1)
@@ -67,9 +66,6 @@ emission_texture = SubResource("NoiseTexture2D_ufgrh")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ibugp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qukl"]
-albedo_texture = ExtResource("6_ibugp")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibugp"]
 albedo_color = Color(0, 0.807743, 0.816854, 1)
 
@@ -91,6 +87,16 @@ emission_enabled = true
 emission = Color(0.598526, 0.777956, 0.634225, 1)
 emission_energy_multiplier = 5.49
 emission_texture = SubResource("NoiseTexture2D_ibugp")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8qukl"]
+size = Vector3(44.9075, 1, 69.752)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ibugp"]
+size = Vector3(69.6622, 52.8719, 50.6039)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8qukl"]
+height = 0.976074
+radius = 9.50586
 
 [node name="Level2" type="Node3D"]
 
@@ -143,7 +149,7 @@ material_override = SubResource("StandardMaterial3D_l37oo")
 mesh = SubResource("QuadMesh_ibugp")
 
 [node name="Player" parent="." instance=ExtResource("2_fiq81")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 578.552, 100.6, 1.96833)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 11.552, 3.6, 1.96833)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
@@ -154,10 +160,10 @@ spot_range = 13.139
 spot_angle = 69.14
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.593994, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.101, 6.303)
 keep_aspect = 0
 fov = 80.0
-far = 125.0
+far = 250.0
 script = ExtResource("3_l37oo")
 target = NodePath("..")
 follow_speed = 12.0
@@ -177,52 +183,19 @@ mesh = SubResource("PlaneMesh_ibugp")
 skeleton = NodePath("")
 
 [node name="KillZone" parent="." instance=ExtResource("5_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.5948, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.5948, 7)
 collision_layer = 4
 
 [node name="CollisionShape3D" parent="KillZone" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.938, 0, -16.0451)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.947, 0, -11.1259)
 
 [node name="blockin_level_2" parent="." instance=ExtResource("1_ra442")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
 
-[node name="StaticBody3D" parent="blockin_level_2/mueble" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/Candelabro_base" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/marcoAgua" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/nenufarGrande" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/nenufar" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/Entrada" index="0"]
-collision_layer = 2
-
 [node name="StaticBody3D" parent="blockin_level_2/TIARA1" index="0"]
 collision_layer = 2
 
-[node name="StaticBody3D" parent="blockin_level_2/Andamios" index="0"]
-collision_layer = 2
-
-[node name="torre" parent="blockin_level_2" index="8"]
-surface_material_override/0 = SubResource("StandardMaterial3D_8qukl")
-
-[node name="StaticBody3D" parent="blockin_level_2/torre" index="0"]
-collision_layer = 2
-
 [node name="StaticBody3D" parent="blockin_level_2/globo" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/cornisaEsquina" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/tejadoPanaderia" index="0"]
 collision_layer = 2
 
 [node name="StaticBody3D" parent="blockin_level_2/Pintura_001" index="0"]
@@ -231,22 +204,13 @@ collision_layer = 2
 [node name="StaticBody3D" parent="blockin_level_2/cajasCandelabro" index="0"]
 collision_layer = 2
 
-[node name="StaticBody3D" parent="blockin_level_2/cajasCandelabro2" index="0"]
-collision_layer = 2
-
 [node name="StaticBody3D" parent="blockin_level_2/tapa" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/cajasOsos" index="0"]
 collision_layer = 2
 
 [node name="StaticBody3D" parent="blockin_level_2/globo_col" index="0"]
 collision_layer = 2
 
 [node name="StaticBody3D" parent="blockin_level_2/globo3" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/Toldo" index="0"]
 collision_layer = 2
 
 [node name="StaticBody3D" parent="blockin_level_2/globo4" index="0"]
@@ -256,11 +220,11 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00205994, -0.00860009, -0.0246363)
 collision_layer = 2
 
-[node name="botellaCristal" parent="blockin_level_2" index="103"]
+[node name="botellaCristal" parent="blockin_level_2" index="19"]
 transparency = 0.2
 surface_material_override/0 = SubResource("StandardMaterial3D_ibugp")
 
-[node name="AguaBotella" parent="blockin_level_2" index="105"]
+[node name="AguaBotella" parent="blockin_level_2" index="21"]
 surface_material_override/0 = SubResource("StandardMaterial3D_qpwj6")
 
 [node name="lucesOceanoAtras" type="Node" parent="."]
@@ -510,7 +474,31 @@ spot_angle = 15.91
 spot_angle_attenuation = 2.37842
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
-occluder = ExtResource("8_8qukl")
+visible = false
+occluder = ExtResource("7_ibugp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.26331, 2.48479, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_8qukl")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.4145, 2.48479, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(0.990736, -0.135802, 0, 0.135802, 0.990736, 0, 0, 0, 1, 10.3861, -18.9464, 5.62228)
+shape = SubResource("BoxShape3D_ibugp")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.26331, 2.48479, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9282, -0.511963, 3.12718)
+shape = SubResource("CylinderShape3D_8qukl")
 
 [editable path="KillZone"]
 [editable path="blockin_level_2"]

@@ -21,6 +21,9 @@ static var spawnPoint
 @onready var aura: Node3D = $Aura/player
 @onready var animationPlayer = $Aura/player/AnimationPlayer
 @onready var sprite: Sprite3D = $AuraGhost
+@onready var ray_cast_3d: RayCast3D = $RayCast3D
+
+
 func _input(event: InputEvent) -> void:
 	movInput.x = Input.get_axis("ui_left","ui_right")
 
