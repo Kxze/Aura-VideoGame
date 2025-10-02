@@ -93,3 +93,9 @@ run={
 3d_physics/layer_1="player"
 3d_physics/layer_2="ground"
 3d_physics/layer_3="killzone"
+
+[rendering]
+
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
+occlusion_culling/use_occlusion_culling=true

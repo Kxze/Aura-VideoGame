@@ -11,7 +11,7 @@ transform = Transform3D(-0.699486, -0.333121, -0.632257, -0.705838, 0.46051, 0.5
 light_specular = 0.0
 
 [node name="Player" parent="." instance=ExtResource("2_0qepi")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 11.552, 3.6, 1.96833)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 21.2119, 47.7132, 1.96833)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
@@ -22,7 +22,7 @@ spot_range = 13.139
 spot_angle = 69.14
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.593999, 1.101, 6.303)
 keep_aspect = 0
 fov = 80.0
 far = 250.0
@@ -32,8 +32,5 @@ follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 31.515)
 
 [node name="blocking_level_3" parent="." instance=ExtResource("1_0ljxa")]
-
-[node name="StaticBody3D" parent="blocking_level_3/BaseCorta" index="0"]
-collision_layer = 2
 
 [editable path="blocking_level_3"]
