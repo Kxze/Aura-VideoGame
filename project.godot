@@ -15,11 +15,16 @@ run/main_scene="uid://dj3qt70udb1nl"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://dwaurb6y88n77"
+
 [autoload]
 
 Constants="*res://script/Constants/CONSTANTS.gd"
 SceneSwitch="*res://script/Scene_switch.gd"
 GlobalBrightnessWorldEnvironment="*res://scenes/Global_brightness_world_environment.tscn"
+AudioManager="*res://Audio/AudioManager.tscn"
 
 [display]
 
@@ -32,6 +37,7 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://Art/": "red",
+"res://Audio/": "green",
 "res://Fondos/": "pink",
 "res://Fonts/": "blue",
 "res://Temas/": "gray",

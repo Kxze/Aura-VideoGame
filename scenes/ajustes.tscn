@@ -1,28 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://lamcax8x6dtt"]
+[gd_scene load_steps=13 format=3 uid="uid://lamcax8x6dtt"]
 
-[ext_resource type="Script" uid="uid://j127wrukrjub" path="res://script/Ajustes.gd" id="1_4g77v"]
+[ext_resource type="Script" uid="uid://j127wrukrjub" path="res://script/Ajustes/Ajustes.gd" id="1_4g77v"]
 [ext_resource type="Theme" uid="uid://dntvqdxo8k3u8" path="res://Temas/ajustes.tres" id="1_jg833"]
 [ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="2_3a1hb"]
 [ext_resource type="Texture2D" uid="uid://jg7d4006vfh8" path="res://Fondos/tarjeta_ajustes.png" id="3_4g77v"]
-[ext_resource type="Texture2D" uid="uid://jur2mcsnwmkx" path="res://textures/banner1.png" id="5_evvml"]
-[ext_resource type="Script" uid="uid://c80d8klh8c1y" path="res://scenes/slider_br.gd" id="6_jg833"]
-[ext_resource type="Script" uid="uid://c2h8jm01g0or5" path="res://script/grid_container.gd" id="6_nv4yc"]
+[ext_resource type="Texture2D" uid="uid://beg01q1xg1sm0" path="res://textures/m-cerrar.png" id="3_nmbxu"]
+[ext_resource type="Script" uid="uid://c80d8klh8c1y" path="res://script/Ajustes/slider_br.gd" id="6_jg833"]
+[ext_resource type="Script" uid="uid://c2h8jm01g0or5" path="res://script/Ajustes/grid_container.gd" id="6_nv4yc"]
 [ext_resource type="Theme" uid="uid://caol8loxsat7k" path="res://Temas/modoCheck.tres" id="7_o5kyp"]
-[ext_resource type="Script" uid="uid://b3dkl1j2hoi4j" path="res://script/check_modo.gd" id="9_2cqcg"]
-[ext_resource type="Script" uid="uid://t27b3d3leeuj" path="res://script/grid_container_controles.gd" id="10_nmbxu"]
+[ext_resource type="Script" uid="uid://b3dkl1j2hoi4j" path="res://script/Ajustes/check_modo.gd" id="9_2cqcg"]
+[ext_resource type="Script" uid="uid://c2ebrv84sb5hu" path="res://script/Ajustes/option_qual.gd" id="10_fifwc"]
+[ext_resource type="Script" uid="uid://t27b3d3leeuj" path="res://script/Ajustes/grid_container_controles.gd" id="10_nmbxu"]
 
 [sub_resource type="Theme" id="Theme_4g77v"]
 Label/colors/font_color = Color(0.175912, 0.121396, 0.0580004, 1)
 Label/font_sizes/font_size = 30
 Label/fonts/font = ExtResource("2_3a1hb")
-
-[sub_resource type="Theme" id="Theme_fifwc"]
-Label/colors/font_color = Color(1, 1, 1, 0)
-Label/colors/font_outline_color = Color(1, 1, 1, 0)
-
-[sub_resource type="Theme" id="Theme_3youp"]
-Label/colors/font_color = Color(1, 1, 1, 0)
-Label/colors/font_outline_color = Color(1, 1, 1, 0)
 
 [node name="Popup_Ajustes" type="Popup"]
 transparent_bg = true
@@ -30,7 +23,6 @@ mode = 3
 size = Vector2i(1920, 1080)
 visible = true
 transparent = true
-theme = ExtResource("1_jg833")
 script = ExtResource("1_4g77v")
 
 [node name="Panel" type="Panel" parent="."]
@@ -49,14 +41,15 @@ offset_bottom = 1412.0
 scale = Vector2(0.55, 0.6)
 texture = ExtResource("3_4g77v")
 
-[node name="TextureViñeta" type="TextureRect" parent="Panel"]
+[node name="BtnCerrar" type="Button" parent="Panel/TextureTarjeta"]
 layout_mode = 0
-offset_left = 1366.0
-offset_top = 257.0
-offset_right = 3414.0
-offset_bottom = 2305.0
-scale = Vector2(0.07, 0.1)
-texture = ExtResource("5_evvml")
+offset_left = 1587.27
+offset_top = 230.0
+offset_right = 1745.27
+offset_bottom = 358.0
+scale = Vector2(1.4, 1.4)
+icon = ExtResource("3_nmbxu")
+flat = true
 
 [node name="MarginContainerAjustes" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -65,9 +58,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -224.0
+offset_left = -228.5
 offset_top = -247.0
-offset_right = 215.0
+offset_right = 214.5
 offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -85,24 +78,9 @@ vertical_alignment = 1
 
 [node name="GridContainerAjustes" type="GridContainer" parent="Panel/MarginContainerAjustes"]
 layout_mode = 2
+size_flags_vertical = 8
 columns = 2
 script = ExtResource("6_nv4yc")
-
-[node name="label-fantasma" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme = SubResource("Theme_fifwc")
-theme_override_font_sizes/font_size = 45
-text = "TEXTO"
-vertical_alignment = 1
-
-[node name="label-fantasma2" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme = SubResource("Theme_3youp")
-theme_override_font_sizes/font_size = 45
-text = "TEXTO"
-vertical_alignment = 1
 
 [node name="VolumenGeneral" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
@@ -117,8 +95,10 @@ size_flags_horizontal = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 mouse_default_cursor_shape = 6
-max_value = 30.0
-value = 30.0
+min_value = -30.0
+max_value = 0.0
+
+[node name="ASPmaster" type="AudioStreamPlayer" parent="Panel/MarginContainerAjustes/GridContainerAjustes/SliderVG"]
 
 [node name="Musica" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
@@ -131,8 +111,10 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 6
-max_value = 30.0
-value = 30.0
+min_value = -30.0
+max_value = 0.0
+
+[node name="ASPmusica" type="AudioStreamPlayer" parent="Panel/MarginContainerAjustes/GridContainerAjustes/SliderM"]
 
 [node name="SFX" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
@@ -145,8 +127,10 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 6
-max_value = 30.0
-value = 30.0
+min_value = -30.0
+max_value = 0.0
+
+[node name="ASPefectos" type="AudioStreamPlayer" parent="Panel/MarginContainerAjustes/GridContainerAjustes/SliderSFX"]
 
 [node name="Subtitulos" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
@@ -163,8 +147,10 @@ popup/item_0/text = "     Español"
 popup/item_0/id = 1
 popup/item_1/text = "     English"
 popup/item_1/id = 2
-popup/item_2/text = " Desactivados     "
+popup/item_2/text = "      Desactivados      "
 popup/item_2/id = 0
+
+[node name="ASPsub" type="AudioStreamPlayer" parent="Panel/MarginContainerAjustes/GridContainerAjustes/OptionSUB"]
 
 [node name="Brillo" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
@@ -180,8 +166,10 @@ mouse_default_cursor_shape = 6
 min_value = 0.2
 max_value = 1.2
 step = 0.1
-value = 0.7
+value = 1.2
 script = ExtResource("6_jg833")
+
+[node name="ASPbrillo" type="AudioStreamPlayer" parent="Panel/MarginContainerAjustes/GridContainerAjustes/SliderBR"]
 
 [node name="Modo" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
@@ -195,6 +183,8 @@ theme = ExtResource("7_o5kyp")
 button_pressed = true
 script = ExtResource("9_2cqcg")
 
+[node name="ASPmodo" type="AudioStreamPlayer" parent="Panel/MarginContainerAjustes/GridContainerAjustes/CheckModo"]
+
 [node name="Resolucion" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -202,6 +192,7 @@ text = "Resolución   "
 
 [node name="OptionRES" type="OptionButton" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
 selected = 2
 item_count = 3
@@ -209,8 +200,10 @@ popup/item_0/text = "1152 x 648"
 popup/item_0/id = 2
 popup/item_1/text = "1600 x 900"
 popup/item_1/id = 1
-popup/item_2/text = "1920 x 1080"
+popup/item_2/text = "      1920 x 1080      "
 popup/item_2/id = 0
+
+[node name="ASPres" type="AudioStreamPlayer" parent="Panel/MarginContainerAjustes/GridContainerAjustes/OptionRES"]
 
 [node name="Calidad" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
@@ -225,11 +218,14 @@ size_flags_stretch_ratio = 0.0
 selected = 2
 item_count = 3
 popup/item_0/text = "           Alta"
-popup/item_0/id = 0
-popup/item_1/text = "         Media          "
+popup/item_0/id = 2
+popup/item_1/text = "            Media             "
 popup/item_1/id = 1
 popup/item_2/text = "           Baja"
-popup/item_2/id = 2
+popup/item_2/id = 0
+script = ExtResource("10_fifwc")
+
+[node name="ASPqual" type="AudioStreamPlayer" parent="Panel/MarginContainerAjustes/GridContainerAjustes/OptionQUAL"]
 
 [node name="Controles" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
@@ -240,8 +236,10 @@ text = "Controles   "
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-text = "                      Ver                       "
+text = "                  Ver                        "
 alignment = 0
+
+[node name="ASPctrl" type="AudioStreamPlayer" parent="Panel/MarginContainerAjustes/GridContainerAjustes/BtnControles"]
 
 [node name="MarginContainerControles" type="MarginContainer" parent="Panel"]
 visible = false
@@ -330,5 +328,9 @@ size_flags_vertical = 8
 text = "Reestablecer
 "
 
+[connection signal="pressed" from="Panel/TextureTarjeta/BtnCerrar" to="." method="_on_btn_cerrar_pressed"]
+[connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderVG" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_slider_vg_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderM" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_slider_m_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderSFX" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_slider_sfx_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderBR" to="Panel/MarginContainerAjustes/GridContainerAjustes/SliderBR" method="_on_value_changed"]
 [connection signal="toggled" from="Panel/MarginContainerAjustes/GridContainerAjustes/CheckModo" to="Panel/MarginContainerAjustes/GridContainerAjustes/OptionRES" method="_on_check_modo_toggled"]
