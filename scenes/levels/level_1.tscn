@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://t2m7hqcpi1rb"]
 
-[ext_resource type="Texture2D" uid="uid://bypn6viaeqnwq" path="res://Art/Assets2D/ventanaMask.jpeg" id="2_dga24"]
+[ext_resource type="Texture2D" uid="uid://bypn6viaeqnwq" path="res://Art/Assets2D/level1/ventanaMask.jpeg" id="2_dga24"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="3_qxy0u"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="4_excbq"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="5_iav0o"]
