@@ -184,23 +184,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.947, 0, -11.1259)
 [node name="blockin_level_2" parent="." instance=ExtResource("1_ra442")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
 
-[node name="StaticBody3D" parent="blockin_level_2/tapa" index="0"]
+[node name="StaticBody3D" parent="blockin_level_2/nenufarGrande" index="0"]
 collision_layer = 2
 
 [node name="StaticBody3D" parent="blockin_level_2/Pintura_001" index="0"]
 collision_layer = 2
 
-[node name="StaticBody3D" parent="blockin_level_2/nenufarGrande" index="0"]
-collision_layer = 2
-
 [node name="StaticBody3D" parent="blockin_level_2/cajasCandelabro" index="0"]
 collision_layer = 2
 
-[node name="botellaCristal" parent="blockin_level_2" index="17"]
+[node name="StaticBody3D" parent="blockin_level_2/tapa" index="0"]
+collision_layer = 2
+
+[node name="botellaCristal" parent="blockin_level_2" index="103"]
 transparency = 0.2
 surface_material_override/0 = SubResource("StandardMaterial3D_ibugp")
 
-[node name="AguaBotella" parent="blockin_level_2" index="22"]
+[node name="AguaBotella" parent="blockin_level_2" index="105"]
 surface_material_override/0 = SubResource("StandardMaterial3D_qpwj6")
 
 [node name="lucesOceanoAtras" type="Node" parent="."]

@@ -1,33 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://gj6xmv4ch22p"]
+[gd_scene load_steps=5 format=3 uid="uid://gj6xmv4ch22p"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_w6h2s"]
+[ext_resource type="Environment" uid="uid://b2weruklux0wv" path="res://Enviroment_level_3.tres" id="2_anwe6"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_ogj6a"]
 [ext_resource type="PackedScene" uid="uid://dmw0q4k8n517g" path="res://Art/Levels/Blocking4.blend" id="3_anwe6"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w6h2s"]
-sky_top_color = Color(0.620576, 0.496378, 0.557171, 1)
-sky_horizon_color = Color(0.85169, 0.838406, 0.887522, 1)
-ground_bottom_color = Color(0.186933, 0.257995, 0.393663, 1)
-ground_horizon_color = Color(0.85169, 0.838406, 0.887522, 1)
-
-[sub_resource type="Sky" id="Sky_ogj6a"]
-sky_material = SubResource("ProceduralSkyMaterial_w6h2s")
-
-[sub_resource type="Environment" id="Environment_anwe6"]
-background_mode = 2
-sky = SubResource("Sky_ogj6a")
-tonemap_mode = 2
-sdfgi_enabled = true
-glow_enabled = true
-
 [node name="Level4" type="Node3D"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_anwe6")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_w6h2s")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 11.552, 3.6, 1.96833)
@@ -43,6 +21,7 @@ spot_angle = 69.14
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.101, 6.303)
 keep_aspect = 0
+environment = ExtResource("2_anwe6")
 fov = 80.0
 far = 250.0
 script = ExtResource("2_ogj6a")
@@ -81,5 +60,8 @@ collision_layer = 2
 
 [node name="StaticBody3D" parent="Blocking4/Cartas" index="0"]
 collision_layer = 2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.466199, -0.270347, -0.842361, 0.815916, 0.499441, 0.291273, 0.341965, -0.823087, 0.453419, 0, 0, 0)
 
 [editable path="Blocking4"]
