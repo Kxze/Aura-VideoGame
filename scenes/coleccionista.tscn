@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://yna2nxe1vu5"]
+[gd_scene load_steps=5 format=3 uid="uid://yna2nxe1vu5"]
 
-[ext_resource type="Texture2D" uid="uid://daxcp3lrk7c2a" path="res://Fondos/PortadaMainMenu.png" id="1_3skvx"]
+[ext_resource type="Texture2D" uid="uid://kdkcs2bb6bb" path="res://textures/Cortinas Moradas.png" id="1_7frec"]
+[ext_resource type="Script" uid="uid://lqruaab44j4x" path="res://scenes/coleccionista.gd" id="1_78fsh"]
+[ext_resource type="Texture2D" uid="uid://cp1u1oh1wproq" path="res://textures/C. OsoPeluche2.png" id="2_78fsh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7frec"]
-texture = ExtResource("1_3skvx")
+texture = ExtResource("1_7frec")
 
 [node name="Coleccionista" type="Control"]
 layout_mode = 3
@@ -12,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_78fsh")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -21,3 +24,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7frec")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_78fsh")
+
+[node name="flecha_der" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1607.0
+offset_top = 712.0
+offset_right = 1717.0
+offset_bottom = 812.0
+flat = true
+
+[node name="salir" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1605.0
+offset_top = 170.0
+offset_right = 1738.0
+offset_bottom = 270.0
+flat = true
