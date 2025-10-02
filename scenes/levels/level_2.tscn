@@ -195,36 +195,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
 [node name="StaticBody3D" parent="blockin_level_2/TIARA1" index="0"]
 collision_layer = 2
 
-[node name="StaticBody3D" parent="blockin_level_2/globo" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/Pintura_001" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/cajasCandelabro" index="0"]
-collision_layer = 2
-
 [node name="StaticBody3D" parent="blockin_level_2/tapa" index="0"]
 collision_layer = 2
 
-[node name="StaticBody3D" parent="blockin_level_2/globo_col" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/globo3" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="blockin_level_2/globo4" index="0"]
+[node name="StaticBody3D" parent="blockin_level_2/Pintura_001" index="0"]
 collision_layer = 2
 
 [node name="StaticBody3D" parent="blockin_level_2/globo5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00205994, -0.00860009, -0.0246363)
 collision_layer = 2
 
-[node name="botellaCristal" parent="blockin_level_2" index="19"]
+[node name="StaticBody3D" parent="blockin_level_2/globo4" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="blockin_level_2/globo3" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="blockin_level_2/globo" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="blockin_level_2/cajasCandelabro" index="0"]
+collision_layer = 2
+
+[node name="botellaCristal" parent="blockin_level_2" index="73"]
 transparency = 0.2
 surface_material_override/0 = SubResource("StandardMaterial3D_ibugp")
 
-[node name="AguaBotella" parent="blockin_level_2" index="21"]
+[node name="AguaBotella" parent="blockin_level_2" index="88"]
 surface_material_override/0 = SubResource("StandardMaterial3D_qpwj6")
 
 [node name="lucesOceanoAtras" type="Node" parent="."]

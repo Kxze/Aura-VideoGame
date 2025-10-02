@@ -1,3 +1,38 @@
-[gd_scene format=3 uid="uid://c17wj8jr8lb0n"]
+[gd_scene load_steps=4 format=3 uid="uid://c17wj8jr8lb0n"]
+
+[ext_resource type="PackedScene" uid="uid://btl7r0mv42dlj" path="res://Art/Levels/blocking_level_3.blend" id="1_0ljxa"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_0qepi"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_fmg3e"]
 
 [node name="Level3" type="Node3D"]
+
+[node name="blocking_level_3" parent="." instance=ExtResource("1_0ljxa")]
+
+[node name="StaticBody3D" parent="blocking_level_3/BaseCorta" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="blocking_level_3/Múltiples_escalones" index="0"]
+collision_layer = 2
+
+[node name="Player" parent="." instance=ExtResource("2_0qepi")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 11.552, 3.6, 1.96833)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
+light_color = Color(1, 0.969167, 0.63, 1)
+light_energy = 3.0
+light_specular = 0.0
+spot_range = 13.139
+spot_angle = 69.14
+
+[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.101, 6.303)
+keep_aspect = 0
+fov = 80.0
+far = 250.0
+script = ExtResource("3_fmg3e")
+target = NodePath("..")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[editable path="blocking_level_3"]
