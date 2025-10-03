@@ -40,6 +40,7 @@ folder_colors={
 "res://Fondos/": "pink",
 "res://Fonts/": "blue",
 "res://Shaders/": "orange",
+"res://Temas/": "gray",
 "res://scenes/": "yellow",
 "res://script/": "teal",
 "res://sonidos/": "green",

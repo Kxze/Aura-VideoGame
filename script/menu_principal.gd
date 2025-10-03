@@ -1,8 +1,7 @@
 extends VBoxContainer
 
-@onready var ajustes_popup = get_node("/root/MenuPrincipal/Popup_Ajustes")
-@onready var click_sound = preload("res://sonidos/botón2.wav")   # 🔊 sonido click
-@onready var hover_sound = preload("res://sonidos/hover.wav")    # 🔊 sonido desplazamiento
+@onready var popup_ajustes: Popup = $"../Popup_Ajustes"
+@onready var click_sound = preload("res://sonidos/botón2.wav")   # 🔊 carga tu sonido
 
 var _buttons = []
 
@@ -23,15 +22,10 @@ func _ready():
 		elif b == $Button5:
 			b.connect("pressed", Callable(self, "_on_salir_pressed").bind(b))
 
-		# Teclado
+		# Teclado y mouse
 		b.connect("focus_entered", Callable(self, "_on_button_focus_entered").bind(b))
 		b.connect("focus_exited", Callable(self, "_on_button_focus_exited").bind(b))
-
-		# Mouse → además de la lógica actual, forzamos el focus
-		b.connect("mouse_entered", func():
-			b.grab_focus()
-			_on_button_focus_entered(b)
-		)
+		b.connect("mouse_entered", Callable(self, "_on_button_focus_entered").bind(b))
 		b.connect("mouse_exited", Callable(self, "_on_button_focus_exited").bind(b))
 
 		# Al inicio ocultamos las estrellas y el glow
@@ -47,11 +41,11 @@ func _on_nueva_partida_pressed(button):
 	_play_click()
 	get_tree().change_scene_to_file(Constants.scene_levels["level_1"])
 
-func _on_continuar_pressed(button) -> void:
-	print("Continuar partida (cargar juego)")
+func _on_continuar_pressed(button):
 	_play_click()
+	print("Continuar partida (cargar juego)")
 	get_tree().change_scene_to_file("res://scenes/partidas.tscn")
-	
+
 func _on_coleccionista_pressed(button):
 	_play_click()
 	print("Abrir coleccionista")
@@ -59,8 +53,9 @@ func _on_coleccionista_pressed(button):
 
 func _on_ajustes_pressed(button):
 	_play_click()
-	ajustes_popup.popup_centered()
-	ajustes_popup.show()
+	$"../Popup_Ajustes".mostrar("inicio")
+	popup_ajustes.popup_centered()
+	popup_ajustes.show()
 
 func _on_salir_pressed(button):
 	_play_click()
@@ -69,7 +64,6 @@ func _on_salir_pressed(button):
 
 # --- Manejo de estrellas y glow ---
 func _on_button_focus_entered(button):
-	_play_hover()    # 🔊 aquí suena al mover foco con mouse o teclado
 	_show_stars(button)
 
 func _on_button_focus_exited(button):
@@ -87,9 +81,6 @@ func _hide_stars(button):
 	if button.has_node("HBoxContainer/StarRight"):
 		button.get_node("HBoxContainer/StarRight").visible = false
 
-# --- 🔊 Reproducir sonidos ---
-func _play_click() -> float:
-	return AudioManager.play_click(click_sound)   # ahora siempre devuelve un float
-
-func _play_hover() -> float:
-	return AudioManager.play_hover(hover_sound)   # devuelve duración (aunque no lo uses)
+# --- 🔊 Reproducir sonido ---
+func _play_click():
+	AudioManager.play_click(click_sound)
