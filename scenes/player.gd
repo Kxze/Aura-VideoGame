@@ -24,10 +24,10 @@ static var spawnPoint
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	movInput.x = Input.get_axis("ui_left","ui_right")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func take_damage(damage: int):

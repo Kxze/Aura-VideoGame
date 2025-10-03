@@ -1,7 +1,8 @@
 extends PlayerState
 @export var dash_trail_scene: PackedScene # opcional si quieres Node3D base para cada copia
 @export var num_copies := 4
-@export var fade_time := 1.5
+@export var fade_time := 5.0       # cuánto tarda en desvanecerse
+@export var solid_time := 0.5      # cuánto tiempo queda sólido antes de desvanecer
 @export var delay_step := 0.05
 @export var offset_x := 0.5  # distancia entre copias
 var dash_time := 0.3
@@ -12,6 +13,8 @@ var suspend_air_time := 0.5
 var suspended := false
 
 var dash_cooldown := 0.5
+
+signal dash_started
 
 func enter(previous_state_path: String, data := {}):
 	if not player.can_dash:
@@ -27,6 +30,7 @@ func enter(previous_state_path: String, data := {}):
 	if player.animationPlayer:
 		player.animationPlayer.play("Dash")
 		spawn_dash_trail()
+		emit_signal("dash_started")
 	# Suspensión en aire
 	if not player.is_on_floor():
 		suspended = true
@@ -70,25 +74,20 @@ func spawn_dash_trail(num_copies: int = 4) -> void:
 	player.sprite.visible = true
 
 	for i in range(num_copies):
-		# Instanciar la escena de trail
 		var effect = dash_trail_scene.instantiate()
 		player.get_parent().add_child(effect)
 		
-		# Posición inicial con offset
 		effect.global_position = player.global_position + Vector3(offset_x * i * player.last_facing, 0, 0)
 		effect.scale = player.scale
-		effect.target = player  # asignamos el jugador como objetivo
-		
-		# Duplicar el sprite del jugador dentro de la escena
+		effect.target = player  
+
 		var aura_copy: Sprite3D = player.sprite.duplicate(true)
 		effect.add_child(aura_copy)
-		
-		# Flip según orientación
 		aura_copy.scale.x = player.last_facing * abs(aura_copy.scale.x)
 		
-		# Tween para desvanecer
+		# Tween con tiempo sólido + fade
 		var tween: Tween = effect.create_tween()
 		tween.set_ease(Tween.EASE_OUT)
-		tween.tween_interval(i * delay_step)
-		tween.tween_property(effect, "modulate", Color(1,1,1,0), fade_time)
+		tween.tween_interval(i * delay_step)                     # escalona las copias
+		tween.tween_interval(solid_time)                         # tiempo sólido
 		tween.tween_callback(effect.queue_free)

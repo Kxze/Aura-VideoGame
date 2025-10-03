@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkk08sa3k3x8c"]
+
+[ext_resource type="Script" uid="uid://cabae58u6rvr7" path="res://script/triggers/next_level.gd" id="1_7lias"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_frivr"]
+size = Vector3(1, 27.1238, 15.0525)
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_7lias")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.5619, 0)
+shape = SubResource("BoxShape3D_frivr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
