@@ -59,7 +59,7 @@ func physics_update(delta: float):
 		player.is_dashing = false
 		if player.is_on_floor():
 			if player.animationPlayer:
-				player.animationPlayer.play("Idle")
+				player.animationPlayer.play("idle")
 			emit_signal("finished", "Idle")
 		else:
 			if player.animationPlayer:
