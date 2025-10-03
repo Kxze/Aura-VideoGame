@@ -1,50 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://t2m7hqcpi1rb"]
+[gd_scene load_steps=16 format=3 uid="uid://t2m7hqcpi1rb"]
 
 [ext_resource type="Texture2D" uid="uid://bypn6viaeqnwq" path="res://Art/Assets2D/level1/ventanaMask.jpeg" id="2_dga24"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="3_qxy0u"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="4_excbq"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="5_iav0o"]
+[ext_resource type="Environment" uid="uid://cm6w1o8o4nilk" path="res://enviroment_level_2.tres" id="6_oc4kc"]
 [ext_resource type="Material" uid="uid://cchvhub8830n6" path="res://Materials/emissive.tres" id="7_mm8aj"]
+[ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="8_dga24"]
 [ext_resource type="PackedScene" uid="uid://bdfat0fcg3hs" path="res://Art/Levels/blocking.blend" id="8_s8va5"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2os1m"]
-sky_horizon_color = Color(0.634176, 0.719769, 0.942048, 1)
-sky_curve = 0.184672
-ground_bottom_color = Color(0.134724, 0.123595, 0.39947, 1)
-
-[sub_resource type="Sky" id="Sky_s8va5"]
-sky_material = SubResource("ProceduralSkyMaterial_2os1m")
-
-[sub_resource type="Environment" id="Environment_7gny6"]
-background_mode = 1
-sky = SubResource("Sky_s8va5")
-ambient_light_source = 3
-ambient_light_sky_contribution = 0.7
-tonemap_mode = 2
-sdfgi_enabled = true
-glow_enabled = true
-glow_normalized = true
-glow_intensity = 3.48
-glow_strength = 0.69
-glow_blend_mode = 1
-glow_hdr_threshold = 0.0
-fog_mode = 1
-fog_light_color = Color(0.403922, 0.419608, 0.741176, 1)
-fog_light_energy = 0.83
-fog_density = 0.0
-fog_height = -10.0
-fog_height_density = 1.0
-fog_depth_curve = 0.554783
-fog_depth_begin = 1231.1
-fog_depth_end = 1652.1
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.015
-volumetric_fog_albedo = Color(0.54, 0.647333, 1, 1)
-volumetric_fog_emission = Color(0.389797, 0.254375, 0.733103, 1)
-volumetric_fog_emission_energy = 0.1
-volumetric_fog_detail_spread = 1.27456
-adjustment_enabled = true
-adjustment_saturation = 1.42
+[ext_resource type="PackedScene" uid="uid://jh08husfmtny" path="res://scenes/levels/level_2.tscn" id="9_qxy0u"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_2y5yt"]
 
@@ -61,10 +25,13 @@ roughness = 0.24
 
 [sub_resource type="BoxMesh" id="BoxMesh_5xbjy"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_oc4kc"]
+size = Vector3(1, 29.8525, 47.002)
+
 [node name="level1" type="Node3D"]
 
 [node name="Ventana" type="SpotLight3D" parent="."]
-transform = Transform3D(-1, -2.23517e-08, 2.98023e-08, -5.75881e-08, 0.866025, 0.5, -8.9407e-08, 0.5, -0.866025, 34, 54.1966, -84.1008)
+transform = Transform3D(-1, -9.45763e-08, 4.86347e-08, -5.75881e-08, 0.866025, 0.5, -8.9407e-08, 0.5, -0.866025, 11, 54.1966, -84.1008)
 light_color = Color(0.79152, 0.7372, 0.97, 1)
 light_energy = 15.0
 light_volumetric_fog_energy = 2.0
@@ -75,30 +42,6 @@ shadow_opacity = 0.0
 spot_range = 150.924
 spot_attenuation = 0.39
 spot_angle = 29.69
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_7gny6")
-
-[node name="Player" parent="." instance=ExtResource("3_qxy0u")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -49.6515, -0.402894, -0.0551147)
-collision_mask = 14
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
-light_color = Color(1, 0.969167, 0.63, 1)
-light_energy = 3.0
-light_specular = 0.0
-spot_range = 13.139
-spot_angle = 69.14
-
-[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594002, 1.101, 6.303)
-keep_aspect = 0
-fov = 80.0
-script = ExtResource("4_excbq")
-target = NodePath("..")
-follow_speed = 12.0
-offset = Vector3(2.97, 5.505, 31.515)
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.1689, -0.044652, 0.020874)
@@ -383,38 +326,37 @@ light_indirect_energy = 5.638
 light_volumetric_fog_energy = 4.419
 omni_range = 66.245
 
-[node name="luna" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 3.29216e-05, 0.000156656, -0.000145623, 0.593479, 0.80485, -6.64751e-05, -0.80485, 0.593479, 33.6887, 237.178, -95.5997)
-light_color = Color(0.745098, 0.752941, 0.972549, 1)
-light_energy = 1000.0
-spot_range = 280.096
-
 [node name="Portal" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.09104e-06, -2.18002, 0, 24.96, -9.52919e-08, 0, 0, 0, 22.6106, 241.089, 23.3196, -13.0133)
+transform = Transform3D(-1.09104e-06, -2.18002, 0, 24.96, -9.52919e-08, 0, 0, 0, 22.6106, 268.089, 23.3196, -13.0133)
 material_override = ExtResource("7_mm8aj")
 mesh = SubResource("PlaneMesh_pa8r4")
 skeleton = NodePath("../MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(86.3587, 0, 0, 0, -1.25549e-08, -75.995, 0, 0.287223, -3.32185e-06, 35.7886, 42.3196, -90.3133)
+transform = Transform3D(92.0377, 0, 0, 0, -1.25549e-08, -88.6931, 0, 0.287223, -3.8769e-06, 33.7886, 42.3196, -90.3133)
 material_override = SubResource("StandardMaterial3D_5xbjy")
 transparency = 0.65
 mesh = SubResource("BoxMesh_5xbjy")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 21.6618, 71)
-visible = false
-light_color = Color(0.82, 0.581927, 0.2706, 1)
-light_energy = 200.0
-spot_range = 137.547
-spot_angle = 78.92
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.7424, 0.656973, -0.131257, 0.495307, -0.406303, 0.767846, 0.451124, -0.635062, -0.627043, 41, 43, -89)
+transform = Transform3D(0.439572, 0.879599, 0.181886, 0.495307, -0.406303, 0.767847, 0.749298, -0.247434, -0.614271, 41, 43, -89)
 light_energy = 0.1
 shadow_enabled = true
 shadow_bias = 0.0
 sky_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("3_qxy0u")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 255.003, 6.37725, 1.96833)
+
+[node name="Camera3D2" type="Camera3D" parent="Player"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.599054, 1.14631, 6.62286)
+keep_aspect = 0
+environment = ExtResource("6_oc4kc")
+fov = 80.0
+far = 250.0
+script = ExtResource("4_excbq")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
 
 [node name="blocking" parent="." instance=ExtResource("8_s8va5")]
 
@@ -433,5 +375,28 @@ collision_layer = 2
 [node name="StaticBody3D" parent="blocking/cama" index="0"]
 collision_layer = 2
 
+[node name="SpotLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84, 93, -145.706)
+light_color = Color(0.684659, 0.920312, 0.925154, 1)
+light_energy = 35.565
+light_specular = 0.0
+omni_range = 163.2
+omni_attenuation = 0.429
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, 0, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.4262, 0)
+shape = SubResource("BoxShape3D_oc4kc")
+
+[node name="Area3D" parent="StaticBody3D" instance=ExtResource("8_dga24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 353, 0, 0)
+next_scene = ExtResource("9_qxy0u")
+
 [editable path="KillZone"]
 [editable path="blocking"]
+[editable path="StaticBody3D/Area3D"]

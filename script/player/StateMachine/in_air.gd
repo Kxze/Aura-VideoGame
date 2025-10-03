@@ -4,6 +4,7 @@ var isJumping: bool = false
 var canReadJumpCoyote: bool = false
 var buffered_jump: bool = false
 
+@onready var fall_timer: Timer = $FallTimer
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var Jump_buffer_timer: Timer = $JumpBufferTimer
 
@@ -19,6 +20,7 @@ func enter(previous_state_path: String, data := {}):
 	if not data.has("FromDash"):
 		canReadJumpCoyote = true
 		coyote_timer.start()
+	
 
 func physics_update(delta: float):
 	if player.is_on_floor():
@@ -31,12 +33,15 @@ func physics_update(delta: float):
 	else:
 		# Aplicar gravedad
 		player.velocity.y += player.GRAVITY
-		if player.velocity.y < 0:
-			player.animationPlayer.play("Fall")
-		if player.ray_cast_3d.is_colliding():
-			player.animationPlayer.play("Land")
-		else:
-			player.animationPlayer.play("Fall")
+
+	# --- Lógica del fall_timer ---
+	if !player.ray_cast_3d.is_colliding():
+		if fall_timer.is_stopped(): # si está detenido, arrancar
+			fall_timer.start()
+	else:
+		if not fall_timer.is_stopped(): # si vuelve a colisionar, detener
+			fall_timer.stop()
+
 	# Movimiento horizontal en el aire
 	if !player.is_on_floor():
 		player.velocity.x = lerp(player.prevVelocity.x, player.movInput.x, 0.1)
@@ -65,6 +70,7 @@ func handled_input(_event: InputEvent):
 			buffered_jump = true
 			Jump_buffer_timer.start()
 
+
 func _on_coyote_timer_timeout() -> void:
 	canReadJumpCoyote = false
 
@@ -75,3 +81,6 @@ func _do_jump():
 	isJumping = true
 	player.velocity.y = player.jump
 	player.animationPlayer.play("Jump")
+
+func _on_fall_timer_timeout() -> void:
+	player.animationPlayer.play("Fall")

@@ -23,7 +23,7 @@ func physics_update(delta: float):
 		emit_signal("finished", "InAir", {"Jump" : true})
 		
 	
-	if Input.is_action_just_pressed("Dash"):
+	if Input.is_action_just_pressed("dash"):
 		emit_signal("finished", "Dash")
 
 	player.velocity.x = lerpf(player.velocity.x, player.movInput.x * player.speed, .9)
