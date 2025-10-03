@@ -1,4 +1,5 @@
 extends Control
+@onready var click_sound = preload("res://sonidos/botón2.wav")   # 🔊 sonido click
 
 func _ready():
 	# Conectar botones
@@ -14,7 +15,13 @@ func _input(event):
 
 # Funciones de botones
 func _on_flecha_izq_pressed():
+	_play_click()
 	get_tree().change_scene_to_file("res://scenes/coleccionista2.tscn")
 
 func _on_salir_pressed():
+	_play_click()
 	get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
+
+# --- 🔊 Reproducir sonidos ---
+func _play_click():
+	AudioManager.play_click(click_sound)
