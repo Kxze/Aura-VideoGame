@@ -24,6 +24,7 @@ Label/fonts/font = ExtResource("2_3a1hb")
 
 [node name="Popup_Ajustes" type="Popup"]
 transparent_bg = true
+oversampling_override = 1.0
 size = Vector2i(1920, 1080)
 visible = true
 transparent = true
@@ -197,12 +198,12 @@ text = "Modo   "
 [node name="CheckModo" type="CheckButton" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
 theme = ExtResource("7_o5kyp")
-theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
 button_pressed = true
 flat = true
 script = ExtResource("9_2cqcg")
