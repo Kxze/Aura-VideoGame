@@ -24,6 +24,7 @@ buses/default_bus_layout="uid://dwaurb6y88n77"
 Constants="*res://script/Constants/CONSTANTS.gd"
 SceneSwitch="*res://script/Scene_switch.gd"
 GlobalBrightnessWorldEnvironment="*res://scenes/Global_brightness_world_environment.tscn"
+AudioManager="*res://script/AudioManager.gd"
 
 [display]
 
@@ -38,9 +39,10 @@ folder_colors={
 "res://Art/": "red",
 "res://Fondos/": "pink",
 "res://Fonts/": "blue",
-"res://Temas/": "gray",
+"res://Shaders/": "orange",
 "res://scenes/": "yellow",
 "res://script/": "teal",
+"res://sonidos/": "green",
 "res://textures/": "purple"
 }
 
