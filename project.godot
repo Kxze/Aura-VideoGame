@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Constants="*res://script/Constants/CONSTANTS.gd"
 SceneSwitch="*res://script/Scene_switch.gd"
 GlobalBrightnessWorldEnvironment="*res://scenes/Global_brightness_world_environment.tscn"
+AudioManager="*res://script/AudioManager.gd"
 
 [display]
 
