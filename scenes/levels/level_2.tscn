@@ -77,11 +77,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 331.585, 0, -11.1259)
 [node name="blockin_level_2" parent="." instance=ExtResource("1_ra442")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
 
-[node name="botellaCristal" parent="blockin_level_2" index="17"]
+[node name="botellaCristal" parent="blockin_level_2" index="3"]
 transparency = 0.2
 surface_material_override/0 = SubResource("StandardMaterial3D_ibugp")
 
-[node name="AguaBotella" parent="blockin_level_2" index="22"]
+[node name="AguaBotella" parent="blockin_level_2" index="5"]
 surface_material_override/0 = SubResource("StandardMaterial3D_qpwj6")
 
 [node name="Luztorre" type="SpotLight3D" parent="."]
