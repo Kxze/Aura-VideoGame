@@ -1,14 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://c17wj8jr8lb0n"]
+[gd_scene load_steps=6 format=3 uid="uid://c17wj8jr8lb0n"]
 
 [ext_resource type="PackedScene" uid="uid://btl7r0mv42dlj" path="res://Art/Levels/blocking_level_3.blend" id="1_0ljxa"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_0qepi"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_fmg3e"]
+[ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="4_0qepi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ljxa"]
+size = Vector3(8.27905, 193.112, 26.9981)
 
 [node name="Level3" type="Node3D"]
 
+[node name="@CollisionShape3D@66257" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.82229, 61.2529, 0.513276)
+shape = SubResource("BoxShape3D_0ljxa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.03271, 125.581, 1.81464)
+shape = SubResource("BoxShape3D_0ljxa")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.699486, -0.333121, -0.632257, -0.705838, 0.46051, 0.53826, 0.111855, 0.822776, -0.55725, 0, 0, 0)
+transform = Transform3D(-0.200735, 0.598676, -0.77543, -0.705838, 0.46051, 0.538259, 0.679336, 0.655376, 0.330128, 0, 0, 51.0904)
+light_color = Color(0.299512, 0.641459, 0.55459, 1)
+light_energy = 2.133
 light_specular = 0.0
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.2644, 54.6524, -7.00563)
+collision_layer = 2
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425735, -0.652458, 0.155807)
+collision_layer = 2
 
 [node name="Player" parent="." instance=ExtResource("2_0qepi")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 21.2119, 47.7132, 1.96833)
@@ -33,4 +55,82 @@ offset = Vector3(2.97, 5.505, 31.515)
 
 [node name="blocking_level_3" parent="." instance=ExtResource("1_0ljxa")]
 
+[node name="Bloquespiso" parent="blocking_level_3" index="20"]
+layers = 2
+
+[node name="StaticBody3D" parent="blocking_level_3/Bloquespiso" index="0"]
+collision_layer = 2
+
+[node name="Foto" parent="blocking_level_3" index="65"]
+layers = 2
+
+[node name="StaticBody3D" parent="blocking_level_3/Foto" index="0"]
+collision_layer = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.34, 49.7621, 5.51148)
+light_color = Color(0.741176, 0.588235, 0.117647, 1)
+light_energy = 11.505
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4824, 75.0013, 3.89699)
+light_color = Color(0.741176, 0.588235, 0.117647, 1)
+light_energy = 11.505
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.0717, 88.5557, 5.5094)
+light_color = Color(0.741176, 0.588235, 0.117647, 1)
+light_energy = 11.505
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1656, 110.66, 3.20919)
+light_color = Color(0.741176, 0.588235, 0.117647, 1)
+light_energy = 11.505
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.1802, 144.557, 4.29757)
+light_color = Color(0.741176, 0.588235, 0.117647, 1)
+light_energy = 11.505
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.3131, 128.747, 4.29757)
+light_color = Color(0.741176, 0.588235, 0.117647, 1)
+light_energy = 11.505
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.9303, 164.554, 5.43414)
+light_color = Color(0.741176, 0.588235, 0.117647, 1)
+light_energy = 11.505
+
+[node name="Node" type="Node" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9195, 57.3444, -5.10685)
+light_color = Color(0.969216, 0.276063, 0.791275, 1)
+light_energy = 1.55
+omni_range = 6.046
+omni_attenuation = 0.204
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.1479, 103.689, -2.37111)
+light_color = Color(0.969216, 0.276063, 0.791275, 1)
+light_energy = 1.55
+omni_range = 6.046
+omni_attenuation = 0.204
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.9408, 149.387, -1.2247)
+light_color = Color(0.969216, 0.276063, 0.791275, 1)
+light_energy = 1.55
+omni_range = 6.046
+omni_attenuation = 0.204
+
+[node name="KillZone" parent="." instance=ExtResource("4_0qepi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.83735, 34.9896, 8.05158)
+collision_layer = 4
+
+[node name="CollisionShape3D" parent="KillZone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 331.585, 0, -11.1259)
+
 [editable path="blocking_level_3"]
+[editable path="KillZone"]

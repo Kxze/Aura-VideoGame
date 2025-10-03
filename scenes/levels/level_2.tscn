@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://jh08husfmtny"]
+[gd_scene load_steps=16 format=3 uid="uid://jh08husfmtny"]
 
 [ext_resource type="PackedScene" uid="uid://bdj1svdqbupp" path="res://Art/Levels/blockin_level_2.blend" id="1_ra442"]
 [ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_8qukl"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="5_l37oo"]
 [ext_resource type="Texture2D" uid="uid://ooud6k3iv8jc" path="res://Materials/light.jpeg" id="6_qpwj6"]
 [ext_resource type="ArrayOccluder3D" uid="uid://d0jfiklbqor6l" path="res://scenes/levels/level_2.occ" id="7_ibugp"]
-[ext_resource type="Texture2D" uid="uid://iwagw7fdkjah" path="res://Art/Levels/blockin_level_2_Fondo.png" id="7_qsp8v"]
 [ext_resource type="LightmapGIData" uid="uid://clj76a6yfeg52" path="res://scenes/levels/bakes_lights/level_2.lmbake" id="9_3p04p"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ibugp"]
@@ -35,133 +34,6 @@ emission_enabled = true
 emission = Color(0.598526, 0.777956, 0.634225, 1)
 emission_energy_multiplier = 5.49
 emission_texture = SubResource("NoiseTexture2D_ibugp")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edybc"]
-resource_name = "Fondo"
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("7_qsp8v")
-roughness = 0.5
-texture_repeat = false
-metadata/extras = {
-"paint_system": {},
-"ps_mat_data": {
-"active_index": 0.0,
-"groups": [{
-"active_index": 0.0,
-"channels": [{
-"active_index": 1.0,
-"bake_image": {},
-"color_space": 0.0,
-"layers": [{
-"id": 0.0,
-"name": "Solid Color Layer",
-"order": 2.0,
-"parent_id": -1.0,
-"ref_layer_id": "6a200f53-6ed1-4e50-98c6-2fc6b96cf54b",
-"type": 1.0
-}, {
-"id": 3.0,
-"name": "G3CAJASUPERIOOOR",
-"order": 1.0,
-"parent_id": -1.0,
-"ref_layer_id": "cfedcb9a-3726-4d57-97a0-936305a9ae14",
-"type": 1.0
-}],
-"name": "Color",
-"next_id": 4.0,
-"node_tree": {
-"name": "PS_Channel (Color).029",
-"type": "ShaderNodeTree"
-},
-"type": 1.0,
-"use_alpha": 1.0,
-"use_max_min": 0.0,
-"use_normalize": 0.0
-}],
-"coord_type": 1.0,
-"name": "Item 1",
-"node_tree": {
-"name": "Paint System (New Group).029",
-"type": "ShaderNodeTree"
-},
-"template": 0.0,
-"uv_map_name": "UVMap"
-}]
-}
-}
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_pqbio"]
-_surfaces = [{
-"aabb": AABB(-2.66667, 0, -0.5, 5.33333, 1e-05, 1),
-"format": 34359742465,
-"index_count": 6,
-"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
-"name": "Fondo",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("q6oqwAAAAAAAAAA/q6oqQAAAAAAAAAC/q6oqQAAAAAAAAAA/q6oqwAAAAAAAAAC/")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_nt80m"]
-resource_name = "blockin_level_2_Fondo"
-lightmap_size_hint = Vector2i(4094, 769)
-_surfaces = [{
-"aabb": AABB(-2.66667, 0, -0.5, 5.33333, 1e-05, 1),
-"attribute_data": PackedByteArray("AAAAAAAAgD8CEAA58PZ/PwAAgD8AAAAA//d/P9pxKjoAAIA/AACAP//3fz/w9n8/AAAAAAAAAAACEAA52nEqOg=="),
-"format": 34359742519,
-"index_count": 6,
-"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
-"material": SubResource("StandardMaterial3D_edybc"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("q6oqwAAAAAAAAAA/q6oqQAAAAAAAAAC/q6oqQAAAAAAAAAA/q6oqwAAAAAAAAAC/AID//////78AgP//////vwCA//////+/AID//////78=")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_pqbio")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsp8v"]
-resource_name = "Fondo"
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("7_qsp8v")
-roughness = 0.5
-texture_repeat = false
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_xacsh"]
-_surfaces = [{
-"aabb": AABB(-2.66667, 0, -0.5, 5.33333, 1e-05, 1),
-"format": 34359742465,
-"index_count": 6,
-"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
-"name": "Fondo",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("q6oqwAAAAAAAAAA/q6oqQAAAAAAAAAC/q6oqQAAAAAAAAAA/q6oqwAAAAAAAAAC/")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_brxtv"]
-resource_name = "blockin_level_2_Fondo_001"
-lightmap_size_hint = Vector2i(4094, 769)
-_surfaces = [{
-"aabb": AABB(-2.66667, 0, -0.5, 5.33333, 1e-05, 1),
-"attribute_data": PackedByteArray("AAAAAAAAgD8CEAA58PZ/PwAAgD8AAAAA//d/P9pxKjoAAIA/AACAP//3fz/w9n8/AAAAAAAAAAACEAA52nEqOg=="),
-"format": 34359742519,
-"index_count": 6,
-"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
-"material": SubResource("StandardMaterial3D_qsp8v"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("q6oqwAAAAAAAAAA/q6oqQAAAAAAAAAC/q6oqQAAAAAAAAAA/q6oqwAAAAAAAAAC/AID//////78AgP//////vwCA//////+/AID//////78=")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_xacsh")
 
 [node name="Level2" type="Node3D"]
 
@@ -205,21 +77,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 331.585, 0, -11.1259)
 [node name="blockin_level_2" parent="." instance=ExtResource("1_ra442")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
 
-[node name="botellaCristal" parent="blockin_level_2" index="3"]
+[node name="botellaCristal" parent="blockin_level_2" index="17"]
 transparency = 0.2
 surface_material_override/0 = SubResource("StandardMaterial3D_ibugp")
 
-[node name="AguaBotella" parent="blockin_level_2" index="5"]
+[node name="AguaBotella" parent="blockin_level_2" index="22"]
 surface_material_override/0 = SubResource("StandardMaterial3D_qpwj6")
-
-[node name="StaticBody3D" parent="blockin_level_2/base_level" index="0"]
-collision_layer = 2
-
-[node name="Fondo" parent="blockin_level_2" index="7"]
-mesh = SubResource("ArrayMesh_nt80m")
-
-[node name="Fondo_001" parent="blockin_level_2" index="8"]
-mesh = SubResource("ArrayMesh_brxtv")
 
 [node name="Luztorre" type="SpotLight3D" parent="."]
 transform = Transform3D(-0.0902609, -0.369882, 0.924684, 0.3883, 0.841925, 0.374681, -0.917102, 0.392873, 0.0676321, 653.239, 133.695, 6.377)
