@@ -6,11 +6,14 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eslno"]
 bg_color = Color(0.364706, 0.333333, 0.262745, 0.345098)
+border_width_left = 10
+border_width_right = 10
 border_color = Color(0.364706, 0.333333, 0.262745, 0.345098)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+shadow_color = Color(0.364706, 0.333333, 0.262745, 0.345098)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nprfw"]
 bg_color = Color(0.639216, 0.596078, 0.501961, 0.345098)
@@ -19,24 +22,29 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+shadow_color = Color(0.639216, 0.596078, 0.501961, 0.345098)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pesmo"]
-bg_color = Color(0.364706, 0.333333, 0.262745, 0.345098)
+bg_color = Color(0.784314, 0.701961, 0.541176, 1)
 border_width_left = 10
 border_width_right = 10
-border_color = Color(0.364706, 0.333333, 0.262745, 0.345098)
+border_color = Color(0.784314, 0.701961, 0.541176, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+shadow_color = Color(0.784314, 0.701961, 0.541176, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y15t7"]
 bg_color = Color(0.640424, 0.597977, 0.502612, 0.345098)
+border_width_left = 10
+border_width_right = 10
 border_color = Color(0.639216, 0.596078, 0.501961, 0.345098)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+shadow_color = Color(0.639216, 0.596078, 0.501961, 0.345098)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wstgy"]
 bg_color = Color(0.588235, 0.27451, 0.505882, 1)
@@ -66,7 +74,8 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-expand_margin_right = 20.0
+expand_margin_right = 10.0
+shadow_color = Color(0.6, 0.6, 0.6, 0.635294)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duati"]
 bg_color = Color(0.784314, 0.701961, 0.541176, 1)
@@ -76,7 +85,8 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-expand_margin_right = 20.0
+expand_margin_right = 10.0
+shadow_color = Color(0.784314, 0.701961, 0.541176, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5am0"]
 bg_color = Color(0.784314, 0.701961, 0.541176, 1)
@@ -86,7 +96,8 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-expand_margin_right = 20.0
+expand_margin_right = 10.0
+shadow_color = Color(0.784314, 0.701961, 0.541176, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4qa2"]
 bg_color = Color(0.784314, 0.701961, 0.541176, 1)
@@ -96,7 +107,8 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-expand_margin_right = 20.0
+expand_margin_right = 10.0
+shadow_color = Color(0.784314, 0.701961, 0.541176, 1)
 
 [resource]
 default_font = ExtResource("2_d5am0")
@@ -140,7 +152,7 @@ OptionButton/colors/icon_hover_color = Color(0, 0, 0, 0)
 OptionButton/colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 OptionButton/colors/icon_normal_color = Color(0, 0, 0, 0)
 OptionButton/colors/icon_pressed_color = Color(0, 0, 0, 0)
-OptionButton/font_sizes/font_size = 25
+OptionButton/font_sizes/font_size = 20
 OptionButton/icons/arrow = ExtResource("3_duati")
 OptionButton/styles/disabled = SubResource("StyleBoxFlat_u32j8")
 OptionButton/styles/hover = SubResource("StyleBoxFlat_duati")
