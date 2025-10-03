@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://jh08husfmtny"]
+[gd_scene load_steps=16 format=3 uid="uid://jh08husfmtny"]
 
 [ext_resource type="PackedScene" uid="uid://bdj1svdqbupp" path="res://Art/Levels/blockin_level_2.blend" id="1_ra442"]
-[ext_resource type="Environment" uid="uid://ccypy0y5jpywp" path="res://scenes/levels/enviroment_level_2.tres" id="2_8qukl"]
+[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_8qukl"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_fiq81"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_l37oo"]
 [ext_resource type="Material" uid="uid://cchvhub8830n6" path="res://Materials/emissive.tres" id="4_fiq81"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="5_l37oo"]
 [ext_resource type="Texture2D" uid="uid://ooud6k3iv8jc" path="res://Materials/light.jpeg" id="6_qpwj6"]
 [ext_resource type="ArrayOccluder3D" uid="uid://d0jfiklbqor6l" path="res://scenes/levels/level_2.occ" id="7_ibugp"]
+[ext_resource type="LightmapGIData" uid="uid://clj76a6yfeg52" path="res://scenes/levels/bakes_lights/level_2.lmbake" id="9_3p04p"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ibugp"]
 
@@ -37,7 +38,7 @@ emission_texture = SubResource("NoiseTexture2D_ibugp")
 [node name="Level2" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_fiq81")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 11.552, 3.6, 1.96833)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 2.99775, 2.25089, 1.96833)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
@@ -62,11 +63,12 @@ offset = Vector3(2.97, 5.505, 31.515)
 transform = Transform3D(-0.688016, -0.630647, 0.359052, 0.569384, -0.162362, 0.805878, -0.449929, 0.758896, 0.470788, 268.478, 47.5881, -1.93951)
 light_color = Color(0.393413, 0.40826, 0.365, 1)
 light_specular = 0.0
+light_bake_mode = 1
 shadow_enabled = true
 shadow_blur = 6.162
 
 [node name="Portal" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.09104e-06, 2.18002, 2.38419e-06, 24.96, -9.52919e-08, -2.07906e-14, 1.42109e-13, 1.19209e-07, -22.6106, -14.0519, 22.9851, -12.9599)
+transform = Transform3D(1.09104e-06, 2.18002, 2.38419e-06, 24.96, -9.52919e-08, -2.07906e-14, 1.42109e-13, 1.19209e-07, -22.6106, -16.2025, 22.3545, -0.161515)
 material_override = ExtResource("4_fiq81")
 mesh = SubResource("PlaneMesh_ibugp")
 skeleton = NodePath("")
@@ -76,25 +78,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.5948, 7)
 collision_layer = 4
 
 [node name="CollisionShape3D" parent="KillZone" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.947, 0, -11.1259)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.499, 0, -11.1259)
 
-[node name="blockin_level_2" parent="." instance=ExtResource("1_ra442")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
-
-[node name="StaticBody3D" parent="blockin_level_2/tapa" index="0"]
-collision_layer = 2
-
-[node name="botellaCristal" parent="blockin_level_2" index="14"]
-transparency = 0.2
-surface_material_override/0 = SubResource("StandardMaterial3D_ibugp")
-
-[node name="AguaBotella" parent="blockin_level_2" index="19"]
-surface_material_override/0 = SubResource("StandardMaterial3D_qpwj6")
-
-[node name="StaticBody3D" parent="blockin_level_2/nenufarGrande_001" index="0"]
-collision_layer = 2
-
-[node name="lucesOceanoAtras" type="Node" parent="."]
+[node name="lucesOceanoAtras" type="Node3D" parent="."]
+visible = false
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="lucesOceanoAtras"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, -9.85486, -59.691, -49.3361)
@@ -103,6 +90,7 @@ light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.1
 light_specular = 0.0
+light_bake_mode = 1
 spot_range = 100.0
 spot_attenuation = 0.5
 spot_angle = 70.3009
@@ -114,6 +102,7 @@ light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.1
 light_specular = 0.0
+light_bake_mode = 1
 spot_range = 100.0
 spot_attenuation = 0.5
 spot_angle = 70.3009
@@ -125,6 +114,7 @@ light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.1
 light_specular = 0.0
+light_bake_mode = 1
 spot_range = 100.0
 spot_attenuation = 0.5
 spot_angle = 70.3009
@@ -136,6 +126,7 @@ light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.1
 light_specular = 0.0
+light_bake_mode = 1
 spot_range = 100.0
 spot_attenuation = 0.5
 spot_angle = 70.3009
@@ -151,6 +142,7 @@ light_energy = 50.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.1
 light_specular = 0.0
+light_bake_mode = 1
 spot_range = 100.0
 spot_attenuation = 0.5
 spot_angle = 70.3009
@@ -162,6 +154,7 @@ light_energy = 50.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.1
 light_specular = 0.0
+light_bake_mode = 1
 spot_range = 100.0
 spot_attenuation = 0.5
 spot_angle = 70.3009
@@ -173,6 +166,7 @@ light_energy = 50.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.1
 light_specular = 0.0
+light_bake_mode = 1
 spot_range = 100.0
 spot_attenuation = 0.5
 spot_angle = 70.3009
@@ -184,35 +178,38 @@ light_energy = 50.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.1
 light_specular = 0.0
+light_bake_mode = 1
 spot_range = 100.0
 spot_attenuation = 0.5
 spot_angle = 70.3009
 
 [node name="Velas" type="Node3D" parent="."]
-visible = false
 
 [node name="vela" type="OmniLight3D" parent="Velas"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.753, 56.322, -9.70091)
-light_color = Color(0.76, 0.5548, 0.3496, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 275.877, 56.322, -9.70091)
+light_color = Color(0.851125, 0.50296, 0.236824, 1)
 light_energy = 11.886
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 4.419
+light_bake_mode = 1
 omni_attenuation = 0.581
 
 [node name="vela2" type="OmniLight3D" parent="Velas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.347, 41.5514, -9.70091)
-light_color = Color(0.76, 0.5548, 0.3496, 1)
+light_color = Color(0.851125, 0.50296, 0.236824, 1)
 light_energy = 11.886
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 4.419
+light_bake_mode = 1
 omni_attenuation = 0.581
 
 [node name="vela3" type="OmniLight3D" parent="Velas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 293.297, 43, 9.55087)
-light_color = Color(0.76, 0.5548, 0.3496, 1)
+light_color = Color(0.851125, 0.50296, 0.236824, 1)
 light_energy = 11.886
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 4.419
+light_bake_mode = 1
 omni_attenuation = 0.581
 
 [node name="puestos" type="Node3D" parent="."]
@@ -225,6 +222,7 @@ light_energy = 2.438
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 1.371
 light_specular = 0.0
+light_bake_mode = 1
 omni_range = 16.416
 omni_attenuation = -0.18
 
@@ -235,6 +233,7 @@ light_energy = 6.0
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 1.371
 light_specular = 0.0
+light_bake_mode = 1
 omni_range = 16.406
 omni_attenuation = 0.238
 omni_shadow_mode = 0
@@ -246,6 +245,7 @@ light_energy = 6.248
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 1.371
 light_specular = 0.0
+light_bake_mode = 1
 omni_range = 19.223
 omni_attenuation = 0.391
 
@@ -258,6 +258,7 @@ light_color = Color(0.76, 0.5548, 0.3496, 1)
 light_energy = 6.248
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 1.371
+light_bake_mode = 1
 omni_range = 6.864
 omni_attenuation = 0.391
 
@@ -267,6 +268,7 @@ light_color = Color(0.76, 0.5548, 0.3496, 1)
 light_energy = 6.248
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 1.371
+light_bake_mode = 1
 omni_range = 6.864
 omni_attenuation = 0.391
 
@@ -276,6 +278,7 @@ light_color = Color(0.76, 0.5548, 0.3496, 1)
 light_energy = 6.248
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 1.371
+light_bake_mode = 1
 omni_range = 6.864
 omni_attenuation = 0.391
 
@@ -285,6 +288,7 @@ light_color = Color(0.76, 0.5548, 0.3496, 1)
 light_energy = 6.248
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 1.371
+light_bake_mode = 1
 omni_range = 6.864
 omni_attenuation = 0.391
 
@@ -295,6 +299,7 @@ light_energy = 6.248
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 1.371
 light_specular = 0.0
+light_bake_mode = 1
 omni_range = 16.407
 omni_attenuation = 1.915
 
@@ -305,6 +310,7 @@ light_energy = 6.248
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 1.371
 light_specular = 0.0
+light_bake_mode = 1
 omni_range = 16.407
 omni_attenuation = 1.915
 
@@ -315,6 +321,7 @@ light_energy = 6.248
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 1.371
 light_specular = 0.0
+light_bake_mode = 1
 omni_range = 16.407
 omni_attenuation = 1.915
 
@@ -325,8 +332,22 @@ light_energy = 6.248
 light_indirect_energy = 5.638
 light_volumetric_fog_energy = 1.371
 light_specular = 0.0
+light_bake_mode = 1
 omni_range = 16.407
 omni_attenuation = 1.915
+
+[node name="blockin_level_2" parent="." instance=ExtResource("1_ra442")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+
+[node name="botellaCristal" parent="blockin_level_2" index="3"]
+transparency = 0.2
+surface_material_override/0 = SubResource("StandardMaterial3D_ibugp")
+
+[node name="AguaBotella" parent="blockin_level_2" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qpwj6")
+
+[node name="StaticBody3D" parent="blockin_level_2/base_level" index="0"]
+collision_layer = 2
 
 [node name="Luztorre" type="SpotLight3D" parent="."]
 transform = Transform3D(0.0241198, -0.601321, 0.798644, 0.225782, 0.781512, 0.581603, -0.973879, 0.166291, 0.154617, 653.239, 133.695, 6.377)
@@ -346,6 +367,9 @@ spot_angle_attenuation = 2.37842
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("7_ibugp")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("9_3p04p")
 
 [editable path="KillZone"]
 [editable path="blockin_level_2"]
