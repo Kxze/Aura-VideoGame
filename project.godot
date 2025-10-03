@@ -15,11 +15,16 @@ run/main_scene="uid://dj3qt70udb1nl"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://dwaurb6y88n77"
+
 [autoload]
 
 Constants="*res://script/Constants/CONSTANTS.gd"
 SceneSwitch="*res://script/Scene_switch.gd"
 GlobalBrightnessWorldEnvironment="*res://scenes/Global_brightness_world_environment.tscn"
+AudioManager="*res://script/AudioManager.gd"
 
 [display]
 
@@ -34,9 +39,10 @@ folder_colors={
 "res://Art/": "red",
 "res://Fondos/": "pink",
 "res://Fonts/": "blue",
-"res://Temas/": "gray",
+"res://Shaders/": "orange",
 "res://scenes/": "yellow",
 "res://script/": "teal",
+"res://sonidos/": "green",
 "res://textures/": "purple"
 }
 
@@ -96,4 +102,6 @@ run={
 
 [rendering]
 
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
 occlusion_culling/use_occlusion_culling=true

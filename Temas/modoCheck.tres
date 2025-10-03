@@ -1,8 +1,20 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://caol8loxsat7k"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://caol8loxsat7k"]
 
 [ext_resource type="Texture2D" uid="uid://8uxo7qu61byq" path="res://textures/Toggle-Completa.svg" id="1_17hkb"]
 [ext_resource type="Texture2D" uid="uid://cp4hq8wobobas" path="res://textures/Toggle-Ventana.svg" id="2_1mclk"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mclk"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17hkb"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
+shadow_color = Color(0, 0, 0, 0)
+
 [resource]
 CheckButton/icons/checked = ExtResource("1_17hkb")
 CheckButton/icons/unchecked = ExtResource("2_1mclk")
+CheckButton/styles/disabled = SubResource("StyleBoxFlat_1mclk")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_17hkb")

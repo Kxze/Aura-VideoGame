@@ -1,5 +1,8 @@
 extends VBoxContainer
+
 @onready var ajustes_popup = get_node("/root/MenuPrincipal/Popup_Ajustes")
+@onready var click_sound = preload("res://sonidos/botón2.wav")   # 🔊 carga tu sonido
+
 var _buttons = []
 
 func _ready():
@@ -27,7 +30,6 @@ func _ready():
 
 		# Al inicio ocultamos las estrellas y el glow
 		_hide_stars(b)
-		_enable_glow(b, false)
 
 	# --- Nuevo: focus inicial en el primer botón ---
 	if _buttons.size() > 0:
@@ -35,35 +37,36 @@ func _ready():
 		_on_button_focus_entered(_buttons[0])   # activa glow y estrellas en el primero
 
 # --- Acciones de los botones ---
-#func _on_nueva_partida_pressed(button):
 func _on_nueva_partida_pressed(button):
+	_play_click()
 	get_tree().change_scene_to_file(Constants.scene_levels["level_1"])
 
 func _on_continuar_pressed(button):
+	_play_click()
 	print("Continuar partida (cargar juego)")
 	get_tree().change_scene_to_file("res://scenes/partidas.tscn")
 
 func _on_coleccionista_pressed(button):
+	_play_click()
 	print("Abrir coleccionista")
 	get_tree().change_scene_to_file("res://scenes/coleccionista.tscn")
 
 func _on_ajustes_pressed(button):
+	_play_click()
 	ajustes_popup.popup_centered()
 	ajustes_popup.show()
 
-
 func _on_salir_pressed(button):
+	_play_click()
 	print("Salir del juego")
 	get_tree().quit()
 
 # --- Manejo de estrellas y glow ---
 func _on_button_focus_entered(button):
 	_show_stars(button)
-	_enable_glow(button, true)
 
 func _on_button_focus_exited(button):
 	_hide_stars(button)
-	_enable_glow(button, false)
 
 func _show_stars(button):
 	if button.has_node("HBoxContainer/StarLeft"):
@@ -77,7 +80,6 @@ func _hide_stars(button):
 	if button.has_node("HBoxContainer/StarRight"):
 		button.get_node("HBoxContainer/StarRight").visible = false
 
-# --- Glow del shader ---
-func _enable_glow(button, enabled: bool):
-	if button.material and button.material is ShaderMaterial:
-		button.material.set_shader_parameter("active", enabled)
+# --- 🔊 Reproducir sonido ---
+func _play_click():
+	AudioManager.play_click(click_sound)

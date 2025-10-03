@@ -1,0 +1,27 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://dvrq3xiaqii5p"
+path.bptc="res://.godot/imported/level_2.exr-299b7e4c492e6e551a184f07ad79d877.bptc.ctexarray"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://scenes/levels/bakes_lights/level_2.exr"
+dest_files=["res://.godot/imported/level_2.exr-299b7e4c492e6e551a184f07ad79d877.bptc.ctexarray"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=1

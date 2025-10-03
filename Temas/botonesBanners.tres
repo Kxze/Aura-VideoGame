@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bnm47bl77l4si"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nmbxu"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
+
+[resource]
+Button/styles/pressed = SubResource("StyleBoxFlat_nmbxu")
