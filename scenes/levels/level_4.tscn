@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_w6h2s"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_ogj6a"]
-[ext_resource type="PackedScene" uid="uid://dmw0q4k8n517g" path="res://Art/Levels/Blocking4.blend" id="3_anwe6"]
+[ext_resource type="PackedScene" uid="uid://dfshr2qtet0kq" path="res://Art/Levels/Blocking4.blend" id="3_anwe6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w6h2s"]
 sky_top_color = Color(0.620576, 0.496378, 0.557171, 1)
