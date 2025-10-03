@@ -310,4 +310,3 @@ expand_mode = 3
 stretch_mode = 3
 
 [node name="Popup_Ajustes" parent="." instance=ExtResource("7_nxt0m")]
-script = null

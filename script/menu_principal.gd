@@ -1,8 +1,13 @@
 extends VBoxContainer
-@onready var ajustes_popup = get_node("/root/MenuPrincipal/Popup_Ajustes")
+
+@onready var popup_ajustes: Popup = $"../Popup_Ajustes"
+
 var _buttons = []
 
 func _ready():
+	#hacer que los ajustes empiecen ocultos
+	popup_ajustes.hide()
+	
 	# Guardamos los botones en una lista
 	_buttons = [$Button, $Button2, $Button3, $Button4, $Button5]
 
@@ -48,9 +53,9 @@ func _on_coleccionista_pressed(button):
 	get_tree().change_scene_to_file("res://scenes/coleccionista.tscn")
 
 func _on_ajustes_pressed(button):
-	ajustes_popup.popup_centered()
-	ajustes_popup.show()
-
+	$"../Popup_Ajustes".mostrar("inicio")
+	popup_ajustes.popup_centered()
+	popup_ajustes.show()
 
 func _on_salir_pressed(button):
 	print("Salir del juego")
