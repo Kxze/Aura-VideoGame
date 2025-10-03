@@ -14,13 +14,11 @@ func enter(previous_state_path: String, data := {}):
 	# Saltar solo si viene de comando Jump
 	if data.has("Jump"):
 		_do_jump()
-		player.animationPlayer.play("Jump")
 
 	# Iniciar coyote solo si no viene de Dash
 	if not data.has("FromDash"):
 		canReadJumpCoyote = true
 		coyote_timer.start()
-	
 
 func physics_update(delta: float):
 	if player.is_on_floor():
@@ -53,7 +51,6 @@ func physics_update(delta: float):
 	player.move_and_slide()
 	player.global_position.z = 0
 
-
 func handled_input(_event: InputEvent):
 	# Dash primero
 	if Input.is_action_just_pressed("dash") and player.can_dash and not player.is_dashing:
@@ -70,7 +67,6 @@ func handled_input(_event: InputEvent):
 			buffered_jump = true
 			Jump_buffer_timer.start()
 
-
 func _on_coyote_timer_timeout() -> void:
 	canReadJumpCoyote = false
 
@@ -80,7 +76,12 @@ func _on_jump_buffer_timer_timeout() -> void:
 func _do_jump():
 	isJumping = true
 	player.velocity.y = player.jump
-	player.animationPlayer.play("Jump")
+
+	# Reproducir animación de salto solo si no está activa
+	if player.animationPlayer.current_animation != "Jump":
+		player.animationPlayer.play("Jump")
 
 func _on_fall_timer_timeout() -> void:
-	player.animationPlayer.play("Fall")
+	# Cuando el fall_timer se activa, reproducir "Fall"
+	if player.animationPlayer.current_animation != "Fall":
+		player.animationPlayer.play("Fall")

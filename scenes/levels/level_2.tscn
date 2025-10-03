@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://jh08husfmtny"]
+[gd_scene load_steps=24 format=4 uid="uid://jh08husfmtny"]
 
 [ext_resource type="PackedScene" uid="uid://bdj1svdqbupp" path="res://Art/Levels/blockin_level_2.blend" id="1_ra442"]
 [ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_8qukl"]
@@ -10,6 +10,7 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://d0jfiklbqor6l" path="res://scenes/levels/level_2.occ" id="7_ibugp"]
 [ext_resource type="Texture2D" uid="uid://iwagw7fdkjah" path="res://Art/Levels/blockin_level_2_Fondo.png" id="7_qsp8v"]
 [ext_resource type="LightmapGIData" uid="uid://clj76a6yfeg52" path="res://scenes/levels/bakes_lights/level_2.lmbake" id="9_3p04p"]
+[ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="11_brxtv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ibugp"]
 
@@ -243,5 +244,12 @@ occluder = ExtResource("7_ibugp")
 [node name="LightmapGI" type="LightmapGI" parent="."]
 light_data = ExtResource("9_3p04p")
 
+[node name="Area3D" parent="." instance=ExtResource("11_brxtv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0603, 0, 0)
+collision_layer = 1
+prev_level_path = "res://scenes/levels/level_1.tscn"
+is_next = false
+
 [editable path="KillZone"]
 [editable path="blockin_level_2"]
+[editable path="Area3D"]
