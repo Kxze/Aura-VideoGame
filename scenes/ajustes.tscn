@@ -24,6 +24,7 @@ Label/fonts/font = ExtResource("2_3a1hb")
 
 [node name="Popup_Ajustes" type="Popup"]
 transparent_bg = true
+oversampling_override = 1.0
 size = Vector2i(1920, 1080)
 visible = true
 transparent = true
@@ -46,6 +47,7 @@ scale = Vector2(0.55, 0.6)
 texture = ExtResource("3_4g77v")
 
 [node name="BtnSalir" type="Button" parent="Panel"]
+visible = false
 layout_mode = 0
 offset_left = 1368.0
 offset_top = 519.0
@@ -56,6 +58,7 @@ icon = ExtResource("3_xyhe0")
 flat = true
 
 [node name="BtnInicio" type="Button" parent="Panel"]
+visible = false
 layout_mode = 0
 offset_left = 1370.0
 offset_top = 409.0
@@ -66,6 +69,7 @@ icon = ExtResource("4_jvojc")
 flat = true
 
 [node name="BtnContinuar" type="Button" parent="Panel"]
+visible = false
 layout_mode = 0
 offset_left = 1370.0
 offset_top = 299.0
@@ -197,12 +201,12 @@ text = "Modo   "
 [node name="CheckModo" type="CheckButton" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
 theme = ExtResource("7_o5kyp")
-theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
 button_pressed = true
 flat = true
 script = ExtResource("9_2cqcg")

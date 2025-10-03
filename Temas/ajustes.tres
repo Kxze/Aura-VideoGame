@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=14 format=3 uid="uid://dntvqdxo8k3u8"]
 
-[ext_resource type="Texture2D" uid="uid://iu6jutuwau5c" path="res://textures/Starr.svg" id="1_ibegn"]
+[ext_resource type="Texture2D" uid="uid://bdvhvpctilheh" path="res://textures/star-slider.svg" id="1_d4qa2"]
 [ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="2_d5am0"]
 [ext_resource type="Texture2D" uid="uid://dtofupmyiute1" path="res://textures/arrow-down.svg" id="3_duati"]
 
@@ -131,9 +131,9 @@ Button/styles/focus = SubResource("StyleBoxFlat_eslno")
 Button/styles/hover = SubResource("StyleBoxFlat_nprfw")
 Button/styles/normal = SubResource("StyleBoxFlat_pesmo")
 Button/styles/pressed = SubResource("StyleBoxFlat_y15t7")
-HSlider/icons/grabber = ExtResource("1_ibegn")
-HSlider/icons/grabber_disabled = ExtResource("1_ibegn")
-HSlider/icons/grabber_highlight = ExtResource("1_ibegn")
+HSlider/icons/grabber = ExtResource("1_d4qa2")
+HSlider/icons/grabber_disabled = ExtResource("1_d4qa2")
+HSlider/icons/grabber_highlight = ExtResource("1_d4qa2")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_wstgy")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_uy8f6")
 Label/colors/font_color = Color(0.176471, 0.121569, 0.0588235, 1)

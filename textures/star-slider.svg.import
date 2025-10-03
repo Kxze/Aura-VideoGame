@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0l411mc8is7g"
-path.s3tc="res://.godot/imported/VasoVelaSuperior.png-bb28b1ac431e8cb42e6b62e861dca6d8.s3tc.ctex"
+uid="uid://bdvhvpctilheh"
+path="res://.godot/imported/star-slider.svg-90a173cb1ecd24865170873ee09b10cb.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://Art/Levels/textures/VasoVelaSuperior.png"
-dest_files=["res://.godot/imported/VasoVelaSuperior.png-bb28b1ac431e8cb42e6b62e861dca6d8.s3tc.ctex"]
+source_file="res://textures/star-slider.svg"
+dest_files=["res://.godot/imported/star-slider.svg-90a173cb1ecd24865170873ee09b10cb.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -25,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -39,4 +37,7 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
