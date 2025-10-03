@@ -1,5 +1,8 @@
 extends VBoxContainer
+
 @onready var ajustes_popup = get_node("/root/MenuPrincipal/Popup_Ajustes")
+@onready var click_sound = preload("res://sonidos/botón2.wav")   # 🔊 carga tu sonido
+
 var _buttons = []
 
 func _ready():
@@ -34,24 +37,27 @@ func _ready():
 		_on_button_focus_entered(_buttons[0])   # activa glow y estrellas en el primero
 
 # --- Acciones de los botones ---
-#func _on_nueva_partida_pressed(button):
 func _on_nueva_partida_pressed(button):
+	_play_click()
 	get_tree().change_scene_to_file(Constants.scene_levels["level_1"])
 
 func _on_continuar_pressed(button):
+	_play_click()
 	print("Continuar partida (cargar juego)")
 	get_tree().change_scene_to_file("res://scenes/partidas.tscn")
 
 func _on_coleccionista_pressed(button):
+	_play_click()
 	print("Abrir coleccionista")
 	get_tree().change_scene_to_file("res://scenes/coleccionista.tscn")
 
 func _on_ajustes_pressed(button):
+	_play_click()
 	ajustes_popup.popup_centered()
 	ajustes_popup.show()
 
-
 func _on_salir_pressed(button):
+	_play_click()
 	print("Salir del juego")
 	get_tree().quit()
 
@@ -73,3 +79,7 @@ func _hide_stars(button):
 		button.get_node("HBoxContainer/StarLeft").visible = false
 	if button.has_node("HBoxContainer/StarRight"):
 		button.get_node("HBoxContainer/StarRight").visible = false
+
+# --- 🔊 Reproducir sonido ---
+func _play_click():
+	AudioManager.play_click(click_sound)
