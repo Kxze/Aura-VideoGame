@@ -36,7 +36,6 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://Art/": "red",
-"res://Audio/": "green",
 "res://Fondos/": "pink",
 "res://Fonts/": "blue",
 "res://Temas/": "gray",
