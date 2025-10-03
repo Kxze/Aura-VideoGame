@@ -1,7 +1,8 @@
 extends VBoxContainer
 
 @onready var popup_ajustes: Popup = $"../Popup_Ajustes"
-@onready var click_sound = preload("res://sonidos/botón2.wav")   # 🔊 carga tu sonido
+@onready var click_sound = preload("res://sonidos/botón2.wav")   # 🔊 sonido click
+@onready var hover_sound = preload("res://sonidos/hover.wav")    # 🔊 sonido hover/desplazamiento
 
 var _buttons = []
 
@@ -64,6 +65,7 @@ func _on_salir_pressed(button):
 
 # --- Manejo de estrellas y glow ---
 func _on_button_focus_entered(button):
+	_play_hover()   # 🔊 suena al entrar con teclado/mouse
 	_show_stars(button)
 
 func _on_button_focus_exited(button):
@@ -83,4 +85,7 @@ func _hide_stars(button):
 
 # --- 🔊 Reproducir sonido ---
 func _play_click():
-	AudioManager.play_click(click_sound)
+	return AudioManager.play_click(click_sound)
+
+func _play_hover():
+	return AudioManager.play_hover(hover_sound)
