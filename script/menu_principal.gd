@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-@onready var ajustes_popup = get_node("/root/MenuPrincipal/Popup_Ajustes")
+@onready var popup_ajustes: Popup = $"../Popup_Ajustes"
 @onready var click_sound = preload("res://sonidos/botón2.wav")   # 🔊 carga tu sonido
 
 var _buttons = []
@@ -53,8 +53,9 @@ func _on_coleccionista_pressed(button):
 
 func _on_ajustes_pressed(button):
 	_play_click()
-	ajustes_popup.popup_centered()
-	ajustes_popup.show()
+	$"../Popup_Ajustes".mostrar("inicio")
+	popup_ajustes.popup_centered()
+	popup_ajustes.show()
 
 func _on_salir_pressed(button):
 	_play_click()
