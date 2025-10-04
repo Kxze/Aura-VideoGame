@@ -25,6 +25,7 @@ Constants="*res://script/Constants/CONSTANTS.gd"
 SceneSwitch="*res://script/Scene_switch.gd"
 GlobalBrightnessWorldEnvironment="*res://scenes/Global_brightness_world_environment.tscn"
 AudioManager="*res://script/AudioManager.gd"
+UiGlobal="*res://scenes/UI_Global.tscn"
 
 [display]
 

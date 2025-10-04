@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw0p74lmevffi"]
+[gd_scene load_steps=9 format=3 uid="uid://dw0p74lmevffi"]
 
 [ext_resource type="Texture2D" uid="uid://daxcp3lrk7c2a" path="res://Fondos/PortadaMainMenu.png" id="1_486ty"]
 [ext_resource type="Texture2D" uid="uid://c2lu64lmj3asw" path="res://textures/LogoAURA_BrilloAmarillo.png" id="2_qcl6i"]
 [ext_resource type="Script" uid="uid://7avlqe3u305i" path="res://script/menu_principal.gd" id="2_w5ui5"]
 [ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="3_qcl6i"]
 [ext_resource type="Texture2D" uid="uid://iu6jutuwau5c" path="res://textures/Starr.svg" id="4_486ty"]
-[ext_resource type="PackedScene" uid="uid://lamcax8x6dtt" path="res://scenes/ajustes.tscn" id="7_nxt0m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qcl6i"]
 texture = ExtResource("1_486ty")
@@ -67,11 +66,11 @@ script = ExtResource("2_w5ui5")
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
-theme_override_colors/font_hover_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_colors/font_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_hover_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 30
 theme_override_constants/align_to_largest_stylebox = 0
@@ -116,11 +115,11 @@ stretch_mode = 3
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
-theme_override_colors/font_hover_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_colors/font_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_hover_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
@@ -164,11 +163,11 @@ stretch_mode = 3
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
-theme_override_colors/font_hover_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_colors/font_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_hover_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
@@ -212,11 +211,11 @@ stretch_mode = 3
 [node name="Button4" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
-theme_override_colors/font_hover_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_colors/font_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_hover_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
@@ -260,11 +259,11 @@ stretch_mode = 3
 [node name="Button5" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
-theme_override_colors/font_hover_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_colors/font_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_hover_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
@@ -304,6 +303,3 @@ layout_mode = 2
 texture = ExtResource("4_486ty")
 expand_mode = 3
 stretch_mode = 3
-
-[node name="Popup_Ajustes" parent="." instance=ExtResource("7_nxt0m")]
-visible = false

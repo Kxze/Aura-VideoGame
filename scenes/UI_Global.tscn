@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq0621r6y3j0d"]
+
+[ext_resource type="Script" uid="uid://beyjtwiqby46m" path="res://script/Ajustes/ui_global.gd" id="1_6j0sp"]
+[ext_resource type="Texture2D" uid="uid://cjo5noy45xx5a" path="res://icon.svg" id="1_figmf"]
+[ext_resource type="PackedScene" uid="uid://lamcax8x6dtt" path="res://scenes/popup_ajustes.tscn" id="2_c6hu1"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_6j0sp")
+
+[node name="BtnPausa" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+icon = ExtResource("1_figmf")
+flat = true
+
+[node name="Popup_Ajustes" parent="." instance=ExtResource("2_c6hu1")]
+
+[connection signal="pressed" from="BtnPausa" to="." method="_on_btn_pausa_pressed"]

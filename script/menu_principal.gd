@@ -1,6 +1,5 @@
 extends VBoxContainer
 
-@onready var popup_ajustes: Popup = $"../Popup_Ajustes"
 @onready var click_sound = preload("res://sonidos/botón2.wav")   # 🔊 sonido click
 @onready var hover_sound = preload("res://sonidos/hover.wav")    # 🔊 sonido hover/desplazamiento
 
@@ -54,9 +53,9 @@ func _on_coleccionista_pressed(button):
 
 func _on_ajustes_pressed(button):
 	_play_click()
-	$"../Popup_Ajustes".mostrar("inicio")
-	popup_ajustes.popup_centered()
-	popup_ajustes.show()
+	UiGlobal.popup_ajustes.mostrar("inicio")
+	UiGlobal.popup_ajustes.popup_centered()
+	UiGlobal.popup_ajustes.show()
 
 func _on_salir_pressed(button):
 	_play_click()
