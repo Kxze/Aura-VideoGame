@@ -10,14 +10,6 @@ size = Vector3(8.27905, 193.112, 26.9981)
 
 [node name="Level3" type="Node3D"]
 
-[node name="@CollisionShape3D@66257" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.82229, 61.2529, 0.513276)
-shape = SubResource("BoxShape3D_0ljxa")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.03271, 125.581, 1.81464)
-shape = SubResource("BoxShape3D_0ljxa")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.200735, 0.598676, -0.77543, -0.705838, 0.46051, 0.538259, 0.679336, 0.655376, 0.330128, 0, 0, 51.0904)
 light_color = Color(0.299512, 0.641459, 0.55459, 1)
@@ -28,9 +20,17 @@ light_specular = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.2644, 54.6524, -7.00563)
 collision_layer = 2
 
+[node name="@CollisionShape3D@66257" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.4421, 6.6005, 7.51891)
+shape = SubResource("BoxShape3D_0ljxa")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425735, -0.652458, 0.155807)
 collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.45844, 126.233, 1.65883)
+shape = SubResource("BoxShape3D_0ljxa")
 
 [node name="Player" parent="." instance=ExtResource("2_0qepi")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 21.2119, 47.7132, 1.96833)
@@ -65,6 +65,12 @@ collision_layer = 2
 layers = 2
 
 [node name="StaticBody3D" parent="blocking_level_3/Foto" index="0"]
+collision_layer = 2
+
+[node name="RampaCollission" parent="blocking_level_3" index="74"]
+visible = false
+
+[node name="StaticBody3D" parent="blocking_level_3/RampaCollission" index="0"]
 collision_layer = 2
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]

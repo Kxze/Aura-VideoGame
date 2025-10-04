@@ -1,37 +1,45 @@
 extends PlayerState
+
 var isRunning : bool = false
+
 func enter(previous_state_path : String, data := {}):
 	player.animationPlayer.play("Walk")
 	isRunning = false
 
 func physics_update(delta: float):
+	# --- Pasar a Fall si deja de tocar el suelo ---
 	if !player.is_on_floor():
-		emit_signal("finished", "InAir")
-	#Aqui se resetea la velocidad de cuando el jugador deja de presionar shift
+		emit_signal("finished", "Fall")
+		return  # Salimos de physics_update para no seguir ejecutando el resto
+
+	# Reset de velocidad si dejó de presionar run
 	player.speed = player.speed_normal
+
+	# --- Run / Walk Animations ---
 	if Input.is_action_pressed("run"):
 		isRunning = true
 		player.speed = player.speed_run
-		if isRunning:
+		if isRunning and player.animationPlayer.current_animation != "Run":
 			player.animationPlayer.play("Run")
-	elif player.movInput.x > 0 or player.movInput.x < 0:
+	elif player.movInput.x != 0:
 		isRunning = false
-		player.animationPlayer.play("Walk")
-	elif player.movInput.x == 0:
+		if player.animationPlayer.current_animation != "Walk":
+			player.animationPlayer.play("Walk")
+	else:
 		emit_signal("finished", "Idle")
+
+	# --- Jump ---
 	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
 		emit_signal("finished", "InAir", {"Jump" : true})
 		
-	
+	# --- Dash ---
 	if Input.is_action_just_pressed("dash"):
 		emit_signal("finished", "Dash")
 
-	player.velocity.x = lerpf(player.velocity.x, player.movInput.x * player.speed, .9)
+	# --- Movimiento horizontal ---
+	player.velocity.x = lerp(player.velocity.x, player.movInput.x * player.speed, 0.9)
 	player.move_and_slide()
 	player.global_position.z = 0
-
-# Eliminamos la variable local last_facing
-# var last_facing := 1  # 1 = derecha, -1 = izquierda
 
 func update(_delta: float):
 	if player.movInput.x != 0:
@@ -62,7 +70,6 @@ func accelerate(movInput: Vector2):
 
 func apply_friction():
 	player.velocity = player.velocity.move_toward(Vector3.ZERO, player.friction)
-
 
 func exit():
 	pass

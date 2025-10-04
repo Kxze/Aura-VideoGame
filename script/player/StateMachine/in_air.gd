@@ -25,6 +25,8 @@ func physics_update(delta: float):
 		if buffered_jump and not player.jump_locked and not player.is_dashing:
 			buffered_jump = false
 			emit_signal("finished", "InAir", {"Jump": true})
+		elif !player.is_on_floor():
+			player.animationPlayer.play("Fall")
 		else:
 			emit_signal("finished", "Idle")
 		player.jump_locked = false
@@ -32,13 +34,11 @@ func physics_update(delta: float):
 		# Aplicar gravedad
 		player.velocity.y += player.GRAVITY
 
-	# --- Lógica del fall_timer ---
-	if !player.ray_cast_3d.is_colliding():
-		if fall_timer.is_stopped(): # si está detenido, arrancar
-			fall_timer.start()
-	else:
-		if not fall_timer.is_stopped(): # si vuelve a colisionar, detener
-			fall_timer.stop()
+	if player.velocity.y > 0 and player.animationPlayer.current_animation != "Fall":
+		player.animationPlayer.play("Fall")
+	
+
+
 
 	# Movimiento horizontal en el aire
 	if !player.is_on_floor():
@@ -50,6 +50,7 @@ func physics_update(delta: float):
 	player.prevVelocity = player.movInput
 	player.move_and_slide()
 	player.global_position.z = 0
+	
 
 func handled_input(_event: InputEvent):
 	# Dash primero
@@ -63,6 +64,8 @@ func handled_input(_event: InputEvent):
 			return  
 		if player.is_on_floor() or canReadJumpCoyote:
 			emit_signal("finished", "InAir", {"Jump": true})
+		# Reiniciar animación Jump
+			player.animationPlayer.play("Jump", 0.0, 1.0, false)
 		else:
 			buffered_jump = true
 			Jump_buffer_timer.start()
@@ -77,11 +80,10 @@ func _do_jump():
 	isJumping = true
 	player.velocity.y = player.jump
 
+	# Reproducir animación de salto desde el inicio
+	player.animationPlayer.play("Jump", 0.0, 1.0, false)
+
+
 	# Reproducir animación de salto solo si no está activa
 	if player.animationPlayer.current_animation != "Jump":
 		player.animationPlayer.play("Jump")
-
-func _on_fall_timer_timeout() -> void:
-	# Cuando el fall_timer se activa, reproducir "Fall"
-	if player.animationPlayer.current_animation != "Fall":
-		player.animationPlayer.play("Fall")
