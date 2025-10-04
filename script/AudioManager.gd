@@ -9,13 +9,14 @@ func _ready():
 	efectos_player = AudioStreamPlayer.new()
 	efectos_player.name = "SFX_Player"
 	add_child(efectos_player)
-
+	efectos_player.volume_db = +6  # 🔊 volumen normal (ajusta aquí)
+	
 	# Música
 	musica_player = AudioStreamPlayer.new()
 	musica_player.name = "Music_Player"
 	add_child(musica_player)
-	# Si tienes un bus "Music", puedes activar esta línea:
-	# music_player.bus = "Music"
+	musica_player.volume_db = -4  # 🔉 un poco más bajo para equilibrar con efectos
+
 
 # --------- SFX ----------
 # Función base: reproduce y devuelve la duración (si el stream la reporta)
