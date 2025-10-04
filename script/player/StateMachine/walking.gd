@@ -1,5 +1,32 @@
 extends PlayerState
 
+# Precarga tus sonidos de pasos (usa tus rutas reales)
+@onready var pasos = [
+	preload("res://sonidos/pasos/paso1.mp3"),
+	preload("res://sonidos/pasos/paso2.mp3"),
+	preload("res://sonidos/pasos/paso3.mp3"),
+	preload("res://sonidos/pasos/paso4.mp3"),
+	preload("res://sonidos/pasos/paso5.mp3"),
+	preload("res://sonidos/pasos/paso6.mp3"),
+	preload("res://sonidos/pasos/paso7.mp3"),
+	preload("res://sonidos/pasos/paso8.mp3"),
+	preload("res://sonidos/pasos/paso9.mp3"),
+	preload("res://sonidos/pasos/paso10.mp3"),
+]
+
+var step_timer := 0.0
+var step_interval := 0.4  # tiempo entre pasos (ajústalo según animación o velocidad)
+
+func _process(delta):
+	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
+		step_timer -= delta
+		if step_timer <= 0.0:
+			AudioManager.play_random_sfx(pasos)
+			step_timer = step_interval
+	else:
+		step_timer = 0.0
+
+
 var isRunning : bool = false
 
 func enter(previous_state_path : String, data := {}):

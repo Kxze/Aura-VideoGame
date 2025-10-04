@@ -55,3 +55,10 @@ func pause_music() -> void:
 
 func resume_music() -> void:
 	musica_player.stream_paused = false
+	
+	# --------- EFECTOS ALEATORIOS ----------
+func play_random_sfx(sounds: Array) -> void:
+	if sounds.is_empty():
+		return
+	var sound = sounds[randi() % sounds.size()]
+	play_and_get_duration(sound)
