@@ -1,3 +1,191 @@
-[gd_scene format=3 uid="uid://d2yu70n2vogoj"]
+[gd_scene load_steps=7 format=3 uid="uid://d2yu70n2vogoj"]
+
+[ext_resource type="PackedScene" uid="uid://dnms5rm70a8ir" path="res://Art/Levels/Blocking_level5.blend" id="1_845dy"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_dswqx"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_dswqx"]
+[ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="4_laj7o"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_laj7o"]
+height = 11.0
+radius = 3.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_laj7o"]
+size = Vector3(5.15723, 33.0505, 50.4619)
 
 [node name="Level5" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22364, 0, 1.30148)
+
+[node name="Blocking_level5" parent="." instance=ExtResource("1_845dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -201.288, 10.4759, -6.96185)
+
+[node name="pCube5" parent="Blocking_level5" index="0"]
+transform = Transform3D(8.22102, 0, 0, 0, 0, -8.22102, 0, 8.22102, 0, 227.079, -15.7296, 7.7037)
+
+[node name="StaticBody3D" parent="Blocking_level5/pCube5" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking_level5/Camino_princi_pa" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking_level5/Piedras_en_el_camino/Puente_Base" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking_level5/pCube17" index="0"]
+collision_layer = 2
+
+[node name="Vacío_007" parent="Blocking_level5" index="13"]
+transform = Transform3D(6.96616, 0, 0, 0, -2.49129e-06, -6.96616, 0, 6.96616, -2.49129e-06, 257.689, -12.7939, 31.073)
+
+[node name="Vacío_011" parent="Blocking_level5" index="14"]
+transform = Transform3D(3.2073, 0, 0, 0, -1.14702e-06, -3.2073, 0, 3.2073, -1.14702e-06, -123.473, -7.34278, 11.0539)
+
+[node name="Vacío_018" parent="Blocking_level5" index="16"]
+transform = Transform3D(10.8262, 0, 0, 0, -2.61723e-06, -10.8262, 0, 7.31832, -3.87174e-06, -131.179, 18.9604, -17.6755)
+
+[node name="Vacío_004" parent="Blocking_level5" index="26"]
+transform = Transform3D(16.1966, 0, 0, 0, 21.2709, -0.0938559, 0, 0.123263, 16.1963, -45.3471, -17.3873, -1.88579)
+
+[node name="pCube5_001" parent="Blocking_level5" index="32"]
+transform = Transform3D(8.221, -0.0169311, 0, 0, 0, -8.22102, 0.0169311, 8.221, 0, 254.046, -14.8734, 6.23947)
+
+[node name="StaticBody3D" parent="Blocking_level5/pCube5_001" index="0"]
+collision_layer = 2
+
+[node name="CollisionShape3D" parent="Blocking_level5/pCube5_001/StaticBody3D" index="0"]
+transform = Transform3D(1, -6.98492e-10, 0, 6.98492e-10, 1, 0, 0, 0, 1, -0.345015, 0.000710562, 0)
+
+[node name="polySurface6" parent="Blocking_level5" index="35"]
+transform = Transform3D(-13.2021, 0.346376, 5.79916e-08, 2.45993e-08, 3.14871e-06, -13.2066, -0.346376, -13.2021, -3.14827e-06, 210.453, -14.796, 4.65712)
+
+[node name="StaticBody3D" parent="Blocking_level5/polySurface6" index="0"]
+collision_layer = 2
+
+[node name="Camino_princi_pa_001" parent="Blocking_level5" index="36"]
+transform = Transform3D(3.25491, 0, 0, 0, 0, -3.25491, 0, 4.13856, 0, 125.592, -11.1399, 0.611164)
+
+[node name="StaticBody3D" parent="Blocking_level5/Camino_princi_pa_001" index="0"]
+collision_layer = 2
+
+[node name="Camino_princi_pa_002" parent="Blocking_level5" index="37"]
+transform = Transform3D(-3.25491, 0.0268519, 3.18877e-09, -7.57849e-10, 1.14959e-06, -3.25491, -0.0135949, -6.42893, -5.82016e-07, 357.268, -11.9321, 14.3903)
+
+[node name="StaticBody3D" parent="Blocking_level5/Camino_princi_pa_002" index="0"]
+collision_layer = 2
+
+[node name="Vacío_044" parent="Blocking_level5" index="38"]
+transform = Transform3D(8.65512, 1.24445, -4.45049e-07, 0, -3.12714e-06, -8.74412, -1.24445, 8.65512, -3.09531e-06, 331.884, 18.546, 41.8196)
+
+[node name="Vacío_066" parent="Blocking_level5" index="58"]
+transform = Transform3D(3.2073, 0, 0, 0, 3.99265e-07, -3.2073, 0, -1.11643, -1.14702e-06, 178.425, -8.99531, -14.2914)
+
+[node name="Player" parent="." instance=ExtResource("2_dswqx")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -350.619, 5.39485, -5.87465)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
+light_color = Color(1, 0.969167, 0.63, 1)
+light_energy = 3.0
+light_specular = 0.0
+spot_range = 13.139
+spot_angle = 69.14
+
+[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.593994, 1.101, 6.303)
+keep_aspect = 0
+fov = 80.0
+far = 250.0
+script = ExtResource("3_dswqx")
+target = NodePath("..")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.874162, 0.485634, 2.62823e-08, -0.0414476, 0.0746075, 0.996351, 0.483862, -0.870973, 0.0853474, -338.943, 129.072, 42.2957)
+light_color = Color(0.83852, 0.661407, 0.320902, 1)
+light_energy = 16.0
+light_indirect_energy = 3.424
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 192.184
+spot_attenuation = 0.39
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(0.874162, 0.485634, 2.62823e-08, -0.0414476, 0.0746075, 0.996351, 0.483862, -0.870973, 0.0853474, -338.943, 129.072, 42.2957)
+light_color = Color(0.83852, 0.661407, 0.320902, 1)
+light_energy = 16.0
+light_indirect_energy = 3.424
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 192.184
+spot_attenuation = 0.39
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="."]
+transform = Transform3D(0.874162, 0.485634, 3.4098e-08, -0.145612, 0.262109, 0.95399, 0.463289, -0.833942, 0.29984, -55.0143, 131.61, 42.2957)
+light_color = Color(0.83852, 0.661407, 0.320902, 1)
+light_energy = 16.0
+light_indirect_energy = 3.424
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 192.184
+spot_attenuation = 0.39
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="."]
+transform = Transform3D(0.874162, 0.485634, 3.4098e-08, -0.145612, 0.262109, 0.95399, 0.463289, -0.833942, 0.29984, -145.665, 110.559, 42.3712)
+light_color = Color(0.83852, 0.661407, 0.320902, 1)
+light_energy = 16.0
+light_indirect_energy = 3.424
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 192.184
+spot_attenuation = 0.39
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(0.710362, -0.699055, 0.0818963, 0.703631, 0.702519, -0.106638, 0.0170121, 0.133376, 0.99092, 51.0674, 39.317, 110.262)
+light_color = Color(0.247059, 0.607843, 0.752941, 1)
+light_energy = 16.0
+light_indirect_energy = 3.424
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 192.184
+spot_attenuation = 0.39
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.874162, 0.485634, -3.37819e-08, 0.0801693, -0.144308, -0.98628, -0.478971, 0.862169, -0.165082, -338.943, -22.0262, -55.2518)
+light_color = Color(0.83852, 0.661407, 0.320902, 1)
+light_energy = 16.0
+light_indirect_energy = 3.424
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 192.184
+spot_attenuation = 0.39
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.746953, -0.12536, -0.652952, 0.0438859, 0.989219, -0.139715, 0.663427, 0.0757053, 0.744401, -23.0331, 65.1588, 249.84)
+light_color = Color(0.434023, 0.66669, 0.530061, 1)
+light_angular_distance = 90.0
+
+[node name="KillZone" parent="." instance=ExtResource("4_laj7o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -325.541, -8.05445, 7)
+collision_layer = 4
+
+[node name="CollisionShape3D" parent="KillZone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 331.585, 0, -11.1259)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164, 2, -5)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5.5, 2)
+shape = SubResource("CylinderShape3D_laj7o")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164, 4, 2)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.108, 14.9694, -1.09235)
+shape = SubResource("BoxShape3D_laj7o")
+
+[editable path="Blocking_level5"]
+[editable path="KillZone"]
