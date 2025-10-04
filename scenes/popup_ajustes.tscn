@@ -1,26 +1,26 @@
 [gd_scene load_steps=18 format=3 uid="uid://lamcax8x6dtt"]
 
-[ext_resource type="Script" uid="uid://j127wrukrjub" path="res://script/Ajustes/Ajustes.gd" id="1_4g77v"]
-[ext_resource type="Theme" uid="uid://dntvqdxo8k3u8" path="res://Temas/ajustes.tres" id="1_jg833"]
-[ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="2_3a1hb"]
-[ext_resource type="Theme" uid="uid://bnm47bl77l4si" path="res://Temas/botonesBanners.tres" id="3_3youp"]
-[ext_resource type="Texture2D" uid="uid://jg7d4006vfh8" path="res://Fondos/tarjeta_ajustes.png" id="3_4g77v"]
-[ext_resource type="Texture2D" uid="uid://beg01q1xg1sm0" path="res://textures/m-cerrar.png" id="3_nmbxu"]
-[ext_resource type="Texture2D" uid="uid://ci8u3t0dtnixc" path="res://textures/p-salir.png" id="3_xyhe0"]
-[ext_resource type="Texture2D" uid="uid://c1q1yiuipu2b2" path="res://textures/p-inicio.png" id="4_jvojc"]
-[ext_resource type="Texture2D" uid="uid://c4cf7lpdhply1" path="res://textures/p-continuar.png" id="5_50kiw"]
-[ext_resource type="Script" uid="uid://c80d8klh8c1y" path="res://script/Ajustes/slider_br.gd" id="6_jg833"]
-[ext_resource type="Script" uid="uid://c2h8jm01g0or5" path="res://script/Ajustes/grid_container.gd" id="6_nv4yc"]
-[ext_resource type="Theme" uid="uid://caol8loxsat7k" path="res://Temas/modoCheck.tres" id="7_o5kyp"]
-[ext_resource type="Script" uid="uid://b3dkl1j2hoi4j" path="res://script/Ajustes/check_modo.gd" id="9_2cqcg"]
-[ext_resource type="Script" uid="uid://c2ebrv84sb5hu" path="res://script/Ajustes/option_qual.gd" id="10_fifwc"]
-[ext_resource type="Script" uid="uid://t27b3d3leeuj" path="res://script/Ajustes/grid_container_controles.gd" id="10_nmbxu"]
-[ext_resource type="Script" uid="uid://u117bkd5minc" path="res://scenes/margin_container_controles.gd" id="11_fifwc"]
+[ext_resource type="Script" uid="uid://j127wrukrjub" path="res://script/Ajustes/Ajustes.gd" id="1_sfv8a"]
+[ext_resource type="Texture2D" uid="uid://jg7d4006vfh8" path="res://Fondos/tarjeta_ajustes.png" id="2_02847"]
+[ext_resource type="Texture2D" uid="uid://dn6exsqj82wdj" path="res://textures/p-salir.png" id="3_rqv08"]
+[ext_resource type="Texture2D" uid="uid://c1q1yiuipu2b2" path="res://textures/p-inicio.png" id="4_75n6u"]
+[ext_resource type="Texture2D" uid="uid://c4cf7lpdhply1" path="res://textures/p-continuar.png" id="5_3ckoo"]
+[ext_resource type="Theme" uid="uid://bnm47bl77l4si" path="res://Temas/botonesBanners.tres" id="6_woxkn"]
+[ext_resource type="Texture2D" uid="uid://beg01q1xg1sm0" path="res://textures/m-cerrar.png" id="7_rl8us"]
+[ext_resource type="Theme" uid="uid://dntvqdxo8k3u8" path="res://Temas/ajustes.tres" id="8_8vq27"]
+[ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="9_nxi8b"]
+[ext_resource type="Script" uid="uid://c2h8jm01g0or5" path="res://script/Ajustes/grid_container.gd" id="10_7kpvj"]
+[ext_resource type="Script" uid="uid://c80d8klh8c1y" path="res://script/Ajustes/slider_br.gd" id="11_vcfbj"]
+[ext_resource type="Theme" uid="uid://caol8loxsat7k" path="res://Temas/modoCheck.tres" id="12_1nwcj"]
+[ext_resource type="Script" uid="uid://b3dkl1j2hoi4j" path="res://script/Ajustes/check_modo.gd" id="13_7fdjt"]
+[ext_resource type="Script" uid="uid://c2ebrv84sb5hu" path="res://script/Ajustes/option_qual.gd" id="14_hyt0i"]
+[ext_resource type="Script" uid="uid://u117bkd5minc" path="res://scenes/margin_container_controles.gd" id="15_rm0g4"]
+[ext_resource type="Script" uid="uid://t27b3d3leeuj" path="res://script/Ajustes/grid_container_controles.gd" id="16_d03vf"]
 
 [sub_resource type="Theme" id="Theme_4g77v"]
 Label/colors/font_color = Color(0.175912, 0.121396, 0.0580004, 1)
 Label/font_sizes/font_size = 30
-Label/fonts/font = ExtResource("2_3a1hb")
+Label/fonts/font = ExtResource("9_nxi8b")
 
 [node name="Popup_Ajustes" type="Popup"]
 transparent_bg = true
@@ -28,7 +28,7 @@ oversampling_override = 1.0
 size = Vector2i(1920, 1080)
 visible = true
 transparent = true
-script = ExtResource("1_4g77v")
+script = ExtResource("1_sfv8a")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
@@ -44,39 +44,36 @@ offset_top = 158.0
 offset_right = 2190.0
 offset_bottom = 1412.0
 scale = Vector2(0.55, 0.6)
-texture = ExtResource("3_4g77v")
+texture = ExtResource("2_02847")
 
 [node name="BtnSalir" type="Button" parent="Panel"]
-visible = false
 layout_mode = 0
 offset_left = 1368.0
 offset_top = 519.0
 offset_right = 1526.0
 offset_bottom = 647.0
 scale = Vector2(0.9, 0.9)
-icon = ExtResource("3_xyhe0")
+icon = ExtResource("3_rqv08")
 flat = true
 
 [node name="BtnInicio" type="Button" parent="Panel"]
-visible = false
 layout_mode = 0
 offset_left = 1370.0
 offset_top = 409.0
 offset_right = 1528.0
 offset_bottom = 537.0
 scale = Vector2(0.9, 0.9)
-icon = ExtResource("4_jvojc")
+icon = ExtResource("4_75n6u")
 flat = true
 
 [node name="BtnContinuar" type="Button" parent="Panel"]
-visible = false
 layout_mode = 0
 offset_left = 1370.0
 offset_top = 299.0
 offset_right = 1528.0
 offset_bottom = 427.0
 scale = Vector2(0.9, 0.9)
-icon = ExtResource("5_50kiw")
+icon = ExtResource("5_3ckoo")
 flat = true
 
 [node name="BtnCerrar" type="Button" parent="Panel"]
@@ -86,8 +83,8 @@ offset_top = 297.0
 offset_right = 1527.0
 offset_bottom = 425.0
 scale = Vector2(0.9, 0.9)
-theme = ExtResource("3_3youp")
-icon = ExtResource("3_nmbxu")
+theme = ExtResource("6_woxkn")
+icon = ExtResource("7_rl8us")
 flat = true
 
 [node name="MarginContainerAjustes" type="MarginContainer" parent="Panel"]
@@ -96,7 +93,7 @@ offset_left = 739.0
 offset_top = 289.0
 offset_right = 1182.0
 offset_bottom = 725.0
-theme = ExtResource("1_jg833")
+theme = ExtResource("8_8vq27")
 
 [node name="Ajustes" type="Label" parent="Panel/MarginContainerAjustes"]
 layout_mode = 2
@@ -112,7 +109,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 8
 columns = 2
-script = ExtResource("6_nv4yc")
+script = ExtResource("10_7kpvj")
 
 [node name="VolumenGeneral" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
@@ -191,7 +188,7 @@ min_value = 0.2
 max_value = 1.2
 step = 0.1
 value = 1.2
-script = ExtResource("6_jg833")
+script = ExtResource("11_vcfbj")
 
 [node name="Modo" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
@@ -200,7 +197,8 @@ text = "Modo   "
 
 [node name="CheckModo" type="CheckButton" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
-theme = ExtResource("7_o5kyp")
+size_flags_horizontal = 0
+theme = ExtResource("12_1nwcj")
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
@@ -209,7 +207,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
 button_pressed = true
 flat = true
-script = ExtResource("9_2cqcg")
+script = ExtResource("13_7fdjt")
 
 [node name="Resolucion" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
@@ -247,7 +245,7 @@ popup/item_1/text = "            Media             "
 popup/item_1/id = 1
 popup/item_2/text = "              Baja"
 popup/item_2/id = 0
-script = ExtResource("10_fifwc")
+script = ExtResource("14_hyt0i")
 
 [node name="Controles" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
@@ -269,8 +267,8 @@ offset_top = 345.0
 offset_right = 1076.0
 offset_bottom = 645.0
 scale = Vector2(1.2, 1.2)
-theme = ExtResource("1_jg833")
-script = ExtResource("11_fifwc")
+theme = ExtResource("8_8vq27")
+script = ExtResource("15_rm0g4")
 
 [node name="ModificaControles" type="Label" parent="Panel/MarginContainerControles"]
 layout_mode = 2
@@ -284,9 +282,9 @@ vertical_alignment = 1
 [node name="GridContainerControles" type="GridContainer" parent="Panel/MarginContainerControles"]
 layout_mode = 2
 size_flags_vertical = 4
-theme = ExtResource("1_jg833")
+theme = ExtResource("8_8vq27")
 columns = 2
-script = ExtResource("10_nmbxu")
+script = ExtResource("16_d03vf")
 
 [node name="Saltar" type="Label" parent="Panel/MarginContainerControles/GridContainerControles"]
 layout_mode = 2
@@ -350,6 +348,9 @@ size_flags_vertical = 8
 text = "Regresar
 "
 
+[connection signal="pressed" from="Panel/BtnSalir" to="." method="_on_btn_salir_pressed"]
+[connection signal="pressed" from="Panel/BtnInicio" to="." method="_on_btn_inicio_pressed"]
+[connection signal="pressed" from="Panel/BtnContinuar" to="." method="_on_btn_continuar_pressed"]
 [connection signal="pressed" from="Panel/BtnCerrar" to="." method="_on_btn_cerrar_pressed"]
 [connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderVG" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_slider_vg_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderM" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_slider_m_value_changed"]
