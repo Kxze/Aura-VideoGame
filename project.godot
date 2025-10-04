@@ -26,6 +26,7 @@ SceneSwitch="*res://script/Scene_switch.gd"
 GlobalBrightnessWorldEnvironment="*res://scenes/Global_brightness_world_environment.tscn"
 AudioManager="*res://script/AudioManager.gd"
 UiGlobal="*res://scenes/UI_Global.tscn"
+TransitionScreen="*res://scenes/transitions/transition_screen.tscn"
 
 [display]
 
