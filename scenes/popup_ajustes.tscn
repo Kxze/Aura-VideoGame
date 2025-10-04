@@ -348,6 +348,9 @@ size_flags_vertical = 8
 text = "Regresar
 "
 
+[connection signal="pressed" from="Panel/BtnSalir" to="." method="_on_btn_salir_pressed"]
+[connection signal="pressed" from="Panel/BtnInicio" to="." method="_on_btn_inicio_pressed"]
+[connection signal="pressed" from="Panel/BtnContinuar" to="." method="_on_btn_continuar_pressed"]
 [connection signal="pressed" from="Panel/BtnCerrar" to="." method="_on_btn_cerrar_pressed"]
 [connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderVG" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_slider_vg_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderM" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_slider_m_value_changed"]

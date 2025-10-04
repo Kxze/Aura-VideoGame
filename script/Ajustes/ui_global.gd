@@ -12,17 +12,9 @@ var escenas_sin_pausa := [
 	]
 
 func _ready() -> void:
-	if popup_ajustes:
-		popup_ajustes.hide()
-	if btn_pausa:
-		btn_pausa.visible = true
-	else:
-		push_warning("⚠️ No se encontró el ButtonPause en UI_Global")
-	
-	#Llamamos a la función para actualizar visibilidad
+	popup_ajustes.hide()
+	btn_pausa.visible = true
 	_actualizar_visibilidad()
-	#Escuchamos cuando cambie la escena para actualizar el botón
-	get_tree().connect("current_scene_changed", Callable(self, "_actualizar_visibilidad"))
 	
 func _actualizar_visibilidad() -> void:
 	if not btn_pausa:
@@ -34,7 +26,6 @@ func _actualizar_visibilidad() -> void:
 	var ruta_escena := escena_actual.scene_file_path
 	btn_pausa.visible = not escenas_sin_pausa.has(ruta_escena)
 
-	
 # Cada vez que cambia la escena, verificamos si debe mostrarse el botón
 func _notification(what):
 	if what == NOTIFICATION_APPLICATION_FOCUS_IN:
