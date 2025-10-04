@@ -3,6 +3,8 @@ extends CharacterBody3D
 
 signal respawned()
 
+var can_play_steps: bool = true
+
 @export var speed_normal := 4.0
 var speed = speed_normal
 @export var speed_run := 8.0
