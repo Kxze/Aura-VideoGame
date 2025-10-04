@@ -17,11 +17,21 @@ func mostrar(origen: String):
 		"pausa":
 			btn_cerrar.visible = false
 			btn_continuar.visible = true
-			btn_inicio.visible = false
-			btn_salir.visible = false
+			btn_inicio.visible = true
+			btn_salir.visible = true
 
 #para cerrar la ventana del pop up (aún no logro entender pq no sirve
 func _on_btn_cerrar_pressed() -> void:
 	popup_ajustes.visible = false
-	popup_ajustes.hide()
 	get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
+
+func _on_btn_continuar_pressed() -> void:
+	UiGlobal.popup_ajustes.hide()
+	get_tree().paused = false
+
+func _on_btn_inicio_pressed() -> void:
+	popup_ajustes.visible = false
+	get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
+
+func _on_btn_salir_pressed() -> void:
+	get_tree().quit()

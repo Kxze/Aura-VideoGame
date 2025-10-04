@@ -12,7 +12,7 @@ config_version=5
 
 config/name="AuraV1"
 run/main_scene="uid://dj3qt70udb1nl"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
@@ -22,9 +22,10 @@ buses/default_bus_layout="uid://dwaurb6y88n77"
 [autoload]
 
 Constants="*res://script/Constants/CONSTANTS.gd"
+SceneSwitch="*res://script/Scene_switch.gd"
 GlobalBrightnessWorldEnvironment="*res://scenes/Global_brightness_world_environment.tscn"
 AudioManager="*res://script/AudioManager.gd"
-TransitionScreen="*res://scenes/transitions/transition_screen.tscn"
+UiGlobal="*res://scenes/UI_Global.tscn"
 
 [display]
 
@@ -100,7 +101,6 @@ run={
 3d_physics/layer_1="player"
 3d_physics/layer_2="ground"
 3d_physics/layer_3="killzone"
-3d_physics/layer_4="Portal"
 
 [rendering]
 
