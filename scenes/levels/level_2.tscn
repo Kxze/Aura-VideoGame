@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://jh08husfmtny"]
+[gd_scene load_steps=29 format=4 uid="uid://jh08husfmtny"]
 
 [ext_resource type="PackedScene" uid="uid://bdj1svdqbupp" path="res://Art/Levels/blockin_level_2.blend" id="1_ra442"]
 [ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_8qukl"]
@@ -12,6 +12,7 @@
 [ext_resource type="LightmapGIData" uid="uid://clj76a6yfeg52" path="res://scenes/levels/bakes_lights/level_2.lmbake" id="9_3p04p"]
 [ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="11_brxtv"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="12_brxtv"]
+[ext_resource type="PackedScene" uid="uid://2ltdbcdy2ip8" path="res://scenes/triggers/spawn_point.tscn" id="13_tv7cl"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ibugp"]
 
@@ -165,23 +166,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xacsh")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tv7cl"]
+size = Vector3(8.54865, 5.73352, 8.12366)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_nt80m"]
 size = Vector3(6.46185, 1, 5.29321)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_brxtv"]
 size = Vector3(18.1857, 6.50659, 8.99463)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tv7cl"]
-size = Vector3(8.54865, 5.73352, 8.12366)
-
 [node name="Level2" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_fiq81")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -8.41349, 3.3773, 1.96833)
-jump = 33
-GRAVITY = -1.3
-acceleration = 3.0
-friction = 5.0
 
 [node name="Camera3D2" type="Camera3D" parent="Player"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
@@ -211,11 +208,18 @@ mesh = SubResource("PlaneMesh_ibugp")
 skeleton = NodePath("")
 
 [node name="KillZone" parent="." instance=ExtResource("5_l37oo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.5948, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.4052, 7)
 collision_layer = 4
 
 [node name="CollisionShape3D" parent="KillZone" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 331.585, 0, -11.1259)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.704, -9.39438, -11.1259)
+
+[node name="KillZone2" parent="." instance=ExtResource("5_l37oo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 255.867, 16.9739, 7)
+collision_layer = 4
+
+[node name="CollisionShape3D" parent="KillZone2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186.752, -0.201845, -11.1259)
 
 [node name="blockin_level_2" parent="." instance=ExtResource("1_ra442")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
@@ -253,93 +257,110 @@ spot_angle = 15.91
 spot_angle_attenuation = 2.37842
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+visible = false
 occluder = ExtResource("7_ibugp")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 light_data = ExtResource("9_3p04p")
 
-[node name="Area3D" parent="." instance=ExtResource("11_brxtv")]
+[node name="back_level" parent="." instance=ExtResource("11_brxtv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0762, 2.38419e-07, 0.000734329)
 collision_layer = 1
-prev_level_path = "res://scenes/levels/level_1.tscn"
+prev_level_path = "res://scenes/levels/level_1_back.tscn"
 is_next = false
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 305, 46.555, 0)
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.595123, 0, -1.35486)
-shape = SubResource("BoxShape3D_nt80m")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 371, 65, 0)
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461853, -2.24622, 3.99731)
-shape = SubResource("BoxShape3D_brxtv")
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 406.4, 65, 0)
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461853, -2.24622, 3.99731)
-shape = SubResource("BoxShape3D_brxtv")
-
-[node name="StaticBody3D4" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 423.943, 68, 0)
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461853, -2.24622, 3.99731)
-shape = SubResource("BoxShape3D_brxtv")
-
-[node name="Area3D2" parent="." instance=ExtResource("12_brxtv")]
+[node name="next_level" parent="." instance=ExtResource("12_brxtv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 629, 98.4918, 0)
 next_level_path = "res://scenes/levels/level_3.tscn"
 
-[node name="StaticBody3D5" type="StaticBody3D" parent="."]
+[node name="Collision" type="Node3D" parent="."]
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Collision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 515.649, 74.8263, 0)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision/StaticBody3D5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112976, 0.526215, -0.898254)
 shape = SubResource("BoxShape3D_tv7cl")
 
-[node name="StaticBody3D6" type="StaticBody3D" parent="."]
+[node name="StaticBody3D6" type="StaticBody3D" parent="Collision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 535.749, 81.4378, -0.666006)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision/StaticBody3D6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5851, 0)
 shape = SubResource("BoxShape3D_tv7cl")
 
-[node name="StaticBody3D7" type="StaticBody3D" parent="."]
+[node name="StaticBody3D7" type="StaticBody3D" parent="Collision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 558.149, 85.8374, -0.911375)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D7"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision/StaticBody3D7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5851, 0)
 shape = SubResource("BoxShape3D_tv7cl")
 
-[node name="StaticBody3D8" type="StaticBody3D" parent="."]
+[node name="StaticBody3D8" type="StaticBody3D" parent="Collision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 577.272, 91.3437, -0.981483)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D8"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision/StaticBody3D8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5851, 0)
 shape = SubResource("BoxShape3D_tv7cl")
 
-[node name="StaticBody3D9" type="StaticBody3D" parent="."]
+[node name="StaticBody3D9" type="StaticBody3D" parent="Collision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 595.872, 95.0486, -1.05159)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D9"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision/StaticBody3D9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5851, 0)
 shape = SubResource("BoxShape3D_tv7cl")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 305, 46.555, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.595123, 0, -1.35486)
+shape = SubResource("BoxShape3D_nt80m")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 371, 65, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461853, -2.24622, 3.99731)
+shape = SubResource("BoxShape3D_brxtv")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 406.4, 65, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461853, -2.24622, 3.99731)
+shape = SubResource("BoxShape3D_brxtv")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 423.943, 68, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461853, -2.24622, 3.99731)
+shape = SubResource("BoxShape3D_brxtv")
+
+[node name="CheckPoint" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("13_tv7cl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 305.89, 46.2628, 0)
+checkpoint_marker = NodePath("Marker3D")
+
+[node name="Marker3D" type="Marker3D" parent="CheckPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10992, 1.49685, 0)
+
+[node name="CheckPoint2" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("13_tv7cl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 495, 73, 0)
+checkpoint_marker = NodePath("Marker3D")
+
+[node name="Marker3D" type="Marker3D" parent="CheckPoint2"]
+
 [editable path="KillZone"]
+[editable path="KillZone2"]
 [editable path="blockin_level_2"]
-[editable path="Area3D"]
+[editable path="back_level"]

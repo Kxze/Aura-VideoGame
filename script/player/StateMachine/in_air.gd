@@ -50,7 +50,6 @@ func physics_update(delta: float):
 	player.prevVelocity = player.movInput
 	player.move_and_slide()
 	player.global_position.z = 0
-	
 
 func handled_input(_event: InputEvent):
 	# Dash primero

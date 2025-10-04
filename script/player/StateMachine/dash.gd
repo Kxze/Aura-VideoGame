@@ -17,7 +17,7 @@ var dash_cooldown := 0.5
 signal dash_started
 
 func enter(previous_state_path: String, data := {}):
-	if not player.can_dash:
+	if not player.a:
 		emit_signal("finished", "Idle")
 		return
 

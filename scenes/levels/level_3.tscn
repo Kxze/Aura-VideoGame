@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c17wj8jr8lb0n"]
+[gd_scene load_steps=28 format=4 uid="uid://c17wj8jr8lb0n"]
 
 [ext_resource type="PackedScene" uid="uid://btl7r0mv42dlj" path="res://Art/Levels/blocking_level_3.blend" id="1_0ljxa"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_0qepi"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://b6shx8k3p0teu" path="res://Art/Levels/blocking_level_3_TelarañasMariposa.png" id="7_qi5uv"]
 [ext_resource type="Texture2D" uid="uid://bo8xcdpad0ol1" path="res://Art/Levels/blocking_level_3_TelarañasAraña.png" id="8_f6egh"]
 [ext_resource type="LightmapGIData" uid="uid://h2jr2slm832a" path="res://scenes/levels/level_3.lmbake" id="10_2bnyt"]
+[ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="11_qi5uv"]
+[ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="12_f6egh"]
+[ext_resource type="PackedScene" uid="uid://2ltdbcdy2ip8" path="res://scenes/triggers/spawn_point.tscn" id="13_f6egh"]
+[ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="14_t4txi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjiia"]
 resource_name = "TablasPrincipales.001"
@@ -460,7 +464,7 @@ light_energy = 2.133
 light_specular = 0.0
 
 [node name="Player" parent="." instance=ExtResource("2_0qepi")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 21.2119, 47.1405, 1.96833)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6107, 47.1405, 1.96833)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
@@ -471,7 +475,7 @@ spot_range = 13.139
 spot_angle = 69.14
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.593999, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.101, 6.303)
 keep_aspect = 0
 fov = 80.0
 far = 250.0
@@ -501,7 +505,7 @@ visible = false
 collision_layer = 2
 
 [node name="KillZone" parent="." instance=ExtResource("4_0qepi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.83735, 34.9896, 8.05158)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.382, 34.9896, 8.05158)
 collision_layer = 4
 
 [node name="CollisionShape3D" parent="KillZone" index="0"]
@@ -526,5 +530,39 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.08569, 116.62, 0.348145)
 shape = SubResource("BoxShape3D_fmg3e")
 
+[node name="next_level" parent="." instance=ExtResource("11_qi5uv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 202, 0)
+next_level_path = "res://scenes/levels/level_4.tscn"
+
+[node name="back_level" parent="." instance=ExtResource("12_f6egh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4885, 46.1786, 0)
+prev_level_path = "res://scenes/levels/level_2_back.tscn"
+is_next = false
+
+[node name="CheckPoint" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("13_f6egh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.5665, 87.3089, 0)
+checkpoint_marker = NodePath("Marker3D")
+
+[node name="CollisionShape3D" parent="CheckPoint" index="0"]
+debug_color = Color(0.802675, 0.10353, 0.448258, 0.42)
+
+[node name="Marker3D" type="Marker3D" parent="CheckPoint"]
+
+[node name="CheckPoint2" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("13_f6egh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9388, 153.547, 0)
+checkpoint_marker = NodePath("Marker3D")
+
+[node name="CollisionShape3D" parent="CheckPoint2" index="0"]
+debug_color = Color(0.802675, 0.10353, 0.448258, 0.42)
+
+[node name="Marker3D" type="Marker3D" parent="CheckPoint2"]
+
+[node name="Area3D" parent="." instance=ExtResource("14_t4txi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8093, 46.415, 0)
+
 [editable path="blocking_level_3"]
 [editable path="KillZone"]
+[editable path="next_level"]
+[editable path="back_level"]
+[editable path="CheckPoint"]
+[editable path="CheckPoint2"]

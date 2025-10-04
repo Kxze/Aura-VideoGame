@@ -13,7 +13,6 @@ radius = 3.0
 size = Vector3(5.15723, 33.0505, 50.4619)
 
 [node name="Level5" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22364, 0, 1.30148)
 
 [node name="Blocking_level5" parent="." instance=ExtResource("1_845dy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -201.288, 10.4759, -6.96185)
@@ -101,7 +100,6 @@ offset = Vector3(2.97, 5.505, 31.515)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.874162, 0.485634, 2.62823e-08, -0.0414476, 0.0746075, 0.996351, 0.483862, -0.870973, 0.0853474, -338.943, 129.072, 42.2957)
-light_color = Color(0.83852, 0.661407, 0.320902, 1)
 light_energy = 16.0
 light_indirect_energy = 3.424
 light_volumetric_fog_energy = 0.0
@@ -111,7 +109,6 @@ spot_attenuation = 0.39
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="."]
 transform = Transform3D(0.874162, 0.485634, 2.62823e-08, -0.0414476, 0.0746075, 0.996351, 0.483862, -0.870973, 0.0853474, -338.943, 129.072, 42.2957)
-light_color = Color(0.83852, 0.661407, 0.320902, 1)
 light_energy = 16.0
 light_indirect_energy = 3.424
 light_volumetric_fog_energy = 0.0
@@ -121,7 +118,6 @@ spot_attenuation = 0.39
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="."]
 transform = Transform3D(0.874162, 0.485634, 3.4098e-08, -0.145612, 0.262109, 0.95399, 0.463289, -0.833942, 0.29984, -55.0143, 131.61, 42.2957)
-light_color = Color(0.83852, 0.661407, 0.320902, 1)
 light_energy = 16.0
 light_indirect_energy = 3.424
 light_volumetric_fog_energy = 0.0
@@ -131,7 +127,6 @@ spot_attenuation = 0.39
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="."]
 transform = Transform3D(0.874162, 0.485634, 3.4098e-08, -0.145612, 0.262109, 0.95399, 0.463289, -0.833942, 0.29984, -145.665, 110.559, 42.3712)
-light_color = Color(0.83852, 0.661407, 0.320902, 1)
 light_energy = 16.0
 light_indirect_energy = 3.424
 light_volumetric_fog_energy = 0.0
@@ -141,7 +136,6 @@ spot_attenuation = 0.39
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="."]
 transform = Transform3D(0.710362, -0.699055, 0.0818963, 0.703631, 0.702519, -0.106638, 0.0170121, 0.133376, 0.99092, 51.0674, 39.317, 110.262)
-light_color = Color(0.247059, 0.607843, 0.752941, 1)
 light_energy = 16.0
 light_indirect_energy = 3.424
 light_volumetric_fog_energy = 0.0
@@ -151,7 +145,6 @@ spot_attenuation = 0.39
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(0.874162, 0.485634, -3.37819e-08, 0.0801693, -0.144308, -0.98628, -0.478971, 0.862169, -0.165082, -338.943, -22.0262, -55.2518)
-light_color = Color(0.83852, 0.661407, 0.320902, 1)
 light_energy = 16.0
 light_indirect_energy = 3.424
 light_volumetric_fog_energy = 0.0

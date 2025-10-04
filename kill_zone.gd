@@ -16,5 +16,4 @@ func _on_body_entered(body: Node3D) -> void:
 			body.controls_enabled = true
 			body.animationPlayer.play("Idle")
 		else:
-			# Si no hay spawnPoint, recargar la escena
 			get_tree().reload_current_scene()
