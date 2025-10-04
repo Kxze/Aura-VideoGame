@@ -15,9 +15,11 @@ dest_files=["res://.godot/imported/blocking.blend-7c8afe3113d2e0bfc7ff69bee9d05e
 
 nodes/root_type=""
 nodes/root_name=""
+nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,6 +34,9 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "meshes": {
 "blocking_Cube_001": {
@@ -40,6 +45,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_Cube_003": {
@@ -48,6 +54,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_Cube_005": {
@@ -56,6 +63,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_DibujoAlexYAura": {
@@ -64,6 +72,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_DibujoOdette": {
@@ -72,6 +81,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_FondoNoche": {
@@ -80,6 +90,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_IMG_0848": {
@@ -88,6 +99,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_IMG_0848_001": {
@@ -96,6 +108,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_IMG_0849": {
@@ -104,6 +117,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_IMG_0850": {
@@ -112,6 +126,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_Mesh": {
@@ -120,6 +135,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_Mesh_002": {
@@ -128,6 +144,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_Mesh_008": {
@@ -136,6 +153,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_Mesh_025": {
@@ -144,6 +162,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_Mesh_042": {
@@ -152,6 +171,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_Plane": {
@@ -160,6 +180,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_Tutorial1": {
@@ -168,6 +189,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_Tutorial2": {
@@ -176,6 +198,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_Tutorial3": {
@@ -184,6 +207,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_Ventana_separada": {
@@ -192,6 +216,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 }
 }
@@ -214,3 +239,4 @@ blender/materials/export_materials=1
 blender/animation/limit_playback=true
 blender/animation/always_sample=true
 blender/animation/group_tracks=true
+gltf/naming_version=0
