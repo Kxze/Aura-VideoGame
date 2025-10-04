@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p5nqkfbre7h0"
-path.s3tc="res://.godot/imported/Cuadro1.png-632a35d83977d2a308607345fb097aeb.s3tc.ctex"
+uid="uid://c1xcpr6uy6x3"
+path.s3tc="res://.godot/imported/Texrura pasillo.png-65bc66cf62304e501d0f13d0a8d99e17.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/Assets2D/level6/Cuadro1.png"
-dest_files=["res://.godot/imported/Cuadro1.png-632a35d83977d2a308607345fb097aeb.s3tc.ctex"]
+source_file="res://Art/Assets2D/level6/Texrura pasillo.png"
+dest_files=["res://.godot/imported/Texrura pasillo.png-65bc66cf62304e501d0f13d0a8d99e17.s3tc.ctex"]
 
 [params]
 

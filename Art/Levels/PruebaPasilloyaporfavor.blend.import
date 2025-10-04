@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cn6q5up6ep66w"
-valid=false
+uid="uid://q07jx7owribv"
+path="res://.godot/imported/PruebaPasilloyaporfavor.blend-e8b7354d8fc5c936a3988e5ca11a710a.scn"
 
 [deps]
 
-source_file="res://Art/Levels/Hallway.blend"
+source_file="res://Art/Levels/PruebaPasilloyaporfavor.blend"
+dest_files=["res://.godot/imported/PruebaPasilloyaporfavor.blend-e8b7354d8fc5c936a3988e5ca11a710a.scn"]
 
 [params]
 

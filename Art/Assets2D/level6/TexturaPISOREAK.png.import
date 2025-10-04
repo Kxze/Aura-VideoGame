@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p5nqkfbre7h0"
-path.s3tc="res://.godot/imported/Cuadro1.png-632a35d83977d2a308607345fb097aeb.s3tc.ctex"
+uid="uid://beljugvpblqt7"
+path.s3tc="res://.godot/imported/TexturaPISOREAK.png-8bd82f2d40dc28cba504a5666276550d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/Assets2D/level6/Cuadro1.png"
-dest_files=["res://.godot/imported/Cuadro1.png-632a35d83977d2a308607345fb097aeb.s3tc.ctex"]
+source_file="res://Art/Assets2D/level6/TexturaPISOREAK.png"
+dest_files=["res://.godot/imported/TexturaPISOREAK.png-8bd82f2d40dc28cba504a5666276550d.s3tc.ctex"]
 
 [params]
 
