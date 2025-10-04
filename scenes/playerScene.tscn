@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d30vdm7b5ol13"]
+[gd_scene load_steps=16 format=3 uid="uid://d30vdm7b5ol13"]
 
 [ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
 [ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
@@ -8,12 +8,10 @@
 [ext_resource type="Script" uid="uid://bfqlf2fvawniw" path="res://script/player/StateMachine/in_air.gd" id="6_72l0f"]
 [ext_resource type="Script" uid="uid://c75jo2lrdevvu" path="res://script/player/StateMachine/dash.gd" id="7_bubm6"]
 [ext_resource type="PackedScene" uid="uid://decmjw6soqpbu" path="res://scenes/Effects/trail_scene.tscn" id="8_elcxt"]
+[ext_resource type="Script" uid="uid://3jh30ajrpmx8" path="res://script/player/StateMachine/fall.gd" id="8_nk4e2"]
 [ext_resource type="PackedScene" uid="uid://dxiojj86hdb04" path="res://scenes/Effects/ghost_dash.tscn" id="10_i0eca"]
 [ext_resource type="Script" uid="uid://sm7vtmqcyw1j" path="res://script/light_dash.gd" id="11_ky4hv"]
 [ext_resource type="Script" uid="uid://duhvl1urrncli" path="res://script/dashAura.gd" id="12_nk4e2"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i0eca"]
-height = 2.16536
 
 [sub_resource type="GDScript" id="GDScript_elcxt"]
 script/source = "extends Node3D
@@ -39,6 +37,10 @@ _bundled = {
 "version": 3
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i0eca"]
+radius = 0.383022
+height = 1.95831
+
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 14
 script = ExtResource("1_72l0f")
@@ -49,29 +51,10 @@ color_ghost = Color(0.750736, 0.478994, 1, 1)
 [node name="Aura" parent="." instance=ExtResource("2_72l0f")]
 
 [node name="Skeleton3D" parent="Aura/player/Armature" index="0"]
-bones/1/position = Vector3(0.265837, -0.00705589, -9.48016e-10)
-bones/1/rotation = Quaternion(0.701394, 0.0897039, 0.701394, -0.089704)
-bones/2/rotation = Quaternion(-0.590121, 4.51065e-08, 1.89318e-07, 0.807315)
-bones/3/rotation = Quaternion(0.669244, 1.63576e-08, -1.89252e-07, 0.743043)
-bones/4/position = Vector3(-0.405631, 0.322711, 3.44743e-08)
-bones/4/rotation = Quaternion(0.706681, -0.0245425, 0.706681, 0.0245424)
-bones/4/scale = Vector3(1.06318, 1.06318, 1.06318)
-bones/5/rotation = Quaternion(-0.54658, 1.51794e-07, 1.03542e-07, 0.837407)
 bones/6/rotation = Quaternion(0.669244, -7.31046e-08, -1.08675e-07, 0.743043)
-bones/8/position = Vector3(-0.00680061, 3.41949, 9.3242e-07)
-bones/9/rotation = Quaternion(3.62504e-07, -2.7917e-07, 0.918814, 0.394692)
-bones/10/rotation = Quaternion(8.65951e-08, -1.2827e-07, 0.0212139, 0.999775)
-bones/11/rotation = Quaternion(5.03177e-09, 7.12931e-08, 0.00517926, 0.999987)
-bones/12/rotation = Quaternion(3.65039e-07, -2.88308e-07, 0.910296, 0.413959)
-bones/13/rotation = Quaternion(6.58701e-08, 5.56906e-07, -0.00533037, 0.999986)
-bones/14/rotation = Quaternion(1.48515e-09, -2.12974e-07, -0.0151413, 0.999885)
 
 [node name="AnimationPlayer" parent="Aura/player" index="1"]
-blend_times = [&"Dash", &"Fall", 0.1, &"Dash", &"Jump", 0.2, &"Dash", &"idle", 0.2, &"Fall", &"Dash", 0.5, &"Fall", &"Fall", 0.1, &"Fall", &"Jump", 0.5, &"Fall", &"Land", 0.5, &"Fall", &"Run", 0.5, &"Fall", &"Walk", 0.5, &"Fall", &"idle", 0.5, &"Jump", &"Dash", 0.2, &"Jump", &"Fall", 0.5, &"Jump", &"idle", 0.2, &"Land", &"idle", 0.5, &"Run", &"Jump", 0.5, &"Run", &"Run", 1.0, &"Run", &"Walk", 1.0, &"Run", &"idle", 0.5, &"Walk", &"Jump", 0.5, &"Walk", &"Run", 1.0, &"Walk", &"Walk", 0.5, &"Walk", &"idle", 1.0, &"idle", &"Jump", 0.5, &"idle", &"Walk", 0.5]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0075233, 0.993354, 0)
-shape = SubResource("CapsuleShape3D_i0eca")
+blend_times = [&"Dash", &"Fall", 0.1, &"Dash", &"Jump", 0.2, &"Dash", &"idle", 0.2, &"Fall", &"Dash", 0.5, &"Fall", &"Fall", 0.1, &"Fall", &"Jump", 0.5, &"Fall", &"Land", 0.5, &"Fall", &"Run", 0.5, &"Fall", &"Walk", 0.5, &"Fall", &"idle", 0.2, &"Jump", &"Dash", 0.2, &"Jump", &"Fall", 0.5, &"Jump", &"idle", 0.2, &"Land", &"idle", 0.5, &"Run", &"Jump", 0.5, &"Run", &"Run", 1.0, &"Run", &"Walk", 1.0, &"Run", &"idle", 0.5, &"Walk", &"Jump", 0.5, &"Walk", &"Run", 1.0, &"Walk", &"Walk", 0.5, &"Walk", &"idle", 1.0, &"idle", &"Jump", 0.5, &"idle", &"Walk", 0.5]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_gyu2u")
@@ -102,6 +85,9 @@ one_shot = true
 script = ExtResource("7_bubm6")
 dash_trail_scene = SubResource("PackedScene_nk4e2")
 
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("8_nk4e2")
+
 [node name="AuraGhost" parent="." instance=ExtResource("10_i0eca")]
 transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 0.012677, 1.10246, -0.141001)
 visible = false
@@ -127,6 +113,10 @@ script = ExtResource("11_ky4hv")
 [node name="light_timer" type="Timer" parent="dash_Light"]
 wait_time = 0.5
 one_shot = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0075233, 0.957544, 0)
+shape = SubResource("CapsuleShape3D_i0eca")
 
 [connection signal="timeout" from="StateMachine/InAir/FallTimer" to="StateMachine/InAir" method="_on_fall_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]
