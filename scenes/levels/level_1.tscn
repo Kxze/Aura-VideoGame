@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://t2m7hqcpi1rb"]
+[gd_scene load_steps=17 format=3 uid="uid://t2m7hqcpi1rb"]
 
 [ext_resource type="Texture2D" uid="uid://bypn6viaeqnwq" path="res://Art/Assets2D/level1/ventanaMask.jpeg" id="2_dga24"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="3_qxy0u"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="8_dga24"]
 [ext_resource type="LightmapGIData" uid="uid://cdmx6fo6ass5n" path="res://scenes/levels/bakes_lights/level_1.lmbake" id="8_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://bdfat0fcg3hs" path="res://Art/Levels/blocking.blend" id="8_s8va5"]
+[ext_resource type="PackedScene" uid="uid://2ltdbcdy2ip8" path="res://scenes/triggers/spawn_point.tscn" id="10_qxy0u"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_2y5yt"]
 
@@ -44,12 +45,11 @@ spot_attenuation = 0.39
 spot_angle = 29.69
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.1689, -0.044652, 0.020874)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.831, -0.044652, 0.020874)
 
-[node name="KillZone" parent="." node_paths=PackedStringArray("spawnPoint") instance=ExtResource("5_iav0o")]
+[node name="KillZone" parent="." instance=ExtResource("5_iav0o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.5948, 0)
 collision_layer = 4
-spawnPoint = NodePath("../SpawnPoint")
 
 [node name="CollisionShape3D" parent="KillZone" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.017, 0, 0)
@@ -85,7 +85,7 @@ shadow_bias = 0.0
 sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("3_qxy0u")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -73.6302, 0.289398, 1.96833)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -73.6302, 0.289398, -0.03167)
 
 [node name="Camera3D2" type="Camera3D" parent="Player"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.599054, 1.14631, 6.62286)
@@ -131,6 +131,10 @@ shape = SubResource("BoxShape3D_oc4kc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 265.3, 5.1, 0)
 collision_layer = 12
 next_level_path = "res://scenes/levels/level_2.tscn"
+
+[node name="spawnpoint" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("10_qxy0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.442, 1.7636, 0)
+checkpoint_marker = NodePath("../SpawnPoint")
 
 [editable path="KillZone"]
 [editable path="blocking"]
