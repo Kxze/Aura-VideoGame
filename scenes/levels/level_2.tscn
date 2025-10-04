@@ -177,7 +177,7 @@ size = Vector3(8.54865, 5.73352, 8.12366)
 [node name="Level2" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_fiq81")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 469.003, 75.3773, 1.96833)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -8.41349, 3.3773, 1.96833)
 
 [node name="Camera3D2" type="Camera3D" parent="Player"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)

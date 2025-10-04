@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://t2m7hqcpi1rb"]
+[gd_scene load_steps=16 format=3 uid="uid://t2m7hqcpi1rb"]
 
 [ext_resource type="Texture2D" uid="uid://bypn6viaeqnwq" path="res://Art/Assets2D/level1/ventanaMask.jpeg" id="2_dga24"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="3_qxy0u"]
@@ -7,6 +7,7 @@
 [ext_resource type="Environment" uid="uid://cm6w1o8o4nilk" path="res://enviroment_level_2.tres" id="6_oc4kc"]
 [ext_resource type="Material" uid="uid://cchvhub8830n6" path="res://Materials/emissive.tres" id="7_mm8aj"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="8_dga24"]
+[ext_resource type="LightmapGIData" uid="uid://cdmx6fo6ass5n" path="res://scenes/levels/bakes_lights/level_1.lmbake" id="8_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://bdfat0fcg3hs" path="res://Art/Levels/blocking.blend" id="8_s8va5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_2y5yt"]
@@ -63,268 +64,6 @@ transform = Transform3D(-1.74846e-05, -2.1048e-05, -161.362, 400, 1.36091e-12, -
 mesh = SubResource("QuadMesh_2y5yt")
 surface_material_override/0 = SubResource("StandardMaterial3D_2os1m")
 
-[node name="serie" type="Node" parent="."]
-
-[node name="luces" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.192, 33.4103, -35.0896)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 97.165
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.606
-
-[node name="luces2" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 225.233, 34.3929, -34.113)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 97.165
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.606
-
-[node name="luces3" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.2333, 30.3929, -63.113)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 97.165
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.606
-
-[node name="luces4" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2333, 47.3929, -23.113)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 97.165
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.606
-
-[node name="luces5" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2333, 44.3929, -40.113)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 97.165
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.606
-
-[node name="luces6" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.2333, 49.3929, -54.113)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 97.165
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.606
-
-[node name="lucesCama" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.1095, 27.8047, -26.6995)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama15" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.7426, 27.8047, -32.1287)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama16" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.2424, 22.8047, -32.1287)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama17" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2424, 22.8047, -32.1287)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama2" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.4654, 20.8047, -31.1433)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama13" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.4654, 20.8047, -25.8777)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama14" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.9707, 20.8047, -32.2671)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama4" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.1005, 30.8047, -26.1433)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama5" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.1005, 35.8047, -26.1433)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama6" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.5986, 41.8047, -26.1433)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama3" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4654, 33.8047, -26.0863)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama7" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.4654, 27.8047, 18.9883)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama8" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.4654, 20.8047, 19.5444)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama9" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.1005, 30.8047, 19.5444)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama10" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.1005, 35.8047, 19.5444)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama11" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.5986, 41.8047, 19.5444)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="lucesCama12" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4654, 33.8047, 19.6015)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 30.0
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.802
-
-[node name="luces7" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.2333, 47.3929, -72.113)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 97.165
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.606
-
-[node name="luces8" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.233, 28.3929, -55.113)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 97.165
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.606
-
-[node name="luces9" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.233, 29.3929, -50.113)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 97.165
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.606
-
-[node name="luces10" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.233, 38.3929, -33.113)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 97.165
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.606
-
-[node name="luces11" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.233, 28.3929, -44.113)
-light_color = Color(0.614926, 0.483765, 3.85046e-07, 1)
-light_energy = 97.165
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 34.697
-omni_attenuation = 1.606
-
-[node name="luces12" type="OmniLight3D" parent="serie"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149.233, 50.3929, -53.113)
-light_color = Color(0.574729, 0.476048, 0.452437, 1)
-light_energy = 97.165
-light_indirect_energy = 5.638
-light_volumetric_fog_energy = 4.419
-omni_range = 66.245
-
 [node name="Portal" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.09104e-06, -2.18002, 0, 24.96, -9.52919e-08, 0, 0, 0, 22.6106, 268.089, 23.3196, -13.0133)
 material_override = ExtResource("7_mm8aj")
@@ -340,12 +79,13 @@ mesh = SubResource("BoxMesh_5xbjy")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.439572, 0.879599, 0.181886, 0.495307, -0.406303, 0.767847, 0.749298, -0.247434, -0.614271, 41, 43, -89)
 light_energy = 0.1
+light_bake_mode = 1
 shadow_enabled = true
 shadow_bias = 0.0
 sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("3_qxy0u")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -70.997, 1.37725, 1.96833)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -73.6302, 0.289398, 1.96833)
 
 [node name="Camera3D2" type="Camera3D" parent="Player"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.599054, 1.14631, 6.62286)
@@ -374,15 +114,10 @@ collision_layer = 2
 [node name="StaticBody3D" parent="blocking/cama" index="0"]
 collision_layer = 2
 
-[node name="SpotLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84, 93, -145.706)
-light_color = Color(0.684659, 0.920312, 0.925154, 1)
-light_energy = 35.565
-light_specular = 0.0
-omni_range = 163.2
-omni_attenuation = 0.429
-
 [node name="LightmapGI" type="LightmapGI" parent="."]
+bounces = 4
+interior = true
+light_data = ExtResource("8_qxy0u")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, 0, 0)

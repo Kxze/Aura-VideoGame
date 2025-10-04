@@ -13,10 +13,6 @@
 [ext_resource type="Script" uid="uid://sm7vtmqcyw1j" path="res://script/light_dash.gd" id="11_ky4hv"]
 [ext_resource type="Script" uid="uid://duhvl1urrncli" path="res://script/dashAura.gd" id="12_nk4e2"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i0eca"]
-radius = 0.282588
-height = 2.16536
-
 [sub_resource type="GDScript" id="GDScript_elcxt"]
 script/source = "extends Node3D
 
@@ -41,6 +37,10 @@ _bundled = {
 "version": 3
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i0eca"]
+radius = 0.383022
+height = 1.95831
+
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 14
 script = ExtResource("1_72l0f")
@@ -51,26 +51,10 @@ color_ghost = Color(0.750736, 0.478994, 1, 1)
 [node name="Aura" parent="." instance=ExtResource("2_72l0f")]
 
 [node name="Skeleton3D" parent="Aura/player/Armature" index="0"]
-bones/0/position = Vector3(0, 2.56988, 0)
-bones/1/position = Vector3(0.265837, -0.0070554, -9.47958e-10)
-bones/1/rotation = Quaternion(0.647964, 0.283095, 0.647964, -0.283095)
-bones/2/rotation = Quaternion(-0.233337, 8.61873e-08, 3.09999e-08, 0.972396)
-bones/3/rotation = Quaternion(0.701045, 1.99666e-08, -2.02282e-07, 0.713117)
-bones/4/rotation = Quaternion(0.7069, 0.0171128, 0.7069, -0.0171129)
-bones/5/rotation = Quaternion(-0.423183, 1.7562e-07, 6.28117e-08, 0.906044)
-bones/6/rotation = Quaternion(0.532302, -1.00027e-07, -7.0721e-08, 0.846555)
-bones/7/position = Vector3(0, 2.71325, 0)
-bones/9/rotation = Quaternion(2.79794e-07, 1.82876e-07, 0.709174, -0.705034)
-bones/11/rotation = Quaternion(5.03175e-09, 7.12931e-08, 0.00517925, 0.999987)
-bones/12/rotation = Quaternion(2.69859e-07, -3.87045e-07, 0.67294, 0.739697)
-bones/13/rotation = Quaternion(6.58701e-08, 5.56906e-07, -0.00533034, 0.999986)
+bones/6/rotation = Quaternion(0.669244, -7.31046e-08, -1.08675e-07, 0.743043)
 
 [node name="AnimationPlayer" parent="Aura/player" index="1"]
 blend_times = [&"Dash", &"Fall", 0.1, &"Dash", &"Jump", 0.2, &"Dash", &"idle", 0.2, &"Fall", &"Dash", 0.5, &"Fall", &"Fall", 0.1, &"Fall", &"Jump", 0.5, &"Fall", &"Land", 0.5, &"Fall", &"Run", 0.5, &"Fall", &"Walk", 0.5, &"Fall", &"idle", 0.2, &"Jump", &"Dash", 0.2, &"Jump", &"Fall", 0.5, &"Jump", &"idle", 0.2, &"Land", &"idle", 0.5, &"Run", &"Jump", 0.5, &"Run", &"Run", 1.0, &"Run", &"Walk", 1.0, &"Run", &"idle", 0.5, &"Walk", &"Jump", 0.5, &"Walk", &"Run", 1.0, &"Walk", &"Walk", 0.5, &"Walk", &"idle", 1.0, &"idle", &"Jump", 0.5, &"idle", &"Walk", 0.5]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0075233, 0.993354, 0)
-shape = SubResource("CapsuleShape3D_i0eca")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_gyu2u")
@@ -129,6 +113,10 @@ script = ExtResource("11_ky4hv")
 [node name="light_timer" type="Timer" parent="dash_Light"]
 wait_time = 0.5
 one_shot = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0075233, 0.957544, 0)
+shape = SubResource("CapsuleShape3D_i0eca")
 
 [connection signal="timeout" from="StateMachine/InAir/FallTimer" to="StateMachine/InAir" method="_on_fall_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]

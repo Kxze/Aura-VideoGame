@@ -1,32 +1,44 @@
 extends PlayerState
 
-# Se ejecuta al entrar al estado
-func enter(previous_state_path : String, data := {}):
-	player.animationPlayer.play("Fall")  # Reproducir animación de caída
+var fall_start_y: float = 0.0        # Guarda la altura donde comenzó la caída
+var altura_minima_fall: float = 1.0  # Altura mínima para reproducir animación
 
-# Física del jugador
+func enter(previous_state_path : String, data := {}):
+	pass
+
 func physics_update(delta: float):
-	# Aplicar gravedad
+	# Si el jugador está en el suelo, actualizamos la altura de referencia
+	if player.is_on_floor():
+		fall_start_y = player.global_position.y
+		# Si acabó de caer, cambiar a Idle
+		emit_signal("finished", "Idle")
+		return
+
+	# Aplica gravedad
 	player.velocity.y += player.GRAVITY
 
 	# Movimiento horizontal suave
 	player.velocity.x = lerp(player.velocity.x, player.movInput.x * player.speed, 0.1)
 
-	# Si toca el suelo, cambiar a Idle
-	if player.is_on_floor():
-		emit_signal("finished", "Idle")
+	# Comprobar altura de caída
+	var altura_caida = fall_start_y - player.global_position.y
+	if altura_caida > altura_minima_fall:
+		if player.animationPlayer.current_animation != "Fall":
+			player.animationPlayer.play("Fall")
 
 	# Movimiento final
 	player.move_and_slide()
-	if player.is_on_ceiling() and player.velocity.y > 0:
-		player.velocity.y = 0
 	player.global_position.z = 0
 
-# Actualización del estado (animaciones de caminar en el aire si quieres)
-func update(_delta: float):
-	pass  # Normalmente no necesitamos nada aquí para Fall
+	# Techo
+	if player.is_on_ceiling() and player.velocity.y > 0:
+		player.velocity.y = 0
 
-# Input mientras está en caída
+func update(_delta: float):
+	pass
+
+func handled_input(_event: InputEvent):
+	pass
 
 func exit():
 	pass

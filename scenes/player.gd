@@ -14,6 +14,9 @@ var is_dashing := false
 var can_dash := true
 var prevVelocity: Vector2 = Vector2.ZERO
 
+# Variable que controla si el jugador puede recibir inputs
+var controls_enabled: bool = true
+
 var health: int = 3
 var movInput: Vector2 = Vector2.ZERO
 var last_facing := 1  # 1 = derecha, -1 = izquierda
@@ -34,4 +37,14 @@ func take_damage(damage: int):
 	health -= damage
 	if health <= 0:
 		respawned.emit()
+		
+func set_controls_enabled(enable: bool) -> void:
+	controls_enabled = enable
+	if not enable:
+		# Reiniciar inputs para evitar que el jugador quede flotando
+		movInput = Vector2.ZERO
+		is_dashing = false
+		jump_locked = false
+		can_dash = false
+
 	
