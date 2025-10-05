@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwcythdm7o21k"]
+[gd_scene load_steps=6 format=3 uid="uid://cyjgyjkthvows"]
 
 [ext_resource type="PackedScene" uid="uid://c4qplnqjrcndx" path="res://Art/Levels/BlockingPasilloPreTorre.blend" id="1_3asnk"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_6am7a"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_0y5ej"]
+[ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="4_6am7a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3asnk"]
 size = Vector3(4.20862, 41.2285, 26.3846)
@@ -41,7 +42,7 @@ light_color = Color(0.843137, 0.717647, 0.215686, 1)
 light_energy = 7.626
 
 [node name="Player" parent="." instance=ExtResource("2_6am7a")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -12.5997, 4.611, -0.0374346)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -41.6673, -1.37546, -0.0374346)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
@@ -74,5 +75,14 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.214, 15.5529, 7.19997)
 shape = SubResource("BoxShape3D_3asnk")
+
+[node name="back_level" parent="." instance=ExtResource("4_6am7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.6045, 0, 0)
+prev_level_path = "res://scenes/levels/level_2_back.tscn"
+is_next = false
+
+[node name="next_level" parent="." instance=ExtResource("4_6am7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.79, 0, 0)
+next_level_path = "res://scenes/levels/level_3.tscn"
 
 [editable path="BlockingPasilloPreTorre"]

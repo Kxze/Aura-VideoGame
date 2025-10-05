@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=4 uid="uid://c17wj8jr8lb0n"]
+[gd_scene load_steps=29 format=4 uid="uid://c17wj8jr8lb0n"]
 
 [ext_resource type="PackedScene" uid="uid://btl7r0mv42dlj" path="res://Art/Levels/blocking_level_3.blend" id="1_0ljxa"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_0qepi"]
+[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_apo5x"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_fmg3e"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="4_0qepi"]
 [ext_resource type="Texture2D" uid="uid://2ep5t33qrbrm" path="res://Art/Levels/textures/TablasPrincipales.001.png" id="4_pimnq"]
@@ -477,6 +478,7 @@ spot_angle = 69.14
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.101, 6.303)
 keep_aspect = 0
+environment = ExtResource("2_apo5x")
 fov = 80.0
 far = 250.0
 script = ExtResource("3_fmg3e")
@@ -536,7 +538,7 @@ next_level_path = "res://scenes/levels/level_4.tscn"
 
 [node name="back_level" parent="." instance=ExtResource("12_f6egh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4885, 46.1786, 0)
-prev_level_path = "res://scenes/levels/level_2_back.tscn"
+prev_level_path = "res://scenes/levels/PasilloPreTorre_back.tscn"
 is_next = false
 
 [node name="CheckPoint" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("13_f6egh")]

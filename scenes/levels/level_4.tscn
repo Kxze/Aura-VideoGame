@@ -1,23 +1,43 @@
-[gd_scene load_steps=9 format=3 uid="uid://gj6xmv4ch22p"]
+[gd_scene load_steps=12 format=3 uid="uid://gj6xmv4ch22p"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_w6h2s"]
-[ext_resource type="Environment" uid="uid://dx128d1xm4yps" path="res://Enviroment_level_3_.tres" id="2_anwe6"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_ogj6a"]
 [ext_resource type="PackedScene" uid="uid://dfshr2qtet0kq" path="res://Art/Levels/Blocking4.blend" id="3_anwe6"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="5_anwe6"]
+[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="5_rej77"]
 [ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="6_rej77"]
+[ext_resource type="LightmapGIData" uid="uid://dtd7jvo0ekem7" path="res://scenes/levels/bakes_lights/level_4.lmbake" id="7_5vn0v"]
+[ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="8_ts8eg"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rej77"]
-metallic = 1.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts8eg"]
+albedo_color = Color(0.118605, 0, 0.677026, 1)
 metallic_specular = 0.0
 roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vn0v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5vn0v"]
 size = Vector3(1, 36.3345, 34.8564)
 
 [node name="Level4" type="Node3D"]
 
+[node name="Player" parent="." instance=ExtResource("1_w6h2s")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 4.07307, 4.17769, 1.96833)
+
+[node name="Camera3D2" type="Camera3D" parent="Player"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
+keep_aspect = 0
+environment = ExtResource("5_rej77")
+fov = 80.0
+far = 250.0
+script = ExtResource("2_ogj6a")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
 [node name="Blocking4" parent="." instance=ExtResource("3_anwe6")]
+
+[node name="StaticBody3D" parent="Blocking4/Cepillo" index="0"]
+collision_layer = 2
 
 [node name="StaticBody3D" parent="Blocking4/Armario" index="0"]
 collision_layer = 2
@@ -32,6 +52,9 @@ collision_layer = 2
 collision_layer = 2
 
 [node name="StaticBody3D" parent="Blocking4/Tocador" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/TapaJoyero" index="0"]
 collision_layer = 2
 
 [node name="StaticBody3D" parent="Blocking4/CartaSuperior" index="0"]
@@ -52,65 +75,107 @@ collision_layer = 2
 [node name="StaticBody3D" parent="Blocking4/FotoRecuerdoAura" index="0"]
 collision_layer = 2
 
-[node name="StaticBody3D" parent="Blocking4/cornisa_individual" index="0"]
-collision_layer = 2
+[node name="EspejoRoto" parent="Blocking4" index="19"]
+material_override = SubResource("StandardMaterial3D_ts8eg")
+transparency = 0.73
+surface_material_override/0 = SubResource("StandardMaterial3D_5vn0v")
 
 [node name="StaticBody3D" parent="Blocking4/Bloquespiso_001" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/CartaSuperior_001" index="0"]
 collision_layer = 2
 
 [node name="StaticBody3D" parent="Blocking4/Libros" index="0"]
 collision_layer = 2
 
-[node name="Pedazos_espejos" parent="Blocking4" index="34"]
-surface_material_override/0 = SubResource("StandardMaterial3D_rej77")
+[node name="StaticBody3D" parent="Blocking4/Pedazos_espejos" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/CartaSuperior_002" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="Blocking4/pCube2" index="0"]
+collision_layer = 2
 
 [node name="Node3D" type="Node3D" parent="."]
+visible = false
 
 [node name="antorcha" type="OmniLight3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13632, 32.2109, -15.2446)
 light_color = Color(0.95, 0.5282, 0.247, 1)
 light_energy = 50.0
+light_bake_mode = 1
 omni_range = 38.5731
 
 [node name="antorcha2" type="OmniLight3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13632, 32.2109, 18.6292)
 light_color = Color(0.95, 0.5282, 0.247, 1)
 light_energy = 50.0
+light_bake_mode = 1
 omni_range = 38.5731
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(-3.83501e-08, 0.479856, -0.877347, 2.09752e-08, 0.877347, 0.479856, 1, 0, -4.37114e-08, -46.9975, 51.9207, 0)
+visible = false
 light_color = Color(0.667199, 0.858594, 0.922007, 1)
 light_energy = 100.0
+light_bake_mode = 1
 spot_range = 89.4452
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(3.73401e-08, 0.519877, 0.854241, 2.27246e-08, -0.854241, 0.519877, 1, -8.88178e-15, -4.37114e-08, 637.766, 52.3638, 0)
+visible = false
+light_color = Color(0.66784, 0.403459, 0.318761, 1)
+light_energy = 500.0
+light_bake_mode = 1
+spot_range = 257.899
+spot_angle = 33.6416
 
 [node name="spot" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 140.964, 67.1298, 0)
+visible = false
 light_color = Color(0.9, 0.62865, 0.297, 1)
 light_energy = 100.0
+light_bake_mode = 1
 spot_range = 107.965
 
 [node name="spot2" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 49.8771, 67.1298, 0)
+visible = false
 light_color = Color(0.9, 0.62865, 0.297, 1)
 light_energy = 100.0
+light_bake_mode = 1
 spot_range = 107.965
 
 [node name="spot3" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 232.152, 67.1298, 0)
+visible = false
 light_color = Color(0.522, 0.7803, 0.9, 1)
 light_energy = 100.0
+light_bake_mode = 1
+spot_range = 107.965
+
+[node name="spot5" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 232.152, 67.1298, -109.981)
+visible = false
+light_color = Color(0.522, 0.7803, 0.9, 1)
+light_energy = 200.0
+light_bake_mode = 1
 spot_range = 107.965
 
 [node name="spot4" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 373.264, 132.13, 0)
+visible = false
 light_color = Color(0.9, 0.62865, 0.297, 1)
 light_energy = 200.0
+light_bake_mode = 1
 spot_range = 280.641
 spot_angle = 31.7738
 
 [node name="Espejo" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370.868, -62.1639, -33.8732)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370.868, -37.4987, -33.8732)
+visible = false
 light_color = Color(0.64, 0.652, 1, 1)
 light_energy = 8.99
 light_specular = 0.0
@@ -118,21 +183,26 @@ light_bake_mode = 1
 omni_range = 78.689
 omni_attenuation = 0.81
 
-[node name="KillZone" parent="." instance=ExtResource("5_anwe6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.6431, -30.8983, 0.159981)
+[node name="Espejo3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 559.55, 2.07862, -29.1747)
+visible = false
+light_color = Color(0.98, 0.810133, 0.4704, 1)
+light_energy = 100.0
+light_volumetric_fog_energy = 3.895
+light_specular = 0.0
+light_bake_mode = 1
+omni_range = 104.382
+omni_attenuation = 0.81
 
-[node name="Player" parent="." instance=ExtResource("1_w6h2s")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 234.11, -12.6328, 1.96833)
-
-[node name="Camera3D2" type="Camera3D" parent="Player"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
-keep_aspect = 0
-environment = ExtResource("2_anwe6")
-fov = 80.0
-far = 250.0
-script = ExtResource("2_ogj6a")
-follow_speed = 12.0
-offset = Vector3(2.97, 5.505, 31.515)
+[node name="Espejo2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370.868, -37.4987, -88.9961)
+visible = false
+light_color = Color(0.64, 0.652, 1, 1)
+light_energy = 20.0
+light_specular = 0.0
+light_bake_mode = 1
+omni_range = 78.689
+omni_attenuation = 0.81
 
 [node name="back_level" parent="." instance=ExtResource("6_rej77")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.822196, 3.75602, 0)
@@ -146,6 +216,19 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.6673, 0)
 shape = SubResource("BoxShape3D_5vn0v")
 
+[node name="KillZone" parent="." instance=ExtResource("5_anwe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.381, -33.9927, 0)
+
+[node name="KillZone2" parent="." instance=ExtResource("5_anwe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.798, -72.145, 0)
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("7_5vn0v")
+
+[node name="Area3D" parent="." instance=ExtResource("8_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.52711, 0, 0)
+
 [editable path="Blocking4"]
-[editable path="KillZone"]
 [editable path="back_level"]
+[editable path="KillZone"]
+[editable path="KillZone2"]
