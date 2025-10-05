@@ -1,26 +1,27 @@
-[gd_scene load_steps=29 format=4 uid="uid://c17wj8jr8lb0n"]
+[gd_scene load_steps=30 format=4 uid="uid://cy08dn38j1vut"]
 
-[ext_resource type="PackedScene" uid="uid://btl7r0mv42dlj" path="res://Art/Levels/blocking_level_3.blend" id="1_0ljxa"]
-[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_0qepi"]
-[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_apo5x"]
-[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_fmg3e"]
-[ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="4_0qepi"]
-[ext_resource type="Texture2D" uid="uid://2ep5t33qrbrm" path="res://Art/Levels/textures/TablasPrincipales.001.png" id="4_pimnq"]
-[ext_resource type="Texture2D" uid="uid://cvlarke30glbm" path="res://Art/Levels/textures/Image Layer.003.png" id="5_2bnyt"]
-[ext_resource type="Texture2D" uid="uid://cmja3gpv3eehn" path="res://Art/Levels/TEXTURAHOJALADRILLOS.png" id="6_n6eey"]
-[ext_resource type="Texture2D" uid="uid://b6shx8k3p0teu" path="res://Art/Levels/blocking_level_3_TelarañasMariposa.png" id="7_qi5uv"]
-[ext_resource type="Texture2D" uid="uid://bo8xcdpad0ol1" path="res://Art/Levels/blocking_level_3_TelarañasAraña.png" id="8_f6egh"]
-[ext_resource type="LightmapGIData" uid="uid://h2jr2slm832a" path="res://scenes/levels/level_3.lmbake" id="10_2bnyt"]
-[ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="11_qi5uv"]
-[ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="12_f6egh"]
-[ext_resource type="PackedScene" uid="uid://2ltdbcdy2ip8" path="res://scenes/triggers/spawn_point.tscn" id="13_f6egh"]
-[ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="14_t4txi"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_3ky6d"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_kusig"]
+[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_v7u0g"]
+[ext_resource type="PackedScene" uid="uid://btl7r0mv42dlj" path="res://Art/Levels/blocking_level_3.blend" id="3_v7u0g"]
+[ext_resource type="Texture2D" uid="uid://2ep5t33qrbrm" path="res://Art/Levels/textures/TablasPrincipales.001.png" id="4_w80rc"]
+[ext_resource type="Texture2D" uid="uid://cvlarke30glbm" path="res://Art/Levels/textures/Image Layer.003.png" id="5_72xho"]
+[ext_resource type="Texture2D" uid="uid://cmja3gpv3eehn" path="res://Art/Levels/TEXTURAHOJALADRILLOS.png" id="6_bacaw"]
+[ext_resource type="Texture2D" uid="uid://b6shx8k3p0teu" path="res://Art/Levels/blocking_level_3_TelarañasMariposa.png" id="7_s3ppn"]
+[ext_resource type="Texture2D" uid="uid://bo8xcdpad0ol1" path="res://Art/Levels/blocking_level_3_TelarañasAraña.png" id="8_rv0yb"]
+[ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="9_yf5jl"]
+[ext_resource type="LightmapGIData" uid="uid://h2jr2slm832a" path="res://scenes/levels/level_3.lmbake" id="10_wj03r"]
+[ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="11_pylv5"]
+[ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="12_2a123"]
+[ext_resource type="PackedScene" uid="uid://2ltdbcdy2ip8" path="res://scenes/triggers/spawn_point.tscn" id="13_s8as2"]
+[ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="14_3juaf"]
+[ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="15_kusig"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjiia"]
 resource_name = "TablasPrincipales.001"
 transparency = 4
 cull_mode = 2
-albedo_texture = ExtResource("4_pimnq")
+albedo_texture = ExtResource("4_w80rc")
 roughness = 0.912727
 texture_repeat = false
 metadata/extras = {
@@ -73,7 +74,7 @@ metadata/extras = {
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21iuy"]
 resource_name = "lambert1.017"
-albedo_texture = ExtResource("5_2bnyt")
+albedo_texture = ExtResource("5_72xho")
 metadata/extras = {
 "paint_system": {},
 "ps_mat_data": {
@@ -124,7 +125,7 @@ metadata/extras = {
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpnu4"]
 resource_name = "lambert1.018"
-albedo_texture = ExtResource("6_n6eey")
+albedo_texture = ExtResource("6_bacaw")
 roughness = 0.552786
 metadata/extras = {
 "paint_system": {},
@@ -179,7 +180,7 @@ resource_name = "Material.009"
 transparency = 4
 cull_mode = 2
 albedo_color = Color(0.371856, 0.226439, 0.08654, 1)
-albedo_texture = ExtResource("7_qi5uv")
+albedo_texture = ExtResource("7_s3ppn")
 roughness = 0.5
 texture_repeat = false
 metadata/extras = {
@@ -232,7 +233,7 @@ resource_name = "Material.008"
 transparency = 4
 cull_mode = 2
 albedo_color = Color(0.47783, 0.331769, 0.266584, 1)
-albedo_texture = ExtResource("8_f6egh")
+albedo_texture = ExtResource("8_rv0yb")
 roughness = 0.5
 texture_repeat = false
 metadata/extras = {
@@ -464,21 +465,21 @@ light_color = Color(0.299512, 0.641459, 0.55459, 1)
 light_energy = 2.133
 light_specular = 0.0
 
-[node name="Player" parent="." instance=ExtResource("2_0qepi")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6107, 47.1405, 1.96833)
+[node name="Player" parent="." instance=ExtResource("1_3ky6d")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 23.2004, 152.322, 1.96833)
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.10099, 6.303)
 keep_aspect = 0
-environment = ExtResource("2_apo5x")
+environment = ExtResource("2_v7u0g")
 fov = 80.0
 far = 250.0
-script = ExtResource("3_fmg3e")
+script = ExtResource("2_kusig")
 target = NodePath("..")
 follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 31.515)
 
-[node name="blocking_level_3" parent="." instance=ExtResource("1_0ljxa")]
+[node name="blocking_level_3" parent="." instance=ExtResource("3_v7u0g")]
 
 [node name="Bloquespiso" parent="blocking_level_3" index="1"]
 mesh = SubResource("ArrayMesh_t4txi")
@@ -498,7 +499,7 @@ visible = false
 [node name="StaticBody3D" parent="blocking_level_3/RampaCollission" index="0"]
 collision_layer = 2
 
-[node name="KillZone" parent="." instance=ExtResource("4_0qepi")]
+[node name="KillZone" parent="." instance=ExtResource("9_yf5jl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.382, 34.9896, 8.05158)
 collision_layer = 4
 
@@ -506,7 +507,7 @@ collision_layer = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 331.585, 0, -11.1259)
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
-light_data = ExtResource("10_2bnyt")
+light_data = ExtResource("10_wj03r")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 71.4147, 0)
@@ -524,16 +525,16 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.08569, 116.62, 0.348145)
 shape = SubResource("BoxShape3D_fmg3e")
 
-[node name="next_level" parent="." instance=ExtResource("11_qi5uv")]
+[node name="next_level" parent="." instance=ExtResource("11_pylv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 202, 0)
 next_level_path = "res://scenes/levels/level_4.tscn"
 
-[node name="back_level" parent="." instance=ExtResource("12_f6egh")]
+[node name="back_level" parent="." instance=ExtResource("12_2a123")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4885, 46.1786, 0)
-prev_level_path = "res://scenes/levels/PasilloPreTorre_back.tscn"
+prev_level_path = "res://scenes/levels/level_2_back.tscn"
 is_next = false
 
-[node name="CheckPoint" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("13_f6egh")]
+[node name="CheckPoint" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("13_s8as2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.5665, 87.3089, 0)
 checkpoint_marker = NodePath("Marker3D")
 
@@ -542,7 +543,7 @@ debug_color = Color(0.802675, 0.10353, 0.448258, 0.42)
 
 [node name="Marker3D" type="Marker3D" parent="CheckPoint"]
 
-[node name="CheckPoint2" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("13_f6egh")]
+[node name="CheckPoint2" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("13_s8as2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9388, 153.547, 0)
 checkpoint_marker = NodePath("Marker3D")
 
@@ -551,8 +552,18 @@ debug_color = Color(0.802675, 0.10353, 0.448258, 0.42)
 
 [node name="Marker3D" type="Marker3D" parent="CheckPoint2"]
 
-[node name="Area3D" parent="." instance=ExtResource("14_t4txi")]
+[node name="Area3D" parent="." instance=ExtResource("14_3juaf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8093, 46.415, 0)
+
+[node name="Area3D2" parent="." instance=ExtResource("14_3juaf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.4743, 197.628, 0)
+
+[node name="door_collect" parent="." instance=ExtResource("15_kusig")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.7163, 152.189, 0)
+
+[node name="Portal_to_collect" parent="door_collect" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.106903, 0, 9.34574e-09)
+next_level_path = "res://scenes/levels/level_collec_1.tscn"
 
 [editable path="blocking_level_3"]
 [editable path="KillZone"]
@@ -560,3 +571,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8093, 46.415, 0)
 [editable path="back_level"]
 [editable path="CheckPoint"]
 [editable path="CheckPoint2"]
+[editable path="Area3D2"]
+[editable path="door_collect"]

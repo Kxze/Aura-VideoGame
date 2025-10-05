@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=4 uid="uid://bv43li74j7llw"]
+[gd_scene load_steps=30 format=4 uid="uid://bv43li74j7llw"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_20n6o"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_dn307"]
+[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_virqc"]
 [ext_resource type="PackedScene" uid="uid://btl7r0mv42dlj" path="res://Art/Levels/blocking_level_3.blend" id="3_virqc"]
 [ext_resource type="Texture2D" uid="uid://2ep5t33qrbrm" path="res://Art/Levels/textures/TablasPrincipales.001.png" id="4_bp61e"]
 [ext_resource type="Texture2D" uid="uid://cvlarke30glbm" path="res://Art/Levels/textures/Image Layer.003.png" id="5_pvp4h"]
@@ -14,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="12_swarn"]
 [ext_resource type="PackedScene" uid="uid://2ltdbcdy2ip8" path="res://scenes/triggers/spawn_point.tscn" id="13_jxh1y"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="14_354e0"]
+[ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="15_dn307"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjiia"]
 resource_name = "TablasPrincipales.001"
@@ -464,19 +466,12 @@ light_energy = 2.133
 light_specular = 0.0
 
 [node name="Player" parent="." instance=ExtResource("1_20n6o")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 53.3664, 201.493, 1.96833)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
-light_color = Color(1, 0.969167, 0.63, 1)
-light_energy = 3.0
-light_specular = 0.0
-spot_range = 13.139
-spot_angle = 69.14
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 53.1042, 201.42, 1.96833)
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594002, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.593998, 1.101, 6.303)
 keep_aspect = 0
+environment = ExtResource("2_virqc")
 fov = 80.0
 far = 250.0
 script = ExtResource("2_dn307")
@@ -563,6 +558,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8093, 46.415, 0)
 [node name="Area3D2" parent="." instance=ExtResource("14_354e0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.4743, 197.628, 0)
 
+[node name="door_collect" parent="." instance=ExtResource("15_dn307")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.7163, 152.189, 0)
+
+[node name="Portal_to_collect" parent="door_collect" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.106903, 0, 9.34574e-09)
+next_level_path = "res://scenes/levels/level_collec_1.tscn"
+
 [editable path="blocking_level_3"]
 [editable path="KillZone"]
 [editable path="next_level"]
@@ -570,3 +572,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.4743, 197.628, 0)
 [editable path="CheckPoint"]
 [editable path="CheckPoint2"]
 [editable path="Area3D2"]
+[editable path="door_collect"]

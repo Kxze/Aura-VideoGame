@@ -24,7 +24,7 @@ size = Vector3(1, 36.3345, 34.8564)
 [node name="Level4" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_w6h2s")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 354.073, -71.8223, 1.96833)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3.77659, 3.91486, 1.96833)
 
 [node name="Camera3D2" type="Camera3D" parent="Player"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
@@ -236,7 +236,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.971, -88, 0)
 [node name="door_collect" parent="." instance=ExtResource("10_glw47")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 405.405, -89, 0)
 
+[node name="Portal_to_collect" parent="door_collect" index="1"]
+next_level_path = "res://scenes/levels/level_collec_2.tscn"
+
 [editable path="Blocking4"]
 [editable path="back_level"]
 [editable path="KillZone"]
 [editable path="KillZone2"]
+[editable path="door_collect"]

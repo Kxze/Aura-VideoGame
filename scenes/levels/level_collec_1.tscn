@@ -1,7 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://huxio0of1ahm"]
+[gd_scene load_steps=6 format=3 uid="uid://huxio0of1ahm"]
 
-[ext_resource type="PackedScene" uid="uid://8nvqy1n3mstq" path="res://Art/Levels/oso_espacioColeccionable.blend" id="1_0lprf"]
+[ext_resource type="PackedScene" uid="uid://8nvqy1n3mstq" path="res://Art/Levels/OSO_EspacioColeccionable.blend" id="1_0lprf"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_nvl4w"]
+[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="3_oby27"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="4_pi2g4"]
+[ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="5_oby27"]
 
 [node name="Level_collect_1" type="Node3D"]
 
 [node name="oso_espacioColeccionable" parent="." instance=ExtResource("1_0lprf")]
+
+[node name="StaticBody3D" parent="oso_espacioColeccionable/Piso_001" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="oso_espacioColeccionable/Piso" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="oso_espacioColeccionable/BaseFoto" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="oso_espacioColeccionable/OSOPELUCHE" index="0"]
+collision_layer = 2
+
+[node name="Player" parent="." instance=ExtResource("2_nvl4w")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -61.182, 16.1206, 1.96833)
+
+[node name="Camera3D2" type="Camera3D" parent="Player"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
+keep_aspect = 0
+environment = ExtResource("3_oby27")
+fov = 80.0
+far = 250.0
+script = ExtResource("4_pi2g4")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="door_collect" parent="." instance=ExtResource("5_oby27")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -55, 16.6542, 0)
+
+[node name="Portal_to_collect" parent="door_collect" index="1"]
+prev_level_path = "res://scenes/levels/level_3_back_collectable.tscn"
+is_next = false
+
+[editable path="oso_espacioColeccionable"]
+[editable path="door_collect"]

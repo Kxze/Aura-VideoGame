@@ -51,6 +51,9 @@ color_ghost = Color(0.750736, 0.478994, 1, 1)
 
 [node name="Aura" parent="." instance=ExtResource("2_72l0f")]
 
+[node name="BoneAttachment3D" parent="Aura/player/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.0723836, 0.997377, -6.51619e-08, -0.997376, 0.0723838, 7.63507e-07, 7.6622e-07, 9.72544e-09, 1, 3.44237, 3.98553, 6.46456e-07)
+
 [node name="Sprite3D" parent="Aura/player/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 visible = false
 
