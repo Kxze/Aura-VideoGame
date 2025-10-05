@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwcythdm7o21k"]
+
+[ext_resource type="PackedScene" uid="uid://c4qplnqjrcndx" path="res://Art/Levels/BlockingPasilloPreTorre.blend" id="1_3asnk"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_6am7a"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_0y5ej"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3asnk"]
+size = Vector3(4.20862, 41.2285, 26.3846)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="BlockingPasilloPreTorre" parent="." instance=ExtResource("1_3asnk")]
+
+[node name="StaticBody3D" parent="BlockingPasilloPreTorre/PISO" index="0"]
+collision_layer = 2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.200735, 0.598676, -0.77543, -0.705838, 0.46051, 0.538259, 0.679336, 0.655376, 0.330128, 0, 0, 51.0904)
+light_color = Color(0.299512, 0.641459, 0.55459, 1)
+light_energy = 2.133
+light_specular = 0.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="DirectionalLight3D"]
+transform = Transform3D(1, -5.96046e-08, 1.49012e-08, 2.98023e-08, 1, -4.47035e-08, -1.49012e-08, 7.45058e-08, 1, -60.3064, -41.7973, -18.7577)
+light_color = Color(0.843137, 0.717647, 0.215686, 1)
+light_energy = 7.626
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="DirectionalLight3D"]
+transform = Transform3D(1, -5.96046e-08, 1.49012e-08, 2.98023e-08, 1, -4.47035e-08, -1.49012e-08, 7.45058e-08, 1, -54.3442, -64.674, 9.27047)
+light_color = Color(0.843137, 0.717647, 0.215686, 1)
+light_energy = 7.626
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="DirectionalLight3D"]
+transform = Transform3D(1, -5.96046e-08, 1.49012e-08, 2.98023e-08, 1, -4.47035e-08, -1.49012e-08, 7.45058e-08, 1, -72.5783, -9.66362, -61.5303)
+light_color = Color(0.843137, 0.717647, 0.215686, 1)
+light_energy = 7.626
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="DirectionalLight3D"]
+transform = Transform3D(1, -5.96046e-08, 1.49012e-08, 2.98023e-08, 1, -4.47035e-08, -1.49012e-08, 7.45058e-08, 1, -80.2631, 13.5382, -88.4393)
+light_color = Color(0.843137, 0.717647, 0.215686, 1)
+light_energy = 7.626
+
+[node name="Player" parent="." instance=ExtResource("2_6am7a")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -12.5997, 4.611, -0.0374346)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
+light_color = Color(1, 0.969167, 0.63, 1)
+light_energy = 3.0
+light_specular = 0.0
+spot_range = 13.139
+spot_angle = 69.14
+
+[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.101, 6.303)
+keep_aspect = 0
+fov = 80.0
+far = 250.0
+script = ExtResource("3_0y5ej")
+target = NodePath("..")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.2853, 15.5529, 7.19997)
+shape = SubResource("BoxShape3D_3asnk")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.214, 15.5529, 7.19997)
+shape = SubResource("BoxShape3D_3asnk")
+
+[editable path="BlockingPasilloPreTorre"]
