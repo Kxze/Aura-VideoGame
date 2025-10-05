@@ -560,9 +560,13 @@ debug_color = Color(0.802675, 0.10353, 0.448258, 0.42)
 [node name="Area3D" parent="." instance=ExtResource("14_354e0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8093, 46.415, 0)
 
+[node name="Area3D2" parent="." instance=ExtResource("14_354e0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.4743, 197.628, 0)
+
 [editable path="blocking_level_3"]
 [editable path="KillZone"]
 [editable path="next_level"]
 [editable path="back_level"]
 [editable path="CheckPoint"]
 [editable path="CheckPoint2"]
+[editable path="Area3D2"]

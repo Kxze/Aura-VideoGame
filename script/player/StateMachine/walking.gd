@@ -11,24 +11,35 @@ extends PlayerState
 ]
 
 var step_timer := 0.0
-var step_interval := 0.4  # tiempo entre pasos (ajústalo según animación o velocidad)
+var step_interval := 0.4
 var isRunning : bool = false
+
+# RayCast3D hacia abajo (asegúrate de tenerlo en el nodo Player)
+@onready var floor_ray: RayCast3D = $"../../RayCast3D"
 
 func enter(previous_state_path : String, data := {}):
 	player.animationPlayer.play("Walk")
 	isRunning = false
-	step_timer = 0.0  # reiniciamos el temporizador de pasos
+	step_timer = 0.0
 
 func physics_update(delta: float):
-	# --- Si deja de tocar el suelo, cambia a Fall ---
+	# --- Checar distancia al piso ---
 	if not player.is_on_floor():
-		player.can_play_steps = false  # 🚫 Desactiva pasos en el aire
-		emit_signal("finished", "Fall")
-		return
+		if floor_ray.is_colliding():
+			var floor_distance = player.global_position.y - floor_ray.get_collision_point().y
+			if floor_distance > 1.0:  # ✅ Solo caer si está a más de 1 m
+				player.can_play_steps = false
+				emit_signal("finished", "Fall")
+				return
+		else:
+			# Si el raycast no detecta nada, se asume caída libre
+			player.can_play_steps = false
+			emit_signal("finished", "Fall")
+			return
 
 	# --- Si toca el suelo, reactiva pasos ---
 	if not player.can_play_steps:
-		player.can_play_steps = true  # ✅ Permite pasos otra vez
+		player.can_play_steps = true
 
 	# --- Movimiento y animaciones ---
 	player.speed = player.speed_normal
@@ -50,7 +61,6 @@ func physics_update(delta: float):
 		step_timer -= delta
 		if step_timer <= 0.0:
 			AudioManager.play_random_sfx(pasos)
-			# Si está corriendo, que los pasos sean más rápidos
 			step_interval = 0.25 if isRunning else 0.4
 			step_timer = step_interval
 	else:
@@ -58,9 +68,9 @@ func physics_update(delta: float):
 
 	# --- Jump ---
 	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
-		player.can_play_steps = false  # 🔇 al saltar, desactiva pasos
+		player.can_play_steps = false
 		emit_signal("finished", "InAir", {"Jump" : true})
-		
+
 	# --- Dash ---
 	if Input.is_action_just_pressed("dash"):
 		emit_signal("finished", "Dash")
@@ -70,14 +80,13 @@ func physics_update(delta: float):
 	player.move_and_slide()
 	player.global_position.z = 0
 
-
 func update(_delta: float):
 	if player.movInput.x != 0:
 		var target_scale = 1 if player.movInput.x > 0 else -1
 
 		if target_scale != player.last_facing:
 			flip_character(target_scale)
-			player.last_facing = target_scale  # actualizamos dirección
+			player.last_facing = target_scale
 
 func flip_character(target_scale: int):
 	var tween = create_tween()

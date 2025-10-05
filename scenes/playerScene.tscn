@@ -51,10 +51,24 @@ color_ghost = Color(0.750736, 0.478994, 1, 1)
 [node name="Aura" parent="." instance=ExtResource("2_72l0f")]
 
 [node name="Skeleton3D" parent="Aura/player/Armature" index="0"]
-bones/6/rotation = Quaternion(0.669244, -7.31046e-08, -1.08675e-07, 0.743043)
+bones/1/position = Vector3(0.265837, -0.00705575, -9.47989e-10)
+bones/1/rotation = Quaternion(0.68775, -0.164317, 0.68775, 0.164317)
+bones/2/rotation = Quaternion(-0.289625, 8.07932e-08, 5.52477e-08, 0.95714)
+bones/3/rotation = Quaternion(0.701045, 1.99665e-08, -2.02282e-07, 0.713117)
+bones/4/position = Vector3(-0.405631, 0.322711, 3.44742e-08)
+bones/4/rotation = Quaternion(0.653343, 0.270451, 0.653342, -0.270451)
+bones/5/rotation = Quaternion(-0.245888, 2.01764e-07, 6.80468e-09, 0.969298)
+bones/6/rotation = Quaternion(0.645059, -7.83183e-08, -1.01797e-07, 0.764133)
+bones/7/position = Vector3(0, 1.0204, 0)
+bones/7/rotation = Quaternion(-3.47048e-18, 3.27987e-09, -0.0244113, 0.999702)
+bones/8/rotation = Quaternion(-2.28839e-09, 1.16608e-07, 0.0191964, 0.999816)
+bones/9/rotation = Quaternion(3.7544e-07, -2.4911e-07, 0.951602, 0.307335)
+bones/11/rotation = Quaternion(5.03172e-09, 7.12931e-08, 0.00517925, 0.999987)
+bones/12/rotation = Quaternion(3.85618e-07, -2.39245e-07, 0.961611, 0.274417)
+bones/13/rotation = Quaternion(6.15874e-08, 5.57938e-07, -0.0227107, 0.999742)
 
 [node name="AnimationPlayer" parent="Aura/player" index="1"]
-blend_times = [&"Dash", &"Fall", 0.1, &"Dash", &"Jump", 0.2, &"Dash", &"idle", 0.2, &"Fall", &"Dash", 0.5, &"Fall", &"Fall", 0.1, &"Fall", &"Jump", 0.5, &"Fall", &"Land", 0.5, &"Fall", &"Run", 0.5, &"Fall", &"Walk", 0.5, &"Fall", &"idle", 0.2, &"Jump", &"Dash", 0.2, &"Jump", &"Fall", 0.5, &"Jump", &"idle", 0.2, &"Land", &"idle", 0.5, &"Run", &"Jump", 0.5, &"Run", &"Run", 1.0, &"Run", &"Walk", 1.0, &"Run", &"idle", 0.5, &"Walk", &"Jump", 0.5, &"Walk", &"Run", 1.0, &"Walk", &"Walk", 0.5, &"Walk", &"idle", 1.0, &"idle", &"Jump", 0.5, &"idle", &"Walk", 0.5]
+blend_times = [&"Dash", &"Fall", 0.1, &"Dash", &"Jump", 0.2, &"Dash", &"idle", 0.2, &"Fall", &"Dash", 0.5, &"Fall", &"Fall", 0.1, &"Fall", &"Jump", 0.5, &"Fall", &"Land", 0.5, &"Fall", &"Run", 0.5, &"Fall", &"Walk", 0.5, &"Fall", &"idle", 0.2, &"Jump", &"Dash", 0.2, &"Jump", &"Fall", 0.5, &"Jump", &"idle", 0.2, &"Land", &"idle", 0.5, &"Run", &"Fall", 0.2, &"Run", &"Jump", 0.5, &"Run", &"Run", 1.0, &"Run", &"Walk", 1.0, &"Run", &"idle", 0.5, &"Walk", &"Fall", 0.2, &"Walk", &"Jump", 0.5, &"Walk", &"Run", 1.0, &"Walk", &"Walk", 0.5, &"Walk", &"idle", 1.0, &"idle", &"Jump", 0.5, &"idle", &"Walk", 0.5]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_gyu2u")
