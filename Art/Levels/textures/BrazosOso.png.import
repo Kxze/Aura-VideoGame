@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf7ydk7s23q6u"
-path.s3tc="res://.godot/imported/PS New Group 1 Image 1 (MAT_ aalfombraa).png-df5db4bdecf1276d86f657ffaf82d8d6.s3tc.ctex"
+uid="uid://w1twmsrve6wb"
+path.s3tc="res://.godot/imported/BrazosOso.png-c3df2b6f0e3b5ae020900f0c853b5f6b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://Art/Levels/textures/PS New Group 1 Image 1 (MAT_ aalfombraa).png"
-dest_files=["res://.godot/imported/PS New Group 1 Image 1 (MAT_ aalfombraa).png-df5db4bdecf1276d86f657ffaf82d8d6.s3tc.ctex"]
+source_file="res://Art/Levels/textures/BrazosOso.png"
+dest_files=["res://.godot/imported/BrazosOso.png-c3df2b6f0e3b5ae020900f0c853b5f6b.s3tc.ctex"]
 
 [params]
 

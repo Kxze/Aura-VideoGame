@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://04e1pbmtvhtd"]
+
+[ext_resource type="PackedScene" uid="uid://8nvqy1n3mstq" path="res://Art/Levels/OSO_EspacioColeccionable.blend" id="1_tv8sy"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_ctirw"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_nnueb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_er62o"]
+size = Vector3(1, 37.5034, 40.328)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="OSO_EspacioColeccionable" parent="." instance=ExtResource("1_tv8sy")]
+
+[node name="StaticBody3D" parent="OSO_EspacioColeccionable/Piso" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="OSO_EspacioColeccionable/Marco_001" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="OSO_EspacioColeccionable/Soporte_del_casco" index="0"]
+collision_layer = 2
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 2.71516, 53.3575, -1.98262)
+light_color = Color(0.806528, 0.781017, 0.399805, 1)
+light_energy = 0.029
+light_indirect_energy = 0.838
+spot_range = 36.795
+spot_attenuation = -1.92
+spot_angle = 25.95
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.611513, 0, 0.791234, 0, 1, 0, -0.791234, 0, 0.611513, 0, 0, 0)
+light_color = Color(0.213426, 0.36071, 0.821562, 1)
+light_energy = 2.131
+
+[node name="Player" parent="." instance=ExtResource("2_ctirw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -60.3575, 21.6356, -5.87465)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
+light_color = Color(1, 0.969167, 0.63, 1)
+light_energy = 3.0
+light_specular = 0.0
+spot_range = 13.139
+spot_angle = 69.14
+
+[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.2, 0, 8.84756e-09, 0, 0.2, 0, -8.84756e-09, 0, 0.2, 0.594002, 1.101, 6.303)
+keep_aspect = 0
+fov = 80.0
+far = 250.0
+script = ExtResource("3_nnueb")
+target = NodePath("..")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2423, 27.3972, -8.45432)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.972476, 0, 0.233004, 0, 1, 0, -0.233004, 0, 0.972476, -15.7788, 6.11734, 5.55455)
+shape = SubResource("BoxShape3D_er62o")
+
+[editable path="OSO_EspacioColeccionable"]

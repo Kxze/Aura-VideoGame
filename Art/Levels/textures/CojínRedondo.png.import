@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf7ydk7s23q6u"
-path.s3tc="res://.godot/imported/PS New Group 1 Image 1 (MAT_ aalfombraa).png-df5db4bdecf1276d86f657ffaf82d8d6.s3tc.ctex"
+uid="uid://bmmtmqktayrg8"
+path.s3tc="res://.godot/imported/CojínRedondo.png-aab209e871cfa4a0fa4875a842b50092.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/Levels/textures/PS New Group 1 Image 1 (MAT_ aalfombraa).png"
-dest_files=["res://.godot/imported/PS New Group 1 Image 1 (MAT_ aalfombraa).png-df5db4bdecf1276d86f657ffaf82d8d6.s3tc.ctex"]
+source_file="res://Art/Levels/textures/CojínRedondo.png"
+dest_files=["res://.godot/imported/CojínRedondo.png-aab209e871cfa4a0fa4875a842b50092.s3tc.ctex"]
 
 [params]
 

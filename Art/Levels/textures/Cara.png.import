@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf7ydk7s23q6u"
-path.s3tc="res://.godot/imported/PS New Group 1 Image 1 (MAT_ aalfombraa).png-df5db4bdecf1276d86f657ffaf82d8d6.s3tc.ctex"
+uid="uid://dustjo7l1f1n2"
+path.s3tc="res://.godot/imported/Cara.png-760936a8b66abe37f8ea65d6f48c39a1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://Art/Levels/textures/PS New Group 1 Image 1 (MAT_ aalfombraa).png"
-dest_files=["res://.godot/imported/PS New Group 1 Image 1 (MAT_ aalfombraa).png-df5db4bdecf1276d86f657ffaf82d8d6.s3tc.ctex"]
+source_file="res://Art/Levels/textures/Cara.png"
+dest_files=["res://.godot/imported/Cara.png-760936a8b66abe37f8ea65d6f48c39a1.s3tc.ctex"]
 
 [params]
 
