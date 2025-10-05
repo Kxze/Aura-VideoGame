@@ -50,13 +50,6 @@ target = NodePath("..")
 follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 31.515)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 17.1132, 0.855314, -6.24199)
-light_color = Color(0.815686, 0.745098, 0.121569, 1)
-light_energy = 8.945
-omni_range = 14.305
-omni_attenuation = 0.596
-
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.777464, 0.628927, -1.3098e-09, -0.00812265, 0.010041, 0.999917, 0.628875, -0.7774, 0.0129151, 3.12045, 59.9323, -16.3653)
 light_color = Color(0.827451, 0.709804, 0.184314, 1)
@@ -64,6 +57,13 @@ light_energy = 1.808
 spot_range = 73.472
 spot_attenuation = -0.32
 spot_angle = 48.1388
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.987, 9.67142, -37.0846)
+light_color = Color(0.815686, 0.745098, 0.121569, 1)
+light_energy = 8.945
+omni_range = 14.305
+omni_attenuation = 0.596
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(0.777464, 0.628927, -5.85734e-10, -0.00812265, 0.010041, 0.999917, 0.628875, -0.7774, 0.0129151, 60.2227, 59.9323, -16.3653)
