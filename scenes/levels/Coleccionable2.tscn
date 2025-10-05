@@ -1,24 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://04e1pbmtvhtd"]
 
-[ext_resource type="PackedScene" uid="uid://8nvqy1n3mstq" path="res://Art/Levels/OSO_EspacioColeccionable.blend" id="1_tv8sy"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_ctirw"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_nnueb"]
+[ext_resource type="PackedScene" uid="uid://c7ls7aiko36ni" path="res://Art/Levels/casco_espacioColeccionable.blend" id="3_tv8sy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_er62o"]
 size = Vector3(1, 37.5034, 40.328)
 
 [node name="Node3D" type="Node3D"]
-
-[node name="OSO_EspacioColeccionable" parent="." instance=ExtResource("1_tv8sy")]
-
-[node name="StaticBody3D" parent="OSO_EspacioColeccionable/Piso" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="OSO_EspacioColeccionable/Marco_001" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="OSO_EspacioColeccionable/Soporte_del_casco" index="0"]
-collision_layer = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 2.71516, 53.3575, -1.98262)
@@ -63,4 +52,15 @@ collision_layer = 2
 transform = Transform3D(0.972476, 0, 0.233004, 0, 1, 0, -0.233004, 0, 0.972476, -15.7788, 6.11734, 5.55455)
 shape = SubResource("BoxShape3D_er62o")
 
-[editable path="OSO_EspacioColeccionable"]
+[node name="casco_espacioColeccionable" parent="." instance=ExtResource("3_tv8sy")]
+
+[node name="StaticBody3D" parent="casco_espacioColeccionable/Piso" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="casco_espacioColeccionable/Marco_001" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="casco_espacioColeccionable/Soporte_del_casco" index="0"]
+collision_layer = 2
+
+[editable path="casco_espacioColeccionable"]
