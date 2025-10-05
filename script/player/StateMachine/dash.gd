@@ -15,9 +15,9 @@ var suspended := false
 var dash_cooldown := 0.5
 
 signal dash_started
-
+@onready var dash_sfx = preload("res://sonidos/dash.mp3")
 func enter(previous_state_path: String, data := {}):
-	if not player.a:
+	if not player.can_dash:
 		emit_signal("finished", "Idle")
 		return
 
@@ -26,9 +26,11 @@ func enter(previous_state_path: String, data := {}):
 	player.is_dashing = true
 	player.can_dash = false
 	
+	
 	# Reproducir animación Dash
 	if player.animationPlayer:
 		player.animationPlayer.play("Dash")
+		AudioManager.play_and_get_duration(dash_sfx)
 		spawn_dash_trail()
 		emit_signal("dash_started")
 	# Suspensión en aire
