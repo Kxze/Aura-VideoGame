@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcbgcai6mykvg"
-path.s3tc="res://.godot/imported/luna.png-e8cad4ea9470b2e7ec24f46355119b8f.s3tc.ctex"
+uid="uid://d0bs0d8w8shlk"
+path.s3tc="res://.godot/imported/RamaRecolor.png-39d3271cf6def11023aa56a0720ab98e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/Levels/AssetsBloque6/luna.png"
-dest_files=["res://.godot/imported/luna.png-e8cad4ea9470b2e7ec24f46355119b8f.s3tc.ctex"]
+source_file="res://Art/Levels/AssetsBloque6/RamaRecolor.png"
+dest_files=["res://.godot/imported/RamaRecolor.png-39d3271cf6def11023aa56a0720ab98e.s3tc.ctex"]
 
 [params]
 

@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://x0snda4y4sao"]
+
+[ext_resource type="PackedScene" uid="uid://dmifokkccnr1m" path="res://Art/Levels/BlockingBossBattlePT2.blend" id="1_eke71"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_2gwwc"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_cqgpt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eke71"]
+size = Vector3(1, 145, 55)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="BlockingBossBattlePT2" parent="." instance=ExtResource("1_eke71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.5813)
+
+[node name="pCube1" parent="BlockingBossBattlePT2" index="6"]
+layers = 2
+
+[node name="StaticBody3D" parent="BlockingBossBattlePT2/pCube1" index="0"]
+collision_layer = 2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="BlockingBossBattlePT2"]
+transform = Transform3D(0.988024, -0.10645, -0.1117, 0.154113, 0.64515, 0.748352, -0.007599, -0.756604, 0.653829, -429.736, 574.975, 574.125)
+light_color = Color(0.288163, 0.545028, 0.637563, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_2gwwc")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -130.574, 48.7571, -5.87465)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
+light_color = Color(1, 0.969167, 0.63, 1)
+light_energy = 3.0
+light_specular = 0.0
+spot_range = 13.139
+spot_angle = 69.14
+
+[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594002, 1.101, 6.303)
+keep_aspect = 0
+fov = 80.0
+far = 250.0
+script = ExtResource("3_cqgpt")
+target = NodePath("..")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 72, -3)
+shape = SubResource("BoxShape3D_eke71")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139, 0, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.98465, 72, -3)
+shape = SubResource("BoxShape3D_eke71")
+
+[editable path="BlockingBossBattlePT2"]
