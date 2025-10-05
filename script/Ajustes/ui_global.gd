@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var click_sound = preload("res://sonidos/botón2.wav")
 @onready var btn_pausa: Button = $BtnPausa
 @onready var popup_ajustes: Popup = $Popup_Ajustes
 
@@ -8,32 +9,43 @@ var escenas_sin_pausa := [
 	"res://scenes/coleccionista.tscn",
 	"res://scenes/hypneaGames.tscn",
 	"res://scenes/menu_principal.tscn",
-	"res://scenes/partidas.tscn"
+	"res://scenes/partidas.tscn",
+	"res://scenes/menu_tap.tscn"
 	]
+	
+#Guarda si se abrió desde el menú o desde pausa
+var origen_popup := ""
 
 func _ready() -> void:
 	popup_ajustes.hide()
-	btn_pausa.visible = true
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	_actualizar_visibilidad()
+	get_tree().connect("scene_changed", Callable(self, "_actualizar_visibilidad"))
 	
-func _actualizar_visibilidad() -> void:
-	if not btn_pausa:
-		return
-	var escena_actual := get_tree().current_scene
-	if not escena_actual:
-		btn_pausa.visible = false
-		return
-	var ruta_escena := escena_actual.scene_file_path
-	btn_pausa.visible = not escenas_sin_pausa.has(ruta_escena)
 
-# Cada vez que cambia la escena, verificamos si debe mostrarse el botón
-func _notification(what):
-	if what == NOTIFICATION_APPLICATION_FOCUS_IN:
-		_actualizar_visibilidad()
+func _actualizar_visibilidad() -> void:
+	var escena_actual = get_tree().current_scene.scene_file_path
+	btn_pausa.visible = not escenas_sin_pausa.has(escena_actual)
+
+#Llamado desde cualquier parte (menú o botón pausa)
+func mostrar_ajustes(origen: String = "pausa") -> void:
+	origen_popup = origen
+	popup_ajustes.show()
+	if origen == "pausa":
+		get_tree().paused = true
+		btn_pausa.hide()
+
+#Cierra el popup y actúa según desde dónde se abrió
+func cerrar_ajustes() -> void:
+	popup_ajustes.hide()
+	if origen_popup == "pausa":
+		get_tree().paused = false
+		btn_pausa.show()
 
 func _on_btn_pausa_pressed() -> void:
-	get_tree().paused = !get_tree().paused
-	popup_ajustes.visible = get_tree().paused
+	_play_click()
+	mostrar_ajustes("pausa")
 	UiGlobal.popup_ajustes.mostrar("pausa")
-	popup_ajustes.visible = true
-	btn_pausa.visible = false
+
+func _play_click():
+	return AudioManager.play_click(click_sound)

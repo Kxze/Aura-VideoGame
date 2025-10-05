@@ -1,5 +1,6 @@
 extends GridContainer
 
+@onready var click_sound = preload("res://sonidos/botón2.wav")
 #para el modo de pantalla y resolución
 @onready var check_btn: CheckButton = $CheckModo
 @onready var option_res: OptionButton = $OptionRES
@@ -18,6 +19,7 @@ func _ready() -> void:
 	option_res.item_selected.connect(_on_option_res_item_selected)
 
 func _on_check_btn_toggled(pressed: bool) -> void:
+	_play_click()
 	if pressed:
 		# Guardar la opción actual antes de desactivar
 		prev_selected = option_res.selected
@@ -61,3 +63,6 @@ func _on_slider_sfx_value_changed(value: float) -> void:
 		AudioServer.set_bus_mute(efectos_bus, true)
 	else:
 		AudioServer.set_bus_mute(efectos_bus, false)
+
+func _play_click():
+	return AudioManager.play_click(click_sound)
