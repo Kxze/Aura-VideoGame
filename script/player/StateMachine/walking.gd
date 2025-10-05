@@ -2,15 +2,11 @@ extends PlayerState
 
 # Precarga tus sonidos de pasos
 @onready var pasos = [
-	preload("res://sonidos/pasos/paso1.mp3"),
 	preload("res://sonidos/pasos/paso2.mp3"),
 	preload("res://sonidos/pasos/paso3.mp3"),
 	preload("res://sonidos/pasos/paso4.mp3"),
 	preload("res://sonidos/pasos/paso5.mp3"),
-	preload("res://sonidos/pasos/paso6.mp3"),
 	preload("res://sonidos/pasos/paso7.mp3"),
-	preload("res://sonidos/pasos/paso8.mp3"),
-	preload("res://sonidos/pasos/paso9.mp3"),
 	preload("res://sonidos/pasos/paso10.mp3"),
 ]
 
