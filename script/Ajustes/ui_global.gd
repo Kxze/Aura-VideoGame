@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-@onready var click_sound = preload("res://sonidos/botón2.wav")
 @onready var btn_pausa: Button = $BtnPausa
 @onready var popup_ajustes: Popup = $Popup_Ajustes
 
@@ -45,9 +44,17 @@ func cerrar_ajustes() -> void:
 		btn_pausa.show()
 
 func _on_btn_pausa_pressed() -> void:
-	_play_click()
 	mostrar_ajustes("pausa")
-	UiGlobal.popup_ajustes.mostrar("pausa")
+	popup_ajustes.mostrar_banners("pausa")
 
-func _play_click():
-	return AudioManager.play_click(click_sound)
+#Detectar tecla Esc para abrir/cerrar ajustes
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_ESCAPE:
+			if popup_ajustes.visible:
+				cerrar_ajustes()
+			else:
+				# Solo abrir si el botón pausa es visible (para no abrirlo en escenas sin pausa)
+				if btn_pausa.visible:
+					mostrar_ajustes("pausa")
+					popup_ajustes.mostrar_banners("pausa")

@@ -23,7 +23,7 @@ func _ready() -> void:
 
 
 # Mostrar los botones del popup dependiendo del contexto
-func mostrar(origen: String):
+func mostrar_banners(origen: String):
 	match origen:
 		"inicio":
 			btn_cerrar.visible = true
