@@ -1,26 +1,38 @@
 extends PlayerState
 
-#este apartado sobreescribe el estado que viene
+# 🎵 Sonido de aterrizaje
+@onready var land_sound = preload("res://sonidos/cae_salto.wav")
+
+# --- Al entrar al estado ---
 func enter(previous_state_path : String, data := {}):
 	player.animationPlayer.play("idle")
 
-#Esta funcion sobreescribe la funcion physics process
+	# 🔊 Si el jugador viene del estado InAir y fue un salto manual, reproducir sonido
+	if previous_state_path.ends_with("InAir") and data.has("did_jump") and data["did_jump"]:
+		AudioManager.play_and_get_duration(land_sound)
+
+# --- Física del estado ---
 func physics_update(delta: float):
-	if !player.is_on_floor():
+	# Si deja de tocar el suelo, pasa a InAir
+	if not player.is_on_floor():
 		emit_signal("finished", "InAir")
+
+	# Si presiona salto en el suelo
 	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
 		emit_signal("finished", "InAir", {"Jump" : true})
-	
-	player.velocity.x = lerpf(player.velocity.x, 0, .9)
+
+	# Frenado suave horizontal
+	player.velocity.x = lerpf(player.velocity.x, 0, 0.9)
 	player.move_and_slide()
 	player.global_position.z = 0
-#Esta funcion sobreescribe la funcion process
-func update(_delta:float):
-	if player.movInput.x != 0:
-		emit_signal("finished","Walking")
-		
 
-#Esta funcion sobreescribe la funcion Input
+# --- Actualización por frame ---
+func update(_delta: float):
+	# Si hay movimiento horizontal, pasar a Walking
+	if player.movInput.x != 0:
+		emit_signal("finished", "Walking")
+
+# --- Input específico (no usado aquí) ---
 func handled_input(_event: InputEvent):
 	pass
 
