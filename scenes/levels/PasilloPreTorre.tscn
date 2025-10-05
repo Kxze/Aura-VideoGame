@@ -86,7 +86,7 @@ is_next = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.79, 0, 0)
 next_level_path = "res://scenes/levels/level_3.tscn"
 
-[node name="Area3D" parent="." instance=ExtResource("5_0y5ej")]
+[node name="Dash_unlock" parent="." instance=ExtResource("5_0y5ej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11158, 0, 0)
 
 [editable path="BlockingPasilloPreTorre"]

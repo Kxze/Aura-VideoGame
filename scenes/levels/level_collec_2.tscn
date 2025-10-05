@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://fx6bhatw5cur"]
+
+[ext_resource type="PackedScene" uid="uid://c7ls7aiko36ni" path="res://Art/Levels/casco_espacioColeccionable.blend" id="1_7n1o1"]
+
+[node name="level_collect_2" type="Node3D"]
+
+[node name="casco_espacioColeccionable" parent="." instance=ExtResource("1_7n1o1")]

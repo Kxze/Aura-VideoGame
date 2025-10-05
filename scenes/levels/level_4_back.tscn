@@ -1,14 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://gj6xmv4ch22p"]
+[gd_scene load_steps=12 format=3 uid="uid://dqoy6ky1re0x6"]
 
-[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_w6h2s"]
-[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_ogj6a"]
-[ext_resource type="PackedScene" uid="uid://dfshr2qtet0kq" path="res://Art/Levels/Blocking4.blend" id="3_anwe6"]
-[ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="5_anwe6"]
-[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="5_rej77"]
-[ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="6_rej77"]
-[ext_resource type="LightmapGIData" uid="uid://dtd7jvo0ekem7" path="res://scenes/levels/bakes_lights/level_4.lmbake" id="7_5vn0v"]
-[ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="8_ts8eg"]
-[ext_resource type="PackedScene" uid="uid://dwn7fewbx87ob" path="res://scenes/triggers/unlock_lumiere_noEffects.tscn" id="9_um320"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_fwh58"]
+[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_tkyk7"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_6j18j"]
+[ext_resource type="PackedScene" uid="uid://dfshr2qtet0kq" path="res://Art/Levels/Blocking4.blend" id="4_efj64"]
+[ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="5_dwwqg"]
+[ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="6_ou5g1"]
+[ext_resource type="LightmapGIData" uid="uid://dtd7jvo0ekem7" path="res://scenes/levels/bakes_lights/level_4.lmbake" id="7_88m1s"]
+[ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="8_vtho0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts8eg"]
 albedo_color = Color(0.118605, 0, 0.677026, 1)
@@ -22,20 +21,20 @@ size = Vector3(1, 36.3345, 34.8564)
 
 [node name="Level4" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_w6h2s")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 4.07307, 4.17769, 1.96833)
+[node name="Player" parent="." instance=ExtResource("1_fwh58")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 431.073, -58.8223, 1.96833)
 
 [node name="Camera3D2" type="Camera3D" parent="Player"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
 keep_aspect = 0
-environment = ExtResource("5_rej77")
+environment = ExtResource("2_tkyk7")
 fov = 80.0
 far = 250.0
-script = ExtResource("2_ogj6a")
+script = ExtResource("3_6j18j")
 follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 31.515)
 
-[node name="Blocking4" parent="." instance=ExtResource("3_anwe6")]
+[node name="Blocking4" parent="." instance=ExtResource("4_efj64")]
 
 [node name="StaticBody3D" parent="Blocking4/Cepillo" index="0"]
 collision_layer = 2
@@ -78,7 +77,7 @@ collision_layer = 2
 
 [node name="EspejoRoto" parent="Blocking4" index="19"]
 material_override = SubResource("StandardMaterial3D_ts8eg")
-transparency = 0.73
+transparency = 0.65
 surface_material_override/0 = SubResource("StandardMaterial3D_5vn0v")
 
 [node name="StaticBody3D" parent="Blocking4/Bloquespiso_001" index="0"]
@@ -205,7 +204,7 @@ light_bake_mode = 1
 omni_range = 78.689
 omni_attenuation = 0.81
 
-[node name="back_level" parent="." instance=ExtResource("6_rej77")]
+[node name="back_level" parent="." instance=ExtResource("5_dwwqg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.822196, 3.75602, 0)
 prev_level_path = "res://scenes/levels/level_3_back.tscn"
 is_next = false
@@ -217,20 +216,17 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.6673, 0)
 shape = SubResource("BoxShape3D_5vn0v")
 
-[node name="KillZone" parent="." instance=ExtResource("5_anwe6")]
+[node name="KillZone" parent="." instance=ExtResource("6_ou5g1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.381, -33.9927, 0)
 
-[node name="KillZone2" parent="." instance=ExtResource("5_anwe6")]
+[node name="KillZone2" parent="." instance=ExtResource("6_ou5g1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.798, -72.145, 0)
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
-light_data = ExtResource("7_5vn0v")
+light_data = ExtResource("7_88m1s")
 
-[node name="Area3D" parent="." instance=ExtResource("8_ts8eg")]
+[node name="Area3D" parent="." instance=ExtResource("8_vtho0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.52711, 0, 0)
-
-[node name="unlock_lumiere" parent="." instance=ExtResource("9_um320")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.9708, 0, 0)
 
 [editable path="Blocking4"]
 [editable path="back_level"]

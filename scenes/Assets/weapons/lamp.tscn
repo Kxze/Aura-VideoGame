@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b02j8uasctn3t"]
+
+[ext_resource type="Texture2D" uid="uid://qwggls7t2add" path="res://scenes/levels/lampara Aura Version1.png" id="1_rweuy"]
+
+[node name="Sprite3D" type="Sprite3D"]
+pixel_size = 0.005
+texture = ExtResource("1_rweuy")

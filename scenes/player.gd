@@ -28,6 +28,8 @@ var last_facing := 1  # 1 = derecha, -1 = izquierda
 static var spawnPoint 
 
 @onready var aura: Node3D = $Aura/player
+@onready var lamp = $Aura/player/Armature/Skeleton3D/Lamp
+
 @onready var animationPlayer = $Aura/player/AnimationPlayer
 @onready var sprite: Sprite3D = $AuraGhost
 @onready var ray_cast_3d: RayCast3D = $RayCast3D

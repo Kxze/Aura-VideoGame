@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://8nvqy1n3mstq"
-path="res://.godot/imported/oso_espacioColeccionable.blend-1aa0669916a82215c9395695ec49c23c.scn"
+uid="uid://c7ls7aiko36ni"
+path="res://.godot/imported/casco_espacioColeccionable.blend-9df0515d63a1118579cf5f0b5d1fd1d9.scn"
 
 [deps]
 
-source_file="res://Art/Levels/oso_espacioColeccionable.blend"
-dest_files=["res://.godot/imported/oso_espacioColeccionable.blend-1aa0669916a82215c9395695ec49c23c.scn"]
+source_file="res://Art/Levels/casco_espacioColeccionable.blend"
+dest_files=["res://.godot/imported/casco_espacioColeccionable.blend-9df0515d63a1118579cf5f0b5d1fd1d9.scn"]
 
 [params]
 
