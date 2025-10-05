@@ -53,7 +53,7 @@ func _on_coleccionista_pressed(button):
 
 func _on_ajustes_pressed(button):
 	_play_click()
-	UiGlobal.popup_ajustes.mostrar("inicio")
+	UiGlobal.popup_ajustes.mostrar_banners("inicio")
 	UiGlobal.popup_ajustes.popup_centered()
 	UiGlobal.popup_ajustes.show()
 

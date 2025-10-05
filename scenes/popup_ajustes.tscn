@@ -295,6 +295,7 @@ vertical_alignment = 1
 [node name="BtnSalto" type="Button" parent="Panel/MarginContainerControles/GridContainerControles"]
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 text = "Barra de espacio"
 
 [node name="Izquierda" type="Label" parent="Panel/MarginContainerControles/GridContainerControles"]
@@ -306,6 +307,7 @@ vertical_alignment = 1
 [node name="BtnIzq" type="Button" parent="Panel/MarginContainerControles/GridContainerControles"]
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 text = "A"
 
 [node name="Derecha" type="Label" parent="Panel/MarginContainerControles/GridContainerControles"]
@@ -317,6 +319,7 @@ vertical_alignment = 1
 [node name="BtnDrch" type="Button" parent="Panel/MarginContainerControles/GridContainerControles"]
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 text = "D"
 
 [node name="Dash" type="Label" parent="Panel/MarginContainerControles/GridContainerControles"]
@@ -328,6 +331,7 @@ vertical_alignment = 1
 [node name="BtnDash" type="Button" parent="Panel/MarginContainerControles/GridContainerControles"]
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 text = "E"
 
 [node name="Correr" type="Label" parent="Panel/MarginContainerControles/GridContainerControles"]
@@ -339,6 +343,7 @@ vertical_alignment = 1
 [node name="BtnRun" type="Button" parent="Panel/MarginContainerControles/GridContainerControles"]
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 text = "Shift"
 
 [node name="Reestablecer" type="Button" parent="Panel/MarginContainerControles"]

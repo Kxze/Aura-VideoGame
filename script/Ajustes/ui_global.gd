@@ -6,6 +6,8 @@ extends CanvasLayer
 #Lista de escenas donde el botón de pausa NO debe mostrarse
 var escenas_sin_pausa := [
 	"res://scenes/coleccionista.tscn",
+	"res://scenes/coleccionista2.tscn",
+	"res://scenes/coleccionista3.tscn",
 	"res://scenes/hypneaGames.tscn",
 	"res://scenes/menu_principal.tscn",
 	"res://scenes/partidas.tscn",
@@ -43,4 +45,16 @@ func cerrar_ajustes() -> void:
 
 func _on_btn_pausa_pressed() -> void:
 	mostrar_ajustes("pausa")
-	UiGlobal.popup_ajustes.mostrar("pausa")
+	popup_ajustes.mostrar_banners("pausa")
+
+#Detectar tecla Esc para abrir/cerrar ajustes
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_ESCAPE:
+			if popup_ajustes.visible:
+				cerrar_ajustes()
+			else:
+				# Solo abrir si el botón pausa es visible (para no abrirlo en escenas sin pausa)
+				if btn_pausa.visible:
+					mostrar_ajustes("pausa")
+					popup_ajustes.mostrar_banners("pausa")

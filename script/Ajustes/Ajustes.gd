@@ -15,7 +15,7 @@ func _ready() -> void:
 	btn_cerrar.pressed.connect(_on_btn_cerrar_pressed)
 
 # Mostrar los botones del popup dependiendo del contexto
-func mostrar(origen: String):
+func mostrar_banners(origen: String):
 	match origen:
 		"inicio":
 			btn_cerrar.visible = true
