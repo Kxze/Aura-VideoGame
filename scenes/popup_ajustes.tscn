@@ -24,7 +24,6 @@ Label/fonts/font = ExtResource("9_nxi8b")
 
 [node name="Popup_Ajustes" type="Popup"]
 transparent_bg = true
-oversampling_override = 1.0
 size = Vector2i(1920, 1080)
 visible = true
 transparent = true
@@ -199,12 +198,12 @@ text = "Modo   "
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("12_1nwcj")
-theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
 button_pressed = true
 flat = true
 script = ExtResource("13_7fdjt")
