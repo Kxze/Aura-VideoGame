@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://gj6xmv4ch22p"]
+[gd_scene load_steps=9 format=3 uid="uid://gj6xmv4ch22p"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_w6h2s"]
 [ext_resource type="Environment" uid="uid://dx128d1xm4yps" path="res://Enviroment_level_3_.tres" id="2_anwe6"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dfshr2qtet0kq" path="res://Art/Levels/Blocking4.blend" id="3_anwe6"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="5_anwe6"]
 [ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="6_rej77"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rej77"]
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5vn0v"]
 size = Vector3(1, 36.3345, 34.8564)
@@ -53,8 +58,11 @@ collision_layer = 2
 [node name="StaticBody3D" parent="Blocking4/Bloquespiso_001" index="0"]
 collision_layer = 2
 
-[node name="StaticBody3D" parent="Blocking4/espejo" index="0"]
+[node name="StaticBody3D" parent="Blocking4/Libros" index="0"]
 collision_layer = 2
+
+[node name="Pedazos_espejos" parent="Blocking4" index="34"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rej77")
 
 [node name="Node3D" type="Node3D" parent="."]
 
