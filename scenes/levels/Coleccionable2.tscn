@@ -54,6 +54,9 @@ shape = SubResource("BoxShape3D_er62o")
 
 [node name="casco_espacioColeccionable" parent="." instance=ExtResource("3_tv8sy")]
 
+[node name="StaticBody3D" parent="casco_espacioColeccionable/Piso_001" index="0"]
+collision_layer = 2
+
 [node name="StaticBody3D" parent="casco_espacioColeccionable/Piso" index="0"]
 collision_layer = 2
 

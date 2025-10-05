@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://crjvyo6tve2s0"]
+[gd_scene load_steps=8 format=3 uid="uid://crjvyo6tve2s0"]
 
 [ext_resource type="PackedScene" uid="uid://dn1lgpau3so1y" path="res://Art/Levels/BlockingBossBattlePT1.blend" id="1_tbob4"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_5wskf"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_5lrve"]
+[ext_resource type="PackedScene" uid="uid://tjfgf2ildnan" path="res://Art/Model3D/Odil/Odil.blend" id="4_5wskf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wskf"]
 size = Vector3(5.97412, 4.34082, 6.20898)
@@ -33,6 +34,12 @@ light_color = Color(0.288163, 0.545028, 0.637563, 1)
 collision_layer = 2
 
 [node name="StaticBody3D" parent="BlockingBossBattlePT1/CajaFondo_001" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="BlockingBossBattlePT1/CajaFondo" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="BlockingBossBattlePT1/Saquito" index="0"]
 collision_layer = 2
 
 [node name="Player" parent="." instance=ExtResource("2_5wskf")]
@@ -84,5 +91,16 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.3021, 30.8639, -4.04883)
 shape = SubResource("BoxShape3D_5lrve")
+
+[node name="Odil" parent="." instance=ExtResource("4_5wskf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50557, 29.784, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Odil"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 18.4052)
+light_color = Color(1, 0.969167, 0.63, 1)
+light_energy = 3.0
+light_specular = 0.0
+spot_range = 13.139
+spot_angle = 69.14
 
 [editable path="BlockingBossBattlePT1"]
