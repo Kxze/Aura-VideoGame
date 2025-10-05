@@ -40,6 +40,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_level_3_Enredaderas1Flores_001": {
@@ -48,6 +49,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_level_3_Malla": {
@@ -56,6 +58,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_level_3_Malla_001": {
@@ -64,6 +67,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_level_3_Malla_021": {
@@ -72,6 +76,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "blocking_level_3_Malla_033": {
@@ -80,6 +85,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 }
 }

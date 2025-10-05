@@ -8,6 +8,13 @@ var buffered_jump: bool = false
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var Jump_buffer_timer: Timer = $JumpBufferTimer
 
+# 🎵 Precarga de sonidos de salto
+@onready var jump_sounds = [
+	preload("res://sonidos/saltos/jump1.wav"),
+	preload("res://sonidos/saltos/jump2.wav"),
+	preload("res://sonidos/saltos/jump3.wav")
+]
+
 func enter(previous_state_path: String, data := {}):
 	isJumping = false
 
@@ -20,8 +27,13 @@ func enter(previous_state_path: String, data := {}):
 		canReadJumpCoyote = true
 		coyote_timer.start()
 
+
 func physics_update(delta: float):
+	# Verificar si toca el suelo para reactivar pasos
 	if player.is_on_floor():
+		if not player.can_play_steps:
+			player.can_play_steps = true  # ✅ vuelve a permitir pasos al aterrizar
+
 		if buffered_jump and not player.jump_locked and not player.is_dashing:
 			buffered_jump = false
 			emit_signal("finished", "InAir", {"Jump": true})
@@ -31,14 +43,12 @@ func physics_update(delta: float):
 			emit_signal("finished", "Idle")
 		player.jump_locked = false
 	else:
-		# Aplicar gravedad
+		# Mientras esté en el aire, desactivar pasos
+		player.can_play_steps = false  # 🚫 no se reproducen pasos
 		player.velocity.y += player.GRAVITY
 
 	if player.velocity.y > 0 and player.animationPlayer.current_animation != "Fall":
 		player.animationPlayer.play("Fall")
-	
-
-
 
 	# Movimiento horizontal en el aire
 	if !player.is_on_floor():
@@ -50,7 +60,7 @@ func physics_update(delta: float):
 	player.prevVelocity = player.movInput
 	player.move_and_slide()
 	player.global_position.z = 0
-	
+
 
 func handled_input(_event: InputEvent):
 	# Dash primero
@@ -64,17 +74,18 @@ func handled_input(_event: InputEvent):
 			return  
 		if player.is_on_floor() or canReadJumpCoyote:
 			emit_signal("finished", "InAir", {"Jump": true})
-		# Reiniciar animación Jump
 			player.animationPlayer.play("Jump", 0.0, 1.0, false)
 		else:
 			buffered_jump = true
 			Jump_buffer_timer.start()
+
 
 func _on_coyote_timer_timeout() -> void:
 	canReadJumpCoyote = false
 
 func _on_jump_buffer_timer_timeout() -> void:
 	buffered_jump = false
+
 
 func _do_jump():
 	isJumping = true
@@ -83,7 +94,8 @@ func _do_jump():
 	# Reproducir animación de salto desde el inicio
 	player.animationPlayer.play("Jump", 0.0, 1.0, false)
 
+	# 🔇 Desactivar pasos mientras esté en el aire
+	player.can_play_steps = false
 
-	# Reproducir animación de salto solo si no está activa
-	if player.animationPlayer.current_animation != "Jump":
-		player.animationPlayer.play("Jump")
+	# 🔊 Sonido de salto aleatorio
+	AudioManager.play_random_sfx(jump_sounds)

@@ -1,0 +1,140 @@
+[gd_scene load_steps=17 format=3 uid="uid://c3pkhajcfaq51"]
+
+[ext_resource type="Texture2D" uid="uid://bypn6viaeqnwq" path="res://Art/Assets2D/level1/ventanaMask.jpeg" id="1_ajlc0"]
+[ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="2_xuclu"]
+[ext_resource type="Material" uid="uid://cchvhub8830n6" path="res://Materials/emissive.tres" id="3_c5ic3"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="4_b3jte"]
+[ext_resource type="Environment" uid="uid://cm6w1o8o4nilk" path="res://enviroment_level_2.tres" id="5_s12f5"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="6_o7g6w"]
+[ext_resource type="PackedScene" uid="uid://bdfat0fcg3hs" path="res://Art/Levels/blocking.blend" id="7_2n3k7"]
+[ext_resource type="LightmapGIData" uid="uid://cdmx6fo6ass5n" path="res://scenes/levels/bakes_lights/level_1.lmbake" id="8_hrhhe"]
+[ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="9_sjw5y"]
+[ext_resource type="PackedScene" uid="uid://2ltdbcdy2ip8" path="res://scenes/triggers/spawn_point.tscn" id="10_xmmd8"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_2y5yt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2os1m"]
+albedo_color = Color(0.549832, 0.530188, 0.723751, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pa8r4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xbjy"]
+albedo_color = Color(0.543038, 0.650172, 0.801913, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.24
+
+[sub_resource type="BoxMesh" id="BoxMesh_5xbjy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oc4kc"]
+size = Vector3(1, 29.8525, 47.002)
+
+[node name="level1" type="Node3D"]
+
+[node name="Ventana" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, -9.45763e-08, 4.86347e-08, -5.75881e-08, 0.866025, 0.5, -8.9407e-08, 0.5, -0.866025, 11, 54.1966, -84.1008)
+light_color = Color(0.79152, 0.7372, 0.97, 1)
+light_energy = 15.0
+light_volumetric_fog_energy = 2.0
+light_projector = ExtResource("1_ajlc0")
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_opacity = 0.0
+spot_range = 150.924
+spot_attenuation = 0.39
+spot_angle = 29.69
+
+[node name="SpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.831, -0.044652, 0.020874)
+
+[node name="KillZone" parent="." instance=ExtResource("2_xuclu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.5948, 0)
+collision_layer = 4
+
+[node name="CollisionShape3D" parent="KillZone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.017, 0, 0)
+
+[node name="techo" type="MeshInstance3D" parent="."]
+transform = Transform3D(400, 0, 0, 0, -7.01598e-06, -161.362, 0, 160.507, -7.05336e-06, 84.2484, 85.8299, -20.9604)
+mesh = SubResource("QuadMesh_2y5yt")
+surface_material_override/0 = SubResource("StandardMaterial3D_2os1m")
+
+[node name="techo4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.74846e-05, -2.1048e-05, -161.362, 400, 1.36091e-12, -7.05336e-06, 0, -160.507, 2.11601e-05, 282.9, -80.354, -21)
+mesh = SubResource("QuadMesh_2y5yt")
+surface_material_override/0 = SubResource("StandardMaterial3D_2os1m")
+
+[node name="Portal" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.09104e-06, -2.18002, 0, 24.96, -9.52919e-08, 0, 0, 0, 22.6106, 268.089, 23.3196, -13.0133)
+material_override = ExtResource("3_c5ic3")
+mesh = SubResource("PlaneMesh_pa8r4")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(92.0377, 0, 0, 0, -1.25549e-08, -88.6931, 0, 0.287223, -3.8769e-06, 33.7886, 42.3196, -90.3133)
+material_override = SubResource("StandardMaterial3D_5xbjy")
+transparency = 0.65
+mesh = SubResource("BoxMesh_5xbjy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.439572, 0.879599, 0.181886, 0.495307, -0.406303, 0.767847, 0.749298, -0.247434, -0.614271, 41, 43, -89)
+light_energy = 0.1
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
+sky_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("4_b3jte")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 253.37, 5.2894, -0.03167)
+
+[node name="Camera3D2" type="Camera3D" parent="Player"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.599054, 1.14631, 6.62286)
+keep_aspect = 0
+environment = ExtResource("5_s12f5")
+fov = 80.0
+far = 250.0
+script = ExtResource("6_o7g6w")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="blocking" parent="." instance=ExtResource("7_2n3k7")]
+
+[node name="StaticBody3D" parent="blocking/castillo" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="blocking/Libros" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="blocking/Escritorio" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="blocking/silla" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="blocking/cama" index="0"]
+collision_layer = 2
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+bounces = 4
+interior = true
+light_data = ExtResource("8_hrhhe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, 0, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.4262, 0)
+shape = SubResource("BoxShape3D_oc4kc")
+
+[node name="Area3D" parent="." instance=ExtResource("9_sjw5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 265.3, 5.1, 0)
+collision_layer = 12
+next_level_path = "res://scenes/levels/level_2.tscn"
+
+[node name="spawnpoint" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("10_xmmd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.442, 1.7636, 0)
+checkpoint_marker = NodePath("../SpawnPoint")
+
+[editable path="KillZone"]
+[editable path="blocking"]

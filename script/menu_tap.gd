@@ -1,4 +1,11 @@
 extends Control
+@onready var musica_menu = preload("res://musica/MelodiaMenu.mp3")
+
+func _ready():
+	# Solo inicia si no hay música sonando
+	if not AudioManager.musica_player.playing:
+		AudioManager.play_music(musica_menu, true)
+
 
 func _unhandled_input(event):
 	# Si se presiona cualquier tecla

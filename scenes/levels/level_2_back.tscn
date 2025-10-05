@@ -1,0 +1,341 @@
+[gd_scene load_steps=28 format=4 uid="uid://dt2221or1dobv"]
+
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_x3eyt"]
+[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_h51e1"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_p1o1m"]
+[ext_resource type="Material" uid="uid://cchvhub8830n6" path="res://Materials/emissive.tres" id="4_wdeu0"]
+[ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="5_k5ly5"]
+[ext_resource type="PackedScene" uid="uid://bdj1svdqbupp" path="res://Art/Levels/blockin_level_2.blend" id="6_8pyts"]
+[ext_resource type="Texture2D" uid="uid://iwagw7fdkjah" path="res://Art/Levels/blockin_level_2_Fondo.png" id="7_gkrdi"]
+[ext_resource type="Texture2D" uid="uid://ooud6k3iv8jc" path="res://Materials/light.jpeg" id="8_w5eyk"]
+[ext_resource type="ArrayOccluder3D" uid="uid://d0jfiklbqor6l" path="res://scenes/levels/level_2.occ" id="9_cvlh2"]
+[ext_resource type="LightmapGIData" uid="uid://clj76a6yfeg52" path="res://scenes/levels/bakes_lights/level_2.lmbake" id="10_sxl1q"]
+[ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="11_68835"]
+[ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="12_a7xdb"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ibugp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibugp"]
+albedo_color = Color(0, 0.807743, 0.816854, 1)
+
+[sub_resource type="Gradient" id="Gradient_l37oo"]
+offsets = PackedFloat32Array(0.0737705, 1)
+colors = PackedColorArray(1.05888e-06, 0.52784, 0.268164, 1, 0.734173, 0.845534, 0.204608, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qpwj6"]
+frequency = 0.0056
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ibugp"]
+resource_name = "_emission"
+normalize = false
+color_ramp = SubResource("Gradient_l37oo")
+noise = SubResource("FastNoiseLite_qpwj6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpwj6"]
+emission_enabled = true
+emission = Color(0.598526, 0.777956, 0.634225, 1)
+emission_energy_multiplier = 5.49
+emission_texture = SubResource("NoiseTexture2D_ibugp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edybc"]
+resource_name = "Fondo"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("7_gkrdi")
+roughness = 0.5
+texture_repeat = false
+metadata/extras = {
+"paint_system": {},
+"ps_mat_data": {
+"active_index": 0.0,
+"groups": [{
+"active_index": 0.0,
+"channels": [{
+"active_index": 1.0,
+"bake_image": {},
+"color_space": 0.0,
+"layers": [{
+"id": 0.0,
+"name": "Solid Color Layer",
+"order": 2.0,
+"parent_id": -1.0,
+"ref_layer_id": "6a200f53-6ed1-4e50-98c6-2fc6b96cf54b",
+"type": 1.0
+}, {
+"id": 3.0,
+"name": "G3CAJASUPERIOOOR",
+"order": 1.0,
+"parent_id": -1.0,
+"ref_layer_id": "cfedcb9a-3726-4d57-97a0-936305a9ae14",
+"type": 1.0
+}],
+"name": "Color",
+"next_id": 4.0,
+"node_tree": {
+"name": "PS_Channel (Color).029",
+"type": "ShaderNodeTree"
+},
+"type": 1.0,
+"use_alpha": 1.0,
+"use_max_min": 0.0,
+"use_normalize": 0.0
+}],
+"coord_type": 1.0,
+"name": "Item 1",
+"node_tree": {
+"name": "Paint System (New Group).029",
+"type": "ShaderNodeTree"
+},
+"template": 0.0,
+"uv_map_name": "UVMap"
+}]
+}
+}
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pqbio"]
+_surfaces = [{
+"aabb": AABB(-2.66667, 0, -0.5, 5.33333, 1e-05, 1),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "Fondo",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("q6oqwAAAAAAAAAA/q6oqQAAAAAAAAAC/q6oqQAAAAAAAAAA/q6oqwAAAAAAAAAC/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nt80m"]
+resource_name = "blockin_level_2_Fondo"
+lightmap_size_hint = Vector2i(4094, 769)
+_surfaces = [{
+"aabb": AABB(-2.66667, 0, -0.5, 5.33333, 1e-05, 1),
+"attribute_data": PackedByteArray("AAAAAAAAgD8CEAA58PZ/PwAAgD8AAAAA//d/P9pxKjoAAIA/AACAP//3fz/w9n8/AAAAAAAAAAACEAA52nEqOg=="),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_edybc"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("q6oqwAAAAAAAAAA/q6oqQAAAAAAAAAC/q6oqQAAAAAAAAAA/q6oqwAAAAAAAAAC/AID//////78AgP//////vwCA//////+/AID//////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_pqbio")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsp8v"]
+resource_name = "Fondo"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("7_gkrdi")
+roughness = 0.5
+texture_repeat = false
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xacsh"]
+_surfaces = [{
+"aabb": AABB(-2.66667, 0, -0.5, 5.33333, 1e-05, 1),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "Fondo",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("q6oqwAAAAAAAAAA/q6oqQAAAAAAAAAC/q6oqQAAAAAAAAAA/q6oqwAAAAAAAAAC/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_brxtv"]
+resource_name = "blockin_level_2_Fondo_001"
+lightmap_size_hint = Vector2i(4094, 769)
+_surfaces = [{
+"aabb": AABB(-2.66667, 0, -0.5, 5.33333, 1e-05, 1),
+"attribute_data": PackedByteArray("AAAAAAAAgD8CEAA58PZ/PwAAgD8AAAAA//d/P9pxKjoAAIA/AACAP//3fz/w9n8/AAAAAAAAAAACEAA52nEqOg=="),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_qsp8v"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("q6oqwAAAAAAAAAA/q6oqQAAAAAAAAAC/q6oqQAAAAAAAAAA/q6oqwAAAAAAAAAC/AID//////78AgP//////vwCA//////+/AID//////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xacsh")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nt80m"]
+size = Vector3(6.46185, 1, 5.29321)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_brxtv"]
+size = Vector3(18.1857, 6.50659, 8.99463)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tv7cl"]
+size = Vector3(8.54865, 5.73352, 8.12366)
+
+[node name="Level2" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_x3eyt")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 619.587, 100.077, 1.96833)
+
+[node name="Camera3D2" type="Camera3D" parent="Player"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
+keep_aspect = 0
+environment = ExtResource("2_h51e1")
+fov = 80.0
+far = 250.0
+script = ExtResource("3_p1o1m")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.0844826, -0.966447, -0.242577, 0.407486, -0.18865, 0.893514, -0.909295, -0.174333, 0.377877, 268.478, 47.5881, -1.93951)
+light_color = Color(0.141467, 0.360169, 0.55905, 1)
+light_energy = 1.162
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 6.162
+sky_mode = 1
+
+[node name="Portal" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.09104e-06, 2.18002, 2.38419e-06, 24.96, -9.52919e-08, -2.07906e-14, 1.42109e-13, 1.19209e-07, -22.6106, -13.2025, 22.3545, -0.161515)
+material_override = ExtResource("4_wdeu0")
+mesh = SubResource("PlaneMesh_ibugp")
+skeleton = NodePath("")
+
+[node name="KillZone" parent="." instance=ExtResource("5_k5ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.5948, 7)
+collision_layer = 4
+
+[node name="CollisionShape3D" parent="KillZone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 331.585, 0, -11.1259)
+
+[node name="blockin_level_2" parent="." instance=ExtResource("6_8pyts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+
+[node name="botellaCristal" parent="blockin_level_2" index="3"]
+transparency = 0.2
+surface_material_override/0 = SubResource("StandardMaterial3D_ibugp")
+
+[node name="AguaBotella" parent="blockin_level_2" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qpwj6")
+
+[node name="StaticBody3D" parent="blockin_level_2/base_level" index="0"]
+collision_layer = 2
+
+[node name="Fondo" parent="blockin_level_2" index="7"]
+mesh = SubResource("ArrayMesh_nt80m")
+
+[node name="Fondo_001" parent="blockin_level_2" index="8"]
+mesh = SubResource("ArrayMesh_brxtv")
+
+[node name="Luztorre" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.0902609, -0.369882, 0.924684, 0.3883, 0.841925, 0.374681, -0.917102, 0.392873, 0.0676321, 653.239, 133.695, 6.377)
+light_color = Color(1, 0.766667, 0, 1)
+light_energy = 50.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_projector = ExtResource("8_w5eyk")
+light_size = 0.364
+light_specular = 0.899
+shadow_enabled = true
+shadow_bias = 2.353
+spot_range = 241.906
+spot_attenuation = 0.6
+spot_angle = 15.91
+spot_angle_attenuation = 2.37842
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("9_cvlh2")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("10_sxl1q")
+
+[node name="Area3D" parent="." instance=ExtResource("11_68835")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0762, 2.38419e-07, 0.000734329)
+collision_layer = 1
+prev_level_path = "res://scenes/levels/level_1.tscn"
+is_next = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 305, 46.555, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.595123, 0, -1.35486)
+shape = SubResource("BoxShape3D_nt80m")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 371, 65, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461853, -2.24622, 3.99731)
+shape = SubResource("BoxShape3D_brxtv")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 406.4, 65, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461853, -2.24622, 3.99731)
+shape = SubResource("BoxShape3D_brxtv")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 423.943, 68, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461853, -2.24622, 3.99731)
+shape = SubResource("BoxShape3D_brxtv")
+
+[node name="Area3D2" parent="." instance=ExtResource("12_a7xdb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 629, 98.4918, 0)
+next_level_path = "res://scenes/levels/level_3.tscn"
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 515.649, 74.8263, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112976, 0.526215, -0.898254)
+shape = SubResource("BoxShape3D_tv7cl")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 535.749, 81.4378, -0.666006)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5851, 0)
+shape = SubResource("BoxShape3D_tv7cl")
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 558.149, 85.8374, -0.911375)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5851, 0)
+shape = SubResource("BoxShape3D_tv7cl")
+
+[node name="StaticBody3D8" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 577.272, 91.3437, -0.981483)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5851, 0)
+shape = SubResource("BoxShape3D_tv7cl")
+
+[node name="StaticBody3D9" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 595.872, 95.0486, -1.05159)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5851, 0)
+shape = SubResource("BoxShape3D_tv7cl")
+
+[editable path="KillZone"]
+[editable path="blockin_level_2"]
+[editable path="Area3D"]
