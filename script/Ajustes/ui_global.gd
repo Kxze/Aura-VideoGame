@@ -7,6 +7,8 @@ extends CanvasLayer
 #Lista de escenas donde el botón de pausa NO debe mostrarse
 var escenas_sin_pausa := [
 	"res://scenes/coleccionista.tscn",
+	"res://scenes/coleccionista2.tscn",
+	"res://scenes/coleccionista3.tscn",
 	"res://scenes/hypneaGames.tscn",
 	"res://scenes/menu_principal.tscn",
 	"res://scenes/partidas.tscn",
