@@ -9,11 +9,18 @@ extends Popup
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	# ✅ Asegura que el AudioManager también siga funcionando cuando el juego está pausado
+	var am = get_node_or_null("/root/AudioManager")
+	if am:
+		am.process_mode = Node.PROCESS_MODE_ALWAYS
+
 	# Conectamos las señales de los botones
 	btn_salir.pressed.connect(_on_btn_salir_pressed)
 	btn_inicio.pressed.connect(_on_btn_inicio_pressed)
 	btn_continuar.pressed.connect(_on_btn_continuar_pressed)
 	btn_cerrar.pressed.connect(_on_btn_cerrar_pressed)
+
 
 # Mostrar los botones del popup dependiendo del contexto
 func mostrar(origen: String):
@@ -29,7 +36,8 @@ func mostrar(origen: String):
 			btn_inicio.visible = true
 			btn_salir.visible = true
 
-#para cerrar la ventana del pop up
+
+# ---------- BOTONES ----------
 func _on_btn_cerrar_pressed() -> void:
 	_play_click()
 	popup_ajustes.visible = false
@@ -37,7 +45,7 @@ func _on_btn_cerrar_pressed() -> void:
 
 func _on_btn_continuar_pressed() -> void:
 	_play_click()
-	get_tree().paused = false #por si estaba pausado
+	get_tree().paused = false # por si estaba pausado
 	if has_node("/root/UiGlobal"):
 		get_node("/root/UiGlobal").cerrar_ajustes()
 	else:
@@ -45,7 +53,7 @@ func _on_btn_continuar_pressed() -> void:
 
 func _on_btn_inicio_pressed() -> void:
 	_play_click()
-	get_tree().paused = false  #por si estaba pausado
+	get_tree().paused = false  # por si estaba pausado
 	popup_ajustes.visible = false
 	get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
 
@@ -53,5 +61,11 @@ func _on_btn_salir_pressed() -> void:
 	_play_click()
 	get_tree().quit()
 
+
+# ---------- REPRODUCCIÓN DE SONIDO ----------
 func _play_click():
-	return AudioManager.play_click(click_sound)
+	var am = get_node_or_null("/root/AudioManager")
+	if am:
+		am.play_click(click_sound)
+	else:
+		print("⚠️ No se encontró el AudioManager en el árbol.")
