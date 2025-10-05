@@ -18,7 +18,7 @@ var is_dashing := false
 static var can_dash := false
 static var can_lumiere := false
 var prevVelocity: Vector2 = Vector2.ZERO
-
+static var lumiere_ready := true
 # Variable que controla si el jugador puede recibir inputs
 var controls_enabled: bool = true
 
@@ -28,7 +28,8 @@ var last_facing := 1  # 1 = derecha, -1 = izquierda
 static var spawnPoint 
 
 @onready var aura: Node3D = $Aura/player
-@onready var lamp = $Aura/player/Armature/Skeleton3D/Lamp
+@onready var lamp: Sprite3D = $Aura/player/Armature/Skeleton3D/BoneAttachment3D/Sprite3D
+@onready var lamp_light: OmniLight3D = $Aura/player/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D2
 
 @onready var animationPlayer = $Aura/player/AnimationPlayer
 @onready var sprite: Sprite3D = $AuraGhost
@@ -38,8 +39,16 @@ func _input(_event: InputEvent) -> void:
 	movInput.x = Input.get_axis("ui_left","ui_right")
 
 func _process(_delta: float) -> void:
-	pass
-
+	if can_lumiere:
+		lamp.visible = true
+		lamp_light.visible = true
+	if lumiere_ready:
+		_change_light()
+	else:
+		lamp_light.light_color = Color(0.992,0.862,0.502)
+		lamp_light.omni_attenuation = 1
+		lamp_light.omni_range = 3.0
+		lamp_light.light_energy = 1
 func take_damage(damage: int):
 	health -= damage
 	if health <= 0:
@@ -53,3 +62,11 @@ func set_controls_enabled(enable: bool) -> void:
 		is_dashing = false
 		jump_locked = false
 		can_dash = false
+		
+func _change_light():
+	if lumiere_ready:
+		lamp_light.light_color = Color(0.4,0.6,1.0)
+		lamp_light.omni_attenuation = 1.25
+		lamp_light.omni_range = 3.0
+		lamp_light.light_energy = 5.0
+		

@@ -32,10 +32,3 @@ func update(_delta: float):
 	# Si hay movimiento horizontal, pasar a Walking
 	if player.movInput.x != 0:
 		emit_signal("finished", "Walking")
-
-# --- Input específico (no usado aquí) ---
-func handled_input(_event: InputEvent):
-	pass
-
-func exit():
-	pass

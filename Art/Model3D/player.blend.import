@@ -17,7 +17,7 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
-nodes/import_as_skeleton_bones=true
+nodes/import_as_skeleton_bones=false
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -7229,11 +7229,6 @@ _subresources={
 "slice_99/save_to_file/path": "",
 "slice_99/start_frame": 0,
 "slices/amount": 0
-}
-},
-"nodes": {
-"PATH:Armature/Skeleton3D/Player": {
-"mesh_instance/cast_shadow": 2
 }
 }
 }

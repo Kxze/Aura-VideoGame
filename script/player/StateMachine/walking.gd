@@ -75,7 +75,7 @@ func physics_update(delta: float):
 	if Input.is_action_just_pressed("dash"):
 		emit_signal("finished", "Dash")
 	
-	if Input.is_action_just_pressed("Lumiere"):
+	if Input.is_action_just_pressed("Lumiere") and player.can_lumiere:
 		emit_signal("finished","Lumiere")
 	# --- Movimiento horizontal ---
 	player.velocity.x = lerp(player.velocity.x, player.movInput.x * player.speed, 0.9)

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://8nvqy1n3mstq"
-path="res://.godot/imported/oso_espacioColeccionable.blend-1aa0669916a82215c9395695ec49c23c.scn"
+path="res://.godot/imported/OSO_EspacioColeccionable.blend-4c8a0417bfb896878942b6f06affade4.scn"
 
 [deps]
 
-source_file="res://Art/Levels/oso_espacioColeccionable.blend"
-dest_files=["res://.godot/imported/oso_espacioColeccionable.blend-1aa0669916a82215c9395695ec49c23c.scn"]
+source_file="res://Art/Levels/OSO_EspacioColeccionable.blend"
+dest_files=["res://.godot/imported/OSO_EspacioColeccionable.blend-4c8a0417bfb896878942b6f06affade4.scn"]
 
 [params]
 

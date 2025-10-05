@@ -6,37 +6,53 @@
 [node name="player" instance=ExtResource("1_3vyb7")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(0, 2.56988, 0)
-bones/1/position = Vector3(0.265837, -0.0070554, -9.47958e-10)
-bones/1/rotation = Quaternion(0.691066, 0.149761, 0.691065, -0.149761)
-bones/2/rotation = Quaternion(-0.0930177, 9.8028e-08, -2.84429e-08, 0.995664)
-bones/3/rotation = Quaternion(0.386774, -1.19948e-08, -7.90015e-08, 0.922174)
+bones/0/position = Vector3(0, 0, 0)
+bones/1/position = Vector3(0.265837, -0.00705541, -9.4795e-10)
+bones/1/rotation = Quaternion(0.702331, 0.0820487, 0.70233, -0.0820488)
+bones/2/rotation = Quaternion(-0.134629, 9.4784e-08, -1.09128e-08, 0.990896)
+bones/3/rotation = Quaternion(0.714944, 2.24388e-08, -2.06948e-07, 0.699182)
 bones/4/position = Vector3(-0.405631, 0.322711, 3.44743e-08)
-bones/4/rotation = Quaternion(0.696532, -0.121835, 0.696531, 0.121835)
+bones/4/rotation = Quaternion(0.705854, 0.0420679, 0.705854, -0.042068)
 bones/4/scale = Vector3(1.06318, 1.06318, 1.06318)
-bones/5/rotation = Quaternion(-0.162925, 2.11263e-07, -1.85957e-08, 0.986638)
-bones/6/rotation = Quaternion(0.532302, -1.00027e-07, -7.0721e-08, 0.846555)
-bones/7/position = Vector3(0, 2.71325, 0)
-bones/8/position = Vector3(-0.00680061, 3.41949, 9.3242e-07)
-bones/9/rotation = Quaternion(1.52764e-07, 3.11735e-07, 0.387199, -0.921996)
-bones/10/rotation = Quaternion(1.72211e-07, -1.33766e-07, 0.115159, 0.993347)
-bones/11/rotation = Quaternion(5.03175e-09, 7.12931e-08, 0.00517925, 0.999987)
-bones/12/rotation = Quaternion(1.57746e-07, -4.21537e-07, 0.393366, 0.919382)
-bones/13/rotation = Quaternion(4.44124e-08, 5.6037e-07, -0.0915985, 0.995796)
+bones/5/rotation = Quaternion(-0.127995, 2.14732e-07, -2.91178e-08, 0.991775)
+bones/6/rotation = Quaternion(0.691202, -6.81868e-08, -1.15008e-07, 0.722662)
+bones/7/position = Vector3(0, 1, 0)
+bones/7/rotation = Quaternion(-1.38908e-17, 5.80429e-09, -0.0431999, 0.999066)
+bones/8/position = Vector3(-0.0068006, 3.41949, 9.3242e-07)
+bones/8/rotation = Quaternion(-2.27723e-09, 1.16621e-07, 0.0191028, 0.999818)
+bones/9/rotation = Quaternion(2.4691e-07, 2.23637e-07, 0.625826, -0.779963)
+bones/10/rotation = Quaternion(9.77711e-08, -1.29049e-07, 0.03344, 0.999441)
+bones/11/rotation = Quaternion(-6.13763e-08, 7.11518e-08, -0.0631754, 0.998002)
+bones/12/rotation = Quaternion(3.99683e-07, -1.66543e-07, 0.996684, 0.0813665)
+bones/13/rotation = Quaternion(5.79353e-08, 5.58683e-07, -0.0374674, 0.999298)
 bones/14/rotation = Quaternion(1.48515e-09, -2.12974e-07, -0.0151413, 0.999885)
 
-[node name="Player" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(1.0704, 0, 0, 0, 1.0704, 0, 0, 0, 1.0704, 0, 0, 0)
-gi_mode = 0
-
-[node name="Lamp" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.850429, 0.526089, -7.6558e-07, -0.526088, 0.85043, 3.39242e-07, 8.29542e-07, 1.14262e-07, 1, 2.22195, 7.41495, 8.77035e-07)
-visible = false
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.0723842, 0.997377, -6.51615e-08, -0.997376, 0.0723844, 7.63508e-07, 7.66221e-07, 9.72459e-09, 1, 3.44237, 3.98554, 6.46454e-07)
 bone_name = "ManoIz"
 bone_idx = 11
 
-[node name="Lamp_model" parent="Armature/Skeleton3D/Lamp" index="0" instance=ExtResource("2_vxab5")]
-transform = Transform3D(0.0473159, -0.99888, 5.23669e-07, 0.99888, 0.0473155, -9.53978e-07, 9.28132e-07, 5.68222e-07, 1, 0.97263, 0.892301, -0.0394932)
+[node name="Sprite3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("2_vxab5")]
+transform = Transform3D(-0.0686073, -0.997643, 8.28491e-07, 0.997644, -0.0686073, -7.54024e-07, 8.09088e-07, 7.74807e-07, 1, 1.55667, 0.487884, -0.0688618)
+pixel_size = 0.007
+shaded = true
+double_sided = false
+alpha_cut = 2
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="1"]
+transform = Transform3D(-0.455608, -6.62517, 5.50186e-06, 6.62516, -0.455609, -5.00733e-06, 5.373e-06, 5.14535e-06, 6.64081, 1.99436, 0.63147, 2.27026)
+light_color = Color(0.992467, 0.861786, 0.502271, 1)
+omni_range = 3.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Armature/Skeleton3D/BoneAttachment3D/OmniLight3D2" index="0"]
+light_color = Color(0.980392, 0.898039, 0.686275, 1)
+light_energy = 5.0
+omni_range = 2.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Armature/Skeleton3D/BoneAttachment3D/OmniLight3D2/OmniLight3D" index="0"]
+light_color = Color(0.980392, 0.898039, 0.686275, 1)
+light_energy = 5.0
+omni_range = 2.0
 
 [node name="AnimationPlayer" parent="." index="1"]
 blend_times = [&"Dash", &"Fall", 0.5, &"Dash", &"Jump", 0.2, &"Dash", &"idle", 0.2, &"Fall", &"Dash", 0.5, &"Fall", &"Fall", 1.0, &"Fall", &"Jump", 1.0, &"Fall", &"Land", 0.5, &"Fall", &"Run", 1.0, &"Fall", &"Walk", 1.0, &"Fall", &"idle", 1.0, &"Jump", &"Dash", 0.2, &"Jump", &"Fall", 0.5, &"Jump", &"idle", 0.3, &"Land", &"idle", 0.5, &"Run", &"Jump", 0.2, &"Run", &"Run", 1.0, &"Run", &"Walk", 1.0, &"Run", &"idle", 0.5, &"Walk", &"Jump", 0.5, &"Walk", &"Run", 1.0, &"Walk", &"Walk", 0.5, &"Walk", &"idle", 1.0, &"idle", &"Jump", 0.5, &"idle", &"Walk", 0.5]
