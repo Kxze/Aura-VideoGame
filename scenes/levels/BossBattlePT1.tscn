@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://crjvyo6tve2s0"]
+
+[ext_resource type="PackedScene" uid="uid://dn1lgpau3so1y" path="res://Art/Levels/BlockingBossBattlePT1.blend" id="1_tbob4"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_5wskf"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_5lrve"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="BlockingBossBattlePT1" parent="." instance=ExtResource("1_tbob4")]
+
+[node name="StaticBody3D" parent="BlockingBossBattlePT1/pCube1" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="BlockingBossBattlePT1/CajaFondo_001" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="BlockingBossBattlePT1/CajaFondo" index="0"]
+collision_layer = 2
+
+[node name="Player" parent="." instance=ExtResource("2_5wskf")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -39.9701, 38.2797, -5.87465)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
+light_color = Color(1, 0.969167, 0.63, 1)
+light_energy = 3.0
+light_specular = 0.0
+spot_range = 13.139
+spot_angle = 69.14
+
+[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594001, 1.101, 6.303)
+keep_aspect = 0
+fov = 80.0
+far = 250.0
+script = ExtResource("3_5lrve")
+target = NodePath("..")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player"]
+transform = Transform3D(0.988024, -0.10645, -0.1117, 0.154113, 0.64515, 0.748352, -0.007599, -0.756604, 0.653829, -77.9531, 107.339, 116)
+light_color = Color(0.288163, 0.545028, 0.637563, 1)
+
+[editable path="BlockingBossBattlePT1"]
