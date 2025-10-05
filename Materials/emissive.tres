@@ -10,8 +10,8 @@ fractal_gain = 0.435
 fractal_weighted_strength = 0.28
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_thm0r"]
-noise = SubResource("FastNoiseLite_m17cq")
 color_ramp = SubResource("Gradient_l3yxl")
+noise = SubResource("FastNoiseLite_m17cq")
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_e5ym8"]
 frames = 30
