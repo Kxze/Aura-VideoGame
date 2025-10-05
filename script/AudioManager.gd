@@ -21,6 +21,7 @@ func _ready():
 	add_child(musica_player)
 	musica_player.volume_db = -4  # 🔉 más bajo que efectos
 
+
 # --------- SFX ----------
 func play_and_get_duration(sound: AudioStream) -> float:
 	if sound == null:
@@ -43,14 +44,15 @@ func play_random_sfx(sounds: Array) -> void:
 	var sound = sounds[randi() % sounds.size()]
 	play_and_get_duration(sound)
 
+
 # --------- MÚSICA ----------
 func play_music(track: AudioStream, loop := true, crossfade := true) -> void:
 	if track == null:
 		return
 	
-	# Si hay música sonando, hacemos fade out antes de cambiar
+	# Si hay música sonando, lanzamos fade out
 	if musica_player.playing and crossfade:
-		await fade_out()
+		fade_out()  # sin await
 
 	# Configuramos loop
 	if track.has_method("set_loop"):
@@ -60,8 +62,10 @@ func play_music(track: AudioStream, loop := true, crossfade := true) -> void:
 	
 	musica_player.stream = track
 	musica_player.play()
+	
 	if crossfade:
-		await fade_in()
+		fade_in()  # sin await
+
 
 func stop_music() -> void:
 	musica_player.stop()
@@ -72,12 +76,23 @@ func pause_music() -> void:
 func resume_music() -> void:
 	musica_player.stream_paused = false
 
+
 # --------- TRANSICIONES ----------
 func fade_out():
 	if fading:
 		return
 	fading = true
+	
 	var start_vol = musica_player.volume_db
+	var timer := 0.0
+	
+	# usamos un proceso asíncrono manual sin await
+	musica_player.set_process(true)
+	musica_player.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	musica_player.connect("process", Callable(self, "_process_fade_out").bind(start_vol), CONNECT_ONE_SHOT)
+
+func _process_fade_out(start_vol: float) -> void:
 	var t := 0.0
 	while t < fade_time:
 		t += get_process_delta_time()
@@ -88,11 +103,19 @@ func fade_out():
 	musica_player.volume_db = start_vol
 	fading = false
 
+
 func fade_in():
 	if fading:
 		return
 	fading = true
+	
 	musica_player.volume_db = -80.0
+	var t := 0.0
+	
+	# procesar el fade in sin await
+	call_deferred("_start_fade_in")
+
+func _start_fade_in():
 	var t := 0.0
 	while t < fade_time:
 		t += get_process_delta_time()
