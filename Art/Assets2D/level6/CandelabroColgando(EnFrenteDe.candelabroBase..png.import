@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4yfxjgmppekf"
-path.s3tc="res://.godot/imported/OdilAlaFrenteIzq.png-c031a3bcdd750abea67f856f011e5719.s3tc.ctex"
+uid="uid://ci0jbcg2go7v4"
+path.s3tc="res://.godot/imported/CandelabroColgando(EnFrenteDe.candelabroBase..png-0eb56795fcc4e09a28ec3175841af8a0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/Model3D/Odil/OdilAlaFrenteIzq.png"
-dest_files=["res://.godot/imported/OdilAlaFrenteIzq.png-c031a3bcdd750abea67f856f011e5719.s3tc.ctex"]
+source_file="res://Art/Assets2D/level6/CandelabroColgando(EnFrenteDe.candelabroBase..png"
+dest_files=["res://.godot/imported/CandelabroColgando(EnFrenteDe.candelabroBase..png-0eb56795fcc4e09a28ec3175841af8a0.s3tc.ctex"]
 
 [params]
 
