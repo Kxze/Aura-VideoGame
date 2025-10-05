@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyjgyjkthvows"]
+[gd_scene load_steps=7 format=3 uid="uid://cyjgyjkthvows"]
 
 [ext_resource type="PackedScene" uid="uid://c4qplnqjrcndx" path="res://Art/Levels/BlockingPasilloPreTorre.blend" id="1_3asnk"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_6am7a"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_0y5ej"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="4_6am7a"]
+[ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="5_0y5ej"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3asnk"]
 size = Vector3(4.20862, 41.2285, 26.3846)
@@ -84,5 +85,8 @@ is_next = false
 [node name="next_level" parent="." instance=ExtResource("4_6am7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.79, 0, 0)
 next_level_path = "res://scenes/levels/level_3.tscn"
+
+[node name="Area3D" parent="." instance=ExtResource("5_0y5ej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11158, 0, 0)
 
 [editable path="BlockingPasilloPreTorre"]

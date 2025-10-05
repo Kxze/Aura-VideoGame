@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d30vdm7b5ol13"]
+[gd_scene load_steps=17 format=3 uid="uid://d30vdm7b5ol13"]
 
 [ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
 [ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c75jo2lrdevvu" path="res://script/player/StateMachine/dash.gd" id="7_bubm6"]
 [ext_resource type="PackedScene" uid="uid://decmjw6soqpbu" path="res://scenes/Effects/trail_scene.tscn" id="8_elcxt"]
 [ext_resource type="Script" uid="uid://3jh30ajrpmx8" path="res://script/player/StateMachine/fall.gd" id="8_nk4e2"]
+[ext_resource type="Script" uid="uid://dq261qtsyqwe" path="res://script/player/StateMachine/lumiere.gd" id="9_ky4hv"]
 [ext_resource type="PackedScene" uid="uid://dxiojj86hdb04" path="res://scenes/Effects/ghost_dash.tscn" id="10_i0eca"]
 [ext_resource type="Script" uid="uid://sm7vtmqcyw1j" path="res://script/light_dash.gd" id="11_ky4hv"]
 [ext_resource type="Script" uid="uid://duhvl1urrncli" path="res://script/dashAura.gd" id="12_nk4e2"]
@@ -101,6 +102,9 @@ dash_trail_scene = SubResource("PackedScene_nk4e2")
 
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("8_nk4e2")
+
+[node name="Lumiere" type="Node" parent="StateMachine"]
+script = ExtResource("9_ky4hv")
 
 [node name="AuraGhost" parent="." instance=ExtResource("10_i0eca")]
 transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 0.012677, 1.10246, -0.141001)

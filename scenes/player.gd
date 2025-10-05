@@ -16,6 +16,7 @@ var speed = speed_normal
 var jump_locked := false
 var is_dashing := false
 static var can_dash := false
+static var can_lumiere := false
 var prevVelocity: Vector2 = Vector2.ZERO
 
 # Variable que controla si el jugador puede recibir inputs
