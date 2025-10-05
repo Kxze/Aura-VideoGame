@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf7ydk7s23q6u"
-path.s3tc="res://.godot/imported/PS New Group 1 Image 1 (MAT_ aalfombraa).png-df5db4bdecf1276d86f657ffaf82d8d6.s3tc.ctex"
+uid="uid://3xrivsii1wmo"
+path.s3tc="res://.godot/imported/OSOAHORASIColeccionable_Pluma.png-79975d4fcb0cd68306e15d583481afb4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "95adc52e2529aa5e4dc861a2e24419bf"
+}
 
 [deps]
 
-source_file="res://Art/Levels/textures/PS New Group 1 Image 1 (MAT_ aalfombraa).png"
-dest_files=["res://.godot/imported/PS New Group 1 Image 1 (MAT_ aalfombraa).png-df5db4bdecf1276d86f657ffaf82d8d6.s3tc.ctex"]
+source_file="res://Art/Levels/OSOAHORASIColeccionable_Pluma.png"
+dest_files=["res://.godot/imported/OSOAHORASIColeccionable_Pluma.png-79975d4fcb0cd68306e15d583481afb4.s3tc.ctex"]
 
 [params]
 

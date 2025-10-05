@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://s2spgog2tl1f"]
+
+[ext_resource type="PackedScene" uid="uid://dgowd5racmix" path="res://Art/Levels/OSOAHORASIColeccionable.blend" id="1_k1hd5"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_akdnb"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_j8aoj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k1hd5"]
+size = Vector3(35, 3, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_akdnb"]
+size = Vector3(0.001, 25, 12)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="OSOAHORASIColeccionable" parent="." instance=ExtResource("1_k1hd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.5537, 0)
+
+[node name="StaticBody3D" parent="OSOAHORASIColeccionable/Piso_001" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="OSOAHORASIColeccionable/Piso" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="OSOAHORASIColeccionable/Marco_001" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="OSOAHORASIColeccionable/BaseFoto" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="OSOAHORASIColeccionable/OSOPELUCHE" index="0"]
+collision_layer = 2
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 2.71516, 53.3575, 0.712004)
+light_color = Color(0.806528, 0.781017, 0.399805, 1)
+light_energy = 0.029
+light_indirect_energy = 0.838
+spot_range = 51.9395
+spot_attenuation = -1.92
+spot_angle = 25.95
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.611513, 0, 0.791234, 0, 1, 0, -0.791234, 0, 0.611513, 0, 0, 0)
+light_color = Color(0.703248, 0.423328, 0.42908, 1)
+light_energy = 2.131
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.8939, 29, -11.0344)
+light_color = Color(0.880837, 0.58096, 0.318566, 1)
+light_energy = 4.071
+omni_range = 5.915
+omni_attenuation = -0.863
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9609, 27.7098, -12.457)
+light_color = Color(0.880837, 0.58096, 0.318566, 1)
+light_energy = 4.071
+omni_range = 5.915
+omni_attenuation = -0.863
+
+[node name="Player" parent="." instance=ExtResource("2_akdnb")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -56.1499, 4.7978, -5.87465)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
+light_color = Color(1, 0.969167, 0.63, 1)
+light_energy = 3.0
+light_specular = 0.0
+spot_range = 13.139
+spot_angle = 69.14
+
+[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.2, 0, 8.84756e-09, 0, 0.2, 0, -8.84756e-09, 0, 0.2, 0.594002, 1.101, 6.303)
+keep_aspect = 0
+fov = 80.0
+far = 250.0
+script = ExtResource("3_j8aoj")
+target = NodePath("..")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -1)
+shape = SubResource("BoxShape3D_k1hd5")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.957, 12, -1.5)
+shape = SubResource("BoxShape3D_akdnb")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 7, 9.51918, 3)
+
+[editable path="OSOAHORASIColeccionable"]
