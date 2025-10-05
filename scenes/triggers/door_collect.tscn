@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://nihfdemqetu1" path="res://script/triggers/door_collect.gd" id="1_4immj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aapt7"]
-size = Vector3(32, 32, 16)
+size = Vector3(16, 32, 16)
 
 [node name="door_collect" type="Area3D"]
 script = ExtResource("1_4immj")
