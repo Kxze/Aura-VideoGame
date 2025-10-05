@@ -294,7 +294,7 @@ shape = SubResource("BoxShape3D_brxtv")
 
 [node name="Area3D2" parent="." instance=ExtResource("12_a7xdb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 629, 98.4918, 0)
-next_level_path = "res://scenes/levels/level_3.tscn"
+next_level_path = "res://scenes/levels/PasilloPreTorre.tscn"
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 515.649, 74.8263, 0)

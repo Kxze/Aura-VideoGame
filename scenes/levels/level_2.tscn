@@ -271,7 +271,7 @@ is_next = false
 
 [node name="next_level" parent="." instance=ExtResource("12_brxtv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 629, 98.4918, 0)
-next_level_path = "res://scenes/levels/level_3.tscn"
+next_level_path = "res://scenes/levels/PasilloPreTorre_back.tscn"
 
 [node name="Collision" type="Node3D" parent="."]
 

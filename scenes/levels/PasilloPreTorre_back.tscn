@@ -1,16 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyjgyjkthvows"]
+[gd_scene load_steps=6 format=3 uid="uid://dv8ronj6iohup"]
 
-[ext_resource type="PackedScene" uid="uid://c4qplnqjrcndx" path="res://Art/Levels/BlockingPasilloPreTorre.blend" id="1_3asnk"]
-[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_6am7a"]
-[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_0y5ej"]
-[ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="4_6am7a"]
+[ext_resource type="PackedScene" uid="uid://c4qplnqjrcndx" path="res://Art/Levels/BlockingPasilloPreTorre.blend" id="1_wjhgk"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_tlhwn"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_gxebg"]
+[ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="4_tlhwn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3asnk"]
 size = Vector3(4.20862, 41.2285, 26.3846)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="BlockingPasilloPreTorre" parent="." instance=ExtResource("1_3asnk")]
+[node name="BlockingPasilloPreTorre" parent="." instance=ExtResource("1_wjhgk")]
 
 [node name="StaticBody3D" parent="BlockingPasilloPreTorre/PISO" index="0"]
 collision_layer = 2
@@ -41,8 +41,8 @@ transform = Transform3D(1, -5.96046e-08, 1.49012e-08, 2.98023e-08, 1, -4.47035e-
 light_color = Color(0.843137, 0.717647, 0.215686, 1)
 light_energy = 7.626
 
-[node name="Player" parent="." instance=ExtResource("2_6am7a")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -41.6673, -1.37546, -0.0374346)
+[node name="Player" parent="." instance=ExtResource("2_tlhwn")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 123.33, -1.77456, -0.0374346)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
@@ -53,11 +53,11 @@ spot_range = 13.139
 spot_angle = 69.14
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594001, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594002, 1.101, 6.303)
 keep_aspect = 0
 fov = 80.0
 far = 250.0
-script = ExtResource("3_0y5ej")
+script = ExtResource("3_gxebg")
 target = NodePath("..")
 follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 31.515)
@@ -76,12 +76,12 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.214, 15.5529, 7.19997)
 shape = SubResource("BoxShape3D_3asnk")
 
-[node name="back_level" parent="." instance=ExtResource("4_6am7a")]
+[node name="back_level" parent="." instance=ExtResource("4_tlhwn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.6045, 0, 0)
 prev_level_path = "res://scenes/levels/level_2_back.tscn"
 is_next = false
 
-[node name="next_level" parent="." instance=ExtResource("4_6am7a")]
+[node name="next_level" parent="." instance=ExtResource("4_tlhwn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.79, 0, 0)
 next_level_path = "res://scenes/levels/level_3.tscn"
 

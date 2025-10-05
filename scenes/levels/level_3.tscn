@@ -538,7 +538,7 @@ next_level_path = "res://scenes/levels/level_4.tscn"
 
 [node name="back_level" parent="." instance=ExtResource("12_f6egh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4885, 46.1786, 0)
-prev_level_path = "res://scenes/levels/level_2_back.tscn"
+prev_level_path = "res://scenes/levels/PasilloPreTorre_back.tscn"
 is_next = false
 
 [node name="CheckPoint" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("13_f6egh")]
