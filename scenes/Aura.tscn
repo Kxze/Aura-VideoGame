@@ -28,7 +28,7 @@ bones/13/rotation = Quaternion(5.79353e-08, 5.58683e-07, -0.0374674, 0.999298)
 bones/14/rotation = Quaternion(1.48515e-09, -2.12974e-07, -0.0151413, 0.999885)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.0723842, 0.997377, -6.51615e-08, -0.997376, 0.0723844, 7.63508e-07, 7.66221e-07, 9.72459e-09, 1, 3.44237, 3.98554, 6.46454e-07)
+transform = Transform3D(0.0723836, 0.997377, -6.51619e-08, -0.997376, 0.0723838, 7.63507e-07, 7.6622e-07, 9.72544e-09, 1, 3.44237, 3.98553, 6.46456e-07)
 bone_name = "ManoIz"
 bone_idx = 11
 
@@ -40,19 +40,9 @@ double_sided = false
 alpha_cut = 2
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="1"]
-transform = Transform3D(-0.455608, -6.62517, 5.50186e-06, 6.62516, -0.455609, -5.00733e-06, 5.373e-06, 5.14535e-06, 6.64081, 1.99436, 0.63147, 2.27026)
+transform = Transform3D(-0.0686073, -0.997644, 8.2849e-07, 0.997644, -0.0686073, -7.54025e-07, 8.09088e-07, 7.74807e-07, 1, 1.99436, 0.63147, 2.27026)
 light_color = Color(0.992467, 0.861786, 0.502271, 1)
 omni_range = 3.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Armature/Skeleton3D/BoneAttachment3D/OmniLight3D2" index="0"]
-light_color = Color(0.980392, 0.898039, 0.686275, 1)
-light_energy = 5.0
-omni_range = 2.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Armature/Skeleton3D/BoneAttachment3D/OmniLight3D2/OmniLight3D" index="0"]
-light_color = Color(0.980392, 0.898039, 0.686275, 1)
-light_energy = 5.0
-omni_range = 2.0
 
 [node name="AnimationPlayer" parent="." index="1"]
 blend_times = [&"Dash", &"Fall", 0.5, &"Dash", &"Jump", 0.2, &"Dash", &"idle", 0.2, &"Fall", &"Dash", 0.5, &"Fall", &"Fall", 1.0, &"Fall", &"Jump", 1.0, &"Fall", &"Land", 0.5, &"Fall", &"Run", 1.0, &"Fall", &"Walk", 1.0, &"Fall", &"idle", 1.0, &"Jump", &"Dash", 0.2, &"Jump", &"Fall", 0.5, &"Jump", &"idle", 0.3, &"Land", &"idle", 0.5, &"Run", &"Jump", 0.2, &"Run", &"Run", 1.0, &"Run", &"Walk", 1.0, &"Run", &"idle", 0.5, &"Walk", &"Jump", 0.5, &"Walk", &"Run", 1.0, &"Walk", &"Walk", 0.5, &"Walk", &"idle", 1.0, &"idle", &"Jump", 0.5, &"idle", &"Walk", 0.5]

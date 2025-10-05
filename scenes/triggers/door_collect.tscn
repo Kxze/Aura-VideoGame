@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4rqrrrtawlac"]
+[gd_scene load_steps=5 format=3 uid="uid://b4rqrrrtawlac"]
 
 [ext_resource type="Script" uid="uid://nihfdemqetu1" path="res://script/triggers/door_collect.gd" id="1_4immj"]
+[ext_resource type="Script" uid="uid://s62x40mfo2he" path="res://script/triggers/portal_to_collect.gd" id="2_aapt7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aapt7"]
 size = Vector3(16, 32, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r61aq"]
+size = Vector3(8, 32, 16)
 
 [node name="door_collect" type="Area3D"]
 script = ExtResource("1_4immj")
@@ -12,5 +16,14 @@ script = ExtResource("1_4immj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
 shape = SubResource("BoxShape3D_aapt7")
 
+[node name="Portal_to_collect" type="Area3D" parent="."]
+script = ExtResource("2_aapt7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portal_to_collect"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 16, 0)
+shape = SubResource("BoxShape3D_r61aq")
+debug_color = Color(0.862949, 0.000623197, 0.868272, 0.42)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="Portal_to_collect" to="Portal_to_collect" method="_on_body_entered"]
