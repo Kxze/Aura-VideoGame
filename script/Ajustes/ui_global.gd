@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var click_sound = preload("res://sonidos/botón2.wav")
 @onready var btn_pausa: Button = $BtnPausa
 @onready var popup_ajustes: Popup = $Popup_Ajustes
 
@@ -42,5 +43,9 @@ func cerrar_ajustes() -> void:
 		btn_pausa.show()
 
 func _on_btn_pausa_pressed() -> void:
+	_play_click()
 	mostrar_ajustes("pausa")
 	UiGlobal.popup_ajustes.mostrar("pausa")
+
+func _play_click():
+	return AudioManager.play_click(click_sound)

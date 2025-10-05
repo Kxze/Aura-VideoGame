@@ -1,5 +1,6 @@
 extends Popup
 
+@onready var click_sound = preload("res://sonidos/botón2.wav")
 @onready var popup_ajustes: Popup = $"."
 @onready var btn_cerrar: Button = $Panel/BtnCerrar
 @onready var btn_continuar: Button = $Panel/BtnContinuar
@@ -30,10 +31,12 @@ func mostrar(origen: String):
 
 #para cerrar la ventana del pop up
 func _on_btn_cerrar_pressed() -> void:
+	_play_click()
 	popup_ajustes.visible = false
 	get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
 
 func _on_btn_continuar_pressed() -> void:
+	_play_click()
 	get_tree().paused = false #por si estaba pausado
 	if has_node("/root/UiGlobal"):
 		get_node("/root/UiGlobal").cerrar_ajustes()
@@ -41,9 +44,14 @@ func _on_btn_continuar_pressed() -> void:
 		hide()
 
 func _on_btn_inicio_pressed() -> void:
+	_play_click()
 	get_tree().paused = false  #por si estaba pausado
 	popup_ajustes.visible = false
 	get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
 
 func _on_btn_salir_pressed() -> void:
+	_play_click()
 	get_tree().quit()
+
+func _play_click():
+	return AudioManager.play_click(click_sound)

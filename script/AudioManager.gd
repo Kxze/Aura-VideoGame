@@ -8,14 +8,14 @@ func _ready():
 	# Efectos
 	efectos_player = AudioStreamPlayer.new()
 	efectos_player.name = "SFX_Player"
+	efectos_player.bus = "Efectos"
 	add_child(efectos_player)
 
 	# Música
 	musica_player = AudioStreamPlayer.new()
 	musica_player.name = "Music_Player"
+	musica_player.bus = "Musica"
 	add_child(musica_player)
-	# Si tienes un bus "Music", puedes activar esta línea:
-	# music_player.bus = "Music"
 
 # --------- SFX ----------
 # Función base: reproduce y devuelve la duración (si el stream la reporta)
