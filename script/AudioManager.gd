@@ -13,12 +13,14 @@ func _ready():
 	efectos_player = AudioStreamPlayer.new()
 	efectos_player.name = "SFX_Player"
 	add_child(efectos_player)
+	efectos_player.bus = "Efectos"
 	efectos_player.volume_db = +6  # 🔊 volumen normal
 	
 	# Música
 	musica_player = AudioStreamPlayer.new()
 	musica_player.name = "Music_Player"
 	add_child(musica_player)
+	musica_player.bus = "Musica"
 	musica_player.volume_db = -4  # 🔉 más bajo que efectos
 
 # --------- SFX ----------
