@@ -1,7 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://fx6bhatw5cur"]
+[gd_scene load_steps=6 format=3 uid="uid://fx6bhatw5cur"]
 
 [ext_resource type="PackedScene" uid="uid://c7ls7aiko36ni" path="res://Art/Levels/casco_espacioColeccionable.blend" id="1_7n1o1"]
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_2s0gl"]
+[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="3_itbef"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="4_coqn3"]
+[ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="5_itbef"]
 
 [node name="level_collect_2" type="Node3D"]
 
 [node name="casco_espacioColeccionable" parent="." instance=ExtResource("1_7n1o1")]
+
+[node name="StaticBody3D" parent="casco_espacioColeccionable/Piso_001" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="casco_espacioColeccionable/Piso" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="casco_espacioColeccionable/Soporte_del_casco" index="0"]
+collision_layer = 2
+
+[node name="Player" parent="." instance=ExtResource("2_2s0gl")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -61.182, 16.1206, 1.96833)
+
+[node name="Camera3D2" type="Camera3D" parent="Player"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
+keep_aspect = 0
+environment = ExtResource("3_itbef")
+fov = 80.0
+far = 250.0
+script = ExtResource("4_coqn3")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="door_collect" parent="." instance=ExtResource("5_itbef")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -55, 16.6542, 0)
+
+[node name="Portal_to_collect" parent="door_collect" index="1"]
+prev_level_path = "res://scenes/levels/level_4_back.tscn"
+is_next = false
+
+[editable path="casco_espacioColeccionable"]
+[editable path="door_collect"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqoy6ky1re0x6"]
+[gd_scene load_steps=13 format=3 uid="uid://dqoy6ky1re0x6"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_fwh58"]
 [ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_tkyk7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="6_ou5g1"]
 [ext_resource type="LightmapGIData" uid="uid://dtd7jvo0ekem7" path="res://scenes/levels/bakes_lights/level_4.lmbake" id="7_88m1s"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="8_vtho0"]
+[ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="9_tkyk7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts8eg"]
 albedo_color = Color(0.118605, 0, 0.677026, 1)
@@ -228,7 +229,15 @@ light_data = ExtResource("7_88m1s")
 [node name="Area3D" parent="." instance=ExtResource("8_vtho0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.52711, 0, 0)
 
+[node name="door_collect" parent="." instance=ExtResource("9_tkyk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 405.405, -89, 0)
+
+[node name="Portal_to_collect" parent="door_collect" index="1"]
+next_level_path = "res://scenes/levels/level_collec_2.tscn"
+
 [editable path="Blocking4"]
 [editable path="back_level"]
 [editable path="KillZone"]
 [editable path="KillZone2"]
+[editable path="Area3D"]
+[editable path="door_collect"]
