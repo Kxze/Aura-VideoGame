@@ -1,25 +1,35 @@
 extends PlayerState
 
+@onready var skeleton_sound = preload("res://sonidos/skeleton.mp3")
 
-#este apartado sobreescribe el estado que viene
+# ---------------------------------------------------------
 func enter(previous_state_path : String, data := {}):
+	# 🔊 Reproducir sonido de muerte una sola vez
+	_play_skeleton()
 	player.animationPlayer.play("Dead")
-#Esta funcion sobreescribe la funcion physics process
+
+# ---------------------------------------------------------
 func physics_update(delta: float):
-	if player.health <= 0:
+	# Evita repetir la animación si ya está sonando o en curso
+	if player.health <= 0 and player.animationPlayer.current_animation != "Dead":
 		player.animationPlayer.play("Dead")
-		
 
-
-func update(_delta:float):
+# ---------------------------------------------------------
+func update(_delta: float):
 	pass
-#Esta funcion sobreescribe la funcion Input
+
 func handled_input(_event: InputEvent):
 	pass
 
 func exit():
 	pass
 
-
+# ---------------------------------------------------------
+# Cuando termina la animación "Dead"
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	emit_signal("finished","Idle")
+	if anim_name == "Dead":
+		emit_signal("finished", "Idle")
+
+# ---------------------------------------------------------
+func _play_skeleton():
+	AudioManager.play_skeleton(skeleton_sound)
