@@ -6,7 +6,7 @@ extends PlayerState
 @export var delay_step := 0.05
 @export var offset_x := 0.5  # distancia entre copias
 var dash_time := 0.3
-var dash_speed := 40
+var dash_speed := 50
 var timer := 0.0
 var dash_dir := 1
 var suspend_air_time := 0.5
@@ -19,7 +19,6 @@ signal dash_finished
 @onready var dash_sfx = preload("res://sonidos/dash.mp3")
 func enter(previous_state_path: String, data := {}):
 	if not player.can_dash:
-		emit_signal("dash_finished")
 		emit_signal("finished", "Idle")
 		return
 

@@ -6,6 +6,7 @@ extends PlayerState
 # --- Al entrar al estado ---
 func enter(previous_state_path : String, data := {}):
 	player.animationPlayer.play("idle")
+	player.invencible = false
 
 	# 🔊 Si el jugador viene del estado InAir y fue un salto manual, reproducir sonido
 	if previous_state_path.ends_with("InAir") and data.has("did_jump") and data["did_jump"]:

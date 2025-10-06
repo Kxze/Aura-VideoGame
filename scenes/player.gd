@@ -69,8 +69,8 @@ func jump_side_per_damage(x):
 	velocity.y = jump
 	velocity.x = x
 
-func dead(bool):
-	animationPlayer.animation_finished
+
+
 
 func _change_light():
 	if lumiere_ready:
@@ -79,11 +79,3 @@ func _change_light():
 		lamp_light.omni_range = 3.0
 		lamp_light.light_energy = 5.0
 		
-
-
-func _on_dash_dash_started() -> void:
-	invencible = true
-
-
-func _on_dash_dash_finished() -> void:
-	invencible = false

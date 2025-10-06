@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvhb32tqovgl5"]
+[gd_scene load_steps=14 format=3 uid="uid://bvhb32tqovgl5"]
 
 [ext_resource type="Shader" uid="uid://cm5axrjeqr7x" path="res://scenes/triggers/ataque_julieta_particulas.gdshader" id="1_8iefn"]
 [ext_resource type="Texture2D" uid="uid://cmlwkofgu3ipj" path="res://Art/Model3D/JULIETA/Ilustración_sin_título-1.png" id="2_kim2q"]
@@ -12,10 +12,17 @@ curve = SubResource("Curve_kim2q")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k4wmo"]
 damping_max = 4.615
-scale_min = 5.0
-scale_max = 10.0
+scale_min = 2.0
+scale_max = 5.0
 scale_curve = SubResource("CurveTexture_ndge5")
 turbulence_noise_scale = 3.146
+
+[sub_resource type="Gradient" id="Gradient_ndge5"]
+offsets = PackedFloat32Array(0, 0.43636364, 1)
+colors = PackedColorArray(0.23142686, 0.00013996422, 0.74471325, 1, 0.6310425, 0.6613732, 1, 1, 0.23137255, 0, 0.74509805, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k4wmo"]
+gradient = SubResource("Gradient_ndge5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ndge5"]
 transparency = 1
@@ -23,6 +30,7 @@ blend_mode = 1
 cull_mode = 2
 depth_draw_mode = 1
 albedo_color = Color(0.858824, 0.858824, 0.666667, 1)
+albedo_texture = SubResource("GradientTexture1D_k4wmo")
 emission_enabled = true
 emission = Color(0.0369, 0.198577, 0.41, 1)
 emission_energy_multiplier = 13.24
@@ -53,9 +61,10 @@ orientation = 2
 [node name="GPUParticles3D" type="GPUParticles3D"]
 transparency = 0.52
 cast_shadow = 0
-amount = 30
+amount = 50
 lifetime = 7.0
-speed_scale = 3.0
+preprocess = 5.0
+speed_scale = 4.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_k4wmo")
 draw_passes = 2

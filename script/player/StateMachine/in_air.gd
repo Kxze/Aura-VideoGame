@@ -17,7 +17,7 @@ var buffered_jump: bool = false
 
 func enter(previous_state_path: String, data := {}):
 	isJumping = false
-
+	player.invencible = false
 	# Saltar solo si viene de comando Jump
 	if data.has("Jump"):
 		_do_jump()
@@ -66,6 +66,7 @@ func physics_update(delta: float):
 func handled_input(_event: InputEvent):
 	# Dash primero
 	if Input.is_action_just_pressed("dash") and player.can_dash and not player.is_dashing:
+		player.invencible = true
 		emit_signal("finished", "Dash")
 		return  
 

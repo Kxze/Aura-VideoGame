@@ -1,15 +1,10 @@
-extends PlayerState
+extends Julieta_state
 
-
-#este apartado sobreescribe el estado que viene
 func enter(previous_state_path : String, data := {}):
-	player.invencible = false
+	julieta.animationPlayer.play("Ataque")
 #Esta funcion sobreescribe la funcion physics process
 func physics_update(delta: float):
-	if Input.is_action_pressed("Lumiere"):
-		player.animationPlayer.play("Lumiere")
-	else:
-		emit_signal("finished","Idle")
+	pass
 	
 #Esta funcion sobreescribe la funcion process
 func update(_delta:float):

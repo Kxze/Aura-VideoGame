@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://djjwc26mcb46q"]
+[gd_scene load_steps=6 format=3 uid="uid://djjwc26mcb46q"]
 
 [ext_resource type="Script" uid="uid://beatyfdmktb3a" path="res://script/enemies/julieta.gd" id="1_n8frv"]
 [ext_resource type="PackedScene" uid="uid://dfwomsoqo6qox" path="res://Art/Model3D/JULIETA/JulietaAnimaciones.blend" id="2_h0pgd"]
+[ext_resource type="Script" uid="uid://dr7rgqi3nwgnn" path="res://script/player/StateMachine/state_machine.gd" id="3_h0pgd"]
+[ext_resource type="Script" uid="uid://crr2w118ycrnf" path="res://script/enemies/julietaSTM/idle.gd" id="4_vworv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vworv"]
 radius = 0.12464
@@ -14,31 +16,37 @@ script = ExtResource("1_n8frv")
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="JulietaAnimaciones/Armature" index="0"]
-bones/1/rotation = Quaternion(6.74351e-08, -5.84004e-09, 0.0153388, 0.999882)
-bones/2/rotation = Quaternion(-7.92431e-09, -1.03507e-07, -0.0661153, 0.997812)
-bones/4/position = Vector3(-0.462407, 2.11556, 4.87521e-09)
-bones/4/rotation = Quaternion(1.89223e-07, -9.61761e-08, 0.882134, 0.470998)
-bones/7/rotation = Quaternion(9.82424e-08, -7.7639e-08, 0.992635, 0.121146)
-bones/9/position = Vector3(1.03331, 0.134626, -1.16896e-07)
-bones/9/rotation = Quaternion(4.10577e-07, -1.88794e-08, 0.993473, -0.114067)
+bones/1/rotation = Quaternion(6.743509e-08, -5.8400427e-09, 0.015338814, 0.9998824)
+bones/2/rotation = Quaternion(-7.924306e-09, -1.0350713e-07, -0.06611534, 0.997812)
+bones/4/position = Vector3(-0.4624075, 2.1155598, 4.8752113e-09)
+bones/4/rotation = Quaternion(1.892227e-07, -9.6176144e-08, 0.8821345, 0.47099775)
+bones/7/rotation = Quaternion(9.824239e-08, -7.763904e-08, 0.9926347, 0.12114628)
+bones/9/position = Vector3(1.0333059, 0.13462563, -1.16896416e-07)
+bones/9/rotation = Quaternion(4.1057731e-07, -1.8879426e-08, 0.993473, -0.1140674)
 
 [node name="JCabeza" parent="JulietaAnimaciones/Armature/Skeleton3D" index="0"]
-transform = Transform3D(16.6686, 1.10678e-07, 0.0835894, 0.0835898, 5.74672e-06, -16.6686, -5.50494e-08, 16.6688, 5.10844e-06, 0.132971, 1.67128, -0.308282)
+transform = Transform3D(16.668638, 1.1067414e-07, 0.08358812, 0.0835886, 5.746726e-06, -16.66864, -5.5044893e-08, 16.66884, 5.1084385e-06, 0.13297112, 1.6712823, -0.30828243)
 
 [node name="JBrazos" parent="JulietaAnimaciones/Armature/Skeleton3D" index="1"]
-transform = Transform3D(3.20788, 1.49272e-07, -0.000940084, -0.000940084, 1.97174e-08, -3.20787, -1.14565e-07, 3.20787, 5.04349e-09, -0.0489062, 2.82529, -0.277815)
+transform = Transform3D(3.2078753, 1.4926934e-07, -0.00093734264, -0.00093746185, 1.9718414e-08, -3.2078748, -1.1456228e-07, 3.2078748, 5.044285e-09, -0.048906446, 2.8252892, -0.27781516)
 
 [node name="JCuerpo" parent="JulietaAnimaciones/Armature/Skeleton3D" index="2"]
-transform = Transform3D(17.7751, -3.84455e-08, 0.0189555, 0.0189555, -2.39617e-06, -17.7751, 4.09427e-08, 17.7751, -2.40005e-06, -0.0229328, -3.75485, -0.30418)
+transform = Transform3D(17.77509, -3.844552e-08, 0.018955767, 0.018955767, -2.3961704e-06, -17.775085, 4.0942766e-08, 17.775095, -2.400049e-06, -0.02293276, -3.754847, -0.30418023)
 
 [node name="JVestidoIzq" parent="JulietaAnimaciones/Armature/Skeleton3D" index="3"]
-transform = Transform3D(14.2247, 1.15451e-05, 0.0970318, 0.0970364, 2.21746e-06, -14.2246, -1.16042e-05, 14.225, 3.38692e-06, -3.79421, -5.70722, -0.244861)
+transform = Transform3D(14.224718, 1.1545055e-05, 0.09702301, 0.0970273, 2.2174509e-06, -14.22464, -1.160421e-05, 14.224971, 3.3869223e-06, -3.7942095, -5.707222, -0.24486107)
 
 [node name="JVestidoDer" parent="JulietaAnimaciones/Armature/Skeleton3D" index="4"]
-transform = Transform3D(14.2244, -1.95994e-06, -0.124559, -0.124563, -2.37195e-06, -14.2244, 2.0135e-06, 14.225, -2.49059e-06, 3.72127, -5.70867, -0.244861)
+transform = Transform3D(14.224389, -1.9599338e-06, -0.124548435, -0.12455225, -2.3719583e-06, -14.22443, 2.0134912e-06, 14.224972, -2.4905898e-06, 3.7212682, -5.7086678, -0.24486054)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.301283, 0)
 shape = SubResource("CapsuleShape3D_vworv")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_h0pgd")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_vworv")
 
 [editable path="JulietaAnimaciones"]

@@ -4,7 +4,7 @@ var fall_start_y: float = 0.0        # Guarda la altura donde comenzó la caída
 var altura_minima_fall: float = 1.0  # Altura mínima para reproducir animación
 
 func enter(previous_state_path : String, data := {}):
-	pass
+	player.invencible = false
 
 func physics_update(delta: float):
 	# Si el jugador está en el suelo, actualizamos la altura de referencia

@@ -27,9 +27,9 @@ func _ready() -> void:
 		var player_node = get_tree().get_first_node_in_group("player")
 		if player_node:
 			Target = player_node
-			print("🎯 Cascanueces: Target asignado automáticamente →", Target.name)
+			print("Cascanueces: Target asignado automáticamente →", Target.name)
 		else:
-			print("⚠️ Cascanueces: no se encontró el jugador en el grupo 'player'")
+			print("Cascanueces: no se encontró el jugador en el grupo 'player'")
 
 # ---------------------------------------------------------
 # Cuando el cuerpo del jugador entra en contacto con el área del enemigo
@@ -52,10 +52,10 @@ func _play_daño():
 func Make_damage(body: Node3D):
 	Player.health -= damage
 	body.jump_side_per_damage(1)
-	print("💥 Daño recibido. Salud actual:", Player.health)
+	print("Daño recibido. Salud actual:", Player.health)
 
 	if Player.health <= 0:
-		print("☠️ Jugador sin vidas... reiniciando nivel")
+		print("Jugador sin vidas... reiniciando nivel")
 
 		if Player.spawnPoint:
 			TransitionScreen.transition()

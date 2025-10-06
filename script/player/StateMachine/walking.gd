@@ -21,6 +21,7 @@ func enter(previous_state_path : String, data := {}):
 	player.animationPlayer.play("Walk")
 	isRunning = false
 	step_timer = 0.0
+	player.invencible = false
 
 func physics_update(delta: float):
 	# --- Checar distancia al piso ---
@@ -73,7 +74,9 @@ func physics_update(delta: float):
 
 	# --- Dash ---
 	if Input.is_action_just_pressed("dash"):
+		player.invencible = true
 		emit_signal("finished", "Dash")
+		
 	
 	if Input.is_action_just_pressed("Lumiere") and player.can_lumiere:
 		emit_signal("finished","Lumiere")
