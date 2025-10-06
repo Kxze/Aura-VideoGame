@@ -193,9 +193,7 @@ var julieta_activa: bool = false
 # ---------------------------------------------------------
 func _load_julieta_sounds():
 	var paths = [
-		"res://sonidos/julieta.ogg",
-		"res://sonidos/julieta2.mp3",
-		"res://sonidos/julieta3.wav",
+		"res://sonidos/julietaEco.wav",
 	]
 
 	julieta_sounds.clear()
