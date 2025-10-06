@@ -561,10 +561,10 @@ debug_color = Color(0.802675, 0.10353, 0.448258, 0.42)
 
 [node name="Marker3D" type="Marker3D" parent="CheckPoint2"]
 
-[node name="Area3D" parent="." instance=ExtResource("14_354e0")]
+[node name="dash_unlock" parent="." instance=ExtResource("14_354e0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8093, 46.415, 0)
 
-[node name="Area3D2" parent="." instance=ExtResource("14_354e0")]
+[node name="Dash_unlock" parent="." instance=ExtResource("14_354e0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.4743, 197.628, 0)
 
 [node name="door_collect" parent="." instance=ExtResource("15_dn307")]
@@ -585,5 +585,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_pvp4h")
 [editable path="back_level"]
 [editable path="CheckPoint"]
 [editable path="CheckPoint2"]
-[editable path="Area3D2"]
+[editable path="Dash_unlock"]
 [editable path="door_collect"]
