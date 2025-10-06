@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmlwkofgu3ipj"
-path.s3tc="res://.godot/imported/Ilustración_sin_título-1.png-af204c09b7734b5e87aa9d4dccc9ed35.s3tc.ctex"
+uid="uid://c1mbjtilqk416"
+path.s3tc="res://.godot/imported/Ilustración_sin_título-1.png-d9a2afed40dad5245064804bca42de33.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/Model3D/JULIETA/Ilustración_sin_título-1.png"
-dest_files=["res://.godot/imported/Ilustración_sin_título-1.png-af204c09b7734b5e87aa9d4dccc9ed35.s3tc.ctex"]
+source_file="res://Art/Model3D/JULIETA/Ilustración_sin_título-1.png"
+dest_files=["res://.godot/imported/Ilustración_sin_título-1.png-d9a2afed40dad5245064804bca42de33.s3tc.ctex"]
 
 [params]
 
