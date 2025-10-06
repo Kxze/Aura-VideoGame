@@ -21,7 +21,7 @@ var prevVelocity: Vector2 = Vector2.ZERO
 static var lumiere_ready := false
 # Variable que controla si el jugador puede recibir inputs
 var controls_enabled: bool = true
-
+static var invencible : bool = false
 static var health: int = 3
 var movInput: Vector2 = Vector2.ZERO
 var last_facing := 1  # 1 = derecha, -1 = izquierda
@@ -79,3 +79,11 @@ func _change_light():
 		lamp_light.omni_range = 3.0
 		lamp_light.light_energy = 5.0
 		
+
+
+func _on_dash_dash_started() -> void:
+	invencible = true
+
+
+func _on_dash_dash_finished() -> void:
+	invencible = false

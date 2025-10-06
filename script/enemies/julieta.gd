@@ -23,3 +23,8 @@ func Make_damage(body):
 			get_tree().reload_current_scene()
 			Player.health = 3
 		
+
+
+func _on_zone_damage_body_entered(body: Node3D) -> void:
+	if body.name == "Player" and !Player.invencible:
+		Make_damage(body)

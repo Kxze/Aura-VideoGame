@@ -11,7 +11,34 @@ height = 0.693832
 script = ExtResource("1_n8frv")
 
 [node name="JulietaAnimaciones" parent="." instance=ExtResource("2_h0pgd")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
+
+[node name="Skeleton3D" parent="JulietaAnimaciones/Armature" index="0"]
+bones/1/rotation = Quaternion(6.74351e-08, -5.84004e-09, 0.0153388, 0.999882)
+bones/2/rotation = Quaternion(-7.92431e-09, -1.03507e-07, -0.0661153, 0.997812)
+bones/4/position = Vector3(-0.462407, 2.11556, 4.87521e-09)
+bones/4/rotation = Quaternion(1.89223e-07, -9.61761e-08, 0.882134, 0.470998)
+bones/7/rotation = Quaternion(9.82424e-08, -7.7639e-08, 0.992635, 0.121146)
+bones/9/position = Vector3(1.03331, 0.134626, -1.16896e-07)
+bones/9/rotation = Quaternion(4.10577e-07, -1.88794e-08, 0.993473, -0.114067)
+
+[node name="JCabeza" parent="JulietaAnimaciones/Armature/Skeleton3D" index="0"]
+transform = Transform3D(16.6686, 1.10678e-07, 0.0835894, 0.0835898, 5.74672e-06, -16.6686, -5.50494e-08, 16.6688, 5.10844e-06, 0.132971, 1.67128, -0.308282)
+
+[node name="JBrazos" parent="JulietaAnimaciones/Armature/Skeleton3D" index="1"]
+transform = Transform3D(3.20788, 1.49272e-07, -0.000940084, -0.000940084, 1.97174e-08, -3.20787, -1.14565e-07, 3.20787, 5.04349e-09, -0.0489062, 2.82529, -0.277815)
+
+[node name="JCuerpo" parent="JulietaAnimaciones/Armature/Skeleton3D" index="2"]
+transform = Transform3D(17.7751, -3.84455e-08, 0.0189555, 0.0189555, -2.39617e-06, -17.7751, 4.09427e-08, 17.7751, -2.40005e-06, -0.0229328, -3.75485, -0.30418)
+
+[node name="JVestidoIzq" parent="JulietaAnimaciones/Armature/Skeleton3D" index="3"]
+transform = Transform3D(14.2247, 1.15451e-05, 0.0970318, 0.0970364, 2.21746e-06, -14.2246, -1.16042e-05, 14.225, 3.38692e-06, -3.79421, -5.70722, -0.244861)
+
+[node name="JVestidoDer" parent="JulietaAnimaciones/Armature/Skeleton3D" index="4"]
+transform = Transform3D(14.2244, -1.95994e-06, -0.124559, -0.124563, -2.37195e-06, -14.2244, 2.0135e-06, 14.225, -2.49059e-06, 3.72127, -5.70867, -0.244861)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.301283, 0)
 shape = SubResource("CapsuleShape3D_vworv")
+
+[editable path="JulietaAnimaciones"]

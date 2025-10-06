@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg1kcmex7krla"
-path="res://.godot/imported/julieta_ataque.png-4365c75ab79fa91659fc97a64059081c.ctex"
+uid="uid://cpr5hill4r8lj"
+path="res://.godot/imported/ataque_mask.png-61d46757df4310be8903c22271cd971d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Model3D/JULIETA/julieta_ataque.png"
-dest_files=["res://.godot/imported/julieta_ataque.png-4365c75ab79fa91659fc97a64059081c.ctex"]
+source_file="res://Art/Model3D/JULIETA/ataque_mask.png"
+dest_files=["res://.godot/imported/ataque_mask.png-61d46757df4310be8903c22271cd971d.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

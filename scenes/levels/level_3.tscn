@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://c17wj8jr8lb0n"]
+[gd_scene load_steps=36 format=4 uid="uid://c17wj8jr8lb0n"]
 
 [ext_resource type="PackedScene" uid="uid://btl7r0mv42dlj" path="res://Art/Levels/blocking_level_3.blend" id="1_0ljxa"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_0qepi"]
@@ -17,6 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="14_t4txi"]
 [ext_resource type="Texture2D" uid="uid://b7mrs02cr52yr" path="res://Art/Levels/DashMuerte.png" id="16_josfm"]
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="17_lgrx1"]
+[ext_resource type="PackedScene" uid="uid://bvhb32tqovgl5" path="res://scenes/triggers/ataque_julieta_particulas.tscn" id="18_fhpes"]
+[ext_resource type="PackedScene" uid="uid://djjwc26mcb46q" path="res://scenes/enemies/julieta.tscn" id="19_5f5xw"]
+[ext_resource type="Script" uid="uid://b6btv6xme8yve" path="res://script/triggers/zone_damage_Julieta.gd" id="20_1nwmf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjiia"]
 resource_name = "TablasPrincipales.001"
@@ -475,13 +478,14 @@ light_energy = 2.133
 light_specular = 0.0
 
 [node name="Player" parent="." instance=ExtResource("2_0qepi")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6107, 47.1405, 1.96833)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 19.6708, 46.6134, 1.96833)
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594001, 1.101, 6.303)
 keep_aspect = 0
 environment = ExtResource("2_apo5x")
 fov = 80.0
+near = 0.001
 far = 250.0
 script = ExtResource("3_fmg3e")
 target = NodePath("..")
@@ -575,6 +579,24 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.716
 [node name="Portal_to_collect" parent="door_collect" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.106903, 0, 9.34574e-09)
 next_level_path = "res://scenes/levels/level_collec_1.tscn"
+
+[node name="Julieta" parent="." instance=ExtResource("19_5f5xw")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 47.1159, 180.491, -8.8347)
+
+[node name="PrimerasParticulas" parent="." instance=ExtResource("18_fhpes")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 47.1423, 197.073, -4.4135)
+
+[node name="ZoneDamage" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6408, 52.1184, 33.4833)
+script = ExtResource("20_1nwmf")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="ZoneDamage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2897, 27.1471, -33.579)
+depth = 6.385
+polygon = PackedVector2Array(-4.12251, -35.2567, 2.14973, 117.274, 10.2, -35.3)
+debug_color = Color(0.63, 0.525, 0, 1)
+
+[connection signal="body_entered" from="ZoneDamage" to="Julieta" method="_on_zone_damage_body_entered"]
 
 [editable path="blocking_level_3"]
 [editable path="KillZone"]

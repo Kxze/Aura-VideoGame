@@ -57,9 +57,7 @@ bones/1/position = Vector3(0.265837, -0.00705589, -9.48016e-10)
 bones/1/rotation = Quaternion(0.701394, 0.0897039, 0.701394, -0.089704)
 bones/2/rotation = Quaternion(-0.590121, 4.51065e-08, 1.89318e-07, 0.807315)
 bones/3/rotation = Quaternion(0.669244, 1.63576e-08, -1.89252e-07, 0.743043)
-bones/4/position = Vector3(-0.405631, 0.322711, 3.44743e-08)
 bones/4/rotation = Quaternion(0.706681, -0.0245425, 0.706681, 0.0245424)
-bones/4/scale = Vector3(1.06318, 1.06318, 1.06318)
 bones/5/rotation = Quaternion(-0.54658, 1.51794e-07, 1.03542e-07, 0.837407)
 bones/6/rotation = Quaternion(0.669244, -7.31046e-08, -1.08675e-07, 0.743043)
 bones/7/rotation = Quaternion(0, 0, 0, 1)
@@ -72,10 +70,9 @@ bones/11/rotation = Quaternion(5.03177e-09, 7.12931e-08, 0.00517926, 0.999987)
 bones/12/position = Vector3(-0.543181, 2.68161, 7.74091e-07)
 bones/12/rotation = Quaternion(3.65039e-07, -2.88308e-07, 0.910296, 0.413959)
 bones/13/rotation = Quaternion(6.58701e-08, 5.56906e-07, -0.00533037, 0.999986)
-bones/14/rotation = Quaternion(1.48515e-09, -2.12974e-07, -0.0151413, 0.999885)
 
 [node name="BoneAttachment3D" parent="Aura/player/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.725747, -0.687961, 6.53339e-07, 0.687959, -0.725748, -7.5368e-07, 9.92661e-07, -9.75105e-08, 1, -1.38176, 1.67432, 3.35924e-07)
+transform = Transform3D(-0.725747, -0.687961, 6.53339e-07, 0.68796, -0.725748, -7.53679e-07, 9.9266e-07, -9.75095e-08, 1, -1.38176, 1.67432, 3.35927e-07)
 
 [node name="Sprite3D" parent="Aura/player/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 visible = false
@@ -158,6 +155,8 @@ shape = SubResource("CapsuleShape3D_i0eca")
 [connection signal="timeout" from="StateMachine/InAir/FallTimer" to="StateMachine/InAir" method="_on_fall_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/JumpBufferTimer" to="StateMachine/InAir" method="_on_jump_buffer_timer_timeout"]
+[connection signal="dash_finished" from="StateMachine/Dash" to="." method="_on_dash_dash_finished"]
+[connection signal="dash_started" from="StateMachine/Dash" to="." method="_on_dash_dash_started"]
 [connection signal="dash_started" from="StateMachine/Dash" to="dash_Light" method="_on_dash_dash_started"]
 [connection signal="timeout" from="dash_Light/light_timer" to="dash_Light" method="_on_light_timer_timeout"]
 

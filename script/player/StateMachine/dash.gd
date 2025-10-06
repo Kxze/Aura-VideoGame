@@ -15,9 +15,11 @@ var suspended := false
 var dash_cooldown := 0.5
 
 signal dash_started
+signal dash_finished
 @onready var dash_sfx = preload("res://sonidos/dash.mp3")
 func enter(previous_state_path: String, data := {}):
 	if not player.can_dash:
+		emit_signal("dash_finished")
 		emit_signal("finished", "Idle")
 		return
 
