@@ -9,32 +9,33 @@ var musica_player: AudioStreamPlayer
 var fading := false
 
 # --- Nivelación de volumen ---
-@export var target_volume_db := -6.0  # nivel objetivo al que se normalizan los audios
+@export var target_volume_db := -6.0
 @export var normalize_sfx := true
 @export var normalize_music := true
 
 # --- Estado global del juego ---
-var lampara_desbloqueada := false  # 🌙 se mantiene globalmente mientras el juego esté abierto
-var dash_desbloqueado := false     # 🌪️ se mantiene globalmente durante toda la sesión
-var coleccionable_sonado := false  # 🔔 evita que el sonido del coleccionable se repita
+var lampara_desbloqueada := false  # 🌙 se mantiene globalmente
+var dash_desbloqueado := false     # 🌪️
+var coleccionable_sonado := false  # 🔔
 
 # ---------------------------------------------------------
 #                   CONFIGURACIÓN INICIAL
 # ---------------------------------------------------------
 func _ready():
-	# Efectos
+	# --- SFX Player ---
 	efectos_player = AudioStreamPlayer.new()
 	efectos_player.name = "SFX_Player"
 	add_child(efectos_player)
 	efectos_player.bus = "Efectos"
 	efectos_player.volume_db = 0
-	
-	# Música
+
+	# --- Music Player ---
 	musica_player = AudioStreamPlayer.new()
 	musica_player.name = "Music_Player"
 	add_child(musica_player)
 	musica_player.bus = "Musica"
 	musica_player.volume_db = -4
+
 
 # ---------------------------------------------------------
 #                   NORMALIZACIÓN DE AUDIO
@@ -62,8 +63,9 @@ func normalize_audio(stream: AudioStream) -> float:
 	var diff := target_volume_db - current_db
 	return clamp(diff, -12.0, +12.0)
 
+
 # ---------------------------------------------------------
-#                         SFX
+#                         🔊 SFX
 # ---------------------------------------------------------
 func play_and_get_duration(sound: AudioStream) -> float:
 	if sound == null:
@@ -83,11 +85,14 @@ func play_and_get_duration(sound: AudioStream) -> float:
 		return sound.get_length()
 	return 0.0
 
+
 func play_click(sound: AudioStream) -> float:
 	return play_and_get_duration(sound)
 
+
 func play_hover(sound: AudioStream) -> float:
 	return play_and_get_duration(sound)
+
 
 func play_random_sfx(sounds: Array) -> void:
 	if sounds.is_empty():
@@ -95,75 +100,15 @@ func play_random_sfx(sounds: Array) -> void:
 	var sound = sounds[randi() % sounds.size()]
 	play_and_get_duration(sound)
 
-# ---------------------------------------------------------
-#             🎇 SONIDOS DE DESBLOQUEO ÚNICO
-# ---------------------------------------------------------
 
-# --- LÁMPARA ---
-func play_lampara_desbloqueo(sound: AudioStream) -> void:
-	if lampara_desbloqueada:
+# 🔹 SFX genérico (para áreas, botones, desbloqueos, etc.)
+func play_sfx(sound: AudioStream) -> void:
+	if sound == null:
 		return
-	lampara_desbloqueada = true
 	play_and_get_duration(sound)
-	print("🔓 Sonido de desbloqueo reproducido por primera vez")
 
-# --- LÁMPARA (persistente, no se corta al cambiar escena) ---
-func play_lampara_desbloqueo_persistente(sound: AudioStream) -> void:
-	if lampara_desbloqueada:
-		print("🔒 Sonido de desbloqueo ya reproducido")
-		return
 
-	print("🔓 Reproduciendo sonido de desbloqueo...")
-	lampara_desbloqueada = true
-
-	var temp_player := AudioStreamPlayer.new()
-	temp_player.stream = sound
-	temp_player.bus = "Efectos"
-	temp_player.volume_db = 0
-
-	get_tree().get_root().add_child(temp_player)
-	temp_player.play()
-
-	var duracion := 0.0
-	if sound and sound.has_method("get_length"):
-		duracion = sound.get_length()
-	if duracion <= 0.0:
-		duracion = 2.0
-
-	await get_tree().create_timer(duracion).timeout
-	temp_player.queue_free()
-	print("✅ Sonido completado y liberado.")
-
-# --- DASH (persistente, no se corta al cambiar escena) ---
-func play_dash_desbloqueo_persistente(sound: AudioStream) -> void:
-	if dash_desbloqueado:
-		print("🔒 Dash ya desbloqueado")
-		return
-
-	print("💨 Reproduciendo sonido de desbloqueo del dash...")
-	dash_desbloqueado = true
-
-	var temp_player := AudioStreamPlayer.new()
-	temp_player.stream = sound
-	temp_player.bus = "Efectos"
-	temp_player.volume_db = 0
-
-	get_tree().get_root().add_child(temp_player)
-	temp_player.play()
-
-	var duracion := 0.0
-	if sound and sound.has_method("get_length"):
-		duracion = sound.get_length()
-	if duracion <= 0.0:
-		duracion = 2.0
-
-	await get_tree().create_timer(duracion).timeout
-	temp_player.queue_free()
-	print("✅ Sonido de dash completado y liberado.")
-	
-# ---------------------------------------------------------
-#             🔊 SONIDOS SFX PERSISTENTES (NO SE CORTAN)
-# ---------------------------------------------------------
+# 🔹 SFX persistente (no se corta si cambia de escena)
 func play_sfx_persistente(sound: AudioStream) -> void:
 	if sound == null:
 		return
@@ -172,7 +117,6 @@ func play_sfx_persistente(sound: AudioStream) -> void:
 	temp_player.stream = sound
 	temp_player.bus = "Efectos"
 	temp_player.volume_db = 0
-	temp_player.autoplay = false
 
 	get_tree().get_root().add_child(temp_player)
 	temp_player.play()
@@ -181,10 +125,27 @@ func play_sfx_persistente(sound: AudioStream) -> void:
 	if sound and sound.has_method("get_length"):
 		duracion = sound.get_length()
 	if duracion <= 0.0:
-		duracion = 2.0  # seguridad por si no detecta longitud
+		duracion = 2.0
 
 	await get_tree().create_timer(duracion).timeout
 	temp_player.queue_free()
+
+# ---------------------------------------------------------
+# 🎯 SONIDO DE DAÑO DEL JUGADOR
+# ---------------------------------------------------------
+func play_daño(sound: AudioStream) -> void:
+	if sound == null:
+		return
+
+	# Evita que se corte otro sonido de daño si ocurre muy rápido
+	if efectos_player.playing and efectos_player.stream == sound:
+		return
+
+	efectos_player.stream = sound
+	efectos_player.volume_db = 0
+	efectos_player.bus = "Efectos"
+	efectos_player.play()
+
 
 # ---------------------------------------------------------
 #        🔔 SONIDO COLECCIONABLE CERCA (UNA SOLA VEZ)
@@ -197,26 +158,9 @@ func play_coleccionable_cerca(sound: AudioStream) -> void:
 	coleccionable_sonado = true
 	print("🔔 Reproduciendo sonido de coleccionable cerca...")
 
-	if sound == null:
-		return
-	
-	var temp_player := AudioStreamPlayer.new()
-	temp_player.stream = sound
-	temp_player.bus = "Efectos"
-	temp_player.volume_db = 0
-	temp_player.autoplay = false
-	get_tree().get_root().add_child(temp_player)
-	temp_player.play()
+	play_sfx_persistente(sound)
+	print("✅ Sonido de coleccionable completado.")
 
-	var duracion := 0.0
-	if sound and sound.has_method("get_length"):
-		duracion = sound.get_length()
-	if duracion <= 0.0:
-		duracion = 2.0
-
-	await get_tree().create_timer(duracion).timeout
-	temp_player.queue_free()
-	print("✅ Sonido de coleccionable completado y liberado.")
 
 # ---------------------------------------------------------
 #                         MÚSICA
@@ -246,14 +190,18 @@ func play_music(track: AudioStream, loop := true, crossfade := true) -> void:
 	if crossfade:
 		await fade_in()
 
+
 func stop_music() -> void:
 	musica_player.stop()
+
 
 func pause_music() -> void:
 	musica_player.stream_paused = true
 
+
 func resume_music() -> void:
 	musica_player.stream_paused = false
+
 
 # ---------------------------------------------------------
 #                     TRANSICIONES
@@ -272,6 +220,7 @@ func fade_out():
 	musica_player.stop()
 	musica_player.volume_db = start_vol
 	fading = false
+
 
 func fade_in():
 	if fading:
