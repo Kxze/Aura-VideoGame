@@ -21,6 +21,15 @@ var last_position
 # ---------------------------------------------------------
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	
+	# ✅ Si no se asignó manualmente el Target, buscarlo automáticamente
+	if Target == null:
+		var player_node = get_tree().get_first_node_in_group("player")
+		if player_node:
+			Target = player_node
+			print("🎯 Cascanueces: Target asignado automáticamente →", Target.name)
+		else:
+			print("⚠️ Cascanueces: no se encontró el jugador en el grupo 'player'")
 
 # ---------------------------------------------------------
 # Cuando el cuerpo del jugador entra en contacto con el área del enemigo

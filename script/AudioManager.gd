@@ -145,6 +145,38 @@ func play_daño(sound: AudioStream) -> void:
 	efectos_player.volume_db = 0
 	efectos_player.bus = "Efectos"
 	efectos_player.play()
+	
+# ---------------------------------------------------------
+# 🎯 SONIDO DE ATAQUE DEL CASCANUECES
+# ---------------------------------------------------------
+func play_ataque(sound: AudioStream) -> void:
+	if sound == null:
+		return
+
+	# Evita que se corte otro sonido de daño si ocurre muy rápido
+	if efectos_player.playing and efectos_player.stream == sound:
+		return
+
+	efectos_player.stream = sound
+	efectos_player.volume_db = 0
+	efectos_player.bus = "Efectos"
+	efectos_player.play()
+	
+# ---------------------------------------------------------
+# 🎯 SONIDO DE MUERTE SKELETON
+# ---------------------------------------------------------
+func play_skeleton(sound: AudioStream) -> void:
+	if sound == null:
+		return
+
+	# Evita que se corte otro sonido de daño si ocurre muy rápido
+	if efectos_player.playing and efectos_player.stream == sound:
+		return
+
+	efectos_player.stream = sound
+	efectos_player.volume_db = 0
+	efectos_player.bus = "Efectos"
+	efectos_player.play()
 
 
 # ---------------------------------------------------------
