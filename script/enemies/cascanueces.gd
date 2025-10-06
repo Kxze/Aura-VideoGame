@@ -20,7 +20,7 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 
 func _physics_process(delta: float) -> void:
-	ray_cast_3d.target_position = to_local(player.position)
+	pass
 func _on_cuerpo_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		Make_damage(body)

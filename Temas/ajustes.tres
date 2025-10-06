@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://dtofupmyiute1" path="res://textures/arrow-down.svg" id="3_duati"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkpdf"]
-bg_color = Color(0, 0, 0, 0.05882353)
+bg_color = Color(0, 0, 0, 0.0588235)
 border_width_left = 10
 border_width_right = 10
-border_color = Color(0, 0, 0, 0.05882353)
+border_color = Color(0, 0, 0, 0.0588235)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -123,8 +123,8 @@ shadow_color = Color(0.784314, 0.701961, 0.541176, 1)
 [resource]
 default_font = ExtResource("2_d5am0")
 default_font_size = 30
-Button/colors/font_color = Color(0.5882353, 0.27450982, 0.5058824, 1)
-Button/colors/font_disabled_color = Color(0.1882353, 0.13333334, 0.06666667, 1)
+Button/colors/font_color = Color(0.588235, 0.27451, 0.505882, 1)
+Button/colors/font_disabled_color = Color(0.188235, 0.133333, 0.0666667, 1)
 Button/colors/font_focus_color = Color(0.176471, 0.121569, 0.0588235, 1)
 Button/colors/font_hover_color = Color(0.176471, 0.121569, 0.0588235, 1)
 Button/colors/font_hover_pressed_color = Color(0.87451, 0.87451, 0.87451, 0.501961)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bv43li74j7llw"]
+[gd_scene load_steps=33 format=4 uid="uid://bv43li74j7llw"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_20n6o"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_dn307"]
@@ -458,6 +458,14 @@ size = Vector3(18.0395, 167.383, 9.8932)
 [sub_resource type="BoxShape3D" id="BoxShape3D_fmg3e"]
 size = Vector3(19.0894, 234.24, 7.76855)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_bp61e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvp4h"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("17_bp61e")
+
 [node name="Level3" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -566,10 +574,10 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.716
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.106903, 0, 9.34574e-09)
 next_level_path = "res://scenes/levels/level_collec_1.tscn"
 
-[node name="DashMuerte" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.951, 57.1574, -7.84702)
-pixel_size = 0.02
-texture = ExtResource("17_bp61e")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(16.1177, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 44.8191, 55.3683, -7.82023)
+mesh = SubResource("PlaneMesh_bp61e")
+surface_material_override/0 = SubResource("StandardMaterial3D_pvp4h")
 
 [editable path="blocking_level_3"]
 [editable path="KillZone"]
