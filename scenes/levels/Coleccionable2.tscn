@@ -14,8 +14,8 @@ transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 2.7151
 light_color = Color(0.806528, 0.781017, 0.399805, 1)
 light_energy = 0.029
 light_indirect_energy = 0.838
-spot_range = 36.795
-spot_attenuation = -1.92
+spot_range = 40.02
+spot_attenuation = -1.72
 spot_angle = 25.95
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -65,5 +65,47 @@ collision_layer = 2
 
 [node name="StaticBody3D" parent="casco_espacioColeccionable/Soporte_del_casco" index="0"]
 collision_layer = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.4392, 30.3664, -4.77609)
+light_color = Color(0.6675, 0.446716, 0.837703, 1)
+light_energy = 1.215
+omni_range = 19.177
+omni_attenuation = -0.212
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.4392, 41.9279, -43.6191)
+light_color = Color(0.355279, 0.561367, 0.877556, 1)
+light_energy = 1.215
+omni_range = 19.177
+omni_attenuation = -0.212
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1157, 41.9279, -43.6191)
+light_color = Color(0.355279, 0.561367, 0.877556, 1)
+light_energy = 1.215
+omni_range = 19.177
+omni_attenuation = -0.212
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.583, 44.446, -49.7736)
+light_color = Color(0.785593, 0.610647, 0.132652, 1)
+light_energy = 6.172
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3061, 44.446, -49.756)
+light_color = Color(0.785593, 0.610647, 0.132652, 1)
+light_energy = 6.172
+omni_range = 5.44087
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14311, 44.446, -49.7736)
+light_color = Color(0.785593, 0.610647, 0.132652, 1)
+light_energy = 6.172
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5559, 44.446, -49.7736)
+light_color = Color(0.785593, 0.610647, 0.132652, 1)
+light_energy = 6.172
 
 [editable path="casco_espacioColeccionable"]
