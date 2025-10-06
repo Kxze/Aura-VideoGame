@@ -16,7 +16,7 @@ func _on_body_entered(body: Node3D) -> void:
 	AudioManager.dash_desbloqueado = true
 	
 # 🔊 Reproduce desde el AudioManager global (persistente)
-	AudioManager.play_lampara_desbloqueo_persistente(sonido_desbloquea)
+	AudioManager.play_sfx_persistente(sonido_desbloquea)
 	
 	# 🚫 Desactiva el área (ya no vuelve a sonar)
 	monitoring = false
