@@ -11,7 +11,7 @@ radius = 0.12464
 height = 0.693832
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vworv"]
-size = Vector3(38, 37, 1)
+size = Vector3(127.987305, 321.62793, 85.74219)
 
 [node name="Julieta" type="CharacterBody3D"]
 script = ExtResource("1_n8frv")

@@ -47,18 +47,10 @@ func _find_popup_ajustes() -> Popup:
 	return null
 
 # ---------------------------------------------------------
-# 🏁 Cuando cambia la escena → detener todos los sonidos de Julieta
-func _on_scene_changed(new_scene):
-	AudioManager.stop_julieta()
-	print("🏁 Llanto detenido al salir del nivel.")
 
-# ---------------------------------------------------------
-func exit():
-	AudioManager.stop_julieta()
-	if get_tree().is_connected("scene_changed", Callable(self, "_on_scene_changed")):
-		get_tree().disconnect("scene_changed", Callable(self, "_on_scene_changed"))
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
+		AudioManager.stop_julieta()
 		emit_signal("finished","Callada")
