@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://djjwc26mcb46q"]
+
+[ext_resource type="Script" uid="uid://beatyfdmktb3a" path="res://script/enemies/julieta.gd" id="1_n8frv"]
+[ext_resource type="PackedScene" uid="uid://dfwomsoqo6qox" path="res://Art/Model3D/JULIETA/JulietaAnimaciones.blend" id="2_h0pgd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vworv"]
+radius = 0.12464
+height = 0.693832
+
+[node name="Julieta" type="CharacterBody3D"]
+script = ExtResource("1_n8frv")
+
+[node name="JulietaAnimaciones" parent="." instance=ExtResource("2_h0pgd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.301283, 0)
+shape = SubResource("CapsuleShape3D_vworv")

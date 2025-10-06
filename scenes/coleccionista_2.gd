@@ -1,6 +1,7 @@
 extends Control
 
-@onready var click_sound = preload("res://sonidos/botón2.wav")   # 🔊 sonido click
+@onready var click_sound = preload("res://sonidos/botón2.wav")
+@onready var sonido_cambio_pagina = preload("res://sonidos/cambioPagina.wav")
 
 func _ready():
 	# Conectar botones
@@ -9,32 +10,43 @@ func _ready():
 	$salir.pressed.connect(_on_salir_pressed)
 
 func _input(event):
-	# Navegar con teclado
-	if event.is_action_pressed("ui_right"):  # 👉 Flecha Derecha
+	# 👉 Navegar con Flecha Derecha
+	if event.is_action_pressed("ui_right"):
 		_play_click()
-		get_tree().change_scene_to_file("res://scenes/coleccionista3.tscn")
+		_play_cambio_pagina_y_cambiar("res://scenes/coleccionista3.tscn")
 
-	elif event.is_action_pressed("ui_left"):  # 👈 Flecha Izquierda
+	# 👈 Navegar con Flecha Izquierda
+	elif event.is_action_pressed("ui_left"):
 		_play_click()
-		get_tree().change_scene_to_file("res://scenes/coleccionista.tscn")
+		_play_cambio_pagina_y_cambiar("res://scenes/coleccionista.tscn")
 
-	elif event.is_action_pressed("ui_cancel"):  # ⎋ tecla Esc
+	# ⎋ Regresar con tecla Esc
+	elif event.is_action_pressed("ui_cancel"):
 		_play_click()
 		get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
 
-# --- Funciones de botones ---
+# --- Botones ---
 func _on_flecha_der_pressed():
 	_play_click()
-	get_tree().change_scene_to_file("res://scenes/coleccionista3.tscn")
+	_play_cambio_pagina_y_cambiar("res://scenes/coleccionista3.tscn")
 
 func _on_flecha_izq_pressed():
 	_play_click()
-	get_tree().change_scene_to_file("res://scenes/coleccionista.tscn")
+	_play_cambio_pagina_y_cambiar("res://scenes/coleccionista.tscn")
 
 func _on_salir_pressed():
 	_play_click()
 	get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
 
-# --- 🔊 Reproducir sonido ---
+# --- 🔊 Sonidos ---
 func _play_click():
-	AudioManager.play_click(click_sound)
+	if AudioManager:
+		AudioManager.play_click(click_sound)
+
+func _play_cambio_pagina_y_cambiar(scene_path: String):
+	if AudioManager:
+		# 🔊 Reproduce el sonido de cambio de página de forma persistente
+		AudioManager.play_sfx_persistente(sonido_cambio_pagina)
+
+	# Cambia la escena sin esperar (el sonido sigue sonando)
+	get_tree().change_scene_to_file(scene_path)

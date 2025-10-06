@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ybkbcyhtgb5q"
-path.s3tc="res://.godot/imported/Torso.png-15302e6df0f2325a6f5571398f8866ab.s3tc.ctex"
+uid="uid://v270eye7u8on"
+path.s3tc="res://.godot/imported/JBrazos.png-c7cbef1c32e0cf97731ad374d72f51ec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/Model3D/CASCANUECES/Torso.png"
-dest_files=["res://.godot/imported/Torso.png-15302e6df0f2325a6f5571398f8866ab.s3tc.ctex"]
+source_file="res://Art/Model3D/JULIETA/JBrazos.png"
+dest_files=["res://.godot/imported/JBrazos.png-c7cbef1c32e0cf97731ad374d72f51ec.s3tc.ctex"]
 
 [params]
 

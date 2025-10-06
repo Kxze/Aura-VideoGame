@@ -18,7 +18,7 @@ var is_dashing := false
 static var can_dash := false
 static var can_lumiere := false
 var prevVelocity: Vector2 = Vector2.ZERO
-static var lumiere_ready := true
+static var lumiere_ready := false
 # Variable que controla si el jugador puede recibir inputs
 var controls_enabled: bool = true
 
@@ -49,6 +49,8 @@ func _process(_delta: float) -> void:
 		lamp_light.omni_attenuation = 1
 		lamp_light.omni_range = 3.0
 		lamp_light.light_energy = 1
+	if health < 0:
+		animationPlayer.play("Dead")
 func take_damage(damage: int):
 	health -= damage
 	if health <= 0:
@@ -66,7 +68,10 @@ func set_controls_enabled(enable: bool) -> void:
 func jump_side_per_damage(x):
 	velocity.y = jump
 	velocity.x = x
-	animationPlayer.play("Dash")
+
+func dead(bool):
+	animationPlayer.animation_finished
+
 func _change_light():
 	if lumiere_ready:
 		lamp_light.light_color = Color(0.4,0.6,1.0)

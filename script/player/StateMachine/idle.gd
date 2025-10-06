@@ -22,6 +22,8 @@ func physics_update(delta: float):
 		emit_signal("finished", "InAir", {"Jump" : true})
 	if Input.is_action_just_pressed("Lumiere") and player.can_lumiere:
 		emit_signal("finished","Lumiere")
+	if player.health <= 0:
+		emit_signal("finished","Dead")
 	# Frenado suave horizontal
 	player.velocity.x = lerpf(player.velocity.x, 0, 0.9)
 	player.move_and_slide()

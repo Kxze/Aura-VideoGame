@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://c17wj8jr8lb0n"]
+[gd_scene load_steps=33 format=4 uid="uid://c17wj8jr8lb0n"]
 
 [ext_resource type="PackedScene" uid="uid://btl7r0mv42dlj" path="res://Art/Levels/blocking_level_3.blend" id="1_0ljxa"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_0qepi"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://2ltdbcdy2ip8" path="res://scenes/triggers/spawn_point.tscn" id="13_f6egh"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="14_t4txi"]
 [ext_resource type="Texture2D" uid="uid://b7mrs02cr52yr" path="res://Art/Levels/DashMuerte.png" id="16_josfm"]
+[ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="17_lgrx1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjiia"]
 resource_name = "TablasPrincipales.001"
@@ -477,7 +478,7 @@ light_specular = 0.0
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6107, 47.1405, 1.96833)
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594001, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.5940006, 1.1010017, 6.303001)
 keep_aspect = 0
 environment = ExtResource("2_apo5x")
 fov = 80.0
@@ -518,7 +519,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 331.585, 0, -11.1259)
 light_data = ExtResource("10_2bnyt")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 71.4147, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.84871, 71.4147, 0)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -568,9 +569,17 @@ transform = Transform3D(16.1177, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07
 mesh = SubResource("PlaneMesh_josfm")
 surface_material_override/0 = SubResource("StandardMaterial3D_lgrx1")
 
+[node name="door_collect" parent="." instance=ExtResource("17_lgrx1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.7163, 152.189, 0)
+
+[node name="Portal_to_collect" parent="door_collect" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.106903, 0, 9.34574e-09)
+next_level_path = "res://scenes/levels/level_collec_1.tscn"
+
 [editable path="blocking_level_3"]
 [editable path="KillZone"]
 [editable path="next_level"]
 [editable path="back_level"]
 [editable path="CheckPoint"]
 [editable path="CheckPoint2"]
+[editable path="door_collect"]

@@ -25,7 +25,8 @@ func physics_update(delta: float):
 	if altura_caida > altura_minima_fall:
 		if player.animationPlayer.current_animation != "Fall":
 			player.animationPlayer.play("Fall")
-
+	if player.health <= 0:
+		emit_signal("finished","Dead")
 	# Movimiento final
 	player.move_and_slide()
 	player.global_position.z = 0

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ybkbcyhtgb5q"
-path.s3tc="res://.godot/imported/Torso.png-15302e6df0f2325a6f5571398f8866ab.s3tc.ctex"
+uid="uid://bbrgy6j1tw2l3"
+path.s3tc="res://.godot/imported/JVestidoDer.png-335e131d319f9a21166645d96849dcd1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/Model3D/CASCANUECES/Torso.png"
-dest_files=["res://.godot/imported/Torso.png-15302e6df0f2325a6f5571398f8866ab.s3tc.ctex"]
+source_file="res://Art/Model3D/JULIETA/JVestidoDer.png"
+dest_files=["res://.godot/imported/JVestidoDer.png-335e131d319f9a21166645d96849dcd1.s3tc.ctex"]
 
 [params]
 

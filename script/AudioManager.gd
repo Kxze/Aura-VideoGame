@@ -16,6 +16,7 @@ var fading := false
 # --- Estado global del juego ---
 var lampara_desbloqueada := false  # 🌙 se mantiene globalmente mientras el juego esté abierto
 var dash_desbloqueado := false     # 🌪️ se mantiene globalmente durante toda la sesión
+var coleccionable_sonado := false  # 🔔 evita que el sonido del coleccionable se repita
 
 # ---------------------------------------------------------
 #                   CONFIGURACIÓN INICIAL
@@ -159,6 +160,63 @@ func play_dash_desbloqueo_persistente(sound: AudioStream) -> void:
 	await get_tree().create_timer(duracion).timeout
 	temp_player.queue_free()
 	print("✅ Sonido de dash completado y liberado.")
+	
+# ---------------------------------------------------------
+#             🔊 SONIDOS SFX PERSISTENTES (NO SE CORTAN)
+# ---------------------------------------------------------
+func play_sfx_persistente(sound: AudioStream) -> void:
+	if sound == null:
+		return
+	
+	var temp_player := AudioStreamPlayer.new()
+	temp_player.stream = sound
+	temp_player.bus = "Efectos"
+	temp_player.volume_db = 0
+	temp_player.autoplay = false
+
+	get_tree().get_root().add_child(temp_player)
+	temp_player.play()
+
+	var duracion := 0.0
+	if sound and sound.has_method("get_length"):
+		duracion = sound.get_length()
+	if duracion <= 0.0:
+		duracion = 2.0  # seguridad por si no detecta longitud
+
+	await get_tree().create_timer(duracion).timeout
+	temp_player.queue_free()
+
+# ---------------------------------------------------------
+#        🔔 SONIDO COLECCIONABLE CERCA (UNA SOLA VEZ)
+# ---------------------------------------------------------
+func play_coleccionable_cerca(sound: AudioStream) -> void:
+	if coleccionable_sonado:
+		print("🔕 Sonido de coleccionable ya reproducido, no se repetirá.")
+		return
+
+	coleccionable_sonado = true
+	print("🔔 Reproduciendo sonido de coleccionable cerca...")
+
+	if sound == null:
+		return
+	
+	var temp_player := AudioStreamPlayer.new()
+	temp_player.stream = sound
+	temp_player.bus = "Efectos"
+	temp_player.volume_db = 0
+	temp_player.autoplay = false
+	get_tree().get_root().add_child(temp_player)
+	temp_player.play()
+
+	var duracion := 0.0
+	if sound and sound.has_method("get_length"):
+		duracion = sound.get_length()
+	if duracion <= 0.0:
+		duracion = 2.0
+
+	await get_tree().create_timer(duracion).timeout
+	temp_player.queue_free()
+	print("✅ Sonido de coleccionable completado y liberado.")
 
 # ---------------------------------------------------------
 #                         MÚSICA

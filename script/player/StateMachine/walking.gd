@@ -77,6 +77,8 @@ func physics_update(delta: float):
 	
 	if Input.is_action_just_pressed("Lumiere") and player.can_lumiere:
 		emit_signal("finished","Lumiere")
+	if player.health <= 0:
+		emit_signal("finished","Dead")
 	# --- Movimiento horizontal ---
 	player.velocity.x = lerp(player.velocity.x, player.movInput.x * player.speed, 0.9)
 	player.move_and_slide()
