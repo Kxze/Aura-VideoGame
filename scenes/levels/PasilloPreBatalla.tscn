@@ -58,13 +58,6 @@ spot_range = 73.472
 spot_attenuation = -0.32
 spot_angle = 48.1388
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.987, 9.67142, -37.0846)
-light_color = Color(0.815686, 0.745098, 0.121569, 1)
-light_energy = 8.945
-omni_range = 14.305
-omni_attenuation = 0.596
-
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(0.777464, 0.628927, -5.85734e-10, -0.00812265, 0.010041, 0.999917, 0.628875, -0.7774, 0.0129151, 60.2227, 59.9323, -16.3653)
 light_color = Color(0.827451, 0.709804, 0.184314, 1)
@@ -81,9 +74,77 @@ spot_range = 73.472
 spot_attenuation = -0.32
 spot_angle = 48.1388
 
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(0.777464, 0.628927, 1.41224e-08, -0.00812265, 0.010041, 0.999917, 0.628875, -0.777399, 0.0129151, -95.8174, 35.4228, -53.1805)
+light_color = Color(0.583221, 0.746843, 0.798477, 1)
+light_energy = 1.808
+spot_range = 38.985
+spot_attenuation = -0.32
+spot_angle = 48.1388
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="."]
+transform = Transform3D(0.777464, 0.628927, 1.41224e-08, -0.00812265, 0.010041, 0.999917, 0.628875, -0.777399, 0.0129151, -28.906, 35.4228, -53.1805)
+light_color = Color(0.583221, 0.746843, 0.798477, 1)
+light_energy = 1.808
+spot_range = 38.985
+spot_attenuation = -0.32
+spot_angle = 48.1388
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="."]
+transform = Transform3D(0.777464, 0.628927, 1.33983e-08, -0.00812265, 0.010041, 0.999917, 0.628875, -0.777399, 0.0129151, 26.6576, 35.4228, -53.1805)
+light_color = Color(0.583221, 0.746843, 0.798477, 1)
+light_energy = 1.808
+spot_range = 38.985
+spot_attenuation = -0.32
+spot_angle = 48.1388
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="."]
+transform = Transform3D(0.777464, 0.628927, 1.33983e-08, -0.00812265, 0.010041, 0.999917, 0.628875, -0.777399, 0.0129151, 79.9511, 30.8609, -53.1805)
+light_color = Color(0.583221, 0.746843, 0.798477, 1)
+light_energy = 1.808
+spot_range = 38.985
+spot_attenuation = -0.32
+spot_angle = 48.1388
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SpotLight3D7"]
+transform = Transform3D(1, 0, -9.31323e-10, 0, 1, 1.39698e-08, 0, -1.39698e-08, 1, -143.655, -120.636, -23.4949)
+light_color = Color(0.85098, 0.666667, 0.25098, 1)
+light_energy = 4.071
+omni_range = 4.41378
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="SpotLight3D7"]
+transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 1.67638e-08, 0, -1.76951e-08, 1, -69.383, -64.5337, -21.1551)
+light_color = Color(0.85098, 0.666667, 0.25098, 1)
+light_energy = 4.071
+omni_range = 4.41378
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="SpotLight3D7"]
+transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 1.86265e-08, 0, -1.95578e-08, 1, 25.1587, 4.05334, -21.7072)
+light_color = Color(0.85098, 0.666667, 0.25098, 1)
+light_energy = 4.071
+omni_range = 23.692
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="SpotLight3D7"]
+transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 2.51457e-08, 0, -2.51457e-08, 1, -46.6323, -91.896, -28.0781)
+light_color = Color(0.85098, 0.666667, 0.25098, 1)
+light_energy = 4.071
+omni_range = 4.41378
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="SpotLight3D7"]
+transform = Transform3D(1, 0, -9.31323e-10, 0, 1, 2.51457e-08, 0, -2.70084e-08, 1, -20.5754, -75.7301, -28.0288)
+light_color = Color(0.85098, 0.666667, 0.25098, 1)
+light_energy = 4.071
+omni_range = 4.41378
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="SpotLight3D7"]
+transform = Transform3D(1, 0, -9.31323e-10, 0, 1, 2.04891e-08, 0, -2.04891e-08, 1, -45.9311, -45.656, -21.7855)
+light_color = Color(0.85098, 0.666667, 0.25098, 1)
+light_energy = 4.071
+omni_range = 4.41378
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0, 0.5, -0.433013, 0.5, 0.75, -0.25, -0.866025, 0.433013, 0, 50, 32)
 light_color = Color(0.378102, 0.477178, 0.69712, 1)
-light_energy = 0.515
+light_energy = 1.161
 
 [editable path="PruebaPasilloyaporfavor"]
