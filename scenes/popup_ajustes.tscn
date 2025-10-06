@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://lamcax8x6dtt"]
+[gd_scene load_steps=19 format=3 uid="uid://lamcax8x6dtt"]
 
 [ext_resource type="Script" uid="uid://j127wrukrjub" path="res://script/Ajustes/Ajustes.gd" id="1_sfv8a"]
 [ext_resource type="Texture2D" uid="uid://jg7d4006vfh8" path="res://Fondos/tarjeta_ajustes.png" id="2_02847"]
@@ -17,13 +17,18 @@
 [ext_resource type="Script" uid="uid://u117bkd5minc" path="res://scenes/margin_container_controles.gd" id="15_rm0g4"]
 [ext_resource type="Script" uid="uid://t27b3d3leeuj" path="res://script/Ajustes/grid_container_controles.gd" id="16_d03vf"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfv8a"]
+bg_color = Color(0, 0, 0, 0)
+
 [sub_resource type="Theme" id="Theme_4g77v"]
 Label/colors/font_color = Color(0.175912, 0.121396, 0.0580004, 1)
 Label/font_sizes/font_size = 30
 Label/fonts/font = ExtResource("9_nxi8b")
 
 [node name="Popup_Ajustes" type="Popup"]
+process_mode = 3
 transparent_bg = true
+oversampling_override = 1.0
 size = Vector2i(1920, 1080)
 visible = true
 transparent = true
@@ -33,24 +38,29 @@ script = ExtResource("1_sfv8a")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sfv8a")
 
 [node name="TextureTarjeta" type="TextureRect" parent="Panel"]
 layout_mode = 0
 offset_left = 498.0
-offset_top = 158.0
+offset_top = 190.00003
 offset_right = 2190.0
-offset_bottom = 1412.0
+offset_bottom = 1444.0
 scale = Vector2(0.55, 0.6)
 texture = ExtResource("2_02847")
 
 [node name="BtnSalir" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 1368.0
-offset_top = 519.0
+offset_top = 551.0
 offset_right = 1526.0
-offset_bottom = 647.0
+offset_bottom = 679.0
 scale = Vector2(0.9, 0.9)
 icon = ExtResource("3_rqv08")
 flat = true
@@ -58,9 +68,9 @@ flat = true
 [node name="BtnInicio" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 1370.0
-offset_top = 409.0
+offset_top = 441.0
 offset_right = 1528.0
-offset_bottom = 537.0
+offset_bottom = 569.0
 scale = Vector2(0.9, 0.9)
 icon = ExtResource("4_75n6u")
 flat = true
@@ -68,9 +78,9 @@ flat = true
 [node name="BtnContinuar" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 1370.0
-offset_top = 299.0
+offset_top = 331.0
 offset_right = 1528.0
-offset_bottom = 427.0
+offset_bottom = 459.0
 scale = Vector2(0.9, 0.9)
 icon = ExtResource("5_3ckoo")
 flat = true
@@ -78,9 +88,9 @@ flat = true
 [node name="BtnCerrar" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 1369.0
-offset_top = 297.0
+offset_top = 329.0
 offset_right = 1527.0
-offset_bottom = 425.0
+offset_bottom = 457.0
 scale = Vector2(0.9, 0.9)
 theme = ExtResource("6_woxkn")
 icon = ExtResource("7_rl8us")
@@ -89,9 +99,9 @@ flat = true
 [node name="MarginContainerAjustes" type="MarginContainer" parent="Panel"]
 layout_mode = 0
 offset_left = 739.0
-offset_top = 289.0
-offset_right = 1182.0
-offset_bottom = 725.0
+offset_top = 321.0
+offset_right = 1189.0
+offset_bottom = 757.0
 theme = ExtResource("8_8vq27")
 
 [node name="Ajustes" type="Label" parent="Panel/MarginContainerAjustes"]
@@ -198,12 +208,12 @@ text = "Modo   "
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("12_1nwcj")
-theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
 button_pressed = true
 flat = true
 script = ExtResource("13_7fdjt")
@@ -294,6 +304,7 @@ vertical_alignment = 1
 [node name="BtnSalto" type="Button" parent="Panel/MarginContainerControles/GridContainerControles"]
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 text = "Barra de espacio"
 
 [node name="Izquierda" type="Label" parent="Panel/MarginContainerControles/GridContainerControles"]
@@ -305,6 +316,7 @@ vertical_alignment = 1
 [node name="BtnIzq" type="Button" parent="Panel/MarginContainerControles/GridContainerControles"]
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 text = "A"
 
 [node name="Derecha" type="Label" parent="Panel/MarginContainerControles/GridContainerControles"]
@@ -316,6 +328,7 @@ vertical_alignment = 1
 [node name="BtnDrch" type="Button" parent="Panel/MarginContainerControles/GridContainerControles"]
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 text = "D"
 
 [node name="Dash" type="Label" parent="Panel/MarginContainerControles/GridContainerControles"]
@@ -327,6 +340,7 @@ vertical_alignment = 1
 [node name="BtnDash" type="Button" parent="Panel/MarginContainerControles/GridContainerControles"]
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 text = "E"
 
 [node name="Correr" type="Label" parent="Panel/MarginContainerControles/GridContainerControles"]
@@ -338,6 +352,7 @@ vertical_alignment = 1
 [node name="BtnRun" type="Button" parent="Panel/MarginContainerControles/GridContainerControles"]
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 text = "Shift"
 
 [node name="Reestablecer" type="Button" parent="Panel/MarginContainerControles"]

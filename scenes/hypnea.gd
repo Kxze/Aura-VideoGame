@@ -10,8 +10,16 @@ func _on_gui_input(event):
 		_cambiar_a_menu()
 
 func _unhandled_input(event):
-	# Si se presiona cualquier tecla
+	# --- Detectar teclas ---
 	if event is InputEventKey and event.pressed:
+		# Ignorar teclas de volumen
+		if event.keycode in [KEY_VOLUMEUP, KEY_VOLUMEDOWN]:
+			return
+		# Aceptar cualquier otra tecla
+		_cambiar_a_menu()
+
+	# --- Detectar clic del mouse izquierdo ---
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		_cambiar_a_menu()
 
 func _cambiar_a_menu():
