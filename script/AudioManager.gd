@@ -35,6 +35,8 @@ func _ready():
 	add_child(musica_player)
 	musica_player.bus = "Musica"
 	musica_player.volume_db = -4
+	
+	get_tree().connect("scene_changed", Callable(self, "_on_scene_changed_global"))
 
 
 # ---------------------------------------------------------
@@ -179,51 +181,125 @@ func play_skeleton(sound: AudioStream) -> void:
 	efectos_player.play()
 	
 # ---------------------------------------------------------
-# 💧 SONIDO DE LLANTO JULIETA (loop constante)
+# 💧 SONIDO DE LLANTO JULIETA (variaciones continuas durante el nivel)
 # ---------------------------------------------------------
 var julieta_player: AudioStreamPlayer = null
+var julieta_sounds: Array[AudioStream] = []
+var julieta_timer: Timer = null
+var julieta_activa: bool = false
 
-func play_julieta(sound: AudioStream) -> void:
-	if sound == null:
-		push_warning("⚠️ No se proporcionó sonido de Julieta.")
-		return
+# ---------------------------------------------------------
+# Cargar sonidos de Julieta
+# ---------------------------------------------------------
+func _load_julieta_sounds():
+	var paths = [
+		"res://sonidos/julietaEco.wav",
+	]
 
-	# Evitar duplicar el sonido si ya está sonando
-	if julieta_player and julieta_player.playing:
-		return
+	julieta_sounds.clear()
+	for p in paths:
+		if ResourceLoader.exists(p):
+			var s = load(p)
+			if s:
+				julieta_sounds.append(s)
 
-	# Crear el player si no existe
+	if julieta_sounds.is_empty():
+		push_warning("⚠️ No se encontraron sonidos de Julieta.")
+	else:
+		print("💧 Sonidos de Julieta cargados:", julieta_sounds.size())
+
+# ---------------------------------------------------------
+# 🔊 Inicia la secuencia continua de llanto aleatorio
+# ---------------------------------------------------------
+func play_julieta():
+	if julieta_activa:
+		return # ya se está reproduciendo
+
+	if julieta_sounds.is_empty():
+		_load_julieta_sounds()
+
 	if julieta_player == null:
 		julieta_player = AudioStreamPlayer.new()
 		julieta_player.name = "Julieta_Player"
 		julieta_player.bus = "Efectos"
 		add_child(julieta_player)
 
-	# Configurar sonido
-	julieta_player.stream = sound
-	julieta_player.volume_db = 0  # puedes subir a +3 si lo quieres más fuerte
-	julieta_player.autoplay = false
+	# Crear o reiniciar el timer que maneja el cambio automático
+	if julieta_timer == null:
+		julieta_timer = Timer.new()
+		julieta_timer.one_shot = true
+		add_child(julieta_timer)
+		julieta_timer.timeout.connect(_on_julieta_timer_timeout)
 
-	# 🔁 Forzar el loop si el formato lo permite
-	if sound is AudioStreamOggVorbis or sound is AudioStreamMP3 or sound is AudioStreamWAV:
-		if sound.has_method("set_loop"):
-			sound.set_loop(true)
-	julieta_player.stream_paused = false
+	julieta_activa = true
+	print("💧 Llanto de Julieta iniciado (nivel activo).")
+	_play_random_julieta()
+
+# ---------------------------------------------------------
+# 🌀 Reproduce un sonido aleatorio y programa el siguiente
+# ---------------------------------------------------------
+func _play_random_julieta():
+	if not julieta_activa or julieta_sounds.is_empty():
+		return
+
+	# Escoge un sonido aleatorio diferente al actual si es posible
+	var selected_sound: AudioStream = julieta_sounds.pick_random()
+	if julieta_player.stream == selected_sound and julieta_sounds.size() > 1:
+		selected_sound = julieta_sounds.filter(func(s): return s != selected_sound).pick_random()
+
+	julieta_player.stream = selected_sound
+
+	# Loop no necesario: nosotros manejamos el cambio
+	if selected_sound.has_method("set_loop"):
+		selected_sound.set_loop(false)
+
+	# 🎚️ Variaciones naturales más notorias
+	var random_pitch := randf_range(0.85, 1.15)
+	var random_volume := randf_range(-3.0, 3.0)
+
+	julieta_player.pitch_scale = random_pitch
+	julieta_player.volume_db = random_volume
 	julieta_player.play()
 
-	print("💧 Sonido de Julieta iniciado en loop.")
+	print("💧 Reproduciendo:", selected_sound.resource_path,
+		" | pitch:", random_pitch, " | vol:", random_volume)
+
+	# Duración del clip o valor de respaldo
+	var dur := 5.0
+	if selected_sound.has_method("get_length"):
+		dur = selected_sound.get_length()
+
+	# ⚡ Variación del tiempo entre clips (más natural)
+	var next_delay := dur + randf_range(0.2, 1.0)
+	julieta_timer.start(next_delay)
 
 # ---------------------------------------------------------
-# 🛑 Detiene el sonido del llanto de Julieta
+# 🔁 Cuando termina un clip → reproducir el siguiente
 # ---------------------------------------------------------
-func stop_julieta() -> void:
-	if julieta_player:
-		if julieta_player.playing:
-			julieta_player.stop()
-			print("🔇 Sonido de Julieta detenido.")
-	else:
-		print("⚠️ No hay player de Julieta activo.")
+func _on_julieta_timer_timeout():
+	if not julieta_activa:
+		return
+	_play_random_julieta()
 
+# ---------------------------------------------------------
+# 🛑 Detiene toda la secuencia y libera recursos
+# ---------------------------------------------------------
+func stop_julieta():
+	if julieta_player and julieta_player.playing:
+		julieta_player.stop()
+	if julieta_timer:
+		julieta_timer.stop()
+
+	julieta_activa = false
+	print("🔇 Llanto de Julieta detenido completamente.")
+
+# ---------------------------------------------------------
+# 🎬 Detener llanto al cambiar de nivel
+# ---------------------------------------------------------
+func _on_scene_changed_global(new_scene):
+	if julieta_activa:
+		stop_julieta()
+		print("🏁 Escena cambiada → llanto de Julieta detenido automáticamente.")
 
 # ---------------------------------------------------------
 #        🔔 SONIDO COLECCIONABLE CERCA (UNA SOLA VEZ)
