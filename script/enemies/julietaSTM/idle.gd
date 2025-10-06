@@ -57,3 +57,8 @@ func exit():
 	AudioManager.stop_julieta()
 	if get_tree().is_connected("scene_changed", Callable(self, "_on_scene_changed")):
 		get_tree().disconnect("scene_changed", Callable(self, "_on_scene_changed"))
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body.name == "Player":
+		emit_signal("finished","Callada")

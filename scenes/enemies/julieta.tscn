@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://djjwc26mcb46q"]
+[gd_scene load_steps=8 format=3 uid="uid://djjwc26mcb46q"]
 
 [ext_resource type="Script" uid="uid://beatyfdmktb3a" path="res://script/enemies/julieta.gd" id="1_n8frv"]
 [ext_resource type="PackedScene" uid="uid://dfwomsoqo6qox" path="res://Art/Model3D/JULIETA/JulietaAnimaciones.blend" id="2_h0pgd"]
 [ext_resource type="Script" uid="uid://dr7rgqi3nwgnn" path="res://script/player/StateMachine/state_machine.gd" id="3_h0pgd"]
 [ext_resource type="Script" uid="uid://crr2w118ycrnf" path="res://script/enemies/julietaSTM/idle.gd" id="4_vworv"]
+[ext_resource type="Script" uid="uid://d0k6oth7235qh" path="res://script/enemies/julietaSTM/callada.gd" id="5_xwyjx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vworv"]
 radius = 0.12464
 height = 0.693832
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vworv"]
+size = Vector3(38, 37, 1)
 
 [node name="Julieta" type="CharacterBody3D"]
 script = ExtResource("1_n8frv")
@@ -43,10 +47,24 @@ transform = Transform3D(14.224389, -1.9599338e-06, -0.124548435, -0.12455225, -2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.301283, 0)
 shape = SubResource("CapsuleShape3D_vworv")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_h0pgd")
+initial_state = NodePath("Callada")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_vworv")
+
+[node name="Callada" type="Node" parent="StateMachine"]
+script = ExtResource("5_xwyjx")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+shape = SubResource("BoxShape3D_vworv")
+debug_color = Color(0.6079037, 0.5404041, 0, 0.41960785)
+
+[connection signal="body_entered" from="Area3D" to="StateMachine/Callada" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="StateMachine/Idle" method="_on_area_3d_body_exited"]
 
 [editable path="JulietaAnimaciones"]
