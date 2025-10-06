@@ -18,6 +18,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.5537, 0)
 [node name="StaticBody3D" parent="OSOAHORASIColeccionable/Piso_001" index="0"]
 collision_layer = 2
 
+[node name="Piso" parent="OSOAHORASIColeccionable" index="4"]
+transform = Transform3D(89.7975, 0, 0, 0, 0.128051, 0, 0, 0, 55.5755, -38.8036, 15.9152, -24.339)
+
 [node name="StaticBody3D" parent="OSOAHORASIColeccionable/Piso" index="0"]
 collision_layer = 2
 
@@ -95,5 +98,20 @@ shape = SubResource("BoxShape3D_akdnb")
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 7, 9.51918, 3)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.258819, 2.87868e-08, -0.965926, 0, 1, 2.98023e-08, 0.965926, 7.71341e-09, -0.258819, -68.369, 11, -8)
+light_color = Color(0.639613, 0.470585, 0.732757, 1)
+light_energy = 1.646
+spot_range = 99.0
+spot_attenuation = -0.21
+spot_angle = 45.7557
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.4212, 20.1041, -1.93469)
+light_color = Color(0.68805, 0.40925, 0.902068, 1)
+light_energy = 1.97
+omni_range = 17.759
+omni_attenuation = -0.143
 
 [editable path="OSOAHORASIColeccionable"]

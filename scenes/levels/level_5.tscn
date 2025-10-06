@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2yu70n2vogoj"]
+[gd_scene load_steps=8 format=3 uid="uid://d2yu70n2vogoj"]
 
 [ext_resource type="PackedScene" uid="uid://dnms5rm70a8ir" path="res://Art/Levels/Blocking_level5.blend" id="1_845dy"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_dswqx"]
@@ -11,6 +11,9 @@ radius = 3.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_laj7o"]
 size = Vector3(5.15723, 33.0505, 50.4619)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fi56y"]
+size = Vector3(12.1303, 4.41321, 7.55322)
 
 [node name="Level5" type="Node3D"]
 
@@ -108,8 +111,9 @@ spot_range = 192.184
 spot_attenuation = 0.39
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="."]
-transform = Transform3D(0.874162, 0.485634, 2.62823e-08, -0.0414476, 0.0746075, 0.996351, 0.483862, -0.870973, 0.0853474, -338.943, 129.072, 42.2957)
-light_energy = 16.0
+transform = Transform3D(0.874162, 0.485634, 7.105e-09, -0.0414476, 0.0746075, 0.996351, 0.483862, -0.870973, 0.0853474, -281.694, 129.072, -13.4988)
+light_color = Color(0.833969, 0.921517, 0.335789, 1)
+light_energy = 13.899
 light_indirect_energy = 3.424
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
@@ -117,7 +121,8 @@ spot_range = 192.184
 spot_attenuation = 0.39
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="."]
-transform = Transform3D(0.874162, 0.485634, 3.4098e-08, -0.145612, 0.262109, 0.95399, 0.463289, -0.833942, 0.29984, -55.0143, 131.61, 42.2957)
+transform = Transform3D(0.874163, 0.485633, -2.6405e-07, -0.145612, 0.262109, 0.95399, 0.463289, -0.833942, 0.29984, -55.0143, 131.61, 18.12)
+light_color = Color(0.47566, 0.736883, 0.921908, 1)
 light_energy = 16.0
 light_indirect_energy = 3.424
 light_volumetric_fog_energy = 0.0
@@ -126,7 +131,8 @@ spot_range = 192.184
 spot_attenuation = 0.39
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="."]
-transform = Transform3D(0.874162, 0.485634, 3.4098e-08, -0.145612, 0.262109, 0.95399, 0.463289, -0.833942, 0.29984, -145.665, 110.559, 42.3712)
+transform = Transform3D(0.874163, 0.485633, -2.6405e-07, -0.145612, 0.262109, 0.95399, 0.463289, -0.833942, 0.29984, -145.665, 110.559, 14.9449)
+light_color = Color(0.716689, 0.825744, 0.49292, 1)
 light_energy = 16.0
 light_indirect_energy = 3.424
 light_volumetric_fog_energy = 0.0
@@ -153,8 +159,9 @@ spot_range = 192.184
 spot_attenuation = 0.39
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.746953, -0.12536, -0.652952, 0.0438859, 0.989219, -0.139715, 0.663427, 0.0757053, 0.744401, -23.0331, 65.1588, 249.84)
+transform = Transform3D(0.746953, -0.125359, -0.652952, -0.572107, 0.379179, -0.727267, 0.338755, 0.916793, 0.21151, -23.0331, 148.122, 249.84)
 light_color = Color(0.434023, 0.66669, 0.530061, 1)
+light_energy = 0.0
 light_angular_distance = 90.0
 
 [node name="KillZone" parent="." instance=ExtResource("4_laj7o")]
@@ -179,6 +186,67 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.108, 14.9694, -1.09235)
 shape = SubResource("BoxShape3D_laj7o")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.0988, -3.00092, -0.354248)
+shape = SubResource("BoxShape3D_fi56y")
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.742596, 0.66974, 0, -0.66974, 0.742596, -247, 6.45288, 33.7042)
+light_color = Color(0.407843, 0.698039, 0.905882, 1)
+light_energy = 0.515
+spot_range = 40.196
+spot_attenuation = -1.02
+spot_angle = 37.5164
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0245892, 0.999698, 0, -0.999698, 0.0245892, 38.727, 25.3719, -8.64635)
+light_color = Color(0.152941, 0.431373, 0.905882, 1)
+light_energy = 0.677
+spot_range = 90.03
+spot_attenuation = -0.41
+spot_angle = 61.2769
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.083556, -0.996503, 0, 0.996503, 0.083556, -259.181, -79.3466, -57.7248)
+light_color = Color(0.792157, 0.796078, 0.294118, 1)
+spot_range = 155.027
+spot_attenuation = -0.5
+spot_angle = 47.2738
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.083556, -0.996503, 0, 0.996503, 0.083556, -259.181, -160.658, -113.204)
+light_color = Color(0.792157, 0.796078, 0.294118, 1)
+light_energy = 0.515
+spot_range = 350.603
+spot_attenuation = -0.5
+spot_angle = 47.2738
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.083556, -0.996503, 0, 0.996503, 0.083556, -70.5556, -160.658, -113.204)
+light_color = Color(0.353776, 0.858635, 0.527042, 1)
+light_energy = 0.515
+spot_range = 350.603
+spot_attenuation = -0.5
+spot_angle = 47.2738
+
+[node name="SpotLight3D13" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.083556, -0.996503, 0, 0.996503, 0.083556, 68.8336, -160.658, -113.204)
+light_color = Color(0.0855917, 0.41395, 0.633097, 1)
+light_energy = 0.515
+spot_range = 350.603
+spot_attenuation = -0.5
+spot_angle = 47.2738
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.083556, -0.996503, 0, 0.996503, 0.083556, -71.745, -79.3466, -57.7248)
+light_color = Color(0.792157, 0.796078, 0.294118, 1)
+spot_range = 155.027
+spot_attenuation = -0.5
+spot_angle = 47.2738
 
 [editable path="Blocking_level5"]
 [editable path="KillZone"]
