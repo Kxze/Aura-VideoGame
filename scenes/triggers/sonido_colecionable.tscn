@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddpfnuqykdt1t"]
+
+[ext_resource type="Script" uid="uid://c14lcmqnpa6mr" path="res://script/triggers/sonido_colecionable.gd" id="1_57gep"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kfxwt"]
+radius = 2.66689
+
+[node name="Sonido_colecionable" type="Area3D"]
+script = ExtResource("1_57gep")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_kfxwt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

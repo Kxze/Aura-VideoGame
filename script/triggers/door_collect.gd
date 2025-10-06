@@ -6,9 +6,11 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.name == "Player" and Player.can_lumiere:
 		Player.lumiere_ready = true
 		print("Coleccionable cerca")
+	if body.name == "Player":
+		AudioManager.play_coleccionable_cerca(sonido_coleccionable)
 
-		if AudioManager:
-			AudioManager.play_coleccionable_cerca(sonido_coleccionable)
+		
+		
 
 func _on_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
