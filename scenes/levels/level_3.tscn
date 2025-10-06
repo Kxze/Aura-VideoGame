@@ -466,7 +466,7 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("16_josfm")
 
-[node name="Level3" type="Node3D"]
+[node name="Level4" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.200735, 0.598676, -0.77543, -0.705838, 0.46051, 0.538259, 0.679336, 0.655376, 0.330128, 0, 0, 51.0904)
@@ -478,7 +478,7 @@ light_specular = 0.0
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6107, 47.1405, 1.96833)
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.5940006, 1.1010017, 6.303001)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594001, 1.101, 6.303)
 keep_aspect = 0
 environment = ExtResource("2_apo5x")
 fov = 80.0
