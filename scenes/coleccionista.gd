@@ -1,6 +1,7 @@
 extends Control
 
-@onready var click_sound = preload("res://sonidos/botón2.wav")   # 🔊 sonido click
+@onready var click_sound = preload("res://sonidos/botón2.wav")
+@onready var sonido_cambio_pagina = preload("res://sonidos/cambioPagina.wav")
 
 func _ready():
 	# Conectar botones
@@ -8,19 +9,18 @@ func _ready():
 	$salir.pressed.connect(_on_salir_pressed)
 
 func _input(event):
-	# Navegar con teclado
 	if event.is_action_pressed("ui_right"):  # Flecha Derecha
-		_play_click()  # 🔊 ahora también suena
-		get_tree().change_scene_to_file("res://scenes/coleccionista2.tscn")
+		_play_click()
+		_play_cambio_pagina_y_cambiar("res://scenes/coleccionista2.tscn")
 
 	elif event.is_action_pressed("ui_cancel"):  # Esc
-		_play_click()  # 🔊 suena al regresar
+		_play_click()
 		get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
 
-# --- Funciones de botones ---
+# --- Botones ---
 func _on_flecha_der_pressed():
 	_play_click()
-	get_tree().change_scene_to_file("res://scenes/coleccionista2.tscn")
+	_play_cambio_pagina_y_cambiar("res://scenes/coleccionista2.tscn")
 
 func _on_salir_pressed():
 	_play_click()
@@ -28,4 +28,12 @@ func _on_salir_pressed():
 
 # --- 🔊 Reproducir sonido ---
 func _play_click():
-	AudioManager.play_click(click_sound)
+	if AudioManager:
+		AudioManager.play_click(click_sound)
+
+func _play_cambio_pagina_y_cambiar(scene_path: String):
+	if AudioManager:
+		# 🔊 Suena el cambio de página persistente
+		AudioManager.play_sfx_persistente(sonido_cambio_pagina)
+
+	get_tree().change_scene_to_file(scene_path)
