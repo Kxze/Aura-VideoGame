@@ -35,6 +35,10 @@ static var spawnPoint
 @onready var sprite: Sprite3D = $AuraGhost
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
+
+#Particulas
+@onready var dash_particle: GPUParticles3D = $DashParticle
+
 func _input(_event: InputEvent) -> void:
 	movInput.x = Input.get_axis("ui_left","ui_right")
 

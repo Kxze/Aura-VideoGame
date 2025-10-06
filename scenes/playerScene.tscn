@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d30vdm7b5ol13"]
+[gd_scene load_steps=26 format=3 uid="uid://d30vdm7b5ol13"]
 
 [ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
 [ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dxiojj86hdb04" path="res://scenes/Effects/ghost_dash.tscn" id="10_i0eca"]
 [ext_resource type="Script" uid="uid://sm7vtmqcyw1j" path="res://script/light_dash.gd" id="11_ky4hv"]
 [ext_resource type="Script" uid="uid://duhvl1urrncli" path="res://script/dashAura.gd" id="12_nk4e2"]
+[ext_resource type="Texture2D" uid="uid://bxuyc3vwly1er" path="res://Art/textures/effect_dash.png" id="15_75g7i"]
 
 [sub_resource type="GDScript" id="GDScript_elcxt"]
 script/source = "extends Node3D
@@ -43,6 +44,48 @@ _bundled = {
 radius = 0.383022
 height = 1.95831
 
+[sub_resource type="Gradient" id="Gradient_ohnoo"]
+offsets = PackedFloat32Array(0, 0.1981132, 0.43396226, 0.7830189, 1)
+colors = PackedColorArray(0.9652378, 0.9728932, 1, 1, 0.97966737, 0.98414505, 1, 0.69722533, 1, 1, 1, 0.27058825, 1, 1, 1, 0.27058825, 0.97887003, 0.9835233, 1, 0.71395624)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_21bpa"]
+gradient = SubResource("Gradient_ohnoo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rs72w"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.58
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -3.4700022
+linear_accel_max = 21.919998
+radial_accel_min = -29.410002
+radial_accel_max = -15.290002
+scale_min = 0.099999994
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_21bpa")
+
+[sub_resource type="Gradient" id="Gradient_ttj2a"]
+offsets = PackedFloat32Array(0, 0.38181818, 0.48181817, 0.57272726, 0.92727274)
+colors = PackedColorArray(1, 1, 1, 0.2439025, 0.27902335, 0.67991126, 1, 0.8430741, 0.09019608, 0.59607846, 1, 1, 0.27587035, 0.67851144, 1, 0.79591835, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uov4s"]
+gradient = SubResource("Gradient_ttj2a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yd6d6"]
+transparency = 1
+albedo_texture = ExtResource("15_75g7i")
+emission_enabled = true
+emission = Color(0, 0.8980392, 0.67058825, 1)
+emission_energy_multiplier = 16.0
+emission_texture = SubResource("GradientTexture1D_uov4s")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2gyp5"]
+lightmap_size_hint = Vector2i(2, 2)
+material = SubResource("StandardMaterial3D_yd6d6")
+size = Vector2(0.1, 0.1)
+orientation = 2
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 14
 script = ExtResource("1_72l0f")
@@ -51,31 +94,32 @@ speed_run = 24.0
 color_ghost = Color(0.750736, 0.478994, 1, 1)
 
 [node name="Aura" parent="." instance=ExtResource("2_72l0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005226135, 0.008885384, -0.0014338493)
 
 [node name="Skeleton3D" parent="Aura/player/Armature" index="0"]
-bones/1/position = Vector3(0.26583707, -0.007055402, -9.47953e-10)
-bones/1/rotation = Quaternion(0.70709354, 0.0043555573, 0.7070932, -0.00435565)
-bones/2/rotation = Quaternion(0.0044768844, 1.0507556e-07, -6.88923e-08, 0.99999)
-bones/3/rotation = Quaternion(0.7149439, 2.2438801e-08, -2.0694827e-07, 0.69918185)
-bones/4/position = Vector3(-0.40563124, 0.32271147, 3.447429e-08)
-bones/4/rotation = Quaternion(0.70709354, 0.0043555573, 0.7070932, -0.00435565)
-bones/4/scale = Vector3(1.0631775, 1.0631777, 1.0631777)
-bones/5/rotation = Quaternion(0.0044768853, 2.2547506e-07, -6.835328e-08, 0.99999)
-bones/6/rotation = Quaternion(0.6695034, -7.304208e-08, -1.0874579e-07, 0.742809)
+bones/1/position = Vector3(0.26583734, -0.007055895, -9.480158e-10)
+bones/1/rotation = Quaternion(0.7013939, 0.08970393, 0.70139366, -0.08970396)
+bones/2/rotation = Quaternion(-0.59012085, 4.51065e-08, 1.8931803e-07, 0.80731493)
+bones/3/rotation = Quaternion(0.66924393, 1.6357566e-08, -1.892519e-07, 0.74304277)
+bones/4/position = Vector3(-0.4056311, 0.3227112, 3.4474255e-08)
+bones/4/rotation = Quaternion(0.70668095, -0.024542492, 0.7066806, 0.024542384)
+bones/4/scale = Vector3(1.0631775, 1.0631778, 1.0631778)
+bones/5/rotation = Quaternion(-0.5465798, 1.5179413e-07, 1.0354203e-07, 0.8374071)
+bones/6/rotation = Quaternion(0.66924393, -7.3104644e-08, -1.08675046e-07, 0.74304277)
 bones/7/rotation = Quaternion(0, 0, 0, 1)
 bones/8/position = Vector3(-0.0068006143, 3.419489, 9.3242033e-07)
 bones/8/rotation = Quaternion(0, 1.1920929e-07, 0, 1)
-bones/9/position = Vector3(0.544583, 2.5882828, 7.6155095e-07)
-bones/9/rotation = Quaternion(3.8700918e-07, -5.5106142e-08, 0.9809261, -0.19438118)
-bones/10/rotation = Quaternion(8.659508e-08, -1.2827034e-07, 0.02121388, 0.999775)
-bones/11/rotation = Quaternion(5.031758e-09, 7.1293094e-08, 0.0051792515, 0.9999866)
+bones/9/position = Vector3(0.5445832, 2.5882826, 7.61551e-07)
+bones/9/rotation = Quaternion(3.6250356e-07, -2.7917014e-07, 0.9188136, 0.3946917)
+bones/10/rotation = Quaternion(8.659509e-08, -1.282704e-07, 0.02121394, 0.999775)
+bones/11/rotation = Quaternion(5.031771e-09, 7.129312e-08, 0.005179259, 0.9999866)
 bones/12/position = Vector3(-0.5431813, 2.6816127, 7.7409084e-07)
-bones/12/rotation = Quaternion(3.9620036e-07, -1.9468224e-07, 0.9880009, 0.15444787)
-bones/13/rotation = Quaternion(6.587011e-08, 5.5690634e-07, -0.005330355, 0.9999858)
-bones/14/rotation = Quaternion(1.4851526e-09, -2.1297353e-07, -0.015141272, 0.9998854)
+bones/12/rotation = Quaternion(3.6503948e-07, -2.8830843e-07, 0.9102956, 0.41395882)
+bones/13/rotation = Quaternion(6.58701e-08, 5.569064e-07, -0.00533037, 0.9999858)
+bones/14/rotation = Quaternion(1.4851493e-09, -2.1297353e-07, -0.015141294, 0.9998854)
 
 [node name="BoneAttachment3D" parent="Aura/player/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.9030212, 0.42959347, 8.1292615e-07, -0.42959306, -0.9030224, 2.523732e-07, 8.425078e-07, -1.2132908e-07, 1, 1.6372075, 1.1022768, 2.5906456e-07)
+transform = Transform3D(-0.72574735, -0.6879605, 6.53339e-07, 0.6879595, -0.72574824, -7.5368e-07, 9.926607e-07, -9.751045e-08, 1, -1.3817592, 1.6743182, 3.359243e-07)
 
 [node name="Sprite3D" parent="Aura/player/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 visible = false
@@ -153,6 +197,16 @@ one_shot = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0075233, 0.957544, 0)
 shape = SubResource("CapsuleShape3D_i0eca")
+
+[node name="DashParticle" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07043648, 0.98690915, -0.23316967)
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rs72w")
+draw_pass_1 = SubResource("PlaneMesh_2gyp5")
 
 [connection signal="animation_finished" from="Aura/player/AnimationPlayer" to="StateMachine/Dead" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="StateMachine/InAir/FallTimer" to="StateMachine/InAir" method="_on_fall_timer_timeout"]

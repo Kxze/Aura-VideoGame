@@ -31,6 +31,7 @@ func enter(previous_state_path: String, data := {}):
 	# Reproducir animación Dash
 	if player.animationPlayer:
 		player.animationPlayer.play("Dash")
+		player.dash_particle.emitting = true
 		AudioManager.play_and_get_duration(dash_sfx)
 		spawn_dash_trail()
 		emit_signal("dash_started")
