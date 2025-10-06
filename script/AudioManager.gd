@@ -13,6 +13,9 @@ var fading := false
 @export var normalize_sfx := true
 @export var normalize_music := true
 
+# --- Estado global del juego ---
+var lampara_desbloqueada := false  # 🌙 nuevo: se mantiene globalmente mientras el juego esté abierto
+
 func _ready():
 	# Efectos
 	efectos_player = AudioStreamPlayer.new()
@@ -39,7 +42,6 @@ func normalize_audio(stream: AudioStream) -> float:
 	if data.size() == 0:
 		return target_volume_db
 
-	# Analizamos volumen máximo (rango -1.0 a 1.0)
 	var max_sample := 0.0
 	for i in range(0, data.size(), 2):  # saltos de 2 bytes por muestra (16 bits)
 		var sample: float = abs(data.decode_float(i))
@@ -49,10 +51,9 @@ func normalize_audio(stream: AudioStream) -> float:
 	if max_sample <= 0.0001:
 		return target_volume_db
 
-	# Calcula el ajuste en decibelios para igualar a target
 	var current_db := linear_to_db(max_sample)
 	var diff := target_volume_db - current_db
-	return clamp(diff, -12.0, +12.0)  # evita sobrecompensar
+	return clamp(diff, -12.0, +12.0)
 
 # --------- SFX ----------
 func play_and_get_duration(sound: AudioStream) -> float:
@@ -85,6 +86,14 @@ func play_random_sfx(sounds: Array) -> void:
 	var sound = sounds[randi() % sounds.size()]
 	play_and_get_duration(sound)
 
+# --------- 🎇 SONIDO DE DESBLOQUEO (única vez) ----------
+func play_lampara_desbloqueo(sound: AudioStream) -> void:
+	if lampara_desbloqueada:
+		return  # 🔒 ya se desbloqueó, no sonar de nuevo
+	lampara_desbloqueada = true
+	play_and_get_duration(sound)
+	print("🔓 Sonido de desbloqueo reproducido por primera vez")
+
 # --------- MÚSICA ----------
 func play_music(track: AudioStream, loop := true, crossfade := true) -> void:
 	if track == null:
@@ -93,7 +102,6 @@ func play_music(track: AudioStream, loop := true, crossfade := true) -> void:
 	if musica_player.playing and crossfade:
 		await fade_out()
 
-	# Configuramos loop
 	if track.has_method("set_loop"):
 		track.set_loop(loop)
 	elif "loop" in track:
@@ -149,3 +157,34 @@ func fade_in():
 		musica_player.volume_db = vol
 		await get_tree().process_frame
 	fading = false
+	
+	# --------- 🎇 SONIDO DE DESBLOQUEO PERSISTENTE (definitivo) ----------
+func play_lampara_desbloqueo_persistente(sound: AudioStream) -> void:
+	# Si ya se reprodujo antes, no volver a sonar
+	if lampara_desbloqueada:
+		print("🔒 Sonido de desbloqueo ya reproducido")
+		return
+
+	print("🔓 Reproduciendo sonido de desbloqueo...")
+	lampara_desbloqueada = true
+
+	# 🔊 Creamos un AudioStreamPlayer temporal global
+	var temp_player := AudioStreamPlayer.new()
+	temp_player.stream = sound
+	temp_player.bus = "Efectos"
+	temp_player.volume_db = 0
+
+	# Se añade directamente al root (no depende de ninguna escena)
+	get_tree().get_root().add_child(temp_player)
+	temp_player.play()
+
+	# Espera a que termine la reproducción y luego elimina el nodo
+	var duracion := 0.0
+	if sound and sound.has_method("get_length"):
+		duracion = sound.get_length()
+	if duracion <= 0.0:
+		duracion = 2.0  # seguridad por si el sonido no reporta duración
+
+	await get_tree().create_timer(duracion).timeout
+	temp_player.queue_free()
+	print("✅ Sonido completado y liberado.")
