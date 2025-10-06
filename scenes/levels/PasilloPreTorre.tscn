@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyjgyjkthvows"]
+[gd_scene load_steps=9 format=3 uid="uid://cyjgyjkthvows"]
 
 [ext_resource type="PackedScene" uid="uid://c4qplnqjrcndx" path="res://Art/Levels/BlockingPasilloPreTorre.blend" id="1_3asnk"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_6am7a"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_0y5ej"]
+[ext_resource type="Environment" uid="uid://cm6w1o8o4nilk" path="res://enviroment_level_2.tres" id="3_bn35m"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="4_6am7a"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="5_0y5ej"]
+[ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="6_4r1xi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3asnk"]
 size = Vector3(4.20862, 41.2285, 26.3846)
@@ -45,17 +47,10 @@ light_energy = 7.626
 [node name="Player" parent="." instance=ExtResource("2_6am7a")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -41.6673, -1.37546, -0.0374346)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
-light_color = Color(1, 0.969167, 0.63, 1)
-light_energy = 3.0
-light_specular = 0.0
-spot_range = 13.139
-spot_angle = 69.14
-
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594001, 1.101, 6.303)
 keep_aspect = 0
+environment = ExtResource("3_bn35m")
 fov = 80.0
 far = 250.0
 script = ExtResource("3_0y5ej")
@@ -88,5 +83,8 @@ next_level_path = "res://scenes/levels/level_3.tscn"
 
 [node name="Dash_unlock" parent="." instance=ExtResource("5_0y5ej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11158, 0, 0)
+
+[node name="KillZone" parent="." instance=ExtResource("6_4r1xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, 0)
 
 [editable path="BlockingPasilloPreTorre"]

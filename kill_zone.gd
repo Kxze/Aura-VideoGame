@@ -32,6 +32,6 @@ func _on_body_entered(body: Node3D) -> void:
 			body.global_position = Player.spawnPoint.global_position
 			body.velocity = Vector3.ZERO  # Resetear velocidad
 			body.controls_enabled = true
-			body.animationPlayer.play("Idle")
+			body.animationPlayer.play("idle")
 		else:
 			get_tree().reload_current_scene()

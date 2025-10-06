@@ -1,0 +1,133 @@
+[gd_scene load_steps=12 format=3 uid="uid://bkbnuxmd4outf"]
+
+[ext_resource type="Script" uid="uid://bu161tvvyuvd0" path="res://script/enemies/cascanueces.gd" id="1_g7gd5"]
+[ext_resource type="PackedScene" uid="uid://ccr2t2gvvctiy" path="res://Art/Model3D/CASCANUECES/CascanuecesAnimaciones.blend" id="2_c0i6f"]
+[ext_resource type="Script" uid="uid://dr7rgqi3nwgnn" path="res://script/player/StateMachine/state_machine.gd" id="3_jkd4o"]
+[ext_resource type="Script" uid="uid://2dqog30dc1yb" path="res://script/enemies/Cascanueces_Statemachine/patrol.gd" id="4_q46tk"]
+[ext_resource type="Script" uid="uid://cy6c3w6faemri" path="res://script/enemies/Cascanueces_Statemachine/follow.gd" id="5_ueu5e"]
+[ext_resource type="Script" uid="uid://c8pnhc0a3tdck" path="res://script/enemies/Cascanueces_Statemachine/attack.gd" id="6_1ekgu"]
+[ext_resource type="Script" uid="uid://cvi184vhxl3b5" path="res://script/enemies/Cascanueces_Statemachine/idle.gd" id="7_ypfng"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q46tk"]
+radius = 3.41006
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q46tk"]
+radius = 1.5471
+height = 10.671
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1ekgu"]
+radius = 16.0025
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ueu5e"]
+radius = 5.29786
+
+[node name="Cascanueces" type="CharacterBody3D"]
+collision_mask = 2
+script = ExtResource("1_g7gd5")
+
+[node name="CascanuecesAnimaciones" parent="." instance=ExtResource("2_c0i6f")]
+
+[node name="Cabeza_2" parent="CascanuecesAnimaciones/Skeleton3D" index="0"]
+transform = Transform3D(5.94788, -5.24236e-07, 7.82311e-08, -4.48897e-07, -8.8279e-08, -5.94788, -5.83896e-09, 5.94788, -4.83545e-07, 0.116754, 7.53001, 0.0125306)
+
+[node name="Espada_2" parent="CascanuecesAnimaciones/Skeleton3D" index="1"]
+transform = Transform3D(1.97122, -2.31365e-07, 4.17233e-07, -4.76837e-07, 2.8331e-07, -1.97122, 4.73055e-07, 1.97122, 3.34319e-07, -2.49033, 2.99137, -0.0206275)
+
+[node name="ManoIzq" parent="CascanuecesAnimaciones/Skeleton3D" index="2"]
+transform = Transform3D(2.83806, -2.60032e-07, 6.55651e-07, -6.55651e-07, -6.91435e-07, -2.83806, 1.03963e-07, 2.83806, -6.30096e-07, -1.20368, 3.40338, -0.0266802)
+
+[node name="ManoDer_2" parent="CascanuecesAnimaciones/Skeleton3D" index="3"]
+transform = Transform3D(2.85622, 4.91655e-08, -5.96046e-07, -2.38419e-07, 3.1921e-08, -2.85622, 5.77802e-08, 2.85622, -2.57718e-07, 1.29674, 3.40675, 0.0161859)
+
+[node name="Torso_2" parent="CascanuecesAnimaciones/Skeleton3D" index="4"]
+transform = Transform3D(3.58732, -8.80391e-10, -4.37722e-08, -1.4808e-07, -5.34907e-08, -3.58732, -9.93168e-10, 3.58732, 1.46526e-08, 1.1086, 3.87057, 0.00156032)
+
+[node name="PataDer_2" parent="CascanuecesAnimaciones/Skeleton3D" index="5"]
+transform = Transform3D(2.65461, 5.06021e-09, -9.31324e-09, -1.30385e-08, 6.86568e-07, -2.65461, -4.15102e-09, 2.65461, 5.28726e-07, -0.438814, 1.30739, -0.017869)
+
+[node name="PataIzq_2" parent="CascanuecesAnimaciones/Skeleton3D" index="6"]
+transform = Transform3D(2.65461, -7.95719e-10, -3.72529e-09, -7.45058e-09, -2.62788e-07, -2.65461, 7.93573e-10, 2.65461, -2.62408e-07, 0.712114, 1.26618, -0.0163455)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="CascanuecesAnimaciones/Skeleton3D" index="7"]
+transform = Transform3D(-2.18089e-06, -0.305981, 0.267897, -2.45669e-06, 0.267897, 0.30598, -0.406685, 2.26541e-08, -3.28502e-06, -1.61729, 2.34548, -9.94805e-08)
+bone_name = "Espada"
+bone_idx = 6
+
+[node name="EspadaArea" type="Area3D" parent="CascanuecesAnimaciones/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84189, 3.26069, 0)
+
+[node name="EspadaCol" type="CollisionShape3D" parent="CascanuecesAnimaciones/Skeleton3D/BoneAttachment3D/EspadaArea"]
+transform = Transform3D(1, 1.80478e-12, 0, 5.68434e-14, 1, -7.77881e-13, 0, -7.68128e-13, 1, 2.779, 0.857021, -0.0710386)
+shape = SubResource("SphereShape3D_q46tk")
+debug_color = Color(0.998034, 0, 0.152153, 0.42)
+
+[node name="AnimationPlayer" parent="CascanuecesAnimaciones" index="1"]
+blend_times = [&"Ataque", &"Caminado", 0.1, &"Ataque", &"Idle", 0.1, &"Ataque", &"Perseguir", 0.1, &"Caminado", &"Ataque", 0.1, &"Caminado", &"Idle", 0.2, &"Caminado", &"Perseguir", 0.2, &"Idle", &"Ataque", 0.2, &"Idle", &"Caminado", 0.2, &"Idle", &"Perseguir", 0.2, &"Perseguir", &"Ataque", 0.1, &"Perseguir", &"Caminado", 0.2, &"Perseguir", &"Perseguir", 0.2]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_jkd4o")
+initial_state = NodePath("Idle")
+
+[node name="Patrol" type="Node" parent="StateMachine"]
+script = ExtResource("4_q46tk")
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("5_ueu5e")
+
+[node name="TimeSearching" type="Timer" parent="StateMachine/Follow"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("6_1ekgu")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("7_ypfng")
+
+[node name="cuerpoCol" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.00088, 0, 0, 0, 1.00088, 0, 0, 0, 1.00088, 0, 5.40779, 0)
+shape = SubResource("CapsuleShape3D_q46tk")
+debug_color = Color(0.998034, 0, 0.152153, 0.42)
+
+[node name="CuerpoArea" type="Area3D" parent="."]
+
+[node name="cuerpoColArea" type="CollisionShape3D" parent="CuerpoArea"]
+transform = Transform3D(1.00088, 0, 0, 0, 1.00088, 0, 0, 0, 1.00088, 0, 5.4, 0)
+shape = SubResource("CapsuleShape3D_q46tk")
+debug_color = Color(0.998034, 0, 0.152153, 0.42)
+
+[node name="EstadoAlerta" type="Area3D" parent="."]
+
+[node name="AlertaCol" type="CollisionShape3D" parent="EstadoAlerta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+shape = SubResource("SphereShape3D_1ekgu")
+debug_color = Color(0.803098, 0.41814, 0, 0.42)
+
+[node name="AreaAtaque" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaAtaque"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3, 0)
+shape = SubResource("SphereShape3D_ueu5e")
+debug_color = Color(0.194508, 0.641598, 0, 0.42)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.47535, 0)
+target_position = Vector3(-15, 0, 0)
+
+[node name="estado" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.51242, 3.94169)
+light_color = Color(0.900164, 0.793125, 0.558313, 1)
+light_energy = 2.0
+light_specular = 0.0
+light_bake_mode = 1
+omni_range = 10.2743
+
+[connection signal="body_entered" from="CascanuecesAnimaciones/Skeleton3D/BoneAttachment3D/EspadaArea" to="." method="_on_espada_area_body_entered"]
+[connection signal="body_entered" from="CuerpoArea" to="." method="_on_cuerpo_area_body_entered"]
+[connection signal="body_entered" from="EstadoAlerta" to="StateMachine/Idle" method="_on_estado_alerta_body_entered"]
+[connection signal="body_exited" from="EstadoAlerta" to="StateMachine/Follow" method="_on_estado_alerta_body_exited"]
+[connection signal="body_entered" from="AreaAtaque" to="StateMachine/Idle" method="_on_area_ataque_body_entered"]
+
+[editable path="CascanuecesAnimaciones"]

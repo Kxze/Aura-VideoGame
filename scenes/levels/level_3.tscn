@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://c17wj8jr8lb0n"]
+[gd_scene load_steps=30 format=4 uid="uid://c17wj8jr8lb0n"]
 
 [ext_resource type="PackedScene" uid="uid://btl7r0mv42dlj" path="res://Art/Levels/blocking_level_3.blend" id="1_0ljxa"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_0qepi"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="12_f6egh"]
 [ext_resource type="PackedScene" uid="uid://2ltdbcdy2ip8" path="res://scenes/triggers/spawn_point.tscn" id="13_f6egh"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="14_t4txi"]
+[ext_resource type="Texture2D" uid="uid://b7mrs02cr52yr" path="res://Art/Levels/DashMuerte.png" id="16_josfm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjiia"]
 resource_name = "TablasPrincipales.001"
@@ -468,7 +469,7 @@ light_specular = 0.0
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6107, 47.1405, 1.96833)
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594001, 1.101, 6.303)
 keep_aspect = 0
 environment = ExtResource("2_apo5x")
 fov = 80.0
@@ -553,6 +554,11 @@ debug_color = Color(0.802675, 0.10353, 0.448258, 0.42)
 
 [node name="Area3D" parent="." instance=ExtResource("14_t4txi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8093, 46.415, 0)
+
+[node name="DashMuerte" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.951, 57.1574, -7.84702)
+pixel_size = 0.02
+texture = ExtResource("16_josfm")
 
 [editable path="blocking_level_3"]
 [editable path="KillZone"]

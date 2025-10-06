@@ -49,6 +49,10 @@ folder_colors={
 "res://textures/": "purple"
 }
 
+[global_group]
+
+player=""
+
 [input]
 
 ui_left={

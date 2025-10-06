@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cy08dn38j1vut"]
+[gd_scene load_steps=33 format=4 uid="uid://cy08dn38j1vut"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_3ky6d"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_kusig"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://2ltdbcdy2ip8" path="res://scenes/triggers/spawn_point.tscn" id="13_s8as2"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="14_3juaf"]
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="15_kusig"]
+[ext_resource type="Texture2D" uid="uid://b7mrs02cr52yr" path="res://Art/Levels/DashMuerte.png" id="17_w80rc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjiia"]
 resource_name = "TablasPrincipales.001"
@@ -457,6 +458,14 @@ size = Vector3(18.0395, 167.383, 9.8932)
 [sub_resource type="BoxShape3D" id="BoxShape3D_fmg3e"]
 size = Vector3(19.0894, 234.24, 7.76855)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_72xho"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bacaw"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("17_w80rc")
+
 [node name="Level3" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -469,7 +478,7 @@ light_specular = 0.0
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 23.2004, 152.322, 1.96833)
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.10099, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.101, 6.303)
 keep_aspect = 0
 environment = ExtResource("2_v7u0g")
 fov = 80.0
@@ -564,6 +573,11 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.716
 [node name="Portal_to_collect" parent="door_collect" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.106903, 0, 9.34574e-09)
 next_level_path = "res://scenes/levels/level_collec_1.tscn"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(16.1177, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 44.8191, 55.3683, -7.82023)
+mesh = SubResource("PlaneMesh_72xho")
+surface_material_override/0 = SubResource("StandardMaterial3D_bacaw")
 
 [editable path="blocking_level_3"]
 [editable path="KillZone"]

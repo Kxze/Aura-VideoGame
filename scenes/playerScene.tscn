@@ -42,7 +42,7 @@ _bundled = {
 radius = 0.383022
 height = 1.95831
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 14
 script = ExtResource("1_72l0f")
 speed_normal = 15.0

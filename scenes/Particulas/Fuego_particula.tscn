@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://42qmridhgavt"]
+
+[ext_resource type="Texture2D" uid="uid://b0n10708rs301" path="res://Art/particulas_fuego.png" id="1_sqihl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83043"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 0.7, 0, 1)
+albedo_texture = ExtResource("1_sqihl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28olr"]
+transparency = 1
+albedo_color = Color(1, 0.35, 0, 1)
+albedo_texture = ExtResource("1_sqihl")
+
+[sub_resource type="Gradient" id="Gradient_dl6kf"]
+offsets = PackedFloat32Array(0, 0.590909, 1)
+colors = PackedColorArray(0.71072, 0.195119, 0, 1, 0.997349, 0.747602, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mjk6h"]
+gradient = SubResource("Gradient_dl6kf")
+
+[sub_resource type="Curve" id="Curve_8i5xn"]
+_data = [Vector2(0.0588235, 0.157303), 0.0, 0.0, 0, 0, Vector2(0.573529, 0.483146), 0.0, 0.0, 0, 0, Vector2(0.786765, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_25ktw"]
+curve = SubResource("Curve_8i5xn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kstwa"]
+lifetime_randomness = 0.51
+emission_shape_scale = Vector3(1, 1.88, 1)
+spread = 0.25
+flatness = 1.0
+radial_velocity_min = -1.00002
+radial_velocity_max = 0.999978
+gravity = Vector3(0, 5.66, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_25ktw")
+color_ramp = SubResource("GradientTexture1D_mjk6h")
+turbulence_enabled = true
+turbulence_noise_strength = 0.1
+turbulence_noise_scale = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eh7x0"]
+transparency = 1
+albedo_texture = ExtResource("1_sqihl")
+
+[sub_resource type="QuadMesh" id="QuadMesh_54apl"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_eh7x0")
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_83043")
+material_overlay = SubResource("StandardMaterial3D_28olr")
+cast_shadow = 0
+amount = 20
+lifetime = 4.0
+explosiveness = 0.63
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_kstwa")
+draw_pass_1 = SubResource("QuadMesh_54apl")

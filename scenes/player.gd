@@ -22,7 +22,7 @@ static var lumiere_ready := true
 # Variable que controla si el jugador puede recibir inputs
 var controls_enabled: bool = true
 
-var health: int = 3
+static var health: int = 3
 var movInput: Vector2 = Vector2.ZERO
 var last_facing := 1  # 1 = derecha, -1 = izquierda
 static var spawnPoint 
@@ -62,7 +62,11 @@ func set_controls_enabled(enable: bool) -> void:
 		is_dashing = false
 		jump_locked = false
 		can_dash = false
-		
+
+func jump_side_per_damage(x):
+	velocity.y = jump
+	velocity.x = x
+	animationPlayer.play("Dash")
 func _change_light():
 	if lumiere_ready:
 		lamp_light.light_color = Color(0.4,0.6,1.0)
