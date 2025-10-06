@@ -4,6 +4,7 @@ extends VBoxContainer
 @onready var hover_sound = preload("res://sonidos/hover.wav")    # 🔊 sonido hover/desplazamiento
 
 var _buttons = []
+var _mouse_mode := false   # 🔄 modo actual (teclado o mouse)
 
 func _ready():
 	# Guardamos los botones en una lista
@@ -22,19 +23,35 @@ func _ready():
 		elif b == $Button5:
 			b.connect("pressed", Callable(self, "_on_salir_pressed").bind(b))
 
-		# Teclado y mouse
+		# Señales de teclado y mouse
 		b.connect("focus_entered", Callable(self, "_on_button_focus_entered").bind(b))
 		b.connect("focus_exited", Callable(self, "_on_button_focus_exited").bind(b))
-		b.connect("mouse_entered", Callable(self, "_on_button_focus_entered").bind(b))
+		b.connect("mouse_entered", Callable(self, "_on_button_mouse_entered").bind(b))
 		b.connect("mouse_exited", Callable(self, "_on_button_focus_exited").bind(b))
 
 		# Al inicio ocultamos las estrellas y el glow
 		_hide_stars(b)
 
-	# --- Nuevo: focus inicial en el primer botón ---
+	# --- Focus inicial en el primer botón ---
 	if _buttons.size() > 0:
-		_buttons[0].grab_focus()                # ahora ya puedes usar teclado directo
-		_on_button_focus_entered(_buttons[0])   # activa glow y estrellas en el primero
+		_buttons[0].grab_focus()
+		_on_button_focus_entered(_buttons[0])
+
+# --- Control de input global ---
+func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		_mouse_mode = true  # Se está usando el mouse
+
+	elif event is InputEventKey and event.pressed:
+		_mouse_mode = false  # Se está usando el teclado
+		# Si ningún botón tiene focus, reasignamos al primero
+		var focused_found = false
+		for b in _buttons:
+			if b.has_focus():
+				focused_found = true
+				break
+		if not focused_found and _buttons.size() > 0:
+			_buttons[0].grab_focus()
 
 # --- Acciones de los botones ---
 func _on_nueva_partida_pressed(button):
@@ -53,7 +70,7 @@ func _on_coleccionista_pressed(button):
 
 func _on_ajustes_pressed(button):
 	_play_click()
-	UiGlobal.popup_ajustes.mostrar_banners("inicio")
+	UiGlobal.popup_ajustes.mostrar("inicio")
 	UiGlobal.popup_ajustes.popup_centered()
 	UiGlobal.popup_ajustes.show()
 
@@ -64,8 +81,18 @@ func _on_salir_pressed(button):
 
 # --- Manejo de estrellas y glow ---
 func _on_button_focus_entered(button):
-	_play_hover()   # 🔊 suena al entrar con teclado/mouse
+	if not _mouse_mode:
+		_play_hover()
+		_show_stars(button)
+
+func _on_button_mouse_entered(button):
+	_mouse_mode = true
+	_play_hover()
 	_show_stars(button)
+	# Quita el focus de los demás botones
+	for b in _buttons:
+		if b != button and b.has_focus():
+			b.release_focus()
 
 func _on_button_focus_exited(button):
 	_hide_stars(button)

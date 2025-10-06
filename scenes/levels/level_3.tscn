@@ -468,7 +468,7 @@ light_specular = 0.0
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6107, 47.1405, 1.96833)
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59399986, 1.1010017, 6.303001)
 keep_aspect = 0
 environment = ExtResource("2_apo5x")
 fov = 80.0
