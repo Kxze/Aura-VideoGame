@@ -177,7 +177,45 @@ func play_skeleton(sound: AudioStream) -> void:
 	efectos_player.volume_db = 0
 	efectos_player.bus = "Efectos"
 	efectos_player.play()
+	
+# ---------------------------------------------------------
+# 💧 SONIDO DE LLANTO JULIETA (loop constante)
+# ---------------------------------------------------------
+var julieta_player: AudioStreamPlayer = null
 
+func play_julieta(sound: AudioStream) -> void:
+	if sound == null:
+		return
+
+	# Si ya está sonando, no lo reinicies
+	if julieta_player and julieta_player.playing:
+		return
+
+	# Si no existe el player, créalo
+	if julieta_player == null:
+		julieta_player = AudioStreamPlayer.new()
+		julieta_player.bus = "Efectos"
+		add_child(julieta_player)
+
+	# Configurar el sonido
+	julieta_player.stream = sound
+	julieta_player.volume_db = 0  # puedes subir a +3 si lo quieres más fuerte
+	julieta_player.autoplay = false
+
+	# ✅ Asegura que el sonido se repita
+	if sound.has_method("set_loop"):
+		sound.set_loop(true)
+
+	julieta_player.play()
+	print("💧 Sonido de Julieta iniciado en loop.")
+
+# ---------------------------------------------------------
+# 🛑 Detiene el sonido del llanto de Julieta
+# ---------------------------------------------------------
+func stop_julieta() -> void:
+	if julieta_player and julieta_player.playing:
+		julieta_player.stop()
+		print("🔇 Sonido de Julieta detenido.")
 
 # ---------------------------------------------------------
 #        🔔 SONIDO COLECCIONABLE CERCA (UNA SOLA VEZ)
