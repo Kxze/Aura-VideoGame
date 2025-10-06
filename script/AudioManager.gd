@@ -14,36 +14,42 @@ var fading := false
 @export var normalize_music := true
 
 # --- Estado global del juego ---
-var lampara_desbloqueada := false  # 🌙 nuevo: se mantiene globalmente mientras el juego esté abierto
+var lampara_desbloqueada := false  # 🌙 se mantiene globalmente mientras el juego esté abierto
+var dash_desbloqueado := false     # 🌪️ se mantiene globalmente durante toda la sesión
 
+# ---------------------------------------------------------
+#                   CONFIGURACIÓN INICIAL
+# ---------------------------------------------------------
 func _ready():
 	# Efectos
 	efectos_player = AudioStreamPlayer.new()
 	efectos_player.name = "SFX_Player"
 	add_child(efectos_player)
 	efectos_player.bus = "Efectos"
-	efectos_player.volume_db = 0  # punto neutro
+	efectos_player.volume_db = 0
 	
 	# Música
 	musica_player = AudioStreamPlayer.new()
 	musica_player.name = "Music_Player"
 	add_child(musica_player)
 	musica_player.bus = "Musica"
-	musica_player.volume_db = -4  # un poco más baja
+	musica_player.volume_db = -4
 
-# --------- UTILIDAD DE NORMALIZACIÓN ----------
+# ---------------------------------------------------------
+#                   NORMALIZACIÓN DE AUDIO
+# ---------------------------------------------------------
 func normalize_audio(stream: AudioStream) -> float:
 	if stream == null:
 		return 0.0
 	if not stream is AudioStreamWAV:
-		return target_volume_db  # solo WAV permite medir picos fácilmente
+		return target_volume_db
 
 	var data = stream.data
 	if data.size() == 0:
 		return target_volume_db
 
 	var max_sample := 0.0
-	for i in range(0, data.size(), 2):  # saltos de 2 bytes por muestra (16 bits)
+	for i in range(0, data.size(), 2):
 		var sample: float = abs(data.decode_float(i))
 		if sample > max_sample:
 			max_sample = sample
@@ -55,7 +61,9 @@ func normalize_audio(stream: AudioStream) -> float:
 	var diff := target_volume_db - current_db
 	return clamp(diff, -12.0, +12.0)
 
-# --------- SFX ----------
+# ---------------------------------------------------------
+#                         SFX
+# ---------------------------------------------------------
 func play_and_get_duration(sound: AudioStream) -> float:
 	if sound == null:
 		return 0.0
@@ -86,15 +94,75 @@ func play_random_sfx(sounds: Array) -> void:
 	var sound = sounds[randi() % sounds.size()]
 	play_and_get_duration(sound)
 
-# --------- 🎇 SONIDO DE DESBLOQUEO (única vez) ----------
+# ---------------------------------------------------------
+#             🎇 SONIDOS DE DESBLOQUEO ÚNICO
+# ---------------------------------------------------------
+
+# --- LÁMPARA ---
 func play_lampara_desbloqueo(sound: AudioStream) -> void:
 	if lampara_desbloqueada:
-		return  # 🔒 ya se desbloqueó, no sonar de nuevo
+		return
 	lampara_desbloqueada = true
 	play_and_get_duration(sound)
 	print("🔓 Sonido de desbloqueo reproducido por primera vez")
 
-# --------- MÚSICA ----------
+# --- LÁMPARA (persistente, no se corta al cambiar escena) ---
+func play_lampara_desbloqueo_persistente(sound: AudioStream) -> void:
+	if lampara_desbloqueada:
+		print("🔒 Sonido de desbloqueo ya reproducido")
+		return
+
+	print("🔓 Reproduciendo sonido de desbloqueo...")
+	lampara_desbloqueada = true
+
+	var temp_player := AudioStreamPlayer.new()
+	temp_player.stream = sound
+	temp_player.bus = "Efectos"
+	temp_player.volume_db = 0
+
+	get_tree().get_root().add_child(temp_player)
+	temp_player.play()
+
+	var duracion := 0.0
+	if sound and sound.has_method("get_length"):
+		duracion = sound.get_length()
+	if duracion <= 0.0:
+		duracion = 2.0
+
+	await get_tree().create_timer(duracion).timeout
+	temp_player.queue_free()
+	print("✅ Sonido completado y liberado.")
+
+# --- DASH (persistente, no se corta al cambiar escena) ---
+func play_dash_desbloqueo_persistente(sound: AudioStream) -> void:
+	if dash_desbloqueado:
+		print("🔒 Dash ya desbloqueado")
+		return
+
+	print("💨 Reproduciendo sonido de desbloqueo del dash...")
+	dash_desbloqueado = true
+
+	var temp_player := AudioStreamPlayer.new()
+	temp_player.stream = sound
+	temp_player.bus = "Efectos"
+	temp_player.volume_db = 0
+
+	get_tree().get_root().add_child(temp_player)
+	temp_player.play()
+
+	var duracion := 0.0
+	if sound and sound.has_method("get_length"):
+		duracion = sound.get_length()
+	if duracion <= 0.0:
+		duracion = 2.0
+
+	await get_tree().create_timer(duracion).timeout
+	temp_player.queue_free()
+	print("✅ Sonido de dash completado y liberado.")
+
+# ---------------------------------------------------------
+#                         MÚSICA
+# ---------------------------------------------------------
 func play_music(track: AudioStream, loop := true, crossfade := true) -> void:
 	if track == null:
 		return
@@ -129,7 +197,9 @@ func pause_music() -> void:
 func resume_music() -> void:
 	musica_player.stream_paused = false
 
-# --------- TRANSICIONES ----------
+# ---------------------------------------------------------
+#                     TRANSICIONES
+# ---------------------------------------------------------
 func fade_out():
 	if fading:
 		return
@@ -157,34 +227,3 @@ func fade_in():
 		musica_player.volume_db = vol
 		await get_tree().process_frame
 	fading = false
-	
-	# --------- 🎇 SONIDO DE DESBLOQUEO PERSISTENTE (definitivo) ----------
-func play_lampara_desbloqueo_persistente(sound: AudioStream) -> void:
-	# Si ya se reprodujo antes, no volver a sonar
-	if lampara_desbloqueada:
-		print("🔒 Sonido de desbloqueo ya reproducido")
-		return
-
-	print("🔓 Reproduciendo sonido de desbloqueo...")
-	lampara_desbloqueada = true
-
-	# 🔊 Creamos un AudioStreamPlayer temporal global
-	var temp_player := AudioStreamPlayer.new()
-	temp_player.stream = sound
-	temp_player.bus = "Efectos"
-	temp_player.volume_db = 0
-
-	# Se añade directamente al root (no depende de ninguna escena)
-	get_tree().get_root().add_child(temp_player)
-	temp_player.play()
-
-	# Espera a que termine la reproducción y luego elimina el nodo
-	var duracion := 0.0
-	if sound and sound.has_method("get_length"):
-		duracion = sound.get_length()
-	if duracion <= 0.0:
-		duracion = 2.0  # seguridad por si el sonido no reporta duración
-
-	await get_tree().create_timer(duracion).timeout
-	temp_player.queue_free()
-	print("✅ Sonido completado y liberado.")
