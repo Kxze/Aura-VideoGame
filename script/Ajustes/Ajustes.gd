@@ -7,15 +7,17 @@ extends Popup
 @onready var btn_inicio: Button = $Panel/BtnInicio
 @onready var btn_salir: Button = $Panel/BtnSalir
 
+signal cerrado_por_esc
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	# ✅ Asegura que el AudioManager también siga funcionando cuando el juego está pausado
+	#Asegura que el AudioManager también siga funcionando cuando el juego está pausado
 	var am = get_node_or_null("/root/AudioManager")
 	if am:
 		am.process_mode = Node.PROCESS_MODE_ALWAYS
 
-	# Conectamos las señales de los botones
+	#Conectamos las señales de los botones
 	btn_salir.pressed.connect(_on_btn_salir_pressed)
 	btn_inicio.pressed.connect(_on_btn_inicio_pressed)
 	btn_continuar.pressed.connect(_on_btn_continuar_pressed)
@@ -61,6 +63,12 @@ func _on_btn_salir_pressed() -> void:
 	_play_click()
 	get_tree().quit()
 
+func _unhandled_input(event):
+	if visible and event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_ESCAPE:
+			hide()
+			emit_signal("cerrado_por_esc")
+			get_viewport().set_input_as_handled()
 
 # ---------- REPRODUCCIÓN DE SONIDO ----------
 func _play_click():
