@@ -1,29 +1,69 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwn7fewbx87ob"]
+[gd_scene load_steps=11 format=3 uid="uid://dwn7fewbx87ob"]
 
 [ext_resource type="Script" uid="uid://beyrgbv6d0ii2" path="res://script/triggers/unlock_lumiere_no_effects.gd" id="1_5wghh"]
 [ext_resource type="Texture2D" uid="uid://qwggls7t2add" path="res://scenes/levels/lampara Aura Version1.png" id="2_guvlr"]
+[ext_resource type="Shader" uid="uid://c75qow1l4hw1h" path="res://magia_particulas.gdshader" id="3_lvd1q"]
+[ext_resource type="Texture2D" uid="uid://dqfde70s0ao0v" path="res://Art/textures/Ilustración_sin_título (3).png" id="4_lvd1q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x76ng"]
-size = Vector3(1, 32, 16)
+size = Vector3(3.9941406, 4.074951, 5.4040527)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_202ok"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ek86s"]
+emission_shape = 1
+emission_sphere_radius = 4.2
+orbit_velocity_min = -1.112
+orbit_velocity_max = 0.5920001
+gravity = Vector3(0, 1, 0)
+scale_min = 0.0
+scale_max = 0.5
+turbulence_enabled = true
+turbulence_noise_scale = 1.675
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvd1q"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("2_guvlr")
+[sub_resource type="Gradient" id="Gradient_lvd1q"]
+offsets = PackedFloat32Array(0, 0.3027523, 0.48623854, 0.66972476, 1)
+colors = PackedColorArray(0.96, 0.54399997, 0, 1, 0.8666667, 0.654902, 0, 1, 1, 0.83370346, 0.46579462, 1, 0.9504762, 0.7672915, 0.29278523, 1, 0.9558125, 0.548921, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8hdty"]
+gradient = SubResource("Gradient_lvd1q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rduuk"]
+render_priority = 0
+shader = ExtResource("3_lvd1q")
+shader_parameter/albedo_tex = SubResource("GradientTexture1D_8hdty")
+shader_parameter/mask_tex = ExtResource("4_lvd1q")
+shader_parameter/emission_color = Color(0.9553458, 0.8099054, 0, 1)
+shader_parameter/emission_strength = 6.3410003011975
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4xugi"]
+material = SubResource("ShaderMaterial_rduuk")
+flip_faces = true
+orientation = 0
 
 [node name="unlock_lumiere" type="Area3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 script = ExtResource("1_5wghh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08544922, 2.0374756, 0)
 shape = SubResource("BoxShape3D_x76ng")
 
-[node name="lampara" type="MeshInstance3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, -1.7484555e-07, -4, 0, 4, -1.7484555e-07, 0.050420284, 3.6620576, 0)
-mesh = SubResource("PlaneMesh_202ok")
-surface_material_override/0 = SubResource("StandardMaterial3D_lvd1q")
+[node name="lampara" type="Sprite3D" parent="."]
+transform = Transform3D(1.7000003, 0, 0, 0, 1.7000003, 0, 0, 0, 1.7000003, 0.050420284, 1.9829689, 0)
+pixel_size = 0.005
+texture = ExtResource("2_guvlr")
+
+[node name="particulas" type="GPUParticles3D" parent="."]
+transform = Transform3D(0, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 0, 0, 1.0349774, -0.23730469)
+amount = 40
+lifetime = 4.0
+explosiveness = 0.73
+process_material = SubResource("ParticleProcessMaterial_ek86s")
+draw_pass_1 = SubResource("PlaneMesh_4xugi")
+
+[node name="luz" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.367873, 0)
+light_color = Color(0.9, 0.81, 0, 1)
+light_energy = 7.118
+omni_range = 5.48
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
