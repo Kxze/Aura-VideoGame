@@ -6,7 +6,7 @@ var player_position: Node3D
 @export var speed: float = 25
 @onready var navAgent: NavigationAgent3D = $NavigationAgent3D
 @export var Target:Node3D
-var damage = 1
+var damage: int = 1
 var Gravity := -1.3
 var player
 var last_position

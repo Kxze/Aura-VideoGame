@@ -7,10 +7,9 @@ func physics_update(delta: float):
 	if !cascanueces.is_on_floor():
 		cascanueces.velocity.y += cascanueces.Gravity
 	var CurrentLocation = cascanueces.global_transform.origin
-	var pos_x_current = CurrentLocation.x
-	
+
 	var nextLocation = cascanueces.navAgent.get_next_path_position()
-	var next_x = nextLocation.x
+
 	
 	var nextVelocity = (nextLocation - CurrentLocation).normalized() * cascanueces.speed
 	var dir_x = (nextLocation - CurrentLocation).normalized().x

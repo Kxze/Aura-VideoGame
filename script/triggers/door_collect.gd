@@ -3,7 +3,7 @@ extends Area3D
 
 
 func _on_body_entered(body: Node3D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and Player.can_lumiere:
 		Player.lumiere_ready = true
 		print("Coleccionable cerca")
 

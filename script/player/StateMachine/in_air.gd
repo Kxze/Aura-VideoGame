@@ -49,7 +49,8 @@ func physics_update(delta: float):
 
 	if player.velocity.y > 0 and player.animationPlayer.current_animation != "Fall":
 		player.animationPlayer.play("Fall")
-
+	if player.health <= 0:
+		emit_signal("finished","Dead")
 	# Movimiento horizontal en el aire
 	if !player.is_on_floor():
 		player.velocity.x = lerp(player.prevVelocity.x, player.movInput.x, 0.1)
