@@ -279,25 +279,30 @@ spot_angle_attenuation = 2.37842
 visible = false
 occluder = ExtResource("7_ibugp")
 
-[node name="Cascanueces" parent="." instance=ExtResource("14_r88tb")]
+[node name="Cascanueces" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("14_r88tb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 394.933, 47.1519, 0)
 platform_floor_layers = 4294967042
+Target = NodePath("../Player")
 
-[node name="Cascanueces2" parent="." instance=ExtResource("14_r88tb")]
+[node name="Cascanueces2" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("14_r88tb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 434.368, 47.1519, 0)
 platform_floor_layers = 4294967042
+Target = NodePath("../Player")
 
-[node name="Cascanueces3" parent="." instance=ExtResource("14_r88tb")]
+[node name="Cascanueces3" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("14_r88tb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 604.288, 47.1519, 0)
 platform_floor_layers = 4294967042
+Target = NodePath("../Player")
 
-[node name="Cascanueces4" parent="." instance=ExtResource("14_r88tb")]
+[node name="Cascanueces4" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("14_r88tb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 505.437, 47.1519, 0)
 platform_floor_layers = 4294967042
+Target = NodePath("../Player")
 
-[node name="Cascanueces5" parent="." instance=ExtResource("14_r88tb")]
+[node name="Cascanueces5" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("14_r88tb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 553.008, 47.1519, 0)
 platform_floor_layers = 4294967042
+Target = NodePath("../Player")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_r88tb")
