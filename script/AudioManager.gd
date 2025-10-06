@@ -185,37 +185,45 @@ var julieta_player: AudioStreamPlayer = null
 
 func play_julieta(sound: AudioStream) -> void:
 	if sound == null:
+		push_warning("⚠️ No se proporcionó sonido de Julieta.")
 		return
 
-	# Si ya está sonando, no lo reinicies
+	# Evitar duplicar el sonido si ya está sonando
 	if julieta_player and julieta_player.playing:
 		return
 
-	# Si no existe el player, créalo
+	# Crear el player si no existe
 	if julieta_player == null:
 		julieta_player = AudioStreamPlayer.new()
+		julieta_player.name = "Julieta_Player"
 		julieta_player.bus = "Efectos"
 		add_child(julieta_player)
 
-	# Configurar el sonido
+	# Configurar sonido
 	julieta_player.stream = sound
 	julieta_player.volume_db = 0  # puedes subir a +3 si lo quieres más fuerte
 	julieta_player.autoplay = false
 
-	# ✅ Asegura que el sonido se repita
-	if sound.has_method("set_loop"):
-		sound.set_loop(true)
-
+	# 🔁 Forzar el loop si el formato lo permite
+	if sound is AudioStreamOggVorbis or sound is AudioStreamMP3 or sound is AudioStreamWAV:
+		if sound.has_method("set_loop"):
+			sound.set_loop(true)
+	julieta_player.stream_paused = false
 	julieta_player.play()
+
 	print("💧 Sonido de Julieta iniciado en loop.")
 
 # ---------------------------------------------------------
 # 🛑 Detiene el sonido del llanto de Julieta
 # ---------------------------------------------------------
 func stop_julieta() -> void:
-	if julieta_player and julieta_player.playing:
-		julieta_player.stop()
-		print("🔇 Sonido de Julieta detenido.")
+	if julieta_player:
+		if julieta_player.playing:
+			julieta_player.stop()
+			print("🔇 Sonido de Julieta detenido.")
+	else:
+		print("⚠️ No hay player de Julieta activo.")
+
 
 # ---------------------------------------------------------
 #        🔔 SONIDO COLECCIONABLE CERCA (UNA SOLA VEZ)
@@ -304,3 +312,5 @@ func fade_in():
 		musica_player.volume_db = vol
 		await get_tree().process_frame
 	fading = false
+	
+	
