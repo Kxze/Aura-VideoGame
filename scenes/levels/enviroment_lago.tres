@@ -1,8 +1,8 @@
 [gd_resource type="Environment" load_steps=5 format=3 uid="uid://crl6agjc1cr61"]
 
 [sub_resource type="Gradient" id="Gradient_c8f5m"]
-offsets = PackedFloat32Array(0, 0.75536484, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.7188841, 0.7188841, 0.7188841, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.755365, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.718884, 0.718884, 0.718884, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cuue3"]
 gradient = SubResource("Gradient_c8f5m")
@@ -26,7 +26,9 @@ tonemap_mode = 2
 tonemap_exposure = 0.5
 sdfgi_use_occlusion = true
 sdfgi_bounce_feedback = 0.46
-sdfgi_min_cell_size = 0.05859375
+sdfgi_min_cell_size = 0.0585938
+sdfgi_cascade0_distance = 3.75
+sdfgi_max_distance = 60.0
 glow_enabled = true
 glow_normalized = true
 glow_intensity = 1.36
@@ -42,7 +44,7 @@ fog_light_energy = 0.62
 fog_density = 0.3405
 fog_sky_affect = 0.0
 fog_depth_end = 56.0
-volumetric_fog_albedo = Color(0.9999997, 0.9150477, 0.30247033, 1)
+volumetric_fog_albedo = Color(1, 0.915048, 0.30247, 1)
 volumetric_fog_emission = Color(0.0491068, 0.10089, 0.122074, 1)
 volumetric_fog_length = 31.66
 adjustment_enabled = true
