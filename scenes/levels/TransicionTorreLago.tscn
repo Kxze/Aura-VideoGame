@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dy5hduy6q7s6f"]
+[gd_scene load_steps=8 format=3 uid="uid://dy5hduy6q7s6f"]
 
 [ext_resource type="PackedScene" uid="uid://cc84busu65axo" path="res://Art/Levels/BlockingTransición TorreLago.blend" id="1_5jeeu"]
+[ext_resource type="Environment" uid="uid://crl6agjc1cr61" path="res://scenes/levels/enviroment_lago.tres" id="2_74rj6"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_opuao"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_74rj6"]
-[ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="4_opuao"]
+[ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="5_74rj6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5jeeu"]
 size = Vector3(1, 15.043, 19.5214)
@@ -13,18 +14,15 @@ size = Vector3(1, 36.9888, 47.6661)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="BlockingTransición TorreLago" parent="." instance=ExtResource("1_5jeeu")]
+[node name="Back_level" parent="." instance=ExtResource("5_74rj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.122627, 11.116028, 0)
+prev_level_path = "res://scenes/levels/level_4_back_from_lake.tscn"
+is_next = false
 
-[node name="StaticBody3D" parent="BlockingTransición TorreLago/Rama" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="BlockingTransición TorreLago/Cornisa" index="0"]
-collision_layer = 2
-
-[node name="Player" parent="BlockingTransición TorreLago" instance=ExtResource("2_opuao")]
+[node name="Player" parent="." instance=ExtResource("2_opuao")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -43.3277, 12.6422, 1.313)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="BlockingTransición TorreLago/Player"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
 light_color = Color(1, 0.969167, 0.63, 1)
 light_energy = 3.0
@@ -32,15 +30,24 @@ light_specular = 0.0
 spot_range = 13.139
 spot_angle = 69.14
 
-[node name="Camera3D" type="Camera3D" parent="BlockingTransición TorreLago/Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594002, 1.101, 6.303)
+[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59400177, 1.1009998, 6.303)
 keep_aspect = 0
+environment = ExtResource("2_74rj6")
 fov = 80.0
 far = 250.0
 script = ExtResource("3_74rj6")
 target = NodePath("..")
 follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="BlockingTransición TorreLago" parent="." instance=ExtResource("1_5jeeu")]
+
+[node name="StaticBody3D" parent="BlockingTransición TorreLago/Rama" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="BlockingTransición TorreLago/Cornisa" index="0"]
+collision_layer = 2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.746953, -0.125359, -0.652952, -0.572107, 0.379179, -0.727267, 0.338755, 0.916793, 0.21151, -23.0331, 148.122, 249.84)
@@ -98,12 +105,16 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12032, 18.4382, -6.41397)
 shape = SubResource("BoxShape3D_opuao")
 
-[node name="KillZone" parent="." instance=ExtResource("4_opuao")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256.974, -16.0323, 5.61259)
-collision_layer = 4
+[node name="next_level" parent="." instance=ExtResource("5_74rj6")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -36.340244, -13.951627, 0)
+next_level_path = "res://scenes/levels/level_5.tscn"
 
-[node name="CollisionShape3D" parent="KillZone" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 331.585, 0, -11.1259)
+[node name="next_level2" parent="." instance=ExtResource("5_74rj6")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -16.90762, -13.951627, 0)
+next_level_path = "res://scenes/levels/level_5.tscn"
+
+[node name="collecionable_level" parent="." instance=ExtResource("5_74rj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+next_level_path = "res://scenes/levels/level_collec_3.tscn"
 
 [editable path="BlockingTransición TorreLago"]
-[editable path="KillZone"]

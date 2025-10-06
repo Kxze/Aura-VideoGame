@@ -1,7 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgry1prxb8gs6"]
+[gd_scene load_steps=3 format=3 uid="uid://bgry1prxb8gs6"]
 
 [ext_resource type="PackedScene" uid="uid://c0nhy7q0rem4i" path="res://Art/Levels/pluma_espacioColeccionable.blend" id="1_qdiwj"]
+[ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="2_2whyl"]
 
 [node name="Level_collect_3" type="Node3D"]
 
 [node name="pluma_espacioColeccionable" parent="." instance=ExtResource("1_qdiwj")]
+
+[node name="door_collect" parent="." instance=ExtResource("2_2whyl")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -59.097977, 17, 0)
+
+[node name="Portal_to_collect" parent="door_collect" index="1"]
+is_next = false
+
+[editable path="pluma_espacioColeccionable"]
+[editable path="door_collect"]

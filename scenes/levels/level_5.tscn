@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2yu70n2vogoj"]
+[gd_scene load_steps=9 format=3 uid="uid://d2yu70n2vogoj"]
 
 [ext_resource type="PackedScene" uid="uid://dnms5rm70a8ir" path="res://Art/Levels/Blocking_level5.blend" id="1_845dy"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_dswqx"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_dswqx"]
+[ext_resource type="Environment" uid="uid://crl6agjc1cr61" path="res://scenes/levels/enviroment_lago.tres" id="3_fi56y"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="4_laj7o"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_laj7o"]
@@ -81,19 +82,12 @@ transform = Transform3D(8.65512, 1.24445, -4.45049e-07, 0, -3.12714e-06, -8.7441
 transform = Transform3D(3.2073, 0, 0, 0, 3.99265e-07, -3.2073, 0, -1.11643, -1.14702e-06, 178.425, -8.99531, -14.2914)
 
 [node name="Player" parent="." instance=ExtResource("2_dswqx")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -350.619, 5.39485, -5.87465)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
-light_color = Color(1, 0.969167, 0.63, 1)
-light_energy = 3.0
-light_specular = 0.0
-spot_range = 13.139
-spot_angle = 69.14
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -286.704, 5.395, -5.875)
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.593994, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.5940056, 1.1010001, 6.303001)
 keep_aspect = 0
+environment = ExtResource("3_fi56y")
 fov = 80.0
 far = 250.0
 script = ExtResource("3_dswqx")
