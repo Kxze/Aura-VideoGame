@@ -31,7 +31,7 @@ func enter(previous_state_path: String, data := {}):
 	# Reproducir animación Dash
 	if player.animationPlayer:
 		player.animationPlayer.play("Dash")
-		player.dash_particle.emitting = true
+		
 		AudioManager.play_and_get_duration(dash_sfx)
 		spawn_dash_trail()
 		emit_signal("dash_started")
@@ -76,7 +76,7 @@ func reset_dash_cooldown():
 
 func spawn_dash_trail(num_copies: int = 4) -> void:
 	player.sprite.visible = true
-
+	player.dash_particle.emitting = true
 	for i in range(num_copies):
 		var effect = dash_trail_scene.instantiate()
 		player.get_parent().add_child(effect)
