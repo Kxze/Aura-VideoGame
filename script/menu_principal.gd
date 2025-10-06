@@ -58,6 +58,7 @@ func _on_nueva_partida_pressed(button):
 	_play_click()
 	get_tree().change_scene_to_file(Constants.scene_levels["level_1"])
 
+#⚠ ⚠ ⚠ ⚠ AHORA ES LA PANTALLA DE CRÉDITOS ⚠ ⚠ ⚠ ⚠
 func _on_continuar_pressed(button):
 	_play_click()
 	print("Continuar partida (cargar juego)")
