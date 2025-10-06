@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dui6jtok7l8mu"
-path.s3tc="res://.godot/imported/ramas1.PNG-a7d2ca0aed9513b0512eafcf75928f5f.s3tc.ctex"
+uid="uid://bghyi00r7wml4"
+path.s3tc="res://.godot/imported/FondoVentana.png-66fcabb34c4b0906c48ebb8e384454f5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/Levels/AssetsBloque6/ramas1.PNG"
-dest_files=["res://.godot/imported/ramas1.PNG-a7d2ca0aed9513b0512eafcf75928f5f.s3tc.ctex"]
+source_file="res://Art/Levels/FondoVentana.png"
+dest_files=["res://.godot/imported/FondoVentana.png-66fcabb34c4b0906c48ebb8e384454f5.s3tc.ctex"]
 
 [params]
 
