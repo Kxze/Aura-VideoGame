@@ -130,6 +130,22 @@ func play_sfx_persistente(sound: AudioStream) -> void:
 	await get_tree().create_timer(duracion).timeout
 	temp_player.queue_free()
 
+# ---------------------------------------------------------
+# 🎯 SONIDO DE DAÑO DEL JUGADOR
+# ---------------------------------------------------------
+func play_daño(sound: AudioStream) -> void:
+	if sound == null:
+		return
+
+	# Evita que se corte otro sonido de daño si ocurre muy rápido
+	if efectos_player.playing and efectos_player.stream == sound:
+		return
+
+	efectos_player.stream = sound
+	efectos_player.volume_db = 0
+	efectos_player.bus = "Efectos"
+	efectos_player.play()
+
 
 # ---------------------------------------------------------
 #        🔔 SONIDO COLECCIONABLE CERCA (UNA SOLA VEZ)
