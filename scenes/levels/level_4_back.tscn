@@ -235,9 +235,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 405.405, -89, 0)
 [node name="Portal_to_collect" parent="door_collect" index="1"]
 next_level_path = "res://scenes/levels/level_collec_2.tscn"
 
+[node name="Dash_unlock" parent="." instance=ExtResource("8_vtho0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 431.112, -58.8752, 0)
+
 [editable path="Blocking4"]
 [editable path="back_level"]
 [editable path="KillZone"]
 [editable path="KillZone2"]
 [editable path="Area3D"]
 [editable path="door_collect"]
+[editable path="Dash_unlock"]
