@@ -37,7 +37,28 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Armature/Skeleton3D/Bone_001/CNCuerpo": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/Bone_002/CNAlaFrente": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/Bone_003/CNAlaAbajo": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/Bone_004/CNAlaAtras": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/Bone_005/CNCuello": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Armature/Skeleton3D/Bone_006/CNCabeza": {
+"mesh_instance/cast_shadow": 0
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

@@ -1,18 +1,12 @@
 extends CisneState
 
-#este apartado sobreescribe el estado que viene
-func enter(previous_state_path : String, data := {}):
+func enter(previous_state_path: String, data := {}):
+	pass
+func update(_delta: float):
 	cisne.animationCisneBlanco.play("Caminar")
+	print("Cisne:curado")
+	
 
-#Esta funcion sobreescribe la funcion physics process
-func physics_update(delta: float):
-	pass
-
-#Esta funcion sobreescribe la funcion process
-func update(_delta:float):
-	pass
-
-#Esta funcion sobreescribe la funcion Input
 func handled_input(_event: InputEvent):
 	pass
 

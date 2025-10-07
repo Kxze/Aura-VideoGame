@@ -243,6 +243,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 431.112, -58.8752, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 553.62537, -42.847176, 0)
 next_level_path = "res://scenes/levels/TransicionTorreLago.tscn"
 
+[node name="KillZone3" parent="." instance=ExtResource("6_ou5g1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 627.2856, -72.145, 0)
+
 [editable path="Blocking4"]
 [editable path="back_level"]
 [editable path="KillZone"]
@@ -250,3 +253,4 @@ next_level_path = "res://scenes/levels/TransicionTorreLago.tscn"
 [editable path="Area3D"]
 [editable path="door_collect"]
 [editable path="Dash_unlock"]
+[editable path="KillZone3"]

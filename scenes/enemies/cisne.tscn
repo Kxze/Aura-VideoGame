@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bnoyn8qc3q0ot"]
+[gd_scene load_steps=13 format=3 uid="uid://bnoyn8qc3q0ot"]
 
 [ext_resource type="Script" uid="uid://c6yuwt30vb3e6" path="res://script/enemies/CisneSMF/cisne.gd" id="1_7rci3"]
 [ext_resource type="PackedScene" uid="uid://dev8jli4qpmsb" path="res://Art/Model3D/CISNES/CisneNegro.blend" id="1_x3gho"]
@@ -14,11 +14,14 @@ radius = 1.5771484
 height = 5.9022217
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_543op"]
-radius = 2.0527344
-height = 7.1707764
+radius = 2.5527344
+height = 6.945038
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_diio0"]
-size = Vector3(16, 8, 1)
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_543op"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6uxv3"]
+radius = 2.5859375
+height = 6.9782715
 
 [node name="Cisne_negro" type="CharacterBody3D"]
 collision_layer = 8
@@ -33,55 +36,37 @@ shape = SubResource("CapsuleShape3D_diio0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14892292, 0)
 
 [node name="Skeleton3D" parent="CisneNegro/Armature" index="0"]
-bones/1/rotation = Quaternion(6.316138e-08, -4.7021704e-08, -0.07525222, 0.99716455)
+bones/1/rotation = Quaternion(5.8996203e-08, -4.7443727e-08, -0.06425601, 0.99793345)
 bones/1/scale = Vector3(1, 0.99999994, 1)
-bones/2/rotation = Quaternion(1.7111809e-07, -1.0501378e-07, 0.6826942, 0.7307042)
-bones/3/rotation = Quaternion(3.8610193e-07, -7.749825e-08, 0.7473364, 0.6644459)
-bones/4/position = Vector3(1.8255674, -0.7199837, -2.3161668e-07)
-bones/4/rotation = Quaternion(1.3562489e-07, 1.335518e-07, -0.7245922, 0.68917793)
-bones/5/position = Vector3(9.884909, 1.3985718, 5.410845e-08)
-bones/5/rotation = Quaternion(6.105197e-08, -1.3343646e-08, -0.18666464, 0.9824237)
-bones/6/position = Vector3(6.214927, 4.3218226, 4.4631648e-07)
-bones/6/rotation = Quaternion(8.474292e-08, 1.10444105e-07, -0.19887333, 0.9800253)
+bones/2/rotation = Quaternion(1.242564e-07, -1.468731e-07, 0.69277704, 0.7211518)
+bones/3/rotation = Quaternion(3.259346e-07, -1.1028157e-07, 0.6699229, 0.74243075)
+bones/4/position = Vector3(2.061751, -0.7575935, -2.2434976e-07)
+bones/4/rotation = Quaternion(1.2813561e-07, 1.410942e-07, -0.7383882, 0.67437595)
+bones/5/position = Vector3(9.493712, 1.7255217, 5.2081194e-08)
+bones/5/rotation = Quaternion(6.182911e-08, -8.878387e-09, -0.25736314, 0.9663148)
+bones/6/position = Vector3(6.214927, 4.3218226, 4.4631645e-07)
+bones/6/rotation = Quaternion(1.0465789e-07, 1.10339954e-07, -0.26293162, 0.96481454)
 
 [node name="Bone_006" parent="CisneNegro/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.99487686, -0.10109117, 6.336921e-07, 0.10109117, -0.99487686, -1.9345413e-07, 6.500024e-07, -1.2840226e-07, 1.0000001, -5.0886197, 11.830836, 1.4738953e-06)
+transform = Transform3D(-0.9634183, -0.26800132, 4.778942e-07, 0.2680013, -0.9634183, -3.2313383e-07, 5.470125e-07, -1.8323658e-07, 1.0000001, -5.3598, 11.533781, 4.6592243e-07)
 
 [node name="Bone_005" parent="CisneNegro/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.21682045, -0.97621137, -8.30655e-08, 0.97621137, 0.21682045, -5.199218e-07, 5.255639e-07, 3.1640205e-08, 1.0000001, 1.424501, 10.384245, 1.2627972e-06)
+transform = Transform3D(0.16793181, -0.9857985, -1.9069913e-07, 0.9857985, 0.1679318, -4.861195e-07, 5.1124033e-07, -1.0635599e-07, 1.0000001, 1.2172843, 10.413367, 1.1755121e-06)
 
 [node name="Bone_001" parent="CisneNegro/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.98867416, 0.15007766, -1.03282815e-07, -0.15007767, 0.9886741, -1.1888759e-07, 8.427069e-08, 1.3304154e-07, 1, 2.3841847e-07, 0.999999, 7.727152e-14)
+transform = Transform3D(0.99174225, 0.12824641, -1.02273084e-07, -0.12824643, 0.9917422, -1.11651474e-07, 8.710964e-08, 1.2384565e-07, 1, 2.3841847e-07, 0.999999, 7.727152e-14)
 
 [node name="Bone_002" parent="CisneNegro/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.050067645, 0.9987456, -1.2463571e-08, -0.9987455, -0.050067652, -3.804805e-07, -3.8062723e-07, -6.601823e-09, 1, 1.8255675, -0.7199839, -2.3161664e-07)
+transform = Transform3D(-0.09043416, 0.99590224, 1.0734468e-09, -0.9959021, -0.09043417, -3.811877e-07, -3.7952861e-07, -3.5541426e-08, 1, 2.061751, -0.7575937, -2.2434972e-07)
 
 [node name="Bone_003" parent="CisneNegro/Armature/Skeleton3D" index="4"]
-transform = Transform3D(0.9303125, 0.36676747, -4.901071e-08, -0.36676747, 0.93031245, -1.1497621e-07, 3.4257384e-09, 1.2493935e-07, 1, 9.884908, 1.3985715, 5.4108483e-08)
+transform = Transform3D(0.8675283, 0.49738747, -4.8983697e-08, -0.4973875, 0.86752826, -1.14922805e-07, -1.4666435e-08, 1.2406268e-07, 1, 9.493711, 1.7255213, 5.2081226e-08)
 
 [node name="Bone_004" parent="CisneNegro/Armature/Skeleton3D" index="5"]
-transform = Transform3D(0.9208986, 0.38980162, 1.827698e-07, -0.38980162, 0.9208986, -2.1002916e-07, -2.5018218e-07, 1.2217163e-07, 1, 6.2149267, 4.321822, 4.4631653e-07)
+transform = Transform3D(0.86173373, 0.50736034, 1.5787941e-07, -0.50736034, 0.86173373, -2.5997457e-07, -2.6795087e-07, 1.4392715e-07, 1, 6.2149267, 4.321822, 4.463165e-07)
 
 [node name="CisneBlanco" parent="." instance=ExtResource("2_7rci3")]
 visible = false
-
-[node name="Skeleton3D" parent="CisneBlanco/Armature" index="0"]
-bones/1/rotation = Quaternion(2.010032e-08, -6.172659e-08, 0.12660393, 0.9919534)
-bones/2/rotation = Quaternion(2.9561082e-07, -1.3723138e-07, 0.9105115, 0.41348374)
-bones/3/rotation = Quaternion(-9.730986e-08, -1.0839974e-08, 0.87154144, -0.49032193)
-bones/4/rotation = Quaternion(4.5413984e-08, -4.8676544e-08, -0.27130383, 0.9624938)
-
-[node name="Bone_002" parent="CisneBlanco/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.8457764, -0.53353703, 5.5507826e-07, 0.53353685, -0.8457763, -4.502631e-07, 7.097044e-07, -8.4667185e-08, 1, -2.4442306, 10.255167, 8.904507e-07)
-
-[node name="Bone_001" parent="CisneBlanco/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.9583077, -0.28573805, 6.704127e-09, 0.2857381, 0.9583075, -9.7901925e-08, 2.1549681e-08, 9.573578e-08, 1, -0.083990216, 2.3393993, 9.965849e-08)
-
-[node name="Bone_003" parent="CisneBlanco/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.48816907, 0.8727489, -3.2777564e-08, -0.8727489, -0.48816907, -1.5817179e-07, -1.5404527e-07, -4.8608e-08, 1, 2.737357, -0.53313476, -1.8687658e-07)
-
-[node name="Bone_004" parent="CisneBlanco/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.8709777, 0.49132246, 5.9286904e-09, -0.49132246, 0.8709777, -1.0343558e-07, -5.5983982e-08, 8.717718e-08, 1, 7.77643, 1.4761939, 1.510178e-08)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_diio0")
@@ -100,10 +85,11 @@ script = ExtResource("6_6uxv3")
 script = ExtResource("7_nlunq")
 
 [node name="AreaDamage" type="Area3D" parent="."]
-collision_layer = 24
+disable_mode = 2
+collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaDamage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.558134, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4264355, 0)
 shape = SubResource("CapsuleShape3D_543op")
 debug_color = Color(0.9975118, 0, 0.1742886, 0.41960785)
 
@@ -111,14 +97,24 @@ debug_color = Color(0.9975118, 0, 0.1742886, 0.41960785)
 collision_layer = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AlertZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-shape = SubResource("BoxShape3D_diio0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051635742, 0)
+shape = SubResource("SeparationRayShape3D_543op")
 debug_color = Color(0.9322021, 0.63778704, 0, 0.41960785)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
+[node name="AttackArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5092342, 0)
+shape = SubResource("CapsuleShape3D_6uxv3")
+debug_color = Color(7.2196127e-07, 0.6352078, 0.423717, 0.41960785)
+
+[connection signal="body_entered" from="AreaDamage" to="." method="_on_area_damage_body_entered"]
 [connection signal="body_entered" from="AlertZone" to="StateMachine/Idle" method="_on_alert_zone_body_entered"]
 [connection signal="body_exited" from="AlertZone" to="StateMachine/Follow" method="_on_alert_zone_body_exited"]
+[connection signal="body_entered" from="AttackArea" to="StateMachine/Attack" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="StateMachine/Attack" method="_on_attack_area_body_exited"]
 
 [editable path="CisneNegro"]
 [editable path="CisneBlanco"]

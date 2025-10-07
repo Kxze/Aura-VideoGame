@@ -34,7 +34,6 @@ TransitionScreen="*res://scenes/transitions/transition_screen.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [file_customization]

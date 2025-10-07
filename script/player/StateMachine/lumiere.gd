@@ -31,4 +31,7 @@ func _on_lumiere_body_entered(body: Node3D) -> void:
 		
 		if body.health <= 0:
 			print("Cambiando a cisne blanco")
+			body.isAgressive = false
+			body.isPassive = true
 			body.change_skins()
+			body.area_damage.monitoring = false

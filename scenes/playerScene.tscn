@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bxuyc3vwly1er" path="res://Art/textures/effect_dash.png" id="15_75g7i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_75g7i"]
-size = Vector3(8.469727, 4.9989204, 1)
+size = Vector3(13.848511, 9.811876, 1)
 
 [sub_resource type="GDScript" id="GDScript_elcxt"]
 script/source = "extends Node3D
@@ -90,7 +90,7 @@ size = Vector2(0.1, 0.1)
 orientation = 2
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
-collision_mask = 14
+collision_mask = 30
 script = ExtResource("1_72l0f")
 speed_normal = 15.0
 speed_run = 24.0
@@ -128,9 +128,10 @@ transform = Transform3D(0.07238421, 0.99737686, -6.5161515e-08, -0.9973756, 0.07
 visible = false
 
 [node name="Lumiere" type="Area3D" parent="Aura/player/Armature/Skeleton3D/BoneAttachment3D/Sprite3D" index="0"]
+collision_mask = 8
 
 [node name="AreaLumiere" type="CollisionShape3D" parent="Aura/player/Armature/Skeleton3D/BoneAttachment3D/Sprite3D/Lumiere"]
-transform = Transform3D(0.9908328, 0.13511029, 5.71157e-09, -0.13511044, 0.990833, 1.0361359e-07, 8.3389295e-09, -1.0342496e-07, 1, 2.5269542, -0.71789074, 7.450581e-09)
+transform = Transform3D(0.9908328, 0.13511029, 5.71157e-09, -0.13511044, 0.990833, 1.0361359e-07, 8.3389295e-09, -1.0342496e-07, 1, 4.8665547, -3.4656773, 2.3841858e-07)
 shape = SubResource("BoxShape3D_75g7i")
 
 [node name="OmniLight3D2" parent="Aura/player/Armature/Skeleton3D/BoneAttachment3D" index="1"]
