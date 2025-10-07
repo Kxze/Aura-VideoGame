@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ces5ba1w7vi5h"]
 
-[ext_resource type="Script" path="res://script/cinematica_incial.gd" id="1_ud8nq"]
+[ext_resource type="Script" uid="uid://d0msbkawqt1dt" path="res://script/cinematica_incial.gd" id="1_ud8nq"]
 [ext_resource type="Theme" uid="uid://dsdobfeg448w0" path="res://Temas/cinematica.tres" id="2_56ftm"]
-[ext_resource type="VideoStream" uid="uid://cnh0023tv5sim" path="res://CinIn/CinIni1080.ogv" id="2_jnmly"]
+[ext_resource type="VideoStream" uid="uid://c2bvf3mx6ineb" path="res://Videos/Cinemática-Inicial.ogv" id="2_jnmly"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
