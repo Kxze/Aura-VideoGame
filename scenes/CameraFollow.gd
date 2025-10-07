@@ -6,6 +6,9 @@ extends Camera3D
 @export var offset: Vector3 = Vector3.ZERO  # posición relativa al jugador
 @export var smooth_factor: float = 0.2   # entre 0 y 1, menor = más suave
 
+func _ready():
+	var env = $".".environment
+	GlobalBrightness.registrar_environment(env)
 
 func _physics_process(delta: float) -> void:
 	if not target:
