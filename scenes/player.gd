@@ -71,7 +71,7 @@ func set_controls_enabled(enable: bool) -> void:
 
 func jump_side_per_damage(x):
 	velocity.y = jump
-	velocity.x = x
+	velocity.x = -x
 
 
 
