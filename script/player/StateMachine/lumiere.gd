@@ -25,7 +25,7 @@ func exit():
 
 
 func _on_lumiere_body_entered(body: Node3D) -> void:
-	if body is Cisne and Input.is_action_pressed("Lumiere"):
+	if body is Cisne and Input.is_action_pressed("Lumiere") and player.can_lumiere:
 		body.health -= damage
 		print("HP del cisne:", body.health)
 		
@@ -35,3 +35,4 @@ func _on_lumiere_body_entered(body: Node3D) -> void:
 			body.isPassive = true
 			body.change_skins()
 			body.area_damage.monitoring = false
+			body.collision.set_deferred("disabled",true)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvmyxq1oac8h4"]
+[gd_scene load_steps=15 format=3 uid="uid://dvmyxq1oac8h4"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_7a6v1"]
 [ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_ene00"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="8_xaqd7"]
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="9_vpj8v"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="10_fwvf8"]
+[ext_resource type="PackedScene" uid="uid://2ltdbcdy2ip8" path="res://scenes/triggers/spawn_point.tscn" id="11_ene00"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts8eg"]
 albedo_color = Color(0.118605, 0, 0.677026, 1)
@@ -242,6 +243,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 431.112, -58.8752, 0)
 [node name="next_level" parent="." instance=ExtResource("10_fwvf8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 553.62537, -42.847176, 0)
 next_level_path = "res://scenes/levels/TransicionTorreLago.tscn"
+
+[node name="CheckPoint" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("11_ene00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 308.23007, -62.507248, 0)
+checkpoint_marker = NodePath("Marker3D")
+
+[node name="Marker3D" type="Marker3D" parent="CheckPoint"]
+
+[node name="CheckPoint2" parent="." node_paths=PackedStringArray("checkpoint_marker") instance=ExtResource("11_ene00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.172295, -2.928124, 0)
+checkpoint_marker = NodePath("Marker3D")
+
+[node name="Marker3D" type="Marker3D" parent="CheckPoint2"]
+metadata/_edit_lock_ = true
 
 [editable path="Blocking4"]
 [editable path="back_level"]

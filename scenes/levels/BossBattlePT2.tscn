@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://x0snda4y4sao"]
+[gd_scene load_steps=5 format=3 uid="uid://x0snda4y4sao"]
 
 [ext_resource type="PackedScene" uid="uid://dmifokkccnr1m" path="res://Art/Levels/BlockingBossBattlePT2.blend" id="1_eke71"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_2gwwc"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_cqgpt"]
-[ext_resource type="PackedScene" uid="uid://7elna4g4q74f" path="res://Art/Model3D/Odil/Odil.blend" id="4_2gwwc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eke71"]
 size = Vector3(1, 145, 55)
@@ -35,7 +34,7 @@ spot_range = 13.139
 spot_angle = 69.14
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594002, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59400177, 1.1009998, 6.303001)
 keep_aspect = 0
 current = true
 fov = 80.0
@@ -59,55 +58,6 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.98465, 72, -3)
 shape = SubResource("BoxShape3D_eke71")
-
-[node name="Odil" parent="." instance=ExtResource("4_2gwwc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.1164, 63.7936, -26.823)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Odil"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 18.4052)
-light_color = Color(1, 0.969167, 0.63, 1)
-light_energy = 3.0
-light_specular = 0.0
-spot_range = 13.139
-spot_angle = 69.14
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="Odil"]
-transform = Transform3D(0.88257, -0.0318485, 0.4691, -0.47018, -0.0597825, 0.880543, 1.61569e-09, -0.997703, -0.0677368, 43.5386, 21.5141, 20.6381)
-light_color = Color(0.421611, 0.464358, 0.326342, 1)
-light_energy = 2.828
-light_indirect_energy = 1.97
-light_size = 0.182
-light_specular = 4.379
-spot_range = 85.6471
-spot_attenuation = -0.01
-spot_angle = 26.031
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="Odil"]
-transform = Transform3D(-0.818634, -0.343284, -0.460429, -0.47018, -0.0597824, 0.880543, -0.329802, 0.937327, -0.112466, -43.5211, 21.5141, 18.9312)
-light_color = Color(0.421611, 0.464358, 0.326342, 1)
-light_energy = 2.828
-light_indirect_energy = 1.97
-light_size = 0.182
-light_specular = 4.379
-spot_range = 85.6471
-spot_attenuation = -0.01
-spot_angle = 26.031
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="Odil"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8942, 22.9083, 2.95779)
-light_color = Color(0.419751, 0.731591, 0.854006, 1)
-light_energy = 3.424
-light_indirect_energy = 0.354
-omni_range = 34.2904
-omni_attenuation = 0.192
-
-[node name="OmniLight3D4" type="OmniLight3D" parent="Odil"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.0813, 22.9083, 2.95779)
-light_color = Color(0.419751, 0.731591, 0.854006, 1)
-light_energy = 3.424
-light_indirect_energy = 0.354
-omni_range = 34.2904
-omni_attenuation = 0.192
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999973, 0.00731286, 0, -0.00731286, 0.999973, -121.785, 68.5005, -12.6844)

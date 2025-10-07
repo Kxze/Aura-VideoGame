@@ -12,6 +12,7 @@ extends CharacterBody3D
 
 @onready var navAgent: NavigationAgent3D = $NavigationAgent3D
 @onready var pivot: Node3D = $CisneNegro
+@onready var collision: CollisionShape3D = $CollisionShape3D
 
 
 var isAgressive: bool = true
@@ -21,6 +22,7 @@ var isPassive: bool = false
 var speed: int = 20
 var health: int = 20
 var damage: int = 2
+var Gravity := -1.3
 func change_skins():
 	black.visible = false
 	white.visible = true
@@ -31,7 +33,7 @@ func change_skins():
 
 func Make_damage(body: Node3D):
 	Player.health -= damage
-	body.jump_side_per_damage(1)
+	body.jump_side_per_damage(5)
 	print("Daño recibido. Salud actual:", Player.health)
 
 	if Player.health <= 0:
@@ -53,3 +55,4 @@ func Make_damage(body: Node3D):
 func _on_area_damage_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		Make_damage(body)
+		

@@ -11,13 +11,14 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_diio0"]
 radius = 1.5771484
-height = 5.9022217
+height = 6.154999
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_543op"]
 radius = 2.5527344
 height = 6.945038
 
-[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_543op"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_543op"]
+size = Vector3(18, 0.6, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6uxv3"]
 radius = 2.5859375
@@ -29,7 +30,7 @@ collision_mask = 0
 script = ExtResource("1_7rci3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.068339, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9419506, 0)
 shape = SubResource("CapsuleShape3D_diio0")
 
 [node name="CisneNegro" parent="." instance=ExtResource("1_x3gho")]
@@ -97,8 +98,8 @@ debug_color = Color(0.9975118, 0, 0.1742886, 0.41960785)
 collision_layer = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AlertZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051635742, 0)
-shape = SubResource("SeparationRayShape3D_543op")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25163573, 0)
+shape = SubResource("BoxShape3D_543op")
 debug_color = Color(0.9322021, 0.63778704, 0, 0.41960785)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
