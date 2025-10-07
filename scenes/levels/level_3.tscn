@@ -119,7 +119,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.716
 
 [node name="Portal_to_collect" parent="door_collect" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.106903, 0, 9.34574e-09)
-next_level_path = "res://scenes/levels/Coleccionable1.tscn"
+next_level_path = "res://scenes/levels/level_collec_1.tscn"
 
 [node name="Julieta" parent="." instance=ExtResource("19_5f5xw")]
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 47.1159, 180.491, -8.8347)

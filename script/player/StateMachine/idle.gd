@@ -5,7 +5,6 @@ extends PlayerState
 
 # --- Al entrar al estado ---
 func enter(previous_state_path : String, data := {}):
-	player.lumiere_area.visible = false
 	player.animationPlayer.play("idle")
 	player.invencible = false
 

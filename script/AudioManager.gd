@@ -30,10 +30,14 @@ var pluma_obtenida := false
 var dialogo_en_progreso := false   # 🔒 Evita que se superpongan diálogos
 var dialogo_player_actual: AudioStreamPlayer = null
 var alex1_sonado := false  # ✅ evita repetir el primer diálogo de Alex
-var alex2_sonado := false  # ✅ evita repetir el segundo diálogo de Alex
+var alex2_sonado := false 
 var alex3_sonado := false
 var alex7_sonado := false
+var alex4_sonado := false  
+var alex6_sonado := false  
 var alex_dialogos_sonados := {}  # 🔒 Guarda qué diálogos de Alex ya sonaron por ID
+
+var cisne_convertido := false  # 🕊️ true = ya se transformó en Cisne Blanco
 
 
 # ---------------------------------------------------------
@@ -289,43 +293,107 @@ func play_daño(sound: AudioStream) -> void:
 	efectos_player.play()
 	
 # ---------------------------------------------------------
-# 🎯 SONIDO DE ATAQUE DEL CASCANUECES
+# ⚔️ SONIDO DE ATAQUE CASCANUECES
 # ---------------------------------------------------------
 func play_ataque(sound: AudioStream) -> void:
 	if sound == null:
 		return
 
-	# Evita que se corte otro sonido de daño si ocurre muy rápido
+	# 🚫 Evita solapamiento si ya se está reproduciendo el mismo sonido
 	if efectos_player.playing and efectos_player.stream == sound:
 		return
 
+	# 🎵 Asigna el sonido al reproductor global de efectos
 	efectos_player.stream = sound
-	efectos_player.volume_db = +10.0
 	efectos_player.bus = "Efectos"
+
+	# 🎚️ Volumen alto para destacar sobre la música y otros efectos
+	efectos_player.volume_db = +10.0
+
+	# ▶️ Reproduce
 	efectos_player.play()
+
+	print("⚔️ Sonido de ataque reproducido:", sound.resource_path)
 	
 # ---------------------------------------------------------
-# 🕊️ SONIDO DE PASOS / MOVIMIENTO DEL CISNE BLANCO
+# 🕊️ SONIDO PAS DE LUMIÈRE (Cisne Blanco)
 # ---------------------------------------------------------
+var paso_cisne_en_progreso := false  # ⏳ evita solapamientos
+
 func play_paso_cisne(sound: AudioStream) -> void:
 	if sound == null:
 		return
 
-	# ⚡ Evita cortar el mismo sonido si se reproduce muy seguido
-	if efectos_player.playing and efectos_player.stream == sound:
+	# 🚫 No reproducir si ya está en progreso
+	if paso_cisne_en_progreso:
+		print("⏳ Pas de Lumière aún en reproducción, esperando...")
 		return
 
-	# Asigna el sonido al reproductor principal de efectos
+	paso_cisne_en_progreso = true  # 🔒 bloquear mientras suena
+
+	# 🎵 Configuración del reproductor
 	efectos_player.stream = sound
 	efectos_player.bus = "Efectos"
+	efectos_player.volume_db = +3.0
 
-	# 🎚️ Volumen más suave que un ataque, pero aún presente
-	efectos_player.volume_db = +2.0  
-
-	# 🕊️ Reproduce el sonido
 	efectos_player.play()
+	print("🩰 Sonido de paso del Cisne Blanco reproducido:", sound.resource_path)
 
-	print("🎵 Sonido de paso del Cisne Blanco reproducido:", sound.resource_path)
+	# 🕒 Esperar hasta que termine el sonido antes de desbloquear
+	var duracion := 0.0
+	if sound.has_method("get_length"):
+		duracion = sound.get_length()
+	if duracion <= 0.0:
+		duracion = 1.5  # ⏱️ fallback si no se puede leer duración
+
+	await get_tree().create_timer(duracion).timeout
+
+	paso_cisne_en_progreso = false  # 🔓 desbloquear
+	print("✅ Pas de Lumière finalizado, se puede reproducir de nuevo.")
+
+# ---------------------------------------------------------
+# 🌀 SONIDO DE GIRO (ODIL) — no espacial, loop constante
+# ---------------------------------------------------------
+var spin_player: AudioStreamPlayer = null
+var spin_loop_active := false
+
+func play_spin_odil(sound: AudioStream) -> void:
+	if sound == null:
+		return
+	if spin_loop_active:
+		return  # ya sonando
+
+	# 🔊 Crear reproductor global si no existe
+	if not spin_player:
+		spin_player = AudioStreamPlayer.new()
+		spin_player.name = "SpinPlayer"
+		spin_player.bus = "Efectos"
+		spin_player.stream = sound
+		spin_player.volume_db = +4.0
+		spin_player.autoplay = false
+		spin_player.process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().root.add_child(spin_player)  # fuera del mundo 3D (no se pausa ni atenúa)
+
+	spin_loop_active = true
+	spin_player.stream = sound
+	spin_player.play()
+	spin_player.finished.connect(_on_spin_finished.bind(sound), CONNECT_ONE_SHOT)
+	print("🌀 Loop de giro iniciado.")
+
+
+func _on_spin_finished(sound: AudioStream) -> void:
+	if spin_loop_active and spin_player:
+		spin_player.play()  # reinicia el mismo sonido
+		spin_player.finished.connect(_on_spin_finished.bind(sound), CONNECT_ONE_SHOT)
+
+
+func stop_spin_odil() -> void:
+	spin_loop_active = false
+	if spin_player and spin_player.playing:
+		spin_player.stop()
+	print("🛑 Loop de giro detenido.")
+
+
 
 # ---------------------------------------------------------
 # 🎯 SONIDO DE MUERTE SKELETON
@@ -399,7 +467,7 @@ func play_julieta():
 	_play_random_julieta()
 
 # ---------------------------------------------------------
-# 🌀 Reproduce un sonido aleatorio y programa el siguiente
+#  Reproduce un sonido aleatorio y programa el siguiente
 # ---------------------------------------------------------
 func _play_random_julieta():
 	if not julieta_activa or julieta_sounds.is_empty():

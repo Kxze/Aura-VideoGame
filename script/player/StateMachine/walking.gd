@@ -18,7 +18,6 @@ var isRunning : bool = false
 @onready var floor_ray: RayCast3D = $"../../RayCast3D"
 
 func enter(previous_state_path : String, data := {}):
-	player.lumiere_area.visible = false
 	player.animationPlayer.play("Walk")
 	isRunning = false
 	step_timer = 0.0

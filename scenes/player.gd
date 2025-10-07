@@ -38,7 +38,6 @@ static var spawnPoint
 
 #Particulas
 @onready var dash_particle: GPUParticles3D = $DashParticle
-@onready var lumiere_area: Area3D = $Aura/player/Armature/Skeleton3D/BoneAttachment3D/Sprite3D/Lumiere
 
 func _input(_event: InputEvent) -> void:
 	movInput.x = Input.get_axis("ui_left","ui_right")

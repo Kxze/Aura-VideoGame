@@ -1,6 +1,5 @@
 extends PlayerState
 
-var damage:int = 20
 
 #este apartado sobreescribe el estado que viene
 func enter(previous_state_path : String, data := {}):
@@ -9,7 +8,6 @@ func enter(previous_state_path : String, data := {}):
 func physics_update(delta: float):
 	if Input.is_action_pressed("Lumiere"):
 		player.animationPlayer.play("Lumiere")
-		player.lumiere_area.visible = true
 	else:
 		emit_signal("finished","Idle")
 	
@@ -22,17 +20,3 @@ func handled_input(_event: InputEvent):
 
 func exit():
 	pass
-
-
-func _on_lumiere_body_entered(body: Node3D) -> void:
-	if body is Cisne and Input.is_action_pressed("Lumiere") and player.can_lumiere:
-		body.health -= damage
-		print("HP del cisne:", body.health)
-		
-		if body.health <= 0:
-			print("Cambiando a cisne blanco")
-			body.isAgressive = false
-			body.isPassive = true
-			body.change_skins()
-			body.area_damage.monitoring = false
-			body.collision.set_deferred("disabled",true)

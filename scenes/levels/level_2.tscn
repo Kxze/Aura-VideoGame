@@ -292,11 +292,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 434.368, 47.1519, 0)
 platform_floor_layers = 4294967042
 Target = NodePath("../Player")
 
-[node name="Cascanueces6" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("14_r88tb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460.02435, 47.1519, 0)
-platform_floor_layers = 4294967042
-Target = NodePath("../Player")
-
 [node name="Cascanueces3" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("14_r88tb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 604.288, 47.1519, 0)
 platform_floor_layers = 4294967042

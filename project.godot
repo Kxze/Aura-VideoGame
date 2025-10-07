@@ -10,12 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Aura"
+config/name="AuraV1"
 run/main_scene="uid://dj3qt70udb1nl"
-config/features=PackedStringArray("4.5", "Forward Plus")
-boot_splash/image="uid://bcn8e5a4c6mxr"
-config/icon="uid://b8upr70867eor"
-boot_splash/minimum_display_time=3000
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
 
 [audio]
 
@@ -29,12 +27,12 @@ GlobalBrightnessWorldEnvironment="*res://scenes/Global_brightness_world_environm
 AudioManager="*res://script/AudioManager.gd"
 UiGlobal="*res://scenes/UI_Global.tscn"
 TransitionScreen="*res://scenes/transitions/transition_screen.tscn"
-GlobalBrightness="*res://script/Ajustes/GlobalBrightness.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [file_customization]
@@ -45,9 +43,6 @@ folder_colors={
 "res://Fonts/": "blue",
 "res://Shaders/": "orange",
 "res://Temas/": "gray",
-"res://Videos/": "pink",
-"res://dialogos/": "green",
-"res://musica/": "green",
 "res://scenes/": "yellow",
 "res://script/": "teal",
 "res://sonidos/": "green",
@@ -116,12 +111,9 @@ Lumiere={
 3d_physics/layer_1="player"
 3d_physics/layer_2="ground"
 3d_physics/layer_3="killzone"
-3d_physics/layer_4="enemies"
-3d_physics/layer_5="damage"
 
 [rendering]
 
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
-anti_aliasing/quality/msaa_3d=1
 occlusion_culling/use_occlusion_culling=true

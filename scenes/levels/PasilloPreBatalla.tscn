@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://5dok73vvktmu"]
+[gd_scene load_steps=5 format=3 uid="uid://5dok73vvktmu"]
 
+[ext_resource type="Script" uid="uid://doi7t0xa02wj3" path="res://scenes/levels/pasillo_pre_batalla.gd" id="1_eu3t2"]
 [ext_resource type="PackedScene" uid="uid://q07jx7owribv" path="res://Art/Levels/PruebaPasilloyaporfavor.blend" id="1_vel31"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_eu3t2"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_s3c16"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_eu3t2")
 
 [node name="PruebaPasilloyaporfavor" parent="." instance=ExtResource("1_vel31")]
 
@@ -30,7 +32,7 @@ collision_layer = 2
 collision_layer = 2
 
 [node name="Player" parent="." instance=ExtResource("2_eu3t2")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -100.553, -8.60515, -5.87465)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -100.553, 5.39485, -5.87465)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
@@ -41,14 +43,14 @@ spot_range = 13.139
 spot_angle = 69.14
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59400177, 1.1010001, 6.303001)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594002, 1.101, 6.303)
 keep_aspect = 0
 fov = 80.0
 far = 250.0
 script = ExtResource("3_s3c16")
-target = NodePath("..")
 follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 31.515)
+target = NodePath("..")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.777464, 0.628927, -1.3098e-09, -0.00812265, 0.010041, 0.999917, 0.628875, -0.7774, 0.0129151, 3.12045, 59.9323, -16.3653)
