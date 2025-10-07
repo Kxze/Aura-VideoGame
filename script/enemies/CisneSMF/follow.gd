@@ -6,8 +6,8 @@ func enter(previous_state_path : String, data := {}):
 
 #Esta funcion sobreescribe la funcion physics process
 func physics_update(delta: float):
-	pass
-
+	var CurrentLocation = cisne.global_transform.origin
+	var nextLocation = cisne.navAgent.get_next_path_position()
 #Esta funcion sobreescribe la funcion process
 func update(_delta:float):
 	pass

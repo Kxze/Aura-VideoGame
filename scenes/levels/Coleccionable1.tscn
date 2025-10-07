@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://s2spgog2tl1f"]
+[gd_scene load_steps=12 format=3 uid="uid://s2spgog2tl1f"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_akdnb"]
 [ext_resource type="Environment" uid="uid://cm6w1o8o4nilk" path="res://enviroment_level_2.tres" id="2_j8aoj"]
@@ -7,12 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="5_j8aoj"]
 [ext_resource type="LightmapGIData" uid="uid://6lmwh5w0d3yl" path="res://scenes/levels/bakes_lights/Coleccionable1.lmbake" id="6_ygpj1"]
 [ext_resource type="PackedScene" uid="uid://oebm7ciebtke" path="res://Shaders/particulas_colecionables_oso.tscn" id="7_727t2"]
+[ext_resource type="Script" uid="uid://1n63l0h85jbx" path="res://script/triggers/desaparecer_oso.gd" id="8_kyh10"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k1hd5"]
 size = Vector3(35, 3, 17)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_akdnb"]
 size = Vector3(0.001, 25, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hu0yc"]
+size = Vector3(17.963867, 12.217163, 13.374023)
 
 [node name="Node3D" type="Node3D"]
 
@@ -80,6 +84,16 @@ light_data = ExtResource("6_ygpj1")
 
 [node name="GPUParticles3D" parent="." instance=ExtResource("7_727t2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.764282, 17.41365, 0)
+
+[node name="Desaparecer_oso" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4159737, 16.982681, 0)
+script = ExtResource("8_kyh10")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Desaparecer_oso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.6085815, 0)
+shape = SubResource("BoxShape3D_hu0yc")
+
+[connection signal="body_entered" from="Desaparecer_oso" to="Desaparecer_oso" method="_on_body_entered"]
 
 [editable path="OSO_EspacioColeccionable"]
 [editable path="door_collect"]

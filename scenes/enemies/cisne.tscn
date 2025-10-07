@@ -111,6 +111,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 shape = SubResource("BoxShape3D_diio0")
 debug_color = Color(0.9322021, 0.63778704, 0, 0.41960785)
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
 [connection signal="body_entered" from="AlertZone" to="StateMachine/Idle" method="_on_alert_zone_body_entered"]
 [connection signal="body_exited" from="AlertZone" to="StateMachine/Follow" method="_on_alert_zone_body_exited"]
 
