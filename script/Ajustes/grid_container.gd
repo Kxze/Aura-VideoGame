@@ -4,6 +4,7 @@ extends GridContainer
 #para el modo de pantalla y resolución
 @onready var check_btn: CheckButton = $CheckModo
 @onready var option_res: OptionButton = $OptionRES
+@onready var popup_ajustes: Popup = $"../../.."
 
 #para el modo de pantalla y resolución
 var prev_selected: int = -1  # Guardará la opción previa
@@ -66,3 +67,8 @@ func _on_slider_sfx_value_changed(value: float) -> void:
 
 func _play_click():
 	return AudioManager.play_click(click_sound)
+
+func _on_btn_collect_pressed() -> void:
+	AudioManager.stop_music()
+	$"../../..".hide()
+	get_tree().change_scene_to_file("res://scenes/coleccionista.tscn")

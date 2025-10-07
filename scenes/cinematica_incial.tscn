@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://ces5ba1w7vi5h"]
+
+[ext_resource type="Script" uid="uid://d0msbkawqt1dt" path="res://script/cinematica_incial.gd" id="1_ud8nq"]
+[ext_resource type="Theme" uid="uid://dsdobfeg448w0" path="res://Temas/cinematica.tres" id="2_56ftm"]
+[ext_resource type="VideoStream" uid="uid://cnfp6wnt0nlsw" path="res://Videos/Cinematica-Inicial--OGV.ogv" id="2_jnmly"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ud8nq")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_jnmly")
+autoplay = true
+expand = true
+bus = &"Musica"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -552.0
+offset_top = -94.0
+offset_right = -66.0
+offset_bottom = -57.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_56ftm")
+text = "Presiona Espacio para saltar la cinemática"

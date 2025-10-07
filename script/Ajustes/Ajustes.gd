@@ -57,6 +57,7 @@ func _on_btn_inicio_pressed() -> void:
 	_play_click()
 	get_tree().paused = false  # por si estaba pausado
 	popup_ajustes.visible = false
+	AudioManager.stop_music()
 	get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
 
 func _on_btn_salir_pressed() -> void:
