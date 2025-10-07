@@ -1,18 +1,23 @@
 extends CisneState
 
-#este apartado sobreescribe el estado que viene
-func enter(previous_state_path : String, data := {}):
+@onready var ataque_sound = preload("res://sonidos/ataque.mp3")
+
+func enter(previous_state_path: String, data := {}):
+	# 🦢 Animación del ataque
 	cisne.animationCisneNegro.play("Ataque")
 
-#Esta funcion sobreescribe la funcion physics process
+	# 🔊 Reproducir sonido del ataque desde el AudioManager
+	if AudioManager and AudioManager.has_method("play_ataque"):
+		AudioManager.play_ataque(ataque_sound)
+	else:
+		print("⚠️ No se encontró AudioManager o método play_ataque().")
+
 func physics_update(delta: float):
 	pass
 
-#Esta funcion sobreescribe la funcion process
-func update(_delta:float):
+func update(_delta: float):
 	pass
 
-#Esta funcion sobreescribe la funcion Input
 func handled_input(_event: InputEvent):
 	pass
 
