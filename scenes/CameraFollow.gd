@@ -8,7 +8,7 @@ extends Camera3D
 
 func _ready():
 	var env = $".".environment
-	GlobalBrightness.registrar_environment(env)
+	#GlobalBrightness.registrar_environment(env)
 
 func _physics_process(delta: float) -> void:
 	if not target:
