@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://chlgn0fjbp0rk"]
+[gd_scene load_steps=12 format=3 uid="uid://chlgn0fjbp0rk"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_swe1j"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_u4hvp"]
@@ -19,6 +19,10 @@ sky = SubResource("Sky_cb1m8")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_u4hvp"]
+vertices = PackedVector3Array(-31.5, 0.45947266, -16.20706, -31.5, 0.45947266, 16.29294, 31.5, 0.45947266, 16.29294, 31.5, 0.45947266, -16.20706)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_fcsct"]
 size = Vector3(64, 0.08105469, 33)
 
@@ -33,15 +37,19 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_x1s4q")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_u4hvp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_fcsct")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(31.689182, 0, 0, 0, 1, 0, 0, 0, 16.70706, 0, 0, 0)
 mesh = SubResource("PlaneMesh_emyvv")
+skeleton = NodePath("../..")
 
 [node name="Player" parent="." instance=ExtResource("1_swe1j")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -28.506424, -0.15894413, 1.968)
@@ -61,4 +69,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.670311, 0, 0)
 [node name="unlock_lumiere" parent="." instance=ExtResource("5_cb1m8")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -26.248413, 0, 0)
 
-[node name="Cisne_negro" parent="." instance=ExtResource("6_cb1m8")]
+[node name="Cisne_negro" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("6_cb1m8")]
+Target = NodePath("../Player")

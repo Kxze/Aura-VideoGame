@@ -21,6 +21,8 @@ height = 7.1707764
 size = Vector3(16, 8, 1)
 
 [node name="Cisne_negro" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_7rci3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -98,6 +100,7 @@ script = ExtResource("6_6uxv3")
 script = ExtResource("7_nlunq")
 
 [node name="AreaDamage" type="Area3D" parent="."]
+collision_layer = 24
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaDamage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.558134, 0)
@@ -105,6 +108,7 @@ shape = SubResource("CapsuleShape3D_543op")
 debug_color = Color(0.9975118, 0, 0.1742886, 0.41960785)
 
 [node name="AlertZone" type="Area3D" parent="."]
+collision_layer = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AlertZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)

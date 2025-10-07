@@ -117,6 +117,7 @@ Lumiere={
 3d_physics/layer_2="ground"
 3d_physics/layer_3="killzone"
 3d_physics/layer_4="enemies"
+3d_physics/layer_5="damage"
 
 [rendering]
 
