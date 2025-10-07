@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://eaqpgmdxj44a"
-path="res://.godot/imported/daño.wav-09c78be31d19204eb7b9910a7805b504.sample"
+uid="uid://dfqfrmqe7228k"
+path="res://.godot/imported/Alex7-IA.wav-2f0672ba10f22271c042807ac26a66ff.sample"
 
 [deps]
 
-source_file="res://sonidos/daño.wav"
-dest_files=["res://.godot/imported/daño.wav-09c78be31d19204eb7b9910a7805b504.sample"]
+source_file="res://dialogos/Alex/Alex7-IA.wav"
+dest_files=["res://.godot/imported/Alex7-IA.wav-2f0672ba10f22271c042807ac26a66ff.sample"]
 
 [params]
 
