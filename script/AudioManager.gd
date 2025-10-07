@@ -33,6 +33,8 @@ var alex1_sonado := false  # ✅ evita repetir el primer diálogo de Alex
 var alex2_sonado := false  # ✅ evita repetir el segundo diálogo de Alex
 var alex3_sonado := false
 var alex7_sonado := false
+var alex_dialogos_sonados := {}  # 🔒 Guarda qué diálogos de Alex ya sonaron por ID
+
 
 # ---------------------------------------------------------
 #                   CONFIGURACIÓN INICIAL
@@ -80,95 +82,6 @@ func normalize_audio(stream: AudioStream) -> float:
 	var current_db := linear_to_db(max_sample)
 	var diff := target_volume_db - current_db
 	return clamp(diff, -12.0, +12.0)
-
-# ---------------------------------------------------------
-# 🎙️ DIÁLOGOS DE AURA 
-# ---------------------------------------------------------
-func play_dialogo_aura(stream: AudioStream) -> void:
-	if not stream:
-		push_warning("⚠️ No se encontró el audio del diálogo de Aura.")
-		return
-
-	if dialogo_en_progreso:
-		print("🕓 Esperando a que termine el diálogo anterior antes de reproducir Aura.")
-		await esperar_dialogo_anterior()
-
-	dialogo_en_progreso = true
-
-	# ✅ Si ya hay un diálogo en curso, no crear otro
-	if dialogo_player_actual:
-		dialogo_player_actual.stop()
-		dialogo_player_actual.queue_free()
-
-	dialogo_player_actual = AudioStreamPlayer.new()
-	dialogo_player_actual.name = "AuraDialogPlayer"
-	dialogo_player_actual.stream = stream
-	dialogo_player_actual.bus = "Dialogos"
-	dialogo_player_actual.volume_db = +6.0
-	add_child(dialogo_player_actual)
-	dialogo_player_actual.owner = null  # 👈 evita ser destruido al cambiar de escena
-
-	dialogo_player_actual.play()
-
-	dialogo_player_actual.finished.connect(func():
-		dialogo_en_progreso = false
-		dialogo_player_actual.queue_free()
-		dialogo_player_actual = null
-	)
-	print("🎧 Diálogo de Aura iniciado.")
-
-
-# ---------------------------------------------------------
-# 🎙️ DIÁLOGOS DE ALEX (PERSISTENTES ENTRE NIVELES)
-# ---------------------------------------------------------
-func play_dialogo_alex(stream: AudioStream) -> void:
-	if not stream:
-		push_warning("⚠️ No se encontró el audio del diálogo de Alex.")
-		return
-
-	# 🚫 Si ya fue reproducido, no repetir aunque se vuelva a cargar la escena
-	if alex1_sonado:
-		print("🔇 Diálogo de Alex ya fue reproducido.")
-		return
-
-	alex1_sonado = true  # 🔒 marcar reproducido
-
-	# Esperar si otro diálogo está activo
-	if dialogo_en_progreso:
-		print("🕓 Esperando a que termine el diálogo anterior antes de reproducir Alex.")
-		await esperar_dialogo_anterior()
-
-	dialogo_en_progreso = true
-
-	# ✅ Detener diálogo previo si existiera
-	if dialogo_player_actual:
-		dialogo_player_actual.stop()
-		dialogo_player_actual.queue_free()
-
-	dialogo_player_actual = AudioStreamPlayer.new()
-	dialogo_player_actual.name = "AlexDialogPlayer"
-	dialogo_player_actual.stream = stream
-	dialogo_player_actual.bus = "Dialogos"
-	dialogo_player_actual.volume_db = +8.0
-	add_child(dialogo_player_actual)
-	dialogo_player_actual.owner = null  # 👈 impide que se elimine al cambiar de escena
-
-	dialogo_player_actual.play()
-
-	dialogo_player_actual.finished.connect(func():
-		dialogo_en_progreso = false
-		dialogo_player_actual.queue_free()
-		dialogo_player_actual = null
-	)
-	print("🎧 Diálogo de Alex iniciado (persistente).")
-
-
-# ---------------------------------------------------------
-# 🕓 FUNCIÓN AUXILIAR
-# ---------------------------------------------------------
-func esperar_dialogo_anterior() -> void:
-	while dialogo_en_progreso:
-		await get_tree().process_frame
 
 
 # ---------------------------------------------------------
@@ -236,6 +149,96 @@ func play_sfx_persistente(sound: AudioStream) -> void:
 
 	await get_tree().create_timer(duracion).timeout
 	temp_player.queue_free()
+
+# ---------------------------------------------------------
+# 🎙️ DIÁLOGOS DE AURA 
+# ---------------------------------------------------------
+func play_dialogo_aura(stream: AudioStream) -> void:
+	if not stream:
+		push_warning("⚠️ No se encontró el audio del diálogo de Aura.")
+		return
+
+	if dialogo_en_progreso:
+		print("🕓 Esperando a que termine el diálogo anterior antes de reproducir Aura.")
+		await esperar_dialogo_anterior()
+
+	dialogo_en_progreso = true
+
+	# ✅ Si ya hay un diálogo en curso, no crear otro
+	if dialogo_player_actual:
+		dialogo_player_actual.stop()
+		dialogo_player_actual.queue_free()
+
+	dialogo_player_actual = AudioStreamPlayer.new()
+	dialogo_player_actual.name = "AuraDialogPlayer"
+	dialogo_player_actual.stream = stream
+	dialogo_player_actual.bus = "Dialogos"
+	dialogo_player_actual.volume_db = +6.0
+	add_child(dialogo_player_actual)
+	dialogo_player_actual.owner = null  # 👈 evita ser destruido al cambiar de escena
+
+	dialogo_player_actual.play()
+
+	dialogo_player_actual.finished.connect(func():
+		dialogo_en_progreso = false
+		dialogo_player_actual.queue_free()
+		dialogo_player_actual = null
+	)
+	print("🎧 Diálogo de Aura iniciado.")
+
+# ---------------------------------------------------------
+# 🎙️ DIÁLOGOS DE ALEX (PERSISTENTES ENTRE NIVELES)
+# ---------------------------------------------------------
+func play_dialogo_alex(stream: AudioStream, id: String = "") -> void:
+	if not stream:
+		push_warning("⚠️ No se encontró el audio del diálogo de Alex.")
+		return
+
+	# 🚫 Evitar repetir diálogos individuales (según ID)
+	if id != "" and alex_dialogos_sonados.has(id) and alex_dialogos_sonados[id]:
+		print("🔇 Diálogo de Alex '%s' ya fue reproducido." % id)
+		return
+
+	# 🔒 Marcar este diálogo como reproducido
+	if id != "":
+		alex_dialogos_sonados[id] = true
+
+	# ⏳ Esperar si otro diálogo está activo
+	if dialogo_en_progreso:
+		print("🕓 Esperando a que termine el diálogo anterior antes de reproducir Alex (%s)..." % id)
+		await esperar_dialogo_anterior()
+
+	dialogo_en_progreso = true
+
+	# ✅ Limpiar si existía otro diálogo viejo
+	if dialogo_player_actual:
+		dialogo_player_actual.stop()
+		dialogo_player_actual.queue_free()
+
+	dialogo_player_actual = AudioStreamPlayer.new()
+	dialogo_player_actual.name = "AlexDialogPlayer_%s" % id
+	dialogo_player_actual.stream = stream
+	dialogo_player_actual.bus = "Dialogos"
+	dialogo_player_actual.volume_db = +10.0  # 🎧 un poco más fuerte sobre la música
+	add_child(dialogo_player_actual)
+	dialogo_player_actual.owner = null  # 👈 evita que se destruya al cambiar de escena
+
+	dialogo_player_actual.play()
+
+	dialogo_player_actual.finished.connect(func():
+		dialogo_en_progreso = false
+		dialogo_player_actual.queue_free()
+		dialogo_player_actual = null
+	)
+	print("🎧 Diálogo de Alex (%s) iniciado." % id)
+
+
+# ---------------------------------------------------------
+# 🕓 FUNCIÓN AUXILIAR
+# ---------------------------------------------------------
+func esperar_dialogo_anterior() -> void:
+	while dialogo_en_progreso:
+		await get_tree().process_frame
 
 # ---------------------------------------------------------
 # 🎯 SONIDO DE DAÑO DEL JUGADOR

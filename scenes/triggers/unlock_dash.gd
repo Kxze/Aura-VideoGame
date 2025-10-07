@@ -1,8 +1,8 @@
 extends Area3D
 
 @onready var sonido_desbloquea = preload("res://sonidos/desbloquea.wav")
-@onready var notificacion_scene = preload("res://scenes/notificacionHabilidad.tscn")  # ⚡️ escena tipo CanvasLayer
-@onready var dialogo_alex7 = preload("res://dialogos/alex/Alex7-IA.mp3")  # 🎙️ diálogo al desbloquear el dash
+@onready var notificacion_scene = preload("res://scenes/notificacionHabilidad.tscn")  # 💬 escena tipo CanvasLayer
+@onready var dialogo_alex7 = preload("res://dialogos/Alex/Alex7-IA.wav")  # 🎙️ diálogo al desbloquear el dash
 
 
 func _on_body_entered(body: Node3D) -> void:
@@ -40,19 +40,17 @@ func _mostrar_notificacion() -> void:
 
 
 func _reproducir_dialogo_alex7() -> void:
-	# 🚫 No repetir si ya se escuchó
-	if AudioManager.alex7_sonado:
-		print("🔇 Diálogo Alex7 ya reproducido.")
+	# 🚫 Evita repetir si ya se escuchó (usando el nuevo sistema por ID)
+	if AudioManager.alex_dialogos_sonados.has("alex7") and AudioManager.alex_dialogos_sonados["alex7"]:
+		print("🔇 Diálogo Alex7 ya fue reproducido anteriormente.")
 		return
 
-	AudioManager.alex7_sonado = true  # ✅ marcar reproducido
-
-	# Esperar si hay otro diálogo activo (por ejemplo Alex3)
+	# 🕓 Espera si hay otro diálogo en curso
 	if AudioManager.dialogo_en_progreso:
 		print("🕓 Esperando a que termine el diálogo anterior antes de reproducir Alex7...")
 		await AudioManager.esperar_dialogo_anterior()
 
-	# 🎙️ Reproducir el diálogo de Alex7
+	# 🎙️ Reproduce el diálogo con ID único "alex7"
 	if AudioManager.has_method("play_dialogo_alex"):
-		AudioManager.play_dialogo_alex(dialogo_alex7)
-		print("🎧 Diálogo Alex7 iniciado.")
+		AudioManager.play_dialogo_alex(dialogo_alex7, "alex7")
+		print("🎧 Diálogo Alex7 iniciado correctamente.")
