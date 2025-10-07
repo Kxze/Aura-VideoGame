@@ -57,7 +57,8 @@ func _on_body_entered(body: Node3D) -> void:
 	# Cargar nueva escena
 	var tree = get_tree()
 	var current_scene = tree.get_current_scene()
-	var new_scene = load(scene_path).instantiate()
+	var new_scene = load(scene_path + ".tscn").instantiate()
+
 	tree.get_root().add_child(new_scene)
 	tree.set_current_scene(new_scene)
 
