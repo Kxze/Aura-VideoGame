@@ -304,7 +304,29 @@ func play_ataque(sound: AudioStream) -> void:
 	efectos_player.bus = "Efectos"
 	efectos_player.play()
 	
-	
+# ---------------------------------------------------------
+# 🕊️ SONIDO DE PASOS / MOVIMIENTO DEL CISNE BLANCO
+# ---------------------------------------------------------
+func play_paso_cisne(sound: AudioStream) -> void:
+	if sound == null:
+		return
+
+	# ⚡ Evita cortar el mismo sonido si se reproduce muy seguido
+	if efectos_player.playing and efectos_player.stream == sound:
+		return
+
+	# Asigna el sonido al reproductor principal de efectos
+	efectos_player.stream = sound
+	efectos_player.bus = "Efectos"
+
+	# 🎚️ Volumen más suave que un ataque, pero aún presente
+	efectos_player.volume_db = +2.0  
+
+	# 🕊️ Reproduce el sonido
+	efectos_player.play()
+
+	print("🎵 Sonido de paso del Cisne Blanco reproducido:", sound.resource_path)
+
 # ---------------------------------------------------------
 # 🎯 SONIDO DE MUERTE SKELETON
 # ---------------------------------------------------------

@@ -1,20 +1,12 @@
 extends CisneState
 
-#este apartado sobreescribe el estado que viene
-func enter(previous_state_path : String, data := {}):
+@onready var paso_sound = preload("res://sonidos/pasDeLumiere4.wav")
+
+func enter(previous_state_path: String, data := {}):
 	cisne.animationCisneBlanco.play("Caminar")
 
-#Esta funcion sobreescribe la funcion physics process
-func physics_update(delta: float):
-	pass
-
-#Esta funcion sobreescribe la funcion process
-func update(_delta:float):
-	pass
-
-#Esta funcion sobreescribe la funcion Input
-func handled_input(_event: InputEvent):
-	pass
-
-func exit():
-	pass
+	# 🔊 Sonido de pasos del Cisne Blanco
+	if AudioManager and AudioManager.has_method("play_paso_cisne"):
+		AudioManager.play_paso_cisne(paso_sound)
+	else:
+		print("⚠️ No se encontró AudioManager o método play_paso_cisne().")
