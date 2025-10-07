@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d30vdm7b5ol13"]
+[gd_scene load_steps=27 format=3 uid="uid://d30vdm7b5ol13"]
 
 [ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
 [ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
@@ -15,6 +15,9 @@
 [ext_resource type="Script" uid="uid://sm7vtmqcyw1j" path="res://script/light_dash.gd" id="11_ky4hv"]
 [ext_resource type="Script" uid="uid://duhvl1urrncli" path="res://script/dashAura.gd" id="12_nk4e2"]
 [ext_resource type="Texture2D" uid="uid://bxuyc3vwly1er" path="res://Art/textures/effect_dash.png" id="15_75g7i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_75g7i"]
+size = Vector3(8.469727, 4.9989204, 1)
 
 [sub_resource type="GDScript" id="GDScript_elcxt"]
 script/source = "extends Node3D
@@ -97,32 +100,38 @@ color_ghost = Color(0.750736, 0.478994, 1, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005226135, 0.008885384, -0.0014338493)
 
 [node name="Skeleton3D" parent="Aura/player/Armature" index="0"]
-bones/1/position = Vector3(0.26583734, -0.007055895, -9.480158e-10)
-bones/1/rotation = Quaternion(0.7013939, 0.08970393, 0.70139366, -0.08970396)
-bones/2/rotation = Quaternion(-0.59012085, 4.51065e-08, 1.8931803e-07, 0.80731493)
-bones/3/rotation = Quaternion(0.66924393, 1.6357566e-08, -1.892519e-07, 0.74304277)
-bones/4/position = Vector3(-0.4056311, 0.3227112, 3.4474255e-08)
-bones/4/rotation = Quaternion(0.70668095, -0.024542492, 0.7066806, 0.024542384)
-bones/4/scale = Vector3(1.0631775, 1.0631778, 1.0631778)
-bones/5/rotation = Quaternion(-0.5465798, 1.5179413e-07, 1.0354203e-07, 0.8374071)
-bones/6/rotation = Quaternion(0.66924393, -7.3104644e-08, -1.08675046e-07, 0.74304277)
-bones/7/rotation = Quaternion(0, 0, 0, 1)
-bones/8/position = Vector3(-0.0068006143, 3.419489, 9.3242033e-07)
-bones/8/rotation = Quaternion(0, 1.1920929e-07, 0, 1)
-bones/9/position = Vector3(0.5445832, 2.5882826, 7.61551e-07)
-bones/9/rotation = Quaternion(3.6250356e-07, -2.7917014e-07, 0.9188136, 0.3946917)
-bones/10/rotation = Quaternion(8.659509e-08, -1.282704e-07, 0.02121394, 0.999775)
-bones/11/rotation = Quaternion(5.031771e-09, 7.129312e-08, 0.005179259, 0.9999866)
-bones/12/position = Vector3(-0.5431813, 2.6816127, 7.7409084e-07)
-bones/12/rotation = Quaternion(3.6503948e-07, -2.8830843e-07, 0.9102956, 0.41395882)
-bones/13/rotation = Quaternion(6.58701e-08, 5.569064e-07, -0.00533037, 0.9999858)
-bones/14/rotation = Quaternion(1.4851493e-09, -2.1297353e-07, -0.015141294, 0.9998854)
+bones/1/position = Vector3(0.26583698, -0.0070554065, -9.479499e-10)
+bones/1/rotation = Quaternion(0.7023306, 0.0820487, 0.70233023, -0.08204875)
+bones/2/rotation = Quaternion(-0.13462853, 9.478396e-08, -1.0912817e-08, 0.9908962)
+bones/3/rotation = Quaternion(0.7149439, 2.2438815e-08, -2.0694829e-07, 0.69918185)
+bones/4/position = Vector3(-0.4056313, 0.32271147, 3.4474294e-08)
+bones/4/rotation = Quaternion(0.7058545, 0.04206795, 0.7058541, -0.042068023)
+bones/4/scale = Vector3(1.0631775, 1.0631776, 1.0631776)
+bones/5/rotation = Quaternion(-0.1279949, 2.1473203e-07, -2.9117842e-08, 0.99177486)
+bones/6/rotation = Quaternion(0.69120204, -6.818683e-08, -1.1500819e-07, 0.7226616)
+bones/7/rotation = Quaternion(-1.3890755e-17, 5.8042864e-09, -0.04319988, 0.9990665)
+bones/8/position = Vector3(-0.0068005994, 3.4194894, 9.3242033e-07)
+bones/8/rotation = Quaternion(-2.27723e-09, 1.1662092e-07, 0.01910279, 0.99981755)
+bones/9/position = Vector3(0.5445827, 2.5882826, 7.6155106e-07)
+bones/9/rotation = Quaternion(2.4691022e-07, 2.236367e-07, 0.62582576, -0.77996296)
+bones/10/rotation = Quaternion(9.7771064e-08, -1.2904934e-07, 0.033440005, 0.9994408)
+bones/11/rotation = Quaternion(-6.137627e-08, 7.1151796e-08, -0.06317535, 0.99800247)
+bones/12/position = Vector3(-0.54318136, 2.6816125, 7.7409067e-07)
+bones/12/rotation = Quaternion(3.9968262e-07, -1.6654253e-07, 0.9966843, 0.0813665)
+bones/13/rotation = Quaternion(5.793528e-08, 5.5868253e-07, -0.037467383, 0.9992979)
+bones/14/rotation = Quaternion(1.485154e-09, -2.1297353e-07, -0.015141287, 0.9998854)
 
 [node name="BoneAttachment3D" parent="Aura/player/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.72574735, -0.6879605, 6.53339e-07, 0.6879595, -0.72574824, -7.5368e-07, 9.926607e-07, -9.751045e-08, 1, -1.3817592, 1.6743182, 3.359243e-07)
+transform = Transform3D(0.07238421, 0.99737686, -6.5161515e-08, -0.9973756, 0.07238444, 7.635078e-07, 7.662211e-07, 9.724587e-09, 1, 3.4423666, 3.985536, 6.46454e-07)
 
 [node name="Sprite3D" parent="Aura/player/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 visible = false
+
+[node name="Lumiere" type="Area3D" parent="Aura/player/Armature/Skeleton3D/BoneAttachment3D/Sprite3D" index="0"]
+
+[node name="AreaLumiere" type="CollisionShape3D" parent="Aura/player/Armature/Skeleton3D/BoneAttachment3D/Sprite3D/Lumiere"]
+transform = Transform3D(0.9908328, 0.13511029, 5.71157e-09, -0.13511044, 0.990833, 1.0361359e-07, 8.3389295e-09, -1.0342496e-07, 1, 2.5269542, -0.71789074, 7.450581e-09)
+shape = SubResource("BoxShape3D_75g7i")
 
 [node name="OmniLight3D2" parent="Aura/player/Armature/Skeleton3D/BoneAttachment3D" index="1"]
 visible = false
@@ -208,6 +217,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_rs72w")
 draw_pass_1 = SubResource("PlaneMesh_2gyp5")
 
+[connection signal="body_entered" from="Aura/player/Armature/Skeleton3D/BoneAttachment3D/Sprite3D/Lumiere" to="StateMachine/Lumiere" method="_on_lumiere_body_entered"]
 [connection signal="animation_finished" from="Aura/player/AnimationPlayer" to="StateMachine/Dead" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="StateMachine/InAir/FallTimer" to="StateMachine/InAir" method="_on_fall_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]

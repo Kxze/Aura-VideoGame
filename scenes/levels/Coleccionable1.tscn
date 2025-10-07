@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://s2spgog2tl1f"]
+[gd_scene load_steps=9 format=3 uid="uid://s2spgog2tl1f"]
 
-[ext_resource type="PackedScene" uid="uid://dgowd5racmix" path="res://Art/Levels/OSOAHORASIColeccionable.blend" id="1_k1hd5"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_akdnb"]
+[ext_resource type="Environment" uid="uid://cm6w1o8o4nilk" path="res://enviroment_level_2.tres" id="2_j8aoj"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_j8aoj"]
+[ext_resource type="PackedScene" uid="uid://8nvqy1n3mstq" path="res://Art/Levels/OSO_EspacioColeccionable.blend" id="3_k1hd5"]
+[ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="5_j8aoj"]
+[ext_resource type="LightmapGIData" uid="uid://6lmwh5w0d3yl" path="res://scenes/levels/bakes_lights/Coleccionable1.lmbake" id="6_ygpj1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k1hd5"]
 size = Vector3(35, 3, 17)
@@ -12,69 +15,19 @@ size = Vector3(0.001, 25, 12)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="OSOAHORASIColeccionable" parent="." instance=ExtResource("1_k1hd5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.5537, 0)
-
-[node name="StaticBody3D" parent="OSOAHORASIColeccionable/Piso_001" index="0"]
-collision_layer = 2
-
-[node name="Piso" parent="OSOAHORASIColeccionable" index="4"]
-transform = Transform3D(89.7975, 0, 0, 0, 0.128051, 0, 0, 0, 55.5755, -38.8036, 15.9152, -24.339)
-
-[node name="StaticBody3D" parent="OSOAHORASIColeccionable/Piso" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="OSOAHORASIColeccionable/Marco_001" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="OSOAHORASIColeccionable/BaseFoto" index="0"]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="OSOAHORASIColeccionable/OSOPELUCHE" index="0"]
-collision_layer = 2
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 2.71516, 53.3575, 0.712004)
-light_color = Color(0.806528, 0.781017, 0.399805, 1)
-light_energy = 0.029
-light_indirect_energy = 0.838
-spot_range = 51.9395
-spot_attenuation = -1.92
-spot_angle = 25.95
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.611513, 0, 0.791234, 0, 1, 0, -0.791234, 0, 0.611513, 0, 0, 0)
 light_color = Color(0.703248, 0.423328, 0.42908, 1)
 light_energy = 2.131
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.8939, 29, -11.0344)
-light_color = Color(0.880837, 0.58096, 0.318566, 1)
-light_energy = 4.071
-omni_range = 5.915
-omni_attenuation = -0.863
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9609, 27.7098, -12.457)
-light_color = Color(0.880837, 0.58096, 0.318566, 1)
-light_energy = 4.071
-omni_range = 5.915
-omni_attenuation = -0.863
+light_bake_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_akdnb")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -56.1499, 4.7978, -5.87465)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
-light_color = Color(1, 0.969167, 0.63, 1)
-light_energy = 3.0
-light_specular = 0.0
-spot_range = 13.139
-spot_angle = 69.14
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -58.858326, 16.97294, -5.87465)
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 8.84756e-09, 0, 0.2, 0, -8.84756e-09, 0, 0.2, 0.594002, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 8.84756e-09, 0, 0.2, 0, -8.84756e-09, 0, 0.2, 0.5940008, 1.1009996, 6.303001)
 keep_aspect = 0
+environment = ExtResource("2_j8aoj")
 fov = 80.0
 far = 250.0
 script = ExtResource("3_j8aoj")
@@ -96,22 +49,33 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.957, 12, -1.5)
 shape = SubResource("BoxShape3D_akdnb")
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 7, 9.51918, 3)
+[node name="OSO_EspacioColeccionable" parent="." instance=ExtResource("3_k1hd5")]
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.258819, 2.87868e-08, -0.965926, 0, 1, 2.98023e-08, 0.965926, 7.71341e-09, -0.258819, -68.369, 11, -8)
-light_color = Color(0.639613, 0.470585, 0.732757, 1)
-light_energy = 1.646
-spot_range = 99.0
-spot_attenuation = -0.21
-spot_angle = 45.7557
+[node name="StaticBody3D" parent="OSO_EspacioColeccionable/Piso_001" index="0"]
+collision_layer = 2
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.4212, 20.1041, -1.93469)
-light_color = Color(0.68805, 0.40925, 0.902068, 1)
-light_energy = 1.97
-omni_range = 17.759
-omni_attenuation = -0.143
+[node name="StaticBody3D" parent="OSO_EspacioColeccionable/Piso" index="0"]
+collision_layer = 2
 
-[editable path="OSOAHORASIColeccionable"]
+[node name="StaticBody3D" parent="OSO_EspacioColeccionable/Marco_001" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="OSO_EspacioColeccionable/BaseFoto" index="0"]
+collision_layer = 2
+
+[node name="StaticBody3D" parent="OSO_EspacioColeccionable/OSOPELUCHE" index="0"]
+collision_layer = 2
+
+[node name="door_collect" parent="." instance=ExtResource("5_j8aoj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -55.62365, 16, 0)
+
+[node name="Portal_to_collect" parent="door_collect" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5472717, 0, 1.3526687e-07)
+prev_level_path = "res://scenes/levels/level_3_back_collectable.tscn"
+is_next = false
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("6_ygpj1")
+
+[editable path="OSO_EspacioColeccionable"]
+[editable path="door_collect"]

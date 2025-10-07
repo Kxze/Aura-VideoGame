@@ -1,11 +1,4 @@
-[gd_resource type="Environment" load_steps=5 format=3 uid="uid://crl6agjc1cr61"]
-
-[sub_resource type="Gradient" id="Gradient_c8f5m"]
-offsets = PackedFloat32Array(0, 0.75536484, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.7188841, 0.7188841, 0.7188841, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cuue3"]
-gradient = SubResource("Gradient_c8f5m")
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://crl6agjc1cr61"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l37oo"]
 sky_horizon_color = Color(0.41913, 0.785593, 0.87841, 1)
@@ -46,7 +39,6 @@ volumetric_fog_albedo = Color(0.9999997, 0.9150477, 0.30247033, 1)
 volumetric_fog_emission = Color(0.0491068, 0.10089, 0.122074, 1)
 volumetric_fog_length = 31.66
 adjustment_enabled = true
-adjustment_brightness = 1.23
-adjustment_contrast = 0.89
+adjustment_brightness = 1.2
+adjustment_contrast = 0.95
 adjustment_saturation = 1.42
-adjustment_color_correction = SubResource("GradientTexture1D_cuue3")

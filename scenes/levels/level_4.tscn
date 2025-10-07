@@ -237,7 +237,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 394.3929, -88, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 405.405, -89, 0)
 
 [node name="Portal_to_collect" parent="door_collect" index="1"]
-next_level_path = "res://scenes/levels/level_collec_2.tscn"
+next_level_path = "res://scenes/levels/Coleccionable2.tscn"
 
 [editable path="Blocking4"]
 [editable path="back_level"]

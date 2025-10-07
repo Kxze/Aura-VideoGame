@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="AuraV1"
+config/name="Aura"
 run/main_scene="uid://dj3qt70udb1nl"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="uid://bcn8e5a4c6mxr"
+config/icon="uid://b8upr70867eor"
+boot_splash/minimum_display_time=3000
 
 [audio]
 
@@ -111,9 +113,11 @@ Lumiere={
 3d_physics/layer_1="player"
 3d_physics/layer_2="ground"
 3d_physics/layer_3="killzone"
+3d_physics/layer_4="enemies"
 
 [rendering]
 
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
+anti_aliasing/quality/msaa_3d=1
 occlusion_culling/use_occlusion_culling=true

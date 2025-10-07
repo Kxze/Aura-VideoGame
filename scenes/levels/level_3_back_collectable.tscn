@@ -109,7 +109,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.716
 
 [node name="Portal_to_collect" parent="door_collect" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.106903, 0, 9.34574e-09)
-next_level_path = "res://scenes/levels/level_collec_1.tscn"
+next_level_path = "res://scenes/levels/Coleccionable1.tscn"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(16.1177, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 44.8191, 55.3683, -7.82023)

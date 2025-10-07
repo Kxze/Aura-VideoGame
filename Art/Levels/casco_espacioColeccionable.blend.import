@@ -15,9 +15,11 @@ dest_files=["res://.godot/imported/casco_espacioColeccionable.blend-9df0515d63a1
 
 nodes/root_type=""
 nodes/root_name=""
+nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,7 +34,184 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"meshes": {
+"casco_espacioColeccionable_Cubo": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Cubo_001": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Malla_008": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Malla_009": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Malla_011": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Malla_012": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Malla_013": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Mesh_001": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Mesh_002": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Mesh_003": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Plano": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Plano_001": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Vacío": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Vacío_001": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Vacío_002": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Vacío_003": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Vacío_004": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Vacío_005": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"casco_espacioColeccionable_Vacío_007": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
@@ -51,3 +230,4 @@ blender/materials/export_materials=1
 blender/animation/limit_playback=true
 blender/animation/always_sample=true
 blender/animation/group_tracks=true
+gltf/naming_version=0

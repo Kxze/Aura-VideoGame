@@ -16,6 +16,7 @@ var buffered_jump: bool = false
 ]
 
 func enter(previous_state_path: String, data := {}):
+	player.lumiere_area.visible = false
 	isJumping = false
 	player.invencible = false
 	# Saltar solo si viene de comando Jump

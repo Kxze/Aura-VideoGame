@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://chlgn0fjbp0rk"]
+
+[ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_swe1j"]
+[ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_u4hvp"]
+[ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="4_u4hvp"]
+[ext_resource type="PackedScene" uid="uid://dwn7fewbx87ob" path="res://scenes/triggers/unlock_lumiere_noEffects.tscn" id="5_cb1m8"]
+[ext_resource type="PackedScene" uid="uid://bnoyn8qc3q0ot" path="res://scenes/enemies/cisne.tscn" id="6_cb1m8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4hvp"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_cb1m8"]
+sky_material = SubResource("ProceduralSkyMaterial_u4hvp")
+
+[sub_resource type="Environment" id="Environment_x1s4q"]
+background_mode = 2
+sky = SubResource("Sky_cb1m8")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fcsct"]
+size = Vector3(64, 0.08105469, 33)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_emyvv"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9921628, 0.108211935, -0.062476218, 2.7805948e-08, 0.5, 0.86602557, 0.124952435, -0.85923827, 0.49608138, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x1s4q")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_fcsct")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(31.689182, 0, 0, 0, 1, 0, 0, 0, 16.70706, 0, 0, 0)
+mesh = SubResource("PlaneMesh_emyvv")
+
+[node name="Player" parent="." instance=ExtResource("1_swe1j")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -28.506424, -0.15894413, 1.968)
+
+[node name="Camera3D2" type="Camera3D" parent="Player"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
+keep_aspect = 0
+fov = 80.0
+far = 250.0
+script = ExtResource("3_u4hvp")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
+[node name="Area3D" parent="." instance=ExtResource("4_u4hvp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.670311, 0, 0)
+
+[node name="unlock_lumiere" parent="." instance=ExtResource("5_cb1m8")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -26.248413, 0, 0)
+
+[node name="Cisne_negro" parent="." instance=ExtResource("6_cb1m8")]
