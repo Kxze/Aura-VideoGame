@@ -1,6 +1,7 @@
 extends Area3D
 
 @onready var sonido_desbloquea = preload("res://sonidos/desbloquea.wav")
+@onready var notificacion_scene = preload("res://scenes/notificacionHabilidad.tscn")  # ⚡️ tu nueva escena con CanvasLayer
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.name != "Player":
@@ -15,10 +16,19 @@ func _on_body_entered(body: Node3D) -> void:
 	body.can_dash = true
 	AudioManager.dash_desbloqueado = true
 	
-# 🔊 Reproduce desde el AudioManager global (persistente)
+	# 🔊 Reproduce desde el AudioManager global (persistente)
 	AudioManager.play_sfx_persistente(sonido_desbloquea)
 	
 	# 🚫 Desactiva el área (ya no vuelve a sonar)
 	monitoring = false
 	collision_layer = 0
 	collision_mask = 0
+
+	# 💬 Muestra la notificación de habilidad desbloqueada
+	_mostrar_notificacion()
+
+
+func _mostrar_notificacion() -> void:
+	var notif = notificacion_scene.instantiate()
+	get_tree().root.add_child(notif)  # CanvasLayer → se renderiza sobre el 3D
+	notif.visible = true

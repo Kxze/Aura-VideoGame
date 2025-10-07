@@ -21,6 +21,12 @@ var casco_sonado := false  # 🔔 evita que el sonido del coleccionable se repit
 var oso_sonado := false  
 var pluma_sonada := false     # 🪶 evita que el sonido de la pluma se repita
 
+# --- Coleccionables obtenidos (persisten mientras dure la partida) ---
+var casco_obtenido := false
+var oso_obtenido := false
+var pluma_obtenida := false
+
+
 # ---------------------------------------------------------
 #                   CONFIGURACIÓN INICIAL
 # ---------------------------------------------------------
