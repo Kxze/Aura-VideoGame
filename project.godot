@@ -45,6 +45,7 @@ folder_colors={
 "res://Fonts/": "blue",
 "res://Shaders/": "orange",
 "res://Temas/": "gray",
+"res://Videos/": "pink",
 "res://scenes/": "yellow",
 "res://script/": "teal",
 "res://sonidos/": "green",

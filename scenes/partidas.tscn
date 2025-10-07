@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbyrqhvi8yau6"]
+[gd_scene load_steps=10 format=3 uid="uid://cbyrqhvi8yau6"]
 
 [ext_resource type="Texture2D" uid="uid://daxcp3lrk7c2a" path="res://Fondos/PortadaMainMenu.png" id="1_o181q"]
+[ext_resource type="Texture2D" uid="uid://dwwu2nsdnw0kl" path="res://textures/CréditosHypnea.png" id="2_be5aq"]
 [ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="3_7e146"]
 [ext_resource type="Script" uid="uid://dgs0vwwxecw2d" path="res://scenes/v_box_container.gd" id="3_pdbwt"]
 [ext_resource type="Texture2D" uid="uid://iu6jutuwau5c" path="res://textures/Starr.svg" id="6_f8x1d"]
+[ext_resource type="Theme" uid="uid://dsdobfeg448w0" path="res://Temas/cinematica.tres" id="6_pdbwt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oe5yk"]
 texture = ExtResource("1_o181q")
@@ -29,7 +31,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_oe5yk")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 184.00002
+offset_top = 77.00001
+offset_right = 2104.0
+offset_bottom = 1157.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_be5aq")
+
 [node name="Titulo" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,14 +49,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -429.0
-offset_top = -236.0
+offset_top = -402.0
 offset_right = 429.0
-offset_bottom = -83.0
+offset_bottom = -249.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0.69803923, 1)
 theme_override_fonts/font = ExtResource("3_7e146")
 theme_override_font_sizes/font_size = 100
-text = "Seleccionar partida"
+text = "Créditos"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -53,16 +67,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -296.5
-offset_top = -616.5
-offset_right = 296.5
-offset_bottom = -241.5
+offset_left = -278.0
+offset_top = -126.0
+offset_right = 264.0
+offset_bottom = -47.499756
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 10
 script = ExtResource("3_pdbwt")
 
 [node name="Button" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -106,6 +121,7 @@ expand_mode = 3
 stretch_mode = 3
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -148,6 +164,7 @@ expand_mode = 3
 stretch_mode = 3
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -192,6 +209,7 @@ stretch_mode = 3
 [node name="regresar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("6_pdbwt")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
 theme_override_colors/font_pressed_color = Color(0.99607843, 0.79607844, 0.44705883, 1)
@@ -209,9 +227,9 @@ flat = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/regresar"]
 layout_mode = 0
-offset_left = 133.50003
+offset_left = 73.000046
 offset_top = 16.499979
-offset_right = 5649.5
+offset_right = 6639.666
 offset_bottom = 995.167
 scale = Vector2(0.06, 0.06)
 theme_override_constants/separation = 3500
