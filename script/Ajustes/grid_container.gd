@@ -69,6 +69,5 @@ func _play_click():
 	return AudioManager.play_click(click_sound)
 
 func _on_btn_collect_pressed() -> void:
-	AudioManager.stop_music()
 	$"../../..".hide()
 	get_tree().change_scene_to_file("res://scenes/coleccionista.tscn")

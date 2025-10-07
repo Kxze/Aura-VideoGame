@@ -4,7 +4,7 @@ extends Control
 
 func _ready():
 	# Cargar y reproducir el video
-	video.stream = preload("res://Videos/Cinematica-Inicial--OGV.ogv")
+	video.stream = preload("res://Videos/Cinemática-Inicial.ogv")
 	video.play()
 
 	# Conectar señal al terminar
