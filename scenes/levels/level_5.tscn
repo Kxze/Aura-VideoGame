@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2yu70n2vogoj"]
+[gd_scene load_steps=12 format=3 uid="uid://d2yu70n2vogoj"]
 
 [ext_resource type="PackedScene" uid="uid://dnms5rm70a8ir" path="res://Art/Levels/Blocking_level5.blend" id="1_845dy"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_dswqx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Environment" uid="uid://crl6agjc1cr61" path="res://scenes/levels/enviroment_lago.tres" id="3_fi56y"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="4_laj7o"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="6_hldbq"]
+[ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="7_fsnos"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_laj7o"]
 height = 11.0
@@ -16,6 +17,9 @@ size = Vector3(5.15723, 33.0505, 50.4619)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fi56y"]
 size = Vector3(12.1303, 4.41321, 7.55322)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mxx4w"]
+size = Vector3(1, 23.620972, 25.140625)
 
 [node name="Level5" type="Node3D"]
 
@@ -247,5 +251,17 @@ spot_angle = 47.2738
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.492355, 6.993288, 0)
 next_level_path = "res://scenes/levels/PasilloPreBatalla.tscn"
 
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -358.36703, 4, -7.7475166)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8361206, 11.310486, 0)
+shape = SubResource("BoxShape3D_mxx4w")
+
+[node name="Area3D" parent="." instance=ExtResource("7_fsnos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -354.83676, 0, 0)
+
 [editable path="Blocking_level5"]
 [editable path="KillZone"]
+[editable path="Area3D"]

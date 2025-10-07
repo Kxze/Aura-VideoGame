@@ -1,13 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://04e1pbmtvhtd"]
+[gd_scene load_steps=11 format=3 uid="uid://04e1pbmtvhtd"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_ctirw"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_nnueb"]
 [ext_resource type="PackedScene" uid="uid://c7ls7aiko36ni" path="res://Art/Levels/casco_espacioColeccionable.blend" id="3_tv8sy"]
 [ext_resource type="LightmapGIData" uid="uid://0lfh8og5poga" path="res://scenes/levels/bakes_lights/Coleccionable2.lmbake" id="4_ctirw"]
+[ext_resource type="Script" uid="uid://bej2g6frpuv0k" path="res://script/triggers/desaparecer_colecionable.gd" id="4_fk3at"]
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="5_nnueb"]
+[ext_resource type="PackedScene" uid="uid://oebm7ciebtke" path="res://Shaders/particulas_colecionables_oso.tscn" id="7_fk3at"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_er62o"]
 size = Vector3(1, 37.5034, 40.328)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5c0uv"]
+size = Vector3(17.18747, 21.552368, 11.924805)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nnueb"]
+size = Vector3(5.451416, 33.82704, 18.427734)
 
 [node name="Node3D" type="Node3D"]
 
@@ -52,6 +60,14 @@ collision_layer = 2
 [node name="StaticBody3D" parent="casco_espacioColeccionable/Soporte_del_casco" index="0"]
 collision_layer = 2
 
+[node name="DesaparecerColecionable" type="Area3D" parent="casco_espacioColeccionable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.2, 0)
+script = ExtResource("4_fk3at")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="casco_espacioColeccionable/DesaparecerColecionable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.090927124, 10.276184, 0)
+shape = SubResource("BoxShape3D_5c0uv")
+
 [node name="LightmapGI" type="LightmapGI" parent="."]
 light_data = ExtResource("4_ctirw")
 
@@ -61,6 +77,18 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -57.
 [node name="Portal_to_collect" parent="door_collect" index="1"]
 prev_level_path = "res://scenes/levels/level_4_back.tscn"
 is_next = false
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.26781, 17.066956, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.41352, 0)
+shape = SubResource("BoxShape3D_nnueb")
+
+[node name="GPUParticles3D" parent="." instance=ExtResource("7_fk3at")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35145, 28.523556, 0)
+
+[connection signal="body_entered" from="casco_espacioColeccionable/DesaparecerColecionable" to="casco_espacioColeccionable/DesaparecerColecionable" method="_on_body_entered"]
 
 [editable path="casco_espacioColeccionable"]
 [editable path="door_collect"]

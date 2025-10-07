@@ -139,6 +139,10 @@ visible = false
 [node name="AnimationPlayer" parent="Aura/player" index="1"]
 blend_times = [&"Dash", &"Dead", 0.2, &"Dash", &"Fall", 0.1, &"Dash", &"Jump", 0.2, &"Dash", &"idle", 0.2, &"Fall", &"Dash", 0.5, &"Fall", &"Dead", 0.2, &"Fall", &"Fall", 0.1, &"Fall", &"Jump", 0.5, &"Fall", &"Land", 0.5, &"Fall", &"Run", 0.5, &"Fall", &"Walk", 0.5, &"Fall", &"idle", 0.2, &"Jump", &"Dash", 0.2, &"Jump", &"Dead", 0.2, &"Jump", &"Fall", 0.5, &"Jump", &"idle", 0.2, &"Land", &"idle", 0.5, &"Lumiere", &"Dead", 0.2, &"Lumiere", &"Run", 1.0, &"Lumiere", &"Walk", 1.0, &"Lumiere", &"idle", 1.0, &"Run", &"Dead", 0.2, &"Run", &"Fall", 0.2, &"Run", &"Jump", 0.5, &"Run", &"Lumiere", 1.0, &"Run", &"Run", 1.0, &"Run", &"Walk", 1.0, &"Run", &"idle", 0.5, &"Walk", &"Dead", 0.2, &"Walk", &"Fall", 0.2, &"Walk", &"Jump", 0.5, &"Walk", &"Lumiere", 1.0, &"Walk", &"Run", 1.0, &"Walk", &"Walk", 0.5, &"Walk", &"idle", 1.0, &"idle", &"Dead", 0.2, &"idle", &"Jump", 0.5, &"idle", &"Lumiere", 1.0, &"idle", &"Walk", 0.5]
 
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="Aura"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069913864, 0.97802377, -0.23173583)
+radius = 0.42283204
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_gyu2u")
 initial_state = NodePath("Idle")

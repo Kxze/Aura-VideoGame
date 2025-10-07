@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bvhb32tqovgl5"]
 
 [ext_resource type="Shader" uid="uid://cm5axrjeqr7x" path="res://scenes/triggers/ataque_julieta_particulas.gdshader" id="1_8iefn"]
-[ext_resource type="Texture2D" uid="uid://cmlwkofgu3ipj" path="res://Art/Model3D/JULIETA/Ilustración_sin_título-1.png" id="2_kim2q"]
+[ext_resource type="Texture2D" uid="uid://c1mbjtilqk416" path="res://Art/Model3D/JULIETA/Ilustración_sin_título-1.png" id="2_kim2q"]
 
 [sub_resource type="Curve" id="Curve_kim2q"]
 _data = [Vector2(0.0220588, 0), 0.0, 0.0, 0, 0, Vector2(0.433824, 0.539326), -2.06499, -2.06499, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -70,3 +70,4 @@ process_material = SubResource("ParticleProcessMaterial_k4wmo")
 draw_passes = 2
 draw_pass_1 = SubResource("TorusMesh_7nu5x")
 draw_pass_2 = SubResource("PlaneMesh_up4yo")
+metadata/_edit_lock_ = true

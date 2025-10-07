@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwflfriq1ie7l"]
+
+[ext_resource type="Texture2D" uid="uid://bxuyc3vwly1er" path="res://Art/textures/effect_dash.png" id="1_r68gg"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bdnhe"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 3.06
+angle_min = 1.0728835e-05
+angle_max = 187.80002
+gravity = Vector3(0, 10, 0)
+scale_min = 0.19999999
+turbulence_enabled = true
+turbulence_influence_min = 0.007
+
+[sub_resource type="Gradient" id="Gradient_dtqss"]
+offsets = PackedFloat32Array(0, 0.5336323, 1)
+colors = PackedColorArray(0, 0.3324999, 0.95, 0.1764706, 0, 0.5066666, 0.95, 1, 0.7622265, 0.343935, 0.66978896, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c6le5"]
+gradient = SubResource("Gradient_dtqss")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6le5"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+blend_mode = 1
+cull_mode = 2
+depth_draw_mode = 1
+albedo_color = Color(0.35950282, 0.4549868, 1, 1)
+albedo_texture = ExtResource("1_r68gg")
+emission_enabled = true
+emission = Color(0.99999994, 0.020313295, 0.46213663, 1)
+emission_energy_multiplier = 3.82
+emission_texture = SubResource("GradientTexture1D_c6le5")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_twman"]
+material = SubResource("StandardMaterial3D_c6le5")
+size = Vector2(1, 1)
+orientation = 2
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+cast_shadow = 0
+amount = 200
+lifetime = 5.0
+preprocess = 1.0
+speed_scale = 1.48
+explosiveness = 0.32
+randomness = 0.8
+process_material = SubResource("ParticleProcessMaterial_bdnhe")
+draw_pass_1 = SubResource("PlaneMesh_twman")
+
+[node name="GPUParticlesAttractorBox3D" type="GPUParticlesAttractorBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.63092, 8.808075, 0)
+strength = 58.3
+size = Vector3(65.56653, 19.61615, 2)
