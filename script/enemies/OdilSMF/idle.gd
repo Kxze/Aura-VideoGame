@@ -6,7 +6,7 @@ func enter(previous_state_path : String, data := {}):
 func physics_update(delta: float):
 	if odil.isMoving:
 		emit_signal("finished","Spin")
-	if odil.health < 3 and odil.isHurt:
+	if odil.isHurt:
 		odil.isMoving = false
 		emit_signal("finished","Angry")
 		

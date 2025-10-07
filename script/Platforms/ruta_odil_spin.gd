@@ -4,5 +4,4 @@ extends PathFollow3D
 func _process(delta: float) -> void:
 	if Odil.isMoving:
 		progress_ratio += delta * speed
-	else:
-		progress_ratio = 28.6
+		
