@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://crjvyo6tve2s0"]
+[gd_scene load_steps=26 format=4 uid="uid://crjvyo6tve2s0"]
 
 [ext_resource type="PackedScene" uid="uid://dn1lgpau3so1y" path="res://Art/Levels/BlockingBossBattlePT1.blend" id="1_tbob4"]
 [ext_resource type="Script" uid="uid://cjxw6askaab3f" path="res://script/Platforms/saco_iz.gd" id="2_5lrve"]
@@ -6,10 +6,11 @@
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_5lrve"]
 [ext_resource type="Texture2D" uid="uid://pafwwwlfsfy6" path="res://Art/Levels/textures/Image Layer.png" id="3_x5pnh"]
 [ext_resource type="Texture2D" uid="uid://jdj6p8yrjued" path="res://Art/Assets2D/level6/Saquito.png" id="4_dki7e"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/odil.tscn" id="5_5lrve"]
+[ext_resource type="PackedScene" uid="uid://diwelj1drodya" path="res://scenes/enemies/odil.tscn" id="5_5lrve"]
 [ext_resource type="Texture2D" uid="uid://b0xfuqu5ttia7" path="res://Art/Assets2D/level6/Cuerda.png" id="5_scnwv"]
 [ext_resource type="Script" uid="uid://dm4gi7hq0oq23" path="res://script/Platforms/ruta_odil_spin.gd" id="5_t6a2b"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="10_h3aqx"]
+[ext_resource type="LightmapGIData" uid="uid://byifcv8gkkehh" path="res://scenes/levels/bakes_lights/BossBattlePT1.lmbake" id="11_dki7e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6a2b"]
 size = Vector3(6.0302734, 6.826782, 6.1621094)
@@ -345,9 +346,9 @@ keep_aspect = 0
 fov = 80.0
 far = 300.0
 script = ExtResource("3_5lrve")
+target = NodePath("..")
 follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 41.795)
-target = NodePath("..")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.88257, -0.0318485, 0.4691, -0.47018, -0.0597825, 0.880543, 1.61569e-09, -0.997703, -0.0677368, 26.786, 77.6058, -9.55109)
@@ -356,6 +357,7 @@ light_energy = 2.828
 light_indirect_energy = 1.97
 light_size = 0.182
 light_specular = 4.379
+light_bake_mode = 1
 spot_range = 85.6471
 spot_attenuation = -0.01
 spot_angle = 26.031
@@ -367,6 +369,7 @@ light_energy = 2.828
 light_indirect_energy = 1.97
 light_size = 0.182
 light_specular = 4.379
+light_bake_mode = 1
 spot_range = 85.6471
 spot_attenuation = -0.01
 spot_angle = 26.031
@@ -376,6 +379,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1416, 79, -27.2314)
 light_color = Color(0.419751, 0.731591, 0.854006, 1)
 light_energy = 3.424
 light_indirect_energy = 0.354
+light_bake_mode = 1
 omni_range = 34.2904
 omni_attenuation = 0.192
 
@@ -384,6 +388,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.8339, 79, -27.2314)
 light_color = Color(0.419751, 0.731591, 0.854006, 1)
 light_energy = 3.424
 light_indirect_energy = 0.354
+light_bake_mode = 1
 omni_range = 34.2904
 omni_attenuation = 0.192
 
@@ -475,10 +480,12 @@ curve = SubResource("Curve3D_a7awi")
 transform = Transform3D(-0.0018400379, 0, -0.9999982, 0, 1, 0, 0.9999982, 0, -0.0018400379, 32.81591, -2.2888184e-05, -1.4692516)
 progress = 28.603157
 script = ExtResource("5_t6a2b")
-speed = 0.2
 
 [node name="Odil" parent="Path3D2/PathFollow3D" instance=ExtResource("5_5lrve")]
 transform = Transform3D(-0.0023000478, 0, 1.249998, 0, 1.25, 0, -1.249998, 0, -0.0023000478, 1.5232344, -1.8523464, 0.7351351)
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("11_dki7e")
 
 [connection signal="body_entered" from="BlockingBossBattlePT1/SacoIz/SacoColIz/ActivarPlataforma" to="BlockingBossBattlePT1/SacoIz" method="_on_activar_plataforma_body_entered"]
 [connection signal="body_entered" from="BlockingBossBattlePT1/SacoIz/SacoColIz/Damage" to="BlockingBossBattlePT1/SacoIz" method="_on_damage_body_entered"]
