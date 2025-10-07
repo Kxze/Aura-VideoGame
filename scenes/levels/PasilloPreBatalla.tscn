@@ -1,20 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://5dok73vvktmu"]
+[gd_scene load_steps=10 format=3 uid="uid://5dok73vvktmu"]
 
-[ext_resource type="Script" uid="uid://doi7t0xa02wj3" path="res://scenes/levels/pasillo_pre_batalla.gd" id="1_eu3t2"]
+[ext_resource type="Script" path="res://scenes/levels/pasillo_pre_batalla.gd" id="1_eu3t2"]
 [ext_resource type="PackedScene" uid="uid://q07jx7owribv" path="res://Art/Levels/PruebaPasilloyaporfavor.blend" id="1_vel31"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_eu3t2"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_s3c16"]
+[ext_resource type="Environment" uid="uid://cm6w1o8o4nilk" path="res://enviroment_level_2.tres" id="4_4k384"]
+[ext_resource type="LightmapGIData" uid="uid://sfrmor4w4q67" path="res://scenes/levels/bakes_lights/PasilloPreBatalla.lmbake" id="5_s3c16"]
+[ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="7_8jcaf"]
+[ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="8_kn6eh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_asrs4"]
+size = Vector3(7.113037, 68.37976, 11.2734375)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_eu3t2")
 
 [node name="PruebaPasilloyaporfavor" parent="." instance=ExtResource("1_vel31")]
-
-[node name="Vacío_015" parent="PruebaPasilloyaporfavor" index="15"]
-transform = Transform3D(7.85635, 0, 0, 0, 1.01261e-06, -7.85635, 0, -2.83147, -2.80965e-06, -96.3759, 8.13848, -45.5822)
-
-[node name="Vacío_010" parent="PruebaPasilloyaporfavor" index="18"]
-transform = Transform3D(8.3125, 0, 0, 0, 1.07141e-06, -8.3125, 0, -2.99587, -2.97278e-06, -28.2523, 8.4201, -45.1898)
 
 [node name="StaticBody3D" parent="PruebaPasilloyaporfavor/polySurface5_003" index="0"]
 collision_layer = 2
@@ -32,7 +33,7 @@ collision_layer = 2
 collision_layer = 2
 
 [node name="Player" parent="." instance=ExtResource("2_eu3t2")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -100.553, -8.60515, -5.87465)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -88.47194, -8.60515, -5.87465)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
@@ -45,108 +46,41 @@ spot_angle = 69.14
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59400177, 1.1010001, 6.303001)
 keep_aspect = 0
+environment = ExtResource("4_4k384")
 fov = 80.0
 far = 250.0
 script = ExtResource("3_s3c16")
+target = NodePath("..")
 follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 31.515)
-target = NodePath("..")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.777464, 0.628927, -1.3098e-09, -0.00812265, 0.010041, 0.999917, 0.628875, -0.7774, 0.0129151, 3.12045, 59.9323, -16.3653)
-light_color = Color(0.827451, 0.709804, 0.184314, 1)
-light_energy = 1.808
-spot_range = 73.472
-spot_attenuation = -0.32
-spot_angle = 48.1388
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(0.777464, 0.628927, -5.85734e-10, -0.00812265, 0.010041, 0.999917, 0.628875, -0.7774, 0.0129151, 60.2227, 59.9323, -16.3653)
-light_color = Color(0.827451, 0.709804, 0.184314, 1)
-light_energy = 1.808
-spot_range = 73.472
-spot_attenuation = -0.32
-spot_angle = 48.1388
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="."]
-transform = Transform3D(0.777464, 0.628927, -1.3098e-09, -0.00812265, 0.010041, 0.999917, 0.628875, -0.7774, 0.0129151, -55.5436, 59.9323, -16.3653)
-light_color = Color(0.827451, 0.709804, 0.184314, 1)
-light_energy = 1.808
-spot_range = 73.472
-spot_attenuation = -0.32
-spot_angle = 48.1388
-
-[node name="SpotLight3D4" type="SpotLight3D" parent="."]
-transform = Transform3D(0.777464, 0.628927, 1.41224e-08, -0.00812265, 0.010041, 0.999917, 0.628875, -0.777399, 0.0129151, -95.8174, 35.4228, -53.1805)
-light_color = Color(0.583221, 0.746843, 0.798477, 1)
-light_energy = 1.808
-spot_range = 38.985
-spot_attenuation = -0.32
-spot_angle = 48.1388
-
-[node name="SpotLight3D5" type="SpotLight3D" parent="."]
-transform = Transform3D(0.777464, 0.628927, 1.41224e-08, -0.00812265, 0.010041, 0.999917, 0.628875, -0.777399, 0.0129151, -28.906, 35.4228, -53.1805)
-light_color = Color(0.583221, 0.746843, 0.798477, 1)
-light_energy = 1.808
-spot_range = 38.985
-spot_attenuation = -0.32
-spot_angle = 48.1388
-
-[node name="SpotLight3D6" type="SpotLight3D" parent="."]
-transform = Transform3D(0.777464, 0.628927, 1.33983e-08, -0.00812265, 0.010041, 0.999917, 0.628875, -0.777399, 0.0129151, 26.6576, 35.4228, -53.1805)
-light_color = Color(0.583221, 0.746843, 0.798477, 1)
-light_energy = 1.808
-spot_range = 38.985
-spot_attenuation = -0.32
-spot_angle = 48.1388
-
-[node name="SpotLight3D7" type="SpotLight3D" parent="."]
-transform = Transform3D(0.777464, 0.628927, 1.33983e-08, -0.00812265, 0.010041, 0.999917, 0.628875, -0.777399, 0.0129151, 79.9511, 30.8609, -53.1805)
-light_color = Color(0.583221, 0.746843, 0.798477, 1)
-light_energy = 1.808
-spot_range = 38.985
-spot_attenuation = -0.32
-spot_angle = 48.1388
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SpotLight3D7"]
-transform = Transform3D(1, 0, -9.31323e-10, 0, 1, 1.39698e-08, 0, -1.39698e-08, 1, -143.655, -120.636, -23.4949)
-light_color = Color(0.85098, 0.666667, 0.25098, 1)
-light_energy = 4.071
-omni_range = 4.41378
-
-[node name="OmniLight3D4" type="OmniLight3D" parent="SpotLight3D7"]
-transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 1.67638e-08, 0, -1.76951e-08, 1, -69.383, -64.5337, -21.1551)
-light_color = Color(0.85098, 0.666667, 0.25098, 1)
-light_energy = 4.071
-omni_range = 4.41378
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="SpotLight3D7"]
-transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 1.86265e-08, 0, -1.95578e-08, 1, 25.1587, 4.05334, -21.7072)
-light_color = Color(0.85098, 0.666667, 0.25098, 1)
-light_energy = 4.071
-omni_range = 23.692
-
-[node name="OmniLight3D5" type="OmniLight3D" parent="SpotLight3D7"]
-transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 2.51457e-08, 0, -2.51457e-08, 1, -46.6323, -91.896, -28.0781)
-light_color = Color(0.85098, 0.666667, 0.25098, 1)
-light_energy = 4.071
-omni_range = 4.41378
-
-[node name="OmniLight3D6" type="OmniLight3D" parent="SpotLight3D7"]
-transform = Transform3D(1, 0, -9.31323e-10, 0, 1, 2.51457e-08, 0, -2.70084e-08, 1, -20.5754, -75.7301, -28.0288)
-light_color = Color(0.85098, 0.666667, 0.25098, 1)
-light_energy = 4.071
-omni_range = 4.41378
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="SpotLight3D7"]
-transform = Transform3D(1, 0, -9.31323e-10, 0, 1, 2.04891e-08, 0, -2.04891e-08, 1, -45.9311, -45.656, -21.7855)
-light_color = Color(0.85098, 0.666667, 0.25098, 1)
-light_energy = 4.071
-omni_range = 4.41378
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0, 0.5, -0.433013, 0.5, 0.75, -0.25, -0.866025, 0.433013, 0, 50, 32)
 light_color = Color(0.378102, 0.477178, 0.69712, 1)
 light_energy = 1.161
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("5_s3c16")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.00559, -3.8752728, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.087458, 0)
+shape = SubResource("BoxShape3D_asrs4")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.07424, -3.8752728, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.087458, 0)
+shape = SubResource("BoxShape3D_asrs4")
+
+[node name="Area3D" parent="." instance=ExtResource("7_8jcaf")]
+transform = Transform3D(0.90207344, 0, 0.43158257, 0, 1, 0, -0.43158257, 0, 0.90207344, 93.50525, 0, 0)
+prev_level_path = "res://scenes/levels/BossBattlePT1.tscn"
+
+[node name="Area3D2" parent="." instance=ExtResource("8_kn6eh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.87696, -4.872589, 0)
 
 [editable path="PruebaPasilloyaporfavor"]
