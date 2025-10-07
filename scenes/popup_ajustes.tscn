@@ -256,6 +256,20 @@ popup/item_2/text = "              Baja"
 popup/item_2/id = 0
 script = ExtResource("14_hyt0i")
 
+[node name="Coleccionables" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Coleccionista  "
+
+[node name="BtnCollect" type="Button" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "                 Ver                     "
+alignment = 0
+
 [node name="Controles" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -371,4 +385,5 @@ text = "Regresar
 [connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderSFX" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_slider_sfx_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderBR" to="Panel/MarginContainerAjustes/GridContainerAjustes/SliderBR" method="_on_value_changed"]
 [connection signal="toggled" from="Panel/MarginContainerAjustes/GridContainerAjustes/CheckModo" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_check_modo_toggled"]
+[connection signal="pressed" from="Panel/MarginContainerAjustes/GridContainerAjustes/BtnCollect" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_btn_collect_pressed"]
 [connection signal="pressed" from="Panel/MarginContainerControles/Reestablecer" to="Panel/MarginContainerControles" method="_on_reestablecer_pressed"]

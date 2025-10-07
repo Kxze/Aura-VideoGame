@@ -224,6 +224,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.381, -33.9927, 0)
 [node name="KillZone2" parent="." instance=ExtResource("5_anwe6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.798, -72.145, 0)
 
+[node name="KillZone3" parent="." instance=ExtResource("5_anwe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 627.2856, -72.145, 0)
+
 [node name="LightmapGI" type="LightmapGI" parent="."]
 light_data = ExtResource("7_5vn0v")
 
@@ -243,4 +246,5 @@ next_level_path = "res://scenes/levels/level_collec_2.tscn"
 [editable path="back_level"]
 [editable path="KillZone"]
 [editable path="KillZone2"]
+[editable path="KillZone3"]
 [editable path="door_collect"]

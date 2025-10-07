@@ -17,6 +17,24 @@ var fading := false
 var lampara_desbloqueada := false  # 🌙 se mantiene globalmente
 var dash_desbloqueado := false     # 🌪️
 var coleccionable_sonado := false  # 🔔
+var casco_sonado := false  # 🔔 evita que el sonido del coleccionable se repita
+var oso_sonado := false  
+var pluma_sonada := false     # 🪶 evita que el sonido de la pluma se repita
+
+# --- Coleccionables obtenidos (persisten mientras dure la partida) ---
+var casco_obtenido := false
+var oso_obtenido := false
+var pluma_obtenida := false
+
+# --- Diálogos ---
+var dialogo_en_progreso := false   # 🔒 Evita que se superpongan diálogos
+var dialogo_player_actual: AudioStreamPlayer = null
+var alex1_sonado := false  # ✅ evita repetir el primer diálogo de Alex
+var alex2_sonado := false  # ✅ evita repetir el segundo diálogo de Alex
+var alex3_sonado := false
+var alex7_sonado := false
+var alex_dialogos_sonados := {}  # 🔒 Guarda qué diálogos de Alex ya sonaron por ID
+
 
 # ---------------------------------------------------------
 #                   CONFIGURACIÓN INICIAL
@@ -27,7 +45,8 @@ func _ready():
 	efectos_player.name = "SFX_Player"
 	add_child(efectos_player)
 	efectos_player.bus = "Efectos"
-	efectos_player.volume_db = 0
+	efectos_player.volume_db = +10.0  # 🔊 SFX mucho más presentes (≈ el triple de volumen percibido)
+	process_mode = Node.PROCESS_MODE_ALWAYS  # ✅ sigue funcionando aunque el juego esté pausado
 
 	# --- Music Player ---
 	musica_player = AudioStreamPlayer.new()
@@ -77,9 +96,9 @@ func play_and_get_duration(sound: AudioStream) -> float:
 
 	if normalize_sfx:
 		var adjustment = normalize_audio(sound)
-		efectos_player.volume_db = adjustment
+		efectos_player.volume_db = adjustment + 10.0  # 🔊 refuerzo extra
 	else:
-		efectos_player.volume_db = 0
+		efectos_player.volume_db = +10.0
 	
 	efectos_player.play()
 
@@ -118,7 +137,7 @@ func play_sfx_persistente(sound: AudioStream) -> void:
 	var temp_player := AudioStreamPlayer.new()
 	temp_player.stream = sound
 	temp_player.bus = "Efectos"
-	temp_player.volume_db = 0
+	temp_player.volume_db = +10.0  # mismo refuerzo que el principal
 
 	get_tree().get_root().add_child(temp_player)
 	temp_player.play()
@@ -133,6 +152,127 @@ func play_sfx_persistente(sound: AudioStream) -> void:
 	temp_player.queue_free()
 
 # ---------------------------------------------------------
+# 🎙️ DIÁLOGOS DE AURA 
+# ---------------------------------------------------------
+func play_dialogo_aura(stream: AudioStream) -> void:
+	if not stream:
+		push_warning("⚠️ No se encontró el audio del diálogo de Aura.")
+		return
+
+	# 🚫 No reproducir si el juego está pausado
+	if get_tree().paused:
+		print("⏸️ Juego pausado → no iniciar diálogo de Aura.")
+		return
+
+	if dialogo_en_progreso:
+		print("🕓 Esperando a que termine el diálogo anterior antes de reproducir Aura.")
+		await esperar_dialogo_anterior()
+
+	dialogo_en_progreso = true
+
+	# ✅ Si ya hay un diálogo en curso, no crear otro
+	if dialogo_player_actual:
+		dialogo_player_actual.stop()
+		dialogo_player_actual.queue_free()
+
+	dialogo_player_actual = AudioStreamPlayer.new()
+	dialogo_player_actual.name = "AuraDialogPlayer"
+	dialogo_player_actual.stream = stream
+	dialogo_player_actual.bus = "Dialogos"
+	dialogo_player_actual.volume_db = +6.0
+	add_child(dialogo_player_actual)
+	dialogo_player_actual.owner = null  # 👈 evita ser destruido al cambiar de escena
+
+	dialogo_player_actual.play()
+
+	dialogo_player_actual.finished.connect(func():
+		dialogo_en_progreso = false
+		dialogo_player_actual.queue_free()
+		dialogo_player_actual = null
+	)
+	print("🎧 Diálogo de Aura iniciado.")
+
+# ---------------------------------------------------------
+# 🎙️ DIÁLOGOS DE ALEX (PERSISTENTES ENTRE NIVELES)
+# ---------------------------------------------------------
+func play_dialogo_alex(stream: AudioStream, id: String = "") -> void:
+	if not stream:
+		push_warning("⚠️ No se encontró el audio del diálogo de Alex.")
+		return
+
+	# 🚫 No reproducir si el juego está pausado
+	if get_tree().paused:
+		print("⏸️ Juego pausado → no iniciar diálogo de Alex (%s)." % id)
+		return
+
+	# 🚫 Evitar repetir diálogos individuales (según ID)
+	if id != "" and alex_dialogos_sonados.has(id) and alex_dialogos_sonados[id]:
+		print("🔇 Diálogo de Alex '%s' ya fue reproducido." % id)
+		return
+
+	# 🔒 Marcar este diálogo como reproducido
+	if id != "":
+		alex_dialogos_sonados[id] = true
+
+	# ⏳ Esperar si otro diálogo está activo
+	if dialogo_en_progreso:
+		print("🕓 Esperando a que termine el diálogo anterior antes de reproducir Alex (%s)..." % id)
+		await esperar_dialogo_anterior()
+
+	dialogo_en_progreso = true
+
+	# ✅ Limpiar si existía otro diálogo viejo
+	if dialogo_player_actual:
+		dialogo_player_actual.stop()
+		dialogo_player_actual.queue_free()
+
+	dialogo_player_actual = AudioStreamPlayer.new()
+	dialogo_player_actual.name = "AlexDialogPlayer_%s" % id
+	dialogo_player_actual.stream = stream
+	dialogo_player_actual.bus = "Dialogos"
+	dialogo_player_actual.volume_db = +10.0  # 🎧 más fuerte sobre música
+	add_child(dialogo_player_actual)
+	dialogo_player_actual.owner = null
+
+	dialogo_player_actual.play()
+
+	dialogo_player_actual.finished.connect(func():
+		dialogo_en_progreso = false
+		dialogo_player_actual.queue_free()
+		dialogo_player_actual = null
+	)
+	print("🎧 Diálogo de Alex (%s) iniciado." % id)
+
+# ---------------------------------------------------------
+# 🕓 FUNCIÓN AUXILIAR
+# ---------------------------------------------------------
+func esperar_dialogo_anterior() -> void:
+	while dialogo_en_progreso:
+		await get_tree().process_frame
+		
+# ---------------------------------------------------------
+# 🛑 CONTROL DE DIÁLOGOS DURANTE LA PAUSA
+# ---------------------------------------------------------
+var pausa_activa := false
+
+func set_pausa_activa(valor: bool) -> void:
+	pausa_activa = valor
+
+	# Si no hay diálogo activo, no hacer nada
+	if dialogo_player_actual == null:
+		return
+
+	# Pausar o reanudar el diálogo sin reiniciarlo
+	if pausa_activa:
+		if dialogo_player_actual.playing:
+			dialogo_player_actual.stream_paused = true
+			print("⏸️ Diálogo pausado por menú de pausa.")
+	else:
+		if dialogo_player_actual.stream_paused:
+			dialogo_player_actual.stream_paused = false
+			print("▶️ Diálogo reanudado tras salir de pausa.")
+
+# ---------------------------------------------------------
 # 🎯 SONIDO DE DAÑO DEL JUGADOR
 # ---------------------------------------------------------
 func play_daño(sound: AudioStream) -> void:
@@ -144,7 +284,7 @@ func play_daño(sound: AudioStream) -> void:
 		return
 
 	efectos_player.stream = sound
-	efectos_player.volume_db = 0
+	efectos_player.volume_db = +10.0
 	efectos_player.bus = "Efectos"
 	efectos_player.play()
 	
@@ -160,7 +300,7 @@ func play_ataque(sound: AudioStream) -> void:
 		return
 
 	efectos_player.stream = sound
-	efectos_player.volume_db = 0
+	efectos_player.volume_db = +10.0
 	efectos_player.bus = "Efectos"
 	efectos_player.play()
 	
@@ -176,7 +316,7 @@ func play_skeleton(sound: AudioStream) -> void:
 		return
 
 	efectos_player.stream = sound
-	efectos_player.volume_db = 0
+	efectos_player.volume_db = +10.0
 	efectos_player.bus = "Efectos"
 	efectos_player.play()
 	
@@ -314,7 +454,46 @@ func play_coleccionable_cerca(sound: AudioStream) -> void:
 
 	play_sfx_persistente(sound)
 	print("✅ Sonido de coleccionable completado.")
+	
+# ---------------------------------------------------------
+#        🔔 SONIDO COLECCIONABLE CASCO
+# ---------------------------------------------------------
+func play_sonidoCasco(sound: AudioStream) -> void:
+	if casco_sonado:
+		print("🔕 Sonido de coleccionable ya reproducido, no se repetirá.")
+		return
 
+	casco_sonado = true
+	print("🔔 Reproduciendo sonido de coleccionable cerca...")
+
+	play_sfx_persistente(sound)
+	print("✅ Sonido de coleccionable completado.")
+	
+# ---------------------------------------------------------
+#        🧸 SONIDO COLECCIONABLE OSO
+# ---------------------------------------------------------
+func play_sonidoOso(sound: AudioStream) -> void:
+	if oso_sonado:
+		print("🔕 Sonido del oso ya reproducido, no se repetirá.")
+		return
+
+	oso_sonado = true
+	print("🧸 Reproduciendo sonido del coleccionable OSO...")
+	play_sfx_persistente(sound)
+	print("✅ Sonido de oso completado.")
+	
+	# ---------------------------------------------------------
+#        🪶 SONIDO COLECCIONABLE PLUMA
+# ---------------------------------------------------------
+func play_sonidoPluma(sound: AudioStream) -> void:
+	if pluma_sonada:
+		print("🔕 Sonido de la pluma ya reproducido, no se repetirá.")
+		return
+
+	pluma_sonada = true
+	print("🪶 Reproduciendo sonido del coleccionable PLUMA...")
+	play_sfx_persistente(sound)
+	print("✅ Sonido de pluma completado.")
 
 # ---------------------------------------------------------
 #                         MÚSICA
@@ -388,5 +567,4 @@ func fade_in():
 		musica_player.volume_db = vol
 		await get_tree().process_frame
 	fading = false
-	
 	

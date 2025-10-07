@@ -112,54 +112,6 @@ texture = ExtResource("4_486ty")
 expand_mode = 3
 stretch_mode = 3
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0.996078, 0.796078, 0.447059, 1)
-theme_override_colors/font_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
-theme_override_colors/font_hover_color = Color(0.996078, 0.796078, 0.447059, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
-theme_override_constants/outline_size = 0
-theme_override_constants/icon_max_width = 0
-theme_override_constants/align_to_largest_stylebox = 0
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("3_qcl6i")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2xgxd")
-text = "Continuar"
-flat = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -217.0
-offset_top = -36.5
-offset_right = 7017.0
-offset_bottom = 1280.17
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.06, 0.06)
-theme_override_constants/separation = 4500
-
-[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button2/HBoxContainer"]
-visible = false
-layout_mode = 2
-texture = ExtResource("4_486ty")
-expand_mode = 3
-stretch_mode = 3
-
-[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button2/HBoxContainer"]
-visible = false
-layout_mode = 2
-texture = ExtResource("4_486ty")
-expand_mode = 3
-stretch_mode = 3
-
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -250,6 +202,54 @@ expand_mode = 3
 stretch_mode = 3
 
 [node name="StarRight" type="TextureRect" parent="VBoxContainer/Button4/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_486ty")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_hover_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.996078, 0.796078, 0.447059, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_qcl6i")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2xgxd")
+text = "Créditos"
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = -36.5
+offset_right = 7017.0
+offset_bottom = 1280.17
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.06, 0.06)
+theme_override_constants/separation = 4500
+
+[node name="StarLeft" type="TextureRect" parent="VBoxContainer/Button2/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_486ty")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="StarRight" type="TextureRect" parent="VBoxContainer/Button2/HBoxContainer"]
 visible = false
 layout_mode = 2
 texture = ExtResource("4_486ty")

@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy5hduy6q7s6f"]
+[gd_scene load_steps=11 format=3 uid="uid://dy5hduy6q7s6f"]
 
 [ext_resource type="PackedScene" uid="uid://cc84busu65axo" path="res://Art/Levels/BlockingTransición TorreLago.blend" id="1_5jeeu"]
-[ext_resource type="Environment" uid="uid://crl6agjc1cr61" path="res://scenes/levels/enviroment_lago.tres" id="2_74rj6"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_opuao"]
+[ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="3_5fmx1"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_74rj6"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="5_74rj6"]
+[ext_resource type="Environment" uid="uid://crl6agjc1cr61" path="res://scenes/levels/enviroment_lago.tres" id="5_fae0a"]
+[ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="7_qe0pi"]
+[ext_resource type="LightmapGIData" uid="uid://m3s1fexcndke" path="res://scenes/levels/bakes_lights/TransicionTorreLago.lmbake" id="8_fae0a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5jeeu"]
 size = Vector3(1, 15.043, 19.5214)
@@ -14,32 +17,23 @@ size = Vector3(1, 36.9888, 47.6661)
 
 [node name="Node3D" type="Node3D"]
 
+[node name="Player" parent="." instance=ExtResource("2_opuao")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -43.538727, 8.988429, 1.96833)
+
+[node name="Camera3D2" type="Camera3D" parent="Player"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
+keep_aspect = 0
+environment = ExtResource("5_fae0a")
+fov = 80.0
+far = 250.0
+script = ExtResource("3_74rj6")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 31.515)
+
 [node name="Back_level" parent="." instance=ExtResource("5_74rj6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.122627, 11.116028, 0)
 prev_level_path = "res://scenes/levels/level_4_back_from_lake.tscn"
 is_next = false
-
-[node name="Player" parent="." instance=ExtResource("2_opuao")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -43.3277, 12.6422, 1.313)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
-light_color = Color(1, 0.969167, 0.63, 1)
-light_energy = 3.0
-light_specular = 0.0
-spot_range = 13.139
-spot_angle = 69.14
-
-[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59400177, 1.1009998, 6.303)
-keep_aspect = 0
-environment = ExtResource("2_74rj6")
-fov = 80.0
-far = 250.0
-script = ExtResource("3_74rj6")
-target = NodePath("..")
-follow_speed = 12.0
-offset = Vector3(2.97, 5.505, 31.515)
 
 [node name="BlockingTransición TorreLago" parent="." instance=ExtResource("1_5jeeu")]
 
@@ -52,43 +46,8 @@ collision_layer = 2
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.746953, -0.125359, -0.652952, -0.572107, 0.379179, -0.727267, 0.338755, 0.916793, 0.21151, -23.0331, 148.122, 249.84)
 light_color = Color(0.434023, 0.66669, 0.530061, 1)
-light_energy = 0.0
+light_energy = 0.819
 light_angular_distance = 90.0
-
-[node name="SpotLight3D11" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.083556, -0.996503, 0, 0.996503, 0.083556, 72.688, -160.658, -113.204)
-light_color = Color(0.792157, 0.796078, 0.294118, 1)
-light_energy = 0.515
-spot_range = 350.603
-spot_attenuation = -0.5
-spot_angle = 47.2738
-
-[node name="SpotLight3D12" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.083556, -0.996503, 0, 0.996503, 0.083556, 72.688, -323.503, -43.0086)
-light_color = Color(0.792157, 0.796078, 0.294118, 1)
-light_energy = 0.515
-spot_range = 350.603
-spot_attenuation = -0.5
-spot_angle = 47.2738
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.874162, 0.485634, 3.84849e-09, -0.0414476, 0.0746075, 0.996351, 0.483862, -0.870973, 0.0853474, 42.1568, 129.072, 42.2957)
-light_energy = 16.0
-light_indirect_energy = 3.424
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-spot_range = 192.184
-spot_attenuation = 0.39
-
-[node name="SpotLight3D4" type="SpotLight3D" parent="."]
-transform = Transform3D(0.874162, 0.485634, -2.71461e-09, -0.152308, 0.274162, 0.949546, 0.461132, -0.830057, 0.313628, 16.3876, 129.072, -13.4988)
-light_color = Color(0.833969, 0.921517, 0.335789, 1)
-light_energy = 13.899
-light_indirect_energy = 3.424
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-spot_range = 192.184
-spot_attenuation = 0.39
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 2
@@ -113,8 +72,17 @@ next_level_path = "res://scenes/levels/level_5.tscn"
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -16.90762, -13.951627, 0)
 next_level_path = "res://scenes/levels/level_5.tscn"
 
-[node name="collecionable_level" parent="." instance=ExtResource("5_74rj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
-next_level_path = "res://scenes/levels/level_collec_3.tscn"
+[node name="Area3D" parent="." instance=ExtResource("3_5fmx1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.639908, 8.5720215, 0)
+
+[node name="door_collect" parent="." instance=ExtResource("7_qe0pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2379475, 0, 0)
+
+[node name="Portal_to_collect" parent="door_collect" index="1"]
+next_level_path = "res://scenes/levels/Coleccionable3.tscn"
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("8_fae0a")
 
 [editable path="BlockingTransición TorreLago"]
+[editable path="door_collect"]
