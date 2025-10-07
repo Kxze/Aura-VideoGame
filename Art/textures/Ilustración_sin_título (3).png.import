@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dqfde70s0ao0v"
-path.s3tc="res://.godot/imported/Ilustración_sin_título (3).png-2c3a0c6ae656fa3afe31e839166cb618.s3tc.ctex"
+path.s3tc="res://.godot/imported/Ilustración_sin_título (3).png-3f7fdd97846448f5ef3459ce98e3dfb2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/textures/Ilustración_sin_título (3).png"
-dest_files=["res://.godot/imported/Ilustración_sin_título (3).png-2c3a0c6ae656fa3afe31e839166cb618.s3tc.ctex"]
+source_file="res://Art/textures/Ilustración_sin_título (3).png"
+dest_files=["res://.godot/imported/Ilustración_sin_título (3).png-3f7fdd97846448f5ef3459ce98e3dfb2.s3tc.ctex"]
 
 [params]
 
