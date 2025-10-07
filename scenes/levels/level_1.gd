@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var musica_level1 = preload("res://musica/MelodiaPrincipal.mp3")
-@onready var dialogo_alex = preload("res://dialogos/alex/Alex1-IA_PE.wav")
+@onready var dialogo_alex1 = preload("res://dialogos/alex/Alex1-IA_PE.wav")
 
 func _ready():
 	# 🎵 Iniciar música del nivel
@@ -13,4 +13,8 @@ func _ready():
 
 	# 🎙️ Diálogo de Alex (solo una vez por sesión)
 	if AudioManager.has_method("play_dialogo_alex"):
-		AudioManager.play_dialogo_alex(dialogo_alex)
+		if not AudioManager.alex_dialogos_sonados.has("alex1") or not AudioManager.alex_dialogos_sonados["alex1"]:
+			AudioManager.play_dialogo_alex(dialogo_alex1, "alex1")
+			print("🎧 Reproduciendo diálogo Alex1 por primera vez.")
+		else:
+			print("🔇 Diálogo Alex1 ya fue reproducido anteriormente, no se repite.")

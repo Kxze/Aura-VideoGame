@@ -1,7 +1,7 @@
 extends Area3D
 
 @onready var sonido_desbloquea = preload("res://sonidos/desbloquea.wav")
-@onready var notificacion_scene = preload("res://scenes/notificacionHabilidad.tscn")  # 💬 escena tipo CanvasLayer
+@onready var notificacion_scene = preload("res://scenes/notificacionHabilidad2.tscn")  # 💬 escena tipo CanvasLayer
 @onready var dialogo_alex7 = preload("res://dialogos/Alex/Alex7-IA.wav")  # 🎙️ diálogo al desbloquear el dash
 
 

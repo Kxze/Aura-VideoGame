@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4krlkop265ik"
-path="res://.godot/imported/NotificacionHabilidad.png-3c5bb5f8b63b175c8ae42d749e9a50be.ctex"
+uid="uid://dv38e7fn4up07"
+path="res://.godot/imported/NotificacionHabilidad2.png-fbd798e95a4a700ddea9b726e1f8968b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/NotificacionHabilidad.png"
-dest_files=["res://.godot/imported/NotificacionHabilidad.png-3c5bb5f8b63b175c8ae42d749e9a50be.ctex"]
+source_file="res://textures/NotificacionHabilidad2.png"
+dest_files=["res://.godot/imported/NotificacionHabilidad2.png-fbd798e95a4a700ddea9b726e1f8968b.ctex"]
 
 [params]
 
