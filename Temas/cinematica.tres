@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dsdobfeg448w0"]
+
+[ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="1_cyus6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yt6qu"]
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 0.3647059)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(0.08627451, 0.08627451, 0.08627451, 0.3647059)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyus6"]
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 0.3647059)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(0.08627451, 0.08627451, 0.08627451, 0.3647059)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_si10q"]
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 0.3647059)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(0.08627451, 0.08627451, 0.08627451, 0.3647059)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_isbt5"]
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 0.3647059)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(0.08627451, 0.08627451, 0.08627451, 0.3647059)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxFlat_yt6qu")
+Button/styles/normal = SubResource("StyleBoxFlat_cyus6")
+Label/font_sizes/font_size = 25
+Label/fonts/font = ExtResource("1_cyus6")
+Label/styles/focus = SubResource("StyleBoxFlat_si10q")
+Label/styles/normal = SubResource("StyleBoxFlat_isbt5")
