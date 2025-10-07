@@ -4,6 +4,7 @@ var has_fallen: bool = false
 var original_position: Vector3
 var damage: int = 1
 
+@onready var daño_sound = preload("res://sonidos/golpeOdette.wav")
 @onready var collision_shape_3d: CollisionShape3D = $SacoColIz/CollisionShape3D
 @onready var Damage: Area3D = $SacoColIz/Damage
 @onready var collision_area: CollisionShape3D = $SacoColIz/Damage/CollisionArea
@@ -45,6 +46,7 @@ func Make_damage(body: Node3D):
 		Odil.isHurt = true
 		Odil.isMoving = false
 		print("Daño recibido. Salud actual:", Odil.health)
+		
 
 	if Odil.health <= 0:
 		print("Odil muere")
