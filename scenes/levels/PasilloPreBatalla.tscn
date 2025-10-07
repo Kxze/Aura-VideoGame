@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://5dok73vvktmu"]
+[gd_scene load_steps=11 format=3 uid="uid://5dok73vvktmu"]
 
-[ext_resource type="Script" path="res://scenes/levels/pasillo_pre_batalla.gd" id="1_eu3t2"]
+[ext_resource type="Script" uid="uid://doi7t0xa02wj3" path="res://scenes/levels/pasillo_pre_batalla.gd" id="1_eu3t2"]
 [ext_resource type="PackedScene" uid="uid://q07jx7owribv" path="res://Art/Levels/PruebaPasilloyaporfavor.blend" id="1_vel31"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_eu3t2"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_s3c16"]
@@ -8,11 +8,12 @@
 [ext_resource type="LightmapGIData" uid="uid://sfrmor4w4q67" path="res://scenes/levels/bakes_lights/PasilloPreBatalla.lmbake" id="5_s3c16"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="7_8jcaf"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="8_kn6eh"]
+[ext_resource type="PackedScene" uid="uid://dwn7fewbx87ob" path="res://scenes/triggers/unlock_lumiere_noEffects.tscn" id="9_8jcaf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_asrs4"]
 size = Vector3(7.113037, 68.37976, 11.2734375)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D2" type="Node3D"]
 script = ExtResource("1_eu3t2")
 
 [node name="PruebaPasilloyaporfavor" parent="." instance=ExtResource("1_vel31")]
@@ -64,6 +65,7 @@ light_data = ExtResource("5_s3c16")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.00559, -3.8752728, 0)
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.087458, 0)
@@ -71,16 +73,28 @@ shape = SubResource("BoxShape3D_asrs4")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.07424, -3.8752728, 0)
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.087458, 0)
 shape = SubResource("BoxShape3D_asrs4")
 
 [node name="Area3D" parent="." instance=ExtResource("7_8jcaf")]
-transform = Transform3D(0.90207344, 0, 0.43158257, 0, 1, 0, -0.43158257, 0, 0.90207344, 93.50525, 0, 0)
-prev_level_path = "res://scenes/levels/BossBattlePT1.tscn"
+transform = Transform3D(0.9885123, 0, 0.15114069, 0, 1, 0, -0.15114069, 0, 0.9885123, 93.50525, 0, 0)
+next_level_path = "res://scenes/levels/BossBattlePT1.tscnp"
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(0.9888033, 0, -0.14922471, 0, 1, 0, 0.14922471, 0, 0.9888033, 0, 13.5619, 0)
 
 [node name="Area3D2" parent="." instance=ExtResource("8_kn6eh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.87696, -4.872589, 0)
 
+[node name="Area3D3" parent="." instance=ExtResource("7_8jcaf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.62038, 0, 0)
+next_level_path = "res://scenes/levels/BossBattlePT1.tscn"
+
+[node name="unlock_lumiere" parent="." instance=ExtResource("9_8jcaf")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -86.82283, -7.8801394, 0)
+
 [editable path="PruebaPasilloyaporfavor"]
+[editable path="Area3D"]

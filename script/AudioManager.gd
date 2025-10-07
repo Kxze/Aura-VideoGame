@@ -626,7 +626,6 @@ func pause_music() -> void:
 func resume_music() -> void:
 	musica_player.stream_paused = false
 
-
 # ---------------------------------------------------------
 #                     TRANSICIONES
 # ---------------------------------------------------------
