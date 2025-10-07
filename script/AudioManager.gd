@@ -412,6 +412,22 @@ func play_skeleton(sound: AudioStream) -> void:
 	efectos_player.play()
 	
 # ---------------------------------------------------------
+# 💢 SONIDO DE DAÑO ODETTE
+# ---------------------------------------------------------
+func play_daño_odette(sound: AudioStream) -> void:
+	if sound == null:
+		return
+
+	# Evita reiniciar el mismo sonido si ya está sonando
+	if efectos_player.playing and efectos_player.stream == sound:
+		return
+
+	efectos_player.stream = sound
+	efectos_player.volume_db = +8.0  # ajusta a gusto, +10 puede saturar
+	efectos_player.bus = "Efectos"
+	efectos_player.play()
+
+# ---------------------------------------------------------
 # 💧 SONIDO DE LLANTO JULIETA (variaciones continuas durante el nivel)
 # ---------------------------------------------------------
 var julieta_player: AudioStreamPlayer = null
