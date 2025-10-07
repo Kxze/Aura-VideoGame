@@ -485,4 +485,4 @@ transform = Transform3D(-0.0023000478, 0, 1.249998, 0, 1.25, 0, -1.249998, 0, -0
 
 [editable path="BlockingBossBattlePT1"]
 [editable path="Path3D2/PathFollow3D/Odil"]
-[editable path="Path3D2/PathFollow3D/Odil/Path3D/PathFollow3D/Odil"]
+[editable path="Path3D2/PathFollow3D/Odil/Odil"]
