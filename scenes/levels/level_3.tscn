@@ -45,6 +45,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 19.6708, 46.6134, 1.96833)
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.5940006, 1.1009998, 6.303001)
 keep_aspect = 0
 environment = ExtResource("2_apo5x")
+current = true
 fov = 80.0
 near = 0.001
 far = 250.0
