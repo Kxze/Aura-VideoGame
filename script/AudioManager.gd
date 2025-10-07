@@ -17,6 +17,7 @@ var fading := false
 var lampara_desbloqueada := false  # 🌙 se mantiene globalmente
 var dash_desbloqueado := false     # 🌪️
 var coleccionable_sonado := false  # 🔔
+var casco_sonado := false  # 🔔 evita que el sonido del coleccionable se repita
 
 # ---------------------------------------------------------
 #                   CONFIGURACIÓN INICIAL
@@ -314,7 +315,20 @@ func play_coleccionable_cerca(sound: AudioStream) -> void:
 
 	play_sfx_persistente(sound)
 	print("✅ Sonido de coleccionable completado.")
+	
+# ---------------------------------------------------------
+#        🔔 SONIDO COLECCIONABLE CASCO
+# ---------------------------------------------------------
+func play_sonidoCasco(sound: AudioStream) -> void:
+	if casco_sonado:
+		print("🔕 Sonido de coleccionable ya reproducido, no se repetirá.")
+		return
 
+	casco_sonado = true
+	print("🔔 Reproduciendo sonido de coleccionable cerca...")
+
+	play_sfx_persistente(sound)
+	print("✅ Sonido de coleccionable completado.")
 
 # ---------------------------------------------------------
 #                         MÚSICA
