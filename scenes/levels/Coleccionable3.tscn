@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cx4ftoqaex1iw"]
+[gd_scene load_steps=11 format=3 uid="uid://cx4ftoqaex1iw"]
 
 [ext_resource type="PackedScene" uid="uid://c0nhy7q0rem4i" path="res://Art/Levels/pluma_espacioColeccionable.blend" id="1_h1gml"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_3wkxq"]
@@ -7,6 +7,7 @@
 [ext_resource type="LightmapGIData" uid="uid://dxu3ovsb6ckud" path="res://scenes/levels/bakes_lights/Coleccionable3.lmbake" id="5_o7ulk"]
 [ext_resource type="Script" uid="uid://dtwyd3gi31maf" path="res://script/triggers/desaparecer_pluma.gd" id="6_iv7l7"]
 [ext_resource type="PackedScene" uid="uid://oebm7ciebtke" path="res://Shaders/particulas_colecionables_oso.tscn" id="7_iv7l7"]
+[ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="8_g8uq7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1gml"]
 size = Vector3(1, 37.5034, 40.328)
@@ -84,6 +85,14 @@ shape = SubResource("BoxShape3D_82o1s")
 [node name="GPUParticles3D2" parent="." instance=ExtResource("7_iv7l7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.855354, -4.3462305)
 
+[node name="door_collect" parent="." instance=ExtResource("8_g8uq7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -61.8098, 19.24904, -3.0404196)
+
+[node name="Portal_to_collect" parent="door_collect" index="1"]
+prev_level_path = "res://scenes/levels/TransicionTorreLago_back.tscn"
+is_next = false
+
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
 
 [editable path="pluma_espacioColeccionable"]
+[editable path="door_collect"]
