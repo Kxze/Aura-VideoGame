@@ -29,6 +29,7 @@ GlobalBrightnessWorldEnvironment="*res://scenes/Global_brightness_world_environm
 AudioManager="*res://script/AudioManager.gd"
 UiGlobal="*res://scenes/UI_Global.tscn"
 TransitionScreen="*res://scenes/transitions/transition_screen.tscn"
+GlobalBrightness="*res://script/Ajustes/GlobalBrightness.gd"
 
 [display]
 

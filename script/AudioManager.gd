@@ -46,6 +46,7 @@ func _ready():
 	add_child(efectos_player)
 	efectos_player.bus = "Efectos"
 	efectos_player.volume_db = +10.0  # 🔊 SFX mucho más presentes (≈ el triple de volumen percibido)
+	process_mode = Node.PROCESS_MODE_ALWAYS  # ✅ sigue funcionando aunque el juego esté pausado
 
 	# --- Music Player ---
 	musica_player = AudioStreamPlayer.new()
@@ -158,6 +159,11 @@ func play_dialogo_aura(stream: AudioStream) -> void:
 		push_warning("⚠️ No se encontró el audio del diálogo de Aura.")
 		return
 
+	# 🚫 No reproducir si el juego está pausado
+	if get_tree().paused:
+		print("⏸️ Juego pausado → no iniciar diálogo de Aura.")
+		return
+
 	if dialogo_en_progreso:
 		print("🕓 Esperando a que termine el diálogo anterior antes de reproducir Aura.")
 		await esperar_dialogo_anterior()
@@ -194,6 +200,11 @@ func play_dialogo_alex(stream: AudioStream, id: String = "") -> void:
 		push_warning("⚠️ No se encontró el audio del diálogo de Alex.")
 		return
 
+	# 🚫 No reproducir si el juego está pausado
+	if get_tree().paused:
+		print("⏸️ Juego pausado → no iniciar diálogo de Alex (%s)." % id)
+		return
+
 	# 🚫 Evitar repetir diálogos individuales (según ID)
 	if id != "" and alex_dialogos_sonados.has(id) and alex_dialogos_sonados[id]:
 		print("🔇 Diálogo de Alex '%s' ya fue reproducido." % id)
@@ -219,9 +230,9 @@ func play_dialogo_alex(stream: AudioStream, id: String = "") -> void:
 	dialogo_player_actual.name = "AlexDialogPlayer_%s" % id
 	dialogo_player_actual.stream = stream
 	dialogo_player_actual.bus = "Dialogos"
-	dialogo_player_actual.volume_db = +10.0  # 🎧 un poco más fuerte sobre la música
+	dialogo_player_actual.volume_db = +10.0  # 🎧 más fuerte sobre música
 	add_child(dialogo_player_actual)
-	dialogo_player_actual.owner = null  # 👈 evita que se destruya al cambiar de escena
+	dialogo_player_actual.owner = null
 
 	dialogo_player_actual.play()
 
@@ -232,13 +243,34 @@ func play_dialogo_alex(stream: AudioStream, id: String = "") -> void:
 	)
 	print("🎧 Diálogo de Alex (%s) iniciado." % id)
 
-
 # ---------------------------------------------------------
 # 🕓 FUNCIÓN AUXILIAR
 # ---------------------------------------------------------
 func esperar_dialogo_anterior() -> void:
 	while dialogo_en_progreso:
 		await get_tree().process_frame
+		
+# ---------------------------------------------------------
+# 🛑 CONTROL DE DIÁLOGOS DURANTE LA PAUSA
+# ---------------------------------------------------------
+var pausa_activa := false
+
+func set_pausa_activa(valor: bool) -> void:
+	pausa_activa = valor
+
+	# Si no hay diálogo activo, no hacer nada
+	if dialogo_player_actual == null:
+		return
+
+	# Pausar o reanudar el diálogo sin reiniciarlo
+	if pausa_activa:
+		if dialogo_player_actual.playing:
+			dialogo_player_actual.stream_paused = true
+			print("⏸️ Diálogo pausado por menú de pausa.")
+	else:
+		if dialogo_player_actual.stream_paused:
+			dialogo_player_actual.stream_paused = false
+			print("▶️ Diálogo reanudado tras salir de pausa.")
 
 # ---------------------------------------------------------
 # 🎯 SONIDO DE DAÑO DEL JUGADOR
@@ -535,5 +567,4 @@ func fade_in():
 		musica_player.volume_db = vol
 		await get_tree().process_frame
 	fading = false
-	
 	
