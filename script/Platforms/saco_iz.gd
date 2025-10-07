@@ -51,7 +51,7 @@ func Make_damage(body: Node3D):
 		Odil.health = 3
 		TransitionScreen.transition()
 		await TransitionScreen.on_transition_finished
-		get_tree().change_scene_to_file("res://scenes/levels/BossBattlePT2.tscn")
+		get_tree().change_scene_to_file("res://scenes/cinematica_final.tscn")
 
 func _on_damage_body_entered(body: Node3D) -> void:
 	if body.name == "Odil" and !collision_area.disabled:
