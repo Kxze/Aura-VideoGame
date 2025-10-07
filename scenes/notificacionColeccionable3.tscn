@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs31w23111jso"]
+[gd_scene load_steps=2 format=3 uid="uid://dpiacuav3uv5t"]
 
-[ext_resource type="Script" uid="uid://ce3qygyldylkn" path="res://scenes/notificacion_coleccionable.gd" id="1_658mq"]
-[ext_resource type="Texture2D" uid="uid://b2rttb8v823ob" path="res://textures/NotificacionColeccionable.png" id="2_iorum"]
+[ext_resource type="Texture2D" uid="uid://dugeq8x28vvqo" path="res://textures/Silueta2.4_Todos.png" id="1_b8osr"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 10
-script = ExtResource("1_658mq")
 
 [node name="Control" type="Control" parent="."]
 process_mode = 3
@@ -25,5 +23,5 @@ offset_top = 780.0
 offset_right = 1193.0
 offset_bottom = 1150.0
 scale = Vector2(0.810995, 0.810995)
-texture = ExtResource("2_iorum")
+texture = ExtResource("1_b8osr")
 stretch_mode = 5
