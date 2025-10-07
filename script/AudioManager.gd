@@ -26,6 +26,10 @@ var casco_obtenido := false
 var oso_obtenido := false
 var pluma_obtenida := false
 
+# --- Diálogos ---
+var dialogo_en_progreso := false   # 🔒 Evita que se superpongan diálogos
+var dialogo_player_actual: AudioStreamPlayer = null
+var alex1_sonado := false  # ✅ evita repetir el primer diálogo de Alex
 
 # ---------------------------------------------------------
 #                   CONFIGURACIÓN INICIAL
@@ -36,7 +40,7 @@ func _ready():
 	efectos_player.name = "SFX_Player"
 	add_child(efectos_player)
 	efectos_player.bus = "Efectos"
-	efectos_player.volume_db = 0
+	efectos_player.volume_db = +10.0  # 🔊 SFX mucho más presentes (≈ el triple de volumen percibido)
 
 	# --- Music Player ---
 	musica_player = AudioStreamPlayer.new()
@@ -74,6 +78,95 @@ func normalize_audio(stream: AudioStream) -> float:
 	var diff := target_volume_db - current_db
 	return clamp(diff, -12.0, +12.0)
 
+# ---------------------------------------------------------
+# 🎙️ DIÁLOGOS DE AURA 
+# ---------------------------------------------------------
+func play_dialogo_aura(stream: AudioStream) -> void:
+	if not stream:
+		push_warning("⚠️ No se encontró el audio del diálogo de Aura.")
+		return
+
+	if dialogo_en_progreso:
+		print("🕓 Esperando a que termine el diálogo anterior antes de reproducir Aura.")
+		await esperar_dialogo_anterior()
+
+	dialogo_en_progreso = true
+
+	# ✅ Si ya hay un diálogo en curso, no crear otro
+	if dialogo_player_actual:
+		dialogo_player_actual.stop()
+		dialogo_player_actual.queue_free()
+
+	dialogo_player_actual = AudioStreamPlayer.new()
+	dialogo_player_actual.name = "AuraDialogPlayer"
+	dialogo_player_actual.stream = stream
+	dialogo_player_actual.bus = "Dialogos"
+	dialogo_player_actual.volume_db = +6.0
+	add_child(dialogo_player_actual)
+	dialogo_player_actual.owner = null  # 👈 evita ser destruido al cambiar de escena
+
+	dialogo_player_actual.play()
+
+	dialogo_player_actual.finished.connect(func():
+		dialogo_en_progreso = false
+		dialogo_player_actual.queue_free()
+		dialogo_player_actual = null
+	)
+	print("🎧 Diálogo de Aura iniciado.")
+
+
+# ---------------------------------------------------------
+# 🎙️ DIÁLOGOS DE ALEX (PERSISTENTES ENTRE NIVELES)
+# ---------------------------------------------------------
+func play_dialogo_alex(stream: AudioStream) -> void:
+	if not stream:
+		push_warning("⚠️ No se encontró el audio del diálogo de Alex.")
+		return
+
+	# 🚫 Si ya fue reproducido, no repetir aunque se vuelva a cargar la escena
+	if alex1_sonado:
+		print("🔇 Diálogo de Alex ya fue reproducido.")
+		return
+
+	alex1_sonado = true  # 🔒 marcar reproducido
+
+	# Esperar si otro diálogo está activo
+	if dialogo_en_progreso:
+		print("🕓 Esperando a que termine el diálogo anterior antes de reproducir Alex.")
+		await esperar_dialogo_anterior()
+
+	dialogo_en_progreso = true
+
+	# ✅ Detener diálogo previo si existiera
+	if dialogo_player_actual:
+		dialogo_player_actual.stop()
+		dialogo_player_actual.queue_free()
+
+	dialogo_player_actual = AudioStreamPlayer.new()
+	dialogo_player_actual.name = "AlexDialogPlayer"
+	dialogo_player_actual.stream = stream
+	dialogo_player_actual.bus = "Dialogos"
+	dialogo_player_actual.volume_db = +8.0
+	add_child(dialogo_player_actual)
+	dialogo_player_actual.owner = null  # 👈 impide que se elimine al cambiar de escena
+
+	dialogo_player_actual.play()
+
+	dialogo_player_actual.finished.connect(func():
+		dialogo_en_progreso = false
+		dialogo_player_actual.queue_free()
+		dialogo_player_actual = null
+	)
+	print("🎧 Diálogo de Alex iniciado (persistente).")
+
+
+# ---------------------------------------------------------
+# 🕓 FUNCIÓN AUXILIAR
+# ---------------------------------------------------------
+func esperar_dialogo_anterior() -> void:
+	while dialogo_en_progreso:
+		await get_tree().process_frame
+
 
 # ---------------------------------------------------------
 #                         🔊 SFX
@@ -86,9 +179,9 @@ func play_and_get_duration(sound: AudioStream) -> float:
 
 	if normalize_sfx:
 		var adjustment = normalize_audio(sound)
-		efectos_player.volume_db = adjustment
+		efectos_player.volume_db = adjustment + 10.0  # 🔊 refuerzo extra
 	else:
-		efectos_player.volume_db = 0
+		efectos_player.volume_db = +10.0
 	
 	efectos_player.play()
 
@@ -127,7 +220,7 @@ func play_sfx_persistente(sound: AudioStream) -> void:
 	var temp_player := AudioStreamPlayer.new()
 	temp_player.stream = sound
 	temp_player.bus = "Efectos"
-	temp_player.volume_db = 0
+	temp_player.volume_db = +10.0  # mismo refuerzo que el principal
 
 	get_tree().get_root().add_child(temp_player)
 	temp_player.play()
@@ -153,7 +246,7 @@ func play_daño(sound: AudioStream) -> void:
 		return
 
 	efectos_player.stream = sound
-	efectos_player.volume_db = 0
+	efectos_player.volume_db = +10.0
 	efectos_player.bus = "Efectos"
 	efectos_player.play()
 	
@@ -169,7 +262,7 @@ func play_ataque(sound: AudioStream) -> void:
 		return
 
 	efectos_player.stream = sound
-	efectos_player.volume_db = 0
+	efectos_player.volume_db = +10.0
 	efectos_player.bus = "Efectos"
 	efectos_player.play()
 	
@@ -185,7 +278,7 @@ func play_skeleton(sound: AudioStream) -> void:
 		return
 
 	efectos_player.stream = sound
-	efectos_player.volume_db = 0
+	efectos_player.volume_db = +10.0
 	efectos_player.bus = "Efectos"
 	efectos_player.play()
 	
