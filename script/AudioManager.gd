@@ -17,6 +17,9 @@ var fading := false
 var lampara_desbloqueada := false  # 🌙 se mantiene globalmente
 var dash_desbloqueado := false     # 🌪️
 var coleccionable_sonado := false  # 🔔
+var casco_sonado := false  # 🔔 evita que el sonido del coleccionable se repita
+var oso_sonado := false  
+var pluma_sonada := false     # 🪶 evita que el sonido de la pluma se repita
 
 # ---------------------------------------------------------
 #                   CONFIGURACIÓN INICIAL
@@ -314,7 +317,46 @@ func play_coleccionable_cerca(sound: AudioStream) -> void:
 
 	play_sfx_persistente(sound)
 	print("✅ Sonido de coleccionable completado.")
+	
+# ---------------------------------------------------------
+#        🔔 SONIDO COLECCIONABLE CASCO
+# ---------------------------------------------------------
+func play_sonidoCasco(sound: AudioStream) -> void:
+	if casco_sonado:
+		print("🔕 Sonido de coleccionable ya reproducido, no se repetirá.")
+		return
 
+	casco_sonado = true
+	print("🔔 Reproduciendo sonido de coleccionable cerca...")
+
+	play_sfx_persistente(sound)
+	print("✅ Sonido de coleccionable completado.")
+	
+# ---------------------------------------------------------
+#        🧸 SONIDO COLECCIONABLE OSO
+# ---------------------------------------------------------
+func play_sonidoOso(sound: AudioStream) -> void:
+	if oso_sonado:
+		print("🔕 Sonido del oso ya reproducido, no se repetirá.")
+		return
+
+	oso_sonado = true
+	print("🧸 Reproduciendo sonido del coleccionable OSO...")
+	play_sfx_persistente(sound)
+	print("✅ Sonido de oso completado.")
+	
+	# ---------------------------------------------------------
+#        🪶 SONIDO COLECCIONABLE PLUMA
+# ---------------------------------------------------------
+func play_sonidoPluma(sound: AudioStream) -> void:
+	if pluma_sonada:
+		print("🔕 Sonido de la pluma ya reproducido, no se repetirá.")
+		return
+
+	pluma_sonada = true
+	print("🪶 Reproduciendo sonido del coleccionable PLUMA...")
+	play_sfx_persistente(sound)
+	print("✅ Sonido de pluma completado.")
 
 # ---------------------------------------------------------
 #                         MÚSICA
