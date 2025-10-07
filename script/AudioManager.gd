@@ -30,6 +30,9 @@ var pluma_obtenida := false
 var dialogo_en_progreso := false   # 🔒 Evita que se superpongan diálogos
 var dialogo_player_actual: AudioStreamPlayer = null
 var alex1_sonado := false  # ✅ evita repetir el primer diálogo de Alex
+var alex2_sonado := false  # ✅ evita repetir el segundo diálogo de Alex
+var alex3_sonado := false
+var alex7_sonado := false
 
 # ---------------------------------------------------------
 #                   CONFIGURACIÓN INICIAL
