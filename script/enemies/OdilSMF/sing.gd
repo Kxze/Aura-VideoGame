@@ -1,4 +1,5 @@
 extends Odil_state
+@onready var ray_cast_3d: RayCast3D = $"../RayCast3D"
 
 func enter(previous_state_path : String, data := {}):
 	odil.animation.play("Sing")
