@@ -6,8 +6,9 @@ class_name StateMachine extends Node
 	return initial_state if initial_state != null else get_child(0)).call()
 
 func _ready() -> void:
-	for state_node : State in get_children():
-		state_node.finished.connect(_transition_to_next_state)
+	for child in get_children():
+		if child is State:
+			child.finished.connect(_transition_to_next_state)
 	
 	await  owner.ready
 	state.enter("")

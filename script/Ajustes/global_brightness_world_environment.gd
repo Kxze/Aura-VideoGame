@@ -1,4 +1,7 @@
 extends WorldEnvironment
 
 func _ready():
-	GlobalBrightness.registrar_environment($".".environment)
+	if Engine.has_singleton("GlobalBrightness"):
+		GlobalBrightness.registrar_environment(self.environment)
+	else:
+		push_warning("⚠️ GlobalBrightness no está disponible como autoload.")

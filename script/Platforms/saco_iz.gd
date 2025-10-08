@@ -4,6 +4,7 @@ var has_fallen: bool = false
 var original_position: Vector3
 var damage: int = 1
 
+@onready var dañoOdette_sound = preload("res://sonidos/golpeOdette.mp3")
 @onready var collision_shape_3d: CollisionShape3D = $SacoColIz/CollisionShape3D
 @onready var Damage: Area3D = $SacoColIz/Damage
 @onready var collision_area: CollisionShape3D = $SacoColIz/Damage/CollisionArea
@@ -12,7 +13,7 @@ func _ready():
 	original_position = global_position
 
 func _on_activar_plataforma_body_entered(body: Node3D) -> void:
-	if body.name == "Player" and !has_fallen:
+	if body.name == "Player" and not has_fallen:
 		has_fallen = true
 
 		var opacity_tween: Tween = create_tween().set_trans(Tween.TRANS_SINE)
@@ -39,8 +40,10 @@ func _respawn_platform() -> void:
 	tween.tween_property(self, "transparency", 0, 0.5)
 	has_fallen = false
 
+# 💢 Reproduce el sonido de daño de Odette y aplica daño
 func Make_damage(body: Node3D):
-	if !Odil.isInvulnerable:
+	if not Odil.isInvulnerable:
+		_play_dañoOdette()
 		Odil.health -= damage
 		Odil.isHurt = true
 		Odil.isMoving = false
@@ -51,8 +54,13 @@ func Make_damage(body: Node3D):
 		Odil.health = 3
 		TransitionScreen.transition()
 		await TransitionScreen.on_transition_finished
-		get_tree().change_scene_to_file("res://scenes/levels/BossBattlePT2.tscn")
+		get_tree().change_scene_to_file("res://scenes/cinematica_final.tscn")
 
 func _on_damage_body_entered(body: Node3D) -> void:
-	if body.name == "Odil" and !collision_area.disabled:
+	if body.name == "Odil" and not collision_area.disabled:
 		Make_damage(body)
+
+# 🔊 Llama al AudioManager para reproducir el sonido de daño
+func _play_dañoOdette() -> void:
+	if AudioManager:
+		AudioManager.play_daño_odette(dañoOdette_sound)

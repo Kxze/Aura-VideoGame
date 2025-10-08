@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://crjvyo6tve2s0"]
+[gd_scene load_steps=30 format=4 uid="uid://crjvyo6tve2s0"]
 
 [ext_resource type="PackedScene" uid="uid://dn1lgpau3so1y" path="res://Art/Levels/BlockingBossBattlePT1.blend" id="1_tbob4"]
 [ext_resource type="Script" uid="uid://cjxw6askaab3f" path="res://script/Platforms/saco_iz.gd" id="2_5lrve"]
@@ -11,6 +11,47 @@
 [ext_resource type="Script" uid="uid://dm4gi7hq0oq23" path="res://script/Platforms/ruta_odil_spin.gd" id="5_t6a2b"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="10_h3aqx"]
 [ext_resource type="LightmapGIData" uid="uid://byifcv8gkkehh" path="res://scenes/levels/bakes_lights/BossBattlePT1.lmbake" id="12_h3aqx"]
+
+[sub_resource type="GDScript" id="GDScript_dki7e"]
+script/source = "extends Node3D
+
+@onready var battle_track: AudioStream = preload(\"res://musica/MelodiaBatallaFinal.mp3\")
+
+func _ready() -> void:
+	print(\"🎬 BossBattlePT1 cargada\")
+	_play_battle_music()
+
+func _play_battle_music() -> void:
+	var audio_manager = get_node_or_null(\"/root/AudioManager\")
+	
+	if audio_manager == null:
+		push_warning(\"⚠️ No se encontró el AudioManager en /root/\")
+		return
+
+	if audio_manager.musica_player == null:
+		push_warning(\"⚠️ El AudioManager no tiene un musica_player asignado.\")
+		return
+
+	# Detiene cualquier música anterior si está sonando otra
+	if audio_manager.musica_player.playing:
+		await audio_manager.fade_out()
+
+	# Configura la nueva canción
+	audio_manager.musica_player.stream = battle_track
+	audio_manager.musica_player.volume_db = -4
+	audio_manager.musica_player.stream_paused = false
+	audio_manager.musica_player.play()
+
+	# 🔁 Activa el loop correctamente según el tipo de stream
+	if audio_manager.musica_player.stream is AudioStream:
+		var stream = audio_manager.musica_player.stream
+		if stream.has_method(\"set_loop\"):
+			stream.set_loop(true)
+		elif \"loop\" in stream:
+			stream.loop = true
+
+	print(\"🎵 Reproduciendo MelodiaBatallaFinal.mp3\")
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6a2b"]
 size = Vector3(6.0302734, 6.826782, 6.1621094)
@@ -287,6 +328,7 @@ _data = {
 point_count = 2
 
 [node name="Node3D" type="Node3D"]
+script = SubResource("GDScript_dki7e")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.988024, -0.10645, -0.1117, 0.154113, 0.64515, 0.748352, -0.007599, -0.756604, 0.653829, -429.736, 574.975, 574.125)
@@ -380,9 +422,9 @@ environment = SubResource("Environment_dki7e")
 fov = 80.0
 far = 300.0
 script = ExtResource("3_5lrve")
+target = NodePath("..")
 follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 41.795)
-target = NodePath("..")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.8825705, -0.03184845, 0.46910033, -0.4701802, -0.05978253, 0.8805434, 5.9604638e-08, -0.9977033, -0.0677368, 26.786007, 80.07516, -9.55109)
