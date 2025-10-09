@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b47t313xjb7m7"]
 
 [ext_resource type="Script" uid="uid://ce3qygyldylkn" path="res://scenes/notificacion_coleccionable.gd" id="1_ms44v"]
-[ext_resource type="Texture2D" uid="uid://b2rttb8v823ob" path="res://textures/NotificacionColeccionable.png" id="2_q3otk"]
+[ext_resource type="Texture2D" uid="uid://h0hl70j457an" path="res://textures/NotificacionColeccionable2.png" id="2_ms44v"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 10
@@ -25,5 +25,5 @@ offset_top = 780.0
 offset_right = 1193.0
 offset_bottom = 1150.0
 scale = Vector2(0.810995, 0.810995)
-texture = ExtResource("2_q3otk")
+texture = ExtResource("2_ms44v")
 stretch_mode = 5
