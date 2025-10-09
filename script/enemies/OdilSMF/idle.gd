@@ -9,9 +9,11 @@ func physics_update(delta: float):
 	if odil.isHurt:
 		odil.isMoving = false
 		emit_signal("finished","Angry")
+	if odil.odilFase2:
+		emit_signal("finished","Sing")
 	if odil.odilFase3:
 		emit_signal("finished","Evoque")
-		
+
 	
 #Esta funcion sobreescribe la funcion process
 func update(_delta:float):

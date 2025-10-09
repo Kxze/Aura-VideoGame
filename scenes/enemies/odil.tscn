@@ -18,7 +18,7 @@ radius = 2.9726563
 height = 11.575562
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x3r7m"]
-size = Vector3(1, 12.0078125, 1)
+size = Vector3(3.1220703, 20.634766, 2.6425781)
 
 [node name="Odil" type="CharacterBody3D"]
 collision_layer = 8
@@ -99,7 +99,8 @@ one_shot = true
 script = ExtResource("6_x3r7m")
 
 [node name="Timer" type="Timer" parent="StateMachine/Sing"]
-wait_time = 5.0
+wait_time = 2.0
+autostart = true
 
 [node name="Evoque" type="Node" parent="StateMachine"]
 script = ExtResource("7_88o00")
@@ -111,17 +112,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.812683, 0)
 shape = SubResource("CapsuleShape3D_cwpsi")
 debug_color = Color(0.67977697, 0, 0.1561048, 0.41960785)
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, -1, 0, 1, 2.9802322e-08, 0, 0, 0)
-target_position = Vector3(0, 10, 0)
+[node name="Area_ray" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 1.4901161e-07, 0, -1.4901161e-07, -1, 0, 0, 0)
 
-[node name="Area3D" type="Area3D" parent="RayCast3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RayCast3D/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5039063, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area_ray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.817383, 0)
 shape = SubResource("BoxShape3D_x3r7m")
+debug_color = Color(0.9423964, 7.893444e-06, 0.60854083, 0.41960785)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 1.4901161e-07, 0, -1.4901161e-07, -1, 0, 0, 0)
+exclude_parent = false
+target_position = Vector3(0, 20, 0)
 
 [connection signal="timeout" from="StateMachine/Angry/Timer" to="StateMachine/Angry" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Sing/Timer" to="StateMachine/Sing" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Area_ray" to="StateMachine/Sing" method="_on_area_ray_body_entered"]
 
 [editable path="Odil"]

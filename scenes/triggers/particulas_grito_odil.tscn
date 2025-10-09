@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvhb32tqovgl5"]
+[gd_scene load_steps=15 format=3 uid="uid://bkxgm0ry1aqy5"]
 
-[ext_resource type="Shader" uid="uid://cm5axrjeqr7x" path="res://scenes/triggers/ataque_julieta_particulas.gdshader" id="1_8iefn"]
-[ext_resource type="Texture2D" uid="uid://c1mbjtilqk416" path="res://Art/Model3D/JULIETA/Ilustración_sin_título-1.png" id="2_kim2q"]
-[ext_resource type="Script" uid="uid://cmm6mtfhsp0g" path="res://script/BossBattleOdil/Pt3/ataque_particulas.gd" id="3_ndge5"]
+[ext_resource type="Shader" uid="uid://cm5axrjeqr7x" path="res://scenes/triggers/ataque_julieta_particulas.gdshader" id="1_rgiwg"]
+[ext_resource type="Texture2D" uid="uid://c1mbjtilqk416" path="res://Art/Model3D/JULIETA/Ilustración_sin_título-1.png" id="2_0q3qt"]
+[ext_resource type="Script" uid="uid://cmm6mtfhsp0g" path="res://script/BossBattleOdil/Pt3/ataque_particulas.gd" id="3_uye33"]
 
 [sub_resource type="Curve" id="Curve_kim2q"]
 _data = [Vector2(0.0220588, 0), 0.0, 0.0, 0, 0, Vector2(0.433824, 0.539326), -2.06499, -2.06499, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -51,9 +51,9 @@ gradient = SubResource("Gradient_kim2q")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k4wmo"]
 render_priority = 0
-shader = ExtResource("1_8iefn")
+shader = ExtResource("1_rgiwg")
 shader_parameter/albedo_tex = SubResource("GradientTexture1D_ndge5")
-shader_parameter/mask_tex = ExtResource("2_kim2q")
+shader_parameter/mask_tex = ExtResource("2_0q3qt")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_up4yo"]
 material = SubResource("ShaderMaterial_k4wmo")
@@ -71,4 +71,4 @@ process_material = SubResource("ParticleProcessMaterial_k4wmo")
 draw_passes = 2
 draw_pass_1 = SubResource("TorusMesh_7nu5x")
 draw_pass_2 = SubResource("PlaneMesh_up4yo")
-script = ExtResource("3_ndge5")
+script = ExtResource("3_uye33")

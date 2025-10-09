@@ -7,9 +7,13 @@ static var isMoving: bool = true
 static var isHurt: bool = false
 static var isInvulnerable: bool = false
 static var canDetectPlayer: bool = true
-@export var target : Node3D
+@onready var target : Node3D = get_tree().get_first_node_in_group("player")
 var damage = 1
+
+
 @export var odilFase3 : bool = false
+@export var odilFase2 : bool = false
+
 
 func Make_damage(body: Node3D):
 	Player.health -= damage
