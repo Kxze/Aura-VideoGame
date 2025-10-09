@@ -587,6 +587,22 @@ func play_sonidoPluma(sound: AudioStream) -> void:
 	print("✅ Sonido de pluma completado.")
 
 # ---------------------------------------------------------
+# 💢 SONIDO DE DAÑO ODETTE
+# ---------------------------------------------------------
+func play_daño_odette(sound: AudioStream) -> void:
+	if sound == null:
+		return
+
+	# Evita reiniciar el mismo sonido si ya está sonando
+	if efectos_player.playing and efectos_player.stream == sound:
+		return
+
+	efectos_player.stream = sound
+	efectos_player.volume_db = +8.0  # ajusta a gusto
+	efectos_player.bus = "Efectos"
+	efectos_player.play()
+
+# ---------------------------------------------------------
 #                         MÚSICA
 # ---------------------------------------------------------
 func play_music(track: AudioStream, loop := true, crossfade := true) -> void:
