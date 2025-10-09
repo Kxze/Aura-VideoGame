@@ -25,6 +25,7 @@ size = Vector3(1, 12.0078125, 1)
 collision_layer = 8
 collision_mask = 17
 script = ExtResource("1_8cqui")
+odilFase2 = true
 
 [node name="Odil" parent="." instance=ExtResource("2_cwpsi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22815466, 0)
