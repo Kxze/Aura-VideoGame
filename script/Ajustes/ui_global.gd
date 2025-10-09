@@ -12,6 +12,7 @@ var escenas_sin_pausa := [
 	"res://scenes/menu_principal.tscn",
 	"res://scenes/partidas.tscn",
 	"res://scenes/cinematica_incial.tscn",
+	"res://scenes/cinematica_final.tscn",
 	"res://scenes/menu_tap.tscn"
 	]
 	

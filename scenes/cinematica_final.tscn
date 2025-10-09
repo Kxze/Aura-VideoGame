@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbsbkwti3lg3e"]
 
-[ext_resource type="Script" path="res://script/cinematica_final.gd" id="1_whgxa"]
-[ext_resource type="VideoStream" path="res://Videos/Cinemática-Final.ogv" id="2_whgxa"]
+[ext_resource type="Script" uid="uid://da5hkig73ef4e" path="res://script/cinematica_final.gd" id="1_whgxa"]
+[ext_resource type="VideoStream" uid="uid://bxv4skj3hf1r3" path="res://Videos/Cinemática-Final.ogv" id="2_whgxa"]
 [ext_resource type="Theme" uid="uid://dsdobfeg448w0" path="res://Temas/cinematica.tres" id="3_lll55"]
 
 [node name="Control" type="Control"]
