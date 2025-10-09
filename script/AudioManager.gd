@@ -542,6 +542,64 @@ func play_sonidoPluma(sound: AudioStream) -> void:
 	print("🪶 Reproduciendo sonido del coleccionable PLUMA...")
 	play_sfx_persistente(sound)
 	print("✅ Sonido de pluma completado.")
+	
+# ---------------------------------------------------------
+# 🌀 SONIDO DE GIRO (ODIL) — no espacial, loop constante
+# ---------------------------------------------------------
+var spin_player: AudioStreamPlayer = null
+var spin_loop_active := false
+
+func play_spin_odil(sound: AudioStream) -> void:
+	if sound == null:
+		return
+	if spin_loop_active:
+		return  # ya sonando
+
+	# 🔊 Crear reproductor global si no existe
+	if not spin_player:
+		spin_player = AudioStreamPlayer.new()
+		spin_player.name = "SpinPlayer"
+		spin_player.bus = "Efectos"
+		spin_player.stream = sound
+		spin_player.volume_db = -6.0
+		spin_player.autoplay = false
+		spin_player.process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().root.add_child(spin_player)  # fuera del mundo 3D (no se pausa ni atenúa)
+
+	spin_loop_active = true
+	spin_player.stream = sound
+	spin_player.play()
+	spin_player.finished.connect(_on_spin_finished.bind(sound), CONNECT_ONE_SHOT)
+	print("🌀 Loop de giro iniciado.")
+
+
+func _on_spin_finished(sound: AudioStream) -> void:
+	if spin_loop_active and spin_player:
+		spin_player.play()  # reinicia el mismo sonido
+		spin_player.finished.connect(_on_spin_finished.bind(sound), CONNECT_ONE_SHOT)
+
+
+func stop_spin_odil() -> void:
+	spin_loop_active = false
+	if spin_player and spin_player.playing:
+		spin_player.stop()
+	print("🛑 Loop de giro detenido.")
+	
+# ---------------------------------------------------------
+# 💢 SONIDO DE DAÑO ODETTE
+# ---------------------------------------------------------
+func play_daño_odette(sound: AudioStream) -> void:
+	if sound == null:
+		return
+
+	# Evita reiniciar el mismo sonido si ya está sonando
+	if efectos_player.playing and efectos_player.stream == sound:
+		return
+
+	efectos_player.stream = sound
+	efectos_player.volume_db = +8.0  # ajusta a gusto
+	efectos_player.bus = "Efectos"
+	efectos_player.play()
 
 # ---------------------------------------------------------
 #                         MÚSICA

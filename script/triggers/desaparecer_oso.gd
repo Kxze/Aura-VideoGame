@@ -4,7 +4,7 @@ extends Area3D
 @onready var osopeluche: MeshInstance3D = $"../OSO_EspacioColeccionable/OSOPELUCHE"
 @onready var sonido_oso = preload("res://sonidos/desbloqueaColeccionable.wav")
 @onready var dialogo_aura = preload("res://dialogos/aura/Aura3-RV.wav")  # 🎙️ diálogo de Aura
-@onready var notificacion_scene = preload("res://scenes/notificacionColeccionable.tscn")
+@onready var notificacion_scene = preload("res://scenes/notificacionColeccionable3.tscn")
 
 func _ready() -> void:
 	# 🧠 Si ya se obtuvo antes en esta partida, ocultarlo al cargar la escena

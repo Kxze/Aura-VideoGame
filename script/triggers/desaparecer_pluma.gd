@@ -4,7 +4,7 @@ extends Area3D
 @onready var particle: GPUParticles3D = $"../GPUParticles3D2"
 @onready var sonido_pluma = preload("res://sonidos/desbloqueaColeccionable.wav")
 @onready var dialogo_aura = preload("res://dialogos/aura/Aura4-RV.wav")  # 🎙️ diálogo Aura
-@onready var notificacion_scene = preload("res://scenes/notificacionColeccionable.tscn")
+@onready var notificacion_scene = preload("res://scenes/notificacionColeccionable2.tscn")
 
 func _ready() -> void:
 	# 🧠 Si ya se obtuvo antes en esta partida, ocultarla al cargar la escena

@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=4 uid="uid://crjvyo6tve2s0"]
+[gd_scene load_steps=26 format=4 uid="uid://crjvyo6tve2s0"]
 
+[ext_resource type="Script" uid="uid://dhnq7d65pvkf0" path="res://scenes/levels/boss_battle_pt_1.gd" id="1_dki7e"]
 [ext_resource type="PackedScene" uid="uid://dn1lgpau3so1y" path="res://Art/Levels/BlockingBossBattlePT1.blend" id="1_tbob4"]
 [ext_resource type="Script" uid="uid://cjxw6askaab3f" path="res://script/Platforms/saco_iz.gd" id="2_5lrve"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_5wskf"]
@@ -245,6 +246,7 @@ _data = {
 point_count = 2
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_dki7e")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.988024, -0.10645, -0.1117, 0.154113, 0.64515, 0.748352, -0.007599, -0.756604, 0.653829, -429.736, 574.975, 574.125)
