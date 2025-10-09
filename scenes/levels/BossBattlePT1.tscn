@@ -481,6 +481,7 @@ speed = 0.2
 
 [node name="Odil" parent="Path3D2/PathFollow3D" instance=ExtResource("5_5lrve")]
 transform = Transform3D(-0.0023000478, 0, 1.249998, 0, 1.25, 0, -1.249998, 0, -0.0023000478, 1.5232344, -1.8523464, 0.7351351)
+odilFase2 = false
 
 [connection signal="body_entered" from="BlockingBossBattlePT1/SacoIz/SacoColIz/ActivarPlataforma" to="BlockingBossBattlePT1/SacoIz" method="_on_activar_plataforma_body_entered"]
 [connection signal="body_entered" from="BlockingBossBattlePT1/SacoIz/SacoColIz/Damage" to="BlockingBossBattlePT1/SacoIz" method="_on_damage_body_entered"]
