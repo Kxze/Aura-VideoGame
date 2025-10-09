@@ -9,6 +9,7 @@ static var isInvulnerable: bool = false
 static var canDetectPlayer: bool = true
 @export var target : Node3D
 var damage = 1
+@export var odilFase3 : bool = false
 
 func Make_damage(body: Node3D):
 	Player.health -= damage
