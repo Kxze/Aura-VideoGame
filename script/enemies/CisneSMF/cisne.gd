@@ -20,7 +20,11 @@ var isPassive: bool = false
 
 @onready var Target: Node3D = get_tree().get_first_node_in_group("player")
 
-var speed: int = 20
+#variables to detect and follow player
+var max_distance_from_player : float = 25
+var distance_alert : float = 10
+
+var speed: int = 10
 var health: int = 20
 var damage: int = 2
 var Gravity := -1.3
