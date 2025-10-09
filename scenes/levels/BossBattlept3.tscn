@@ -1,36 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://0fxg0vh4knx5"]
+[gd_scene load_steps=9 format=3 uid="uid://0fxg0vh4knx5"]
 
+[ext_resource type="Script" uid="uid://drgokyv2kmsrd" path="res://script/BossBattleOdil/Pt3/boss_battlept_3.gd" id="1_k8ca0"]
 [ext_resource type="PackedScene" uid="uid://cs48c2btwtf1b" path="res://Art/Levels/BlockingBossBattlePT3.blend" id="1_wwjcn"]
+[ext_resource type="PackedScene" uid="uid://bnoyn8qc3q0ot" path="res://scenes/enemies/cisne.tscn" id="2_d0s8u"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_x8vyx"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_k8ca0"]
+[ext_resource type="PackedScene" uid="uid://diwelj1drodya" path="res://scenes/enemies/odil.tscn" id="4_x8vyx"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="Curve3D" id="Curve3D_x8vyx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -34.226913, 1.7455063, 0, 0, 0, 0, 0, 0, 0, 39.778847, 1.2992439, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
-[node name="BlockingBossBattlePT3" parent="." instance=ExtResource("1_wwjcn")]
+[sub_resource type="NavigationMesh" id="NavigationMesh_d0s8u"]
+vertices = PackedVector3Array(-10.5164795, 22.462936, -35.495758, -10.5164795, 22.212936, -35.995758, -11.7664795, 21.962936, -36.245758, -11.5164795, 23.462936, -33.745758, -76.01648, 21.962936, -37.995758, -82.76648, 23.462936, -35.245758, -16.01648, 23.462936, -33.745758, -155.76648, 22.212936, -37.995758, -154.76648, 23.462936, -35.495758, -12.5164795, 25.712936, -30.995758, -12.5164795, 25.712936, -24.245758, -12.0164795, 25.712936, -24.245758, -11.7664795, 25.712936, -28.245758, -11.7664795, 25.712936, -32.745758, -154.51648, 25.712936, -25.995758, -154.01648, 25.712936, -25.995758, -153.76648, 25.712936, -32.745758, -154.51648, 25.712936, -34.495758, -16.51648, 25.712936, -32.995758, -83.26648, 25.712936, -34.245758, -153.01648, 43.462936, -31.995758, -153.01648, 43.462936, -25.995758, -149.51648, 43.462936, -25.745758, -13.5164795, 43.462936, -24.245758, -13.5164795, 43.462936, -30.245758, -154.01648, 25.712936, -22.245758, -154.01648, 25.712936, -24.745758, -154.51648, 25.712936, -24.745758, -155.01648, 25.712936, -3.995758, -155.01648, 25.712936, 2.004242, -154.51648, 25.712936, 2.004242, -153.51648, 43.462936, -1.995758, -153.51648, 43.462936, 2.004242, -134.26648, 43.462936, 2.004242, -134.26648, 43.462936, -24.495758, -153.01648, 43.462936, -24.745758, -132.26648, 43.462936, 3.254242, -134.26648, 43.462936, 3.254242, -134.26648, 43.462936, 11.254242, -36.51648, 43.462936, 12.504242, -36.26648, 43.462936, 3.254242, -37.76648, 43.462936, 3.254242, -38.01648, 43.462936, 2.254242, -36.26648, 43.462936, 2.004242, -36.51648, 43.462936, -23.245758, -132.01648, 43.462936, 2.254242, -13.7664795, 43.462936, 2.004242, -13.5164795, 43.462936, -22.995758, -12.7664795, 25.712936, -9.995758, -12.7664795, 25.712936, 2.004242, -12.2664795, 25.712936, 2.004242, -12.0164795, 25.712936, -8.495758, -12.0164795, 25.712936, -22.995758, -12.5164795, 25.712936, -22.995758, -12.2664795, 25.712936, 11.504242, -12.2664795, 25.712936, 3.254242, -12.7664795, 25.712936, 3.254242, -13.2664795, 25.712936, 19.504242, -12.7664795, 25.712936, 20.754242, -125.76648, 25.712936, 34.254242, -98.76648, 25.712936, 39.754242, -99.51648, 25.712936, 37.254242, -126.51648, 25.712936, 32.004242, -42.01648, 25.712936, 35.254242, -41.26648, 25.712936, 33.004242, -69.51648, 25.712936, 37.754242, -68.76648, 25.712936, 40.004242, -154.51648, 25.712936, 17.504242, -154.51648, 25.712936, 3.254242, -155.01648, 25.712936, 3.254242, -155.26648, 25.712936, 16.004242, -155.01648, 25.712936, 19.004242, -153.51648, 43.462936, 3.254242, -153.51648, 43.462936, 11.004242, -14.0164795, 43.462936, 12.754242, -13.7664795, 43.462936, 9.504242, -13.7664795, 43.462936, 3.254242, -153.51648, 43.462936, 12.254242, -153.76648, 43.462936, 18.004242, -153.51648, 43.462936, 21.754242, -126.51648, 43.462936, 37.004242, -124.51648, 43.462936, 37.504242, -124.26648, 43.462936, 12.754242, -119.51648, 43.462936, 38.504242, -119.01648, 43.462936, 12.754242, -112.51648, 43.462936, 40.004242, -112.01648, 43.462936, 12.754242, -104.26648, 43.462936, 41.754242, -103.76648, 43.462936, 13.004242, -98.76648, 43.462936, 43.004242, -71.01648, 43.462936, 43.504242, -61.26648, 43.462936, 41.754242, -61.76648, 43.462936, 13.504242, -55.76648, 43.462936, 40.754242, -56.01648, 43.462936, 13.504242, -50.51648, 43.462936, 39.754242, -50.76648, 43.462936, 13.504242, -42.01648, 43.462936, 38.254242, -14.2664795, 43.462936, 23.504242, -14.0164795, 43.462936, 14.004242, -138.26648, 22.212936, 31.004242, -137.26648, 23.462936, 29.504242, -155.51648, 23.462936, 19.754242, -156.76648, 22.212936, 21.004242, -19.51648, 22.212936, 27.504242, -11.0164795, 22.462936, 22.754242, -12.2664795, 23.462936, 21.504242, -30.26648, 23.462936, 30.754242, -29.51648, 22.462936, 32.254242, -41.51648, 23.462936, 36.254242, -42.26648, 21.962936, 39.004242, -90.26648, 23.462936, 41.004242, -99.26648, 23.462936, 40.754242, -98.51648, 21.962936, 43.754242, -86.26648, 21.962936, 44.004242, -126.26648, 23.462936, 35.254242, -126.51648, 22.212936, 37.754242, -69.01648, 21.962936, 44.004242, -66.76648, 23.462936, 40.754242)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 6), PackedInt32Array(2, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(8, 7, 5), PackedInt32Array(5, 7, 4), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 9), PackedInt32Array(12, 9, 13), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(13, 9, 18), PackedInt32Array(18, 9, 19), PackedInt32Array(19, 9, 16), PackedInt32Array(19, 16, 17), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 24), PackedInt32Array(22, 24, 23), PackedInt32Array(26, 25, 27), PackedInt32Array(27, 25, 28), PackedInt32Array(28, 25, 29), PackedInt32Array(29, 25, 30), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 35), PackedInt32Array(33, 35, 34), PackedInt32Array(38, 37, 36), PackedInt32Array(41, 40, 39), PackedInt32Array(41, 39, 42), PackedInt32Array(42, 39, 36), PackedInt32Array(36, 39, 38), PackedInt32Array(43, 42, 44), PackedInt32Array(44, 42, 45), PackedInt32Array(44, 45, 33), PackedInt32Array(44, 33, 34), PackedInt32Array(45, 42, 36), PackedInt32Array(46, 43, 47), PackedInt32Array(47, 43, 44), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 48), PackedInt32Array(51, 48, 53), PackedInt32Array(51, 53, 52), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 57), PackedInt32Array(57, 54, 58), PackedInt32Array(62, 61, 59), PackedInt32Array(59, 61, 60), PackedInt32Array(66, 65, 63), PackedInt32Array(63, 65, 64), PackedInt32Array(71, 70, 67), PackedInt32Array(67, 70, 69), PackedInt32Array(67, 69, 68), PackedInt32Array(66, 60, 65), PackedInt32Array(65, 60, 61), PackedInt32Array(67, 62, 71), PackedInt32Array(71, 62, 59), PackedInt32Array(57, 58, 64), PackedInt32Array(64, 58, 63), PackedInt32Array(72, 37, 73), PackedInt32Array(73, 37, 38), PackedInt32Array(75, 74, 76), PackedInt32Array(76, 74, 40), PackedInt32Array(40, 74, 39), PackedInt32Array(78, 77, 79), PackedInt32Array(79, 77, 82), PackedInt32Array(79, 82, 80), PackedInt32Array(80, 82, 81), PackedInt32Array(82, 84, 81), PackedInt32Array(81, 84, 83), PackedInt32Array(84, 86, 83), PackedInt32Array(83, 86, 85), PackedInt32Array(86, 88, 85), PackedInt32Array(85, 88, 87), PackedInt32Array(87, 88, 89), PackedInt32Array(89, 88, 90), PackedInt32Array(90, 88, 91), PackedInt32Array(91, 88, 92), PackedInt32Array(94, 93, 92), PackedInt32Array(92, 93, 91), PackedInt32Array(96, 95, 94), PackedInt32Array(94, 95, 93), PackedInt32Array(95, 96, 97), PackedInt32Array(97, 96, 98), PackedInt32Array(98, 96, 99), PackedInt32Array(101, 100, 102), PackedInt32Array(102, 100, 103), PackedInt32Array(105, 104, 106), PackedInt32Array(106, 104, 108), PackedInt32Array(106, 108, 107), PackedInt32Array(107, 108, 109), PackedInt32Array(109, 108, 110), PackedInt32Array(112, 111, 113), PackedInt32Array(113, 111, 114), PackedInt32Array(101, 115, 100), PackedInt32Array(100, 115, 116), PackedInt32Array(117, 114, 118), PackedInt32Array(118, 114, 111), PackedInt32Array(109, 110, 118), PackedInt32Array(118, 110, 117), PackedInt32Array(115, 112, 116), PackedInt32Array(116, 112, 113)]
 
-[node name="StaticBody3D" parent="BlockingBossBattlePT3/pCube1" index="0"]
-collision_layer = 2
-
-[node name="Player" parent="." instance=ExtResource("2_x8vyx")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -126.932, 44.1747, -5.87465)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
-light_color = Color(1, 0.969167, 0.63, 1)
-light_energy = 3.0
-light_specular = 0.0
-spot_range = 13.139
-spot_angle = 69.14
-
-[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59400177, 1.1009998, 6.303001)
-keep_aspect = 0
-fov = 80.0
-far = 250.0
-script = ExtResource("3_k8ca0")
-target = NodePath("..")
-follow_speed = 12.0
-offset = Vector3(2.97, 5.505, 31.515)
+[node name="BossBattle3" type="Node3D"]
+script = ExtResource("1_k8ca0")
+swans_scene = ExtResource("2_d0s8u")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.988024, -0.10645, -0.1117, 0.154113, 0.64515, 0.748352, -0.007599, -0.756604, 0.653829, -77.9531, 107.339, 116)
@@ -85,4 +75,50 @@ light_indirect_energy = 0.354
 omni_range = 34.2904
 omni_attenuation = 0.192
 
-[editable path="BlockingBossBattlePT3"]
+[node name="Odil" parent="." instance=ExtResource("4_x8vyx")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -84, 59, -28.671509)
+odilFase3 = true
+
+[node name="Player" parent="." instance=ExtResource("2_x8vyx")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -87.90801, 43.583378, -5.87465)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
+light_color = Color(1, 0.969167, 0.63, 1)
+light_energy = 3.0
+light_specular = 0.0
+spot_range = 13.139
+spot_angle = 69.14
+
+[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59400177, 1.1010017, 8.358998)
+keep_aspect = 0
+fov = 80.0
+far = 300.0
+script = ExtResource("3_k8ca0")
+target = NodePath("..")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 41.795)
+
+[node name="SpawnPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 45.204975, 0)
+curve = SubResource("Curve3D_x8vyx")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-1.6291928e-07, 0.006029992, -0.99998146, 2.3283064e-10, 0.99998146, 0.006029992, 1, 7.495757e-10, -1.6291767e-07, -34.226913, 1.7455063, 0)
+
+[node name="Spawn_Timer" type="Timer" parent="."]
+wait_time = 4.042000000000001
+autostart = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_d0s8u")
+
+[node name="BlockingBossBattlePT3" parent="NavigationRegion3D" instance=ExtResource("1_wwjcn")]
+
+[node name="StaticBody3D" parent="NavigationRegion3D/BlockingBossBattlePT3/pCube1" index="0"]
+collision_layer = 2
+
+[connection signal="timeout" from="Spawn_Timer" to="." method="_on_spawn_timer_timeout"]
+
+[editable path="NavigationRegion3D/BlockingBossBattlePT3"]

@@ -18,7 +18,8 @@ extends CharacterBody3D
 var isAgressive: bool = true
 var isPassive: bool = false
 
-@export var Target: Node3D
+@onready var Target: Node3D = get_tree().get_first_node_in_group("player")
+
 var speed: int = 20
 var health: int = 20
 var damage: int = 2
@@ -55,4 +56,7 @@ func Make_damage(body: Node3D):
 func _on_area_damage_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		Make_damage(body)
-		
+
+func initialize(swan_spawn, player_pos):
+	Target = get_node("Player")
+	position = swan_spawn + player_pos
