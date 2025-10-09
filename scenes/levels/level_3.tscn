@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://c17wj8jr8lb0n"]
+[gd_scene load_steps=21 format=3 uid="uid://c17wj8jr8lb0n"]
 
 [ext_resource type="PackedScene" uid="uid://btl7r0mv42dlj" path="res://Art/Levels/blocking_level_3.blend" id="1_0ljxa"]
+[ext_resource type="Script" uid="uid://bff7xgrimgwy4" path="res://scenes/levels/level_3.gd" id="1_josfm"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_0qepi"]
 [ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_apo5x"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_fmg3e"]
@@ -31,6 +32,7 @@ alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("16_josfm")
 
 [node name="Level4" type="Node3D"]
+script = ExtResource("1_josfm")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.200735, 0.598676, -0.77543, -0.705838, 0.46051, 0.538259, 0.679336, 0.655376, 0.330128, 0, 0, 51.0904)
