@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://diwelj1drodya"]
+[gd_scene load_steps=13 format=3 uid="uid://diwelj1drodya"]
 
 [ext_resource type="Script" uid="uid://8fmhl05mueya" path="res://script/enemies/OdilSMF/odil.gd" id="1_8cqui"]
 [ext_resource type="PackedScene" uid="uid://l3xvdh87g5tb" path="res://Art/Model3D/ODETTE - ODIL/Odil.blend" id="2_cwpsi"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://thvsf4gorsa6" path="res://script/enemies/OdilSMF/sing.gd" id="6_x3r7m"]
 [ext_resource type="Script" uid="uid://uhsnqd6w4yry" path="res://script/enemies/OdilSMF/evoque.gd" id="7_88o00"]
 [ext_resource type="Script" uid="uid://b0x68nbaxutjk" path="res://script/enemies/OdilSMF/idle.gd" id="8_5m55m"]
+[ext_resource type="PackedScene" uid="uid://bvhb32tqovgl5" path="res://scenes/triggers/ataque_julieta_particulas.tscn" id="9_mbja2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8cqui"]
 radius = 2.015625
@@ -16,6 +17,9 @@ height = 11.38208
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cwpsi"]
 radius = 2.9726563
 height = 11.575562
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3r7m"]
+size = Vector3(1, 12.0078125, 1)
 
 [node name="Odil" type="CharacterBody3D"]
 collision_layer = 8
@@ -95,6 +99,9 @@ one_shot = true
 [node name="Sing" type="Node" parent="StateMachine"]
 script = ExtResource("6_x3r7m")
 
+[node name="Timer" type="Timer" parent="StateMachine/Sing"]
+wait_time = 5.0
+
 [node name="Evoque" type="Node" parent="StateMachine"]
 script = ExtResource("7_88o00")
 
@@ -104,6 +111,19 @@ script = ExtResource("7_88o00")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.812683, 0)
 shape = SubResource("CapsuleShape3D_cwpsi")
 debug_color = Color(0.67977697, 0, 0.1561048, 0.41960785)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, -1, 0, 1, 2.9802322e-08, 0, 0, 0)
+target_position = Vector3(0, 10, 0)
+
+[node name="Area3D" type="Area3D" parent="RayCast3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RayCast3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5039063, 0)
+shape = SubResource("BoxShape3D_x3r7m")
+
+[node name="GPUParticles3D" parent="RayCast3D" instance=ExtResource("9_mbja2")]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 0, 0, 0)
 
 [connection signal="timeout" from="StateMachine/Angry/Timer" to="StateMachine/Angry" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
