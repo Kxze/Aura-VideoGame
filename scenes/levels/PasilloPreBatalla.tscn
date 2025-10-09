@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://5dok73vvktmu"]
 
-[ext_resource type="Script" path="res://scenes/levels/pasillo_pre_batalla.gd" id="1_eu3t2"]
+[ext_resource type="Script" uid="uid://doi7t0xa02wj3" path="res://scenes/levels/pasillo_pre_batalla.gd" id="1_eu3t2"]
 [ext_resource type="PackedScene" uid="uid://q07jx7owribv" path="res://Art/Levels/PruebaPasilloyaporfavor.blend" id="1_vel31"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_eu3t2"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_s3c16"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="5_s3c16"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="6_b342r"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D2" type="Node3D"]
 script = ExtResource("1_eu3t2")
 
 [node name="PruebaPasilloyaporfavor" parent="." instance=ExtResource("1_vel31")]
@@ -157,5 +157,6 @@ light_energy = 1.161
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.24737, -7.9843025, 0)
 
 [node name="next_level" parent="." instance=ExtResource("6_b342r")]
+next_level_path = "res://scenes/levels/BossBattlePT1.tscn"
 
 [editable path="PruebaPasilloyaporfavor"]
