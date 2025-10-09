@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://5dok73vvktmu"]
+[gd_scene load_steps=6 format=3 uid="uid://5dok73vvktmu"]
 
 [ext_resource type="Script" uid="uid://doi7t0xa02wj3" path="res://scenes/levels/pasillo_pre_batalla.gd" id="1_eu3t2"]
 [ext_resource type="PackedScene" uid="uid://q07jx7owribv" path="res://Art/Levels/PruebaPasilloyaporfavor.blend" id="1_vel31"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_eu3t2"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_s3c16"]
+[ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="5_s3c16"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_eu3t2")
@@ -48,9 +49,9 @@ keep_aspect = 0
 fov = 80.0
 far = 250.0
 script = ExtResource("3_s3c16")
+target = NodePath("..")
 follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 31.515)
-target = NodePath("..")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.777464, 0.628927, -1.3098e-09, -0.00812265, 0.010041, 0.999917, 0.628875, -0.7774, 0.0129151, 3.12045, 59.9323, -16.3653)
@@ -148,5 +149,8 @@ omni_range = 4.41378
 transform = Transform3D(0.866025, 0, 0.5, -0.433013, 0.5, 0.75, -0.25, -0.866025, 0.433013, 0, 50, 32)
 light_color = Color(0.378102, 0.477178, 0.69712, 1)
 light_energy = 1.161
+
+[node name="Area3D" parent="." instance=ExtResource("5_s3c16")]
+next_level_path = "res://scenes/levels/BossBattlePT1.tscn"
 
 [editable path="PruebaPasilloyaporfavor"]

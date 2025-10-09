@@ -53,7 +53,8 @@ func Make_damage(body: Node3D):
 		else:
 			TransitionScreen.transition()
 			await TransitionScreen.on_transition_finished
-			get_tree().reload_current_scene()
+			if get_tree():
+				get_tree().reload_current_scene()
 			Player.health = 3
 
 

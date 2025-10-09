@@ -6,6 +6,7 @@ func enter(previous_state_path : String, data := {}):
 	print("spawneando cisnes")
 #Esta funcion sobreescribe la funcion physics process
 func physics_update(delta: float):
+	
 	pass
 	
 #Esta funcion sobreescribe la funcion process
