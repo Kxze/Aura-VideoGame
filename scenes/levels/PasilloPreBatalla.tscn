@@ -1,16 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://5dok73vvktmu"]
 
+[ext_resource type="Script" uid="uid://doi7t0xa02wj3" path="res://scenes/levels/pasillo_pre_batalla.gd" id="1_eu3t2"]
 [ext_resource type="PackedScene" uid="uid://q07jx7owribv" path="res://Art/Levels/PruebaPasilloyaporfavor.blend" id="1_vel31"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_eu3t2"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_s3c16"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="5_s3c16"]
 
-[sub_resource type="GDScript" id="GDScript_eu3t2"]
-script/source = "
-"
-
 [node name="Node3D" type="Node3D"]
-script = SubResource("GDScript_eu3t2")
+script = ExtResource("1_eu3t2")
 
 [node name="PruebaPasilloyaporfavor" parent="." instance=ExtResource("1_vel31")]
 
