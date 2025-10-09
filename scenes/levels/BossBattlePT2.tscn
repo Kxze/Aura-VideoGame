@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://x0snda4y4sao"]
+[gd_scene load_steps=6 format=3 uid="uid://x0snda4y4sao"]
 
 [ext_resource type="PackedScene" uid="uid://dmifokkccnr1m" path="res://Art/Levels/BlockingBossBattlePT2.blend" id="1_eke71"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_2gwwc"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_cqgpt"]
+[ext_resource type="PackedScene" uid="uid://diwelj1drodya" path="res://scenes/enemies/odil.tscn" id="4_2gwwc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eke71"]
 size = Vector3(1, 145, 55)
@@ -11,6 +12,9 @@ size = Vector3(1, 145, 55)
 
 [node name="BlockingBossBattlePT2" parent="." instance=ExtResource("1_eke71")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.5813)
+
+[node name="Vacío_007" parent="BlockingBossBattlePT2" index="5"]
+transform = Transform3D(28.561293, -0.32163072, 5.0255466e-08, 1.3300939e-08, -3.0505048e-06, -25.588987, 0.35901123, 25.58747, -3.0500541e-06, -83.6032, 71.38731, -10.90295)
 
 [node name="pCube1" parent="BlockingBossBattlePT2" index="6"]
 layers = 2
@@ -21,28 +25,6 @@ collision_layer = 2
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="BlockingBossBattlePT2"]
 transform = Transform3D(0.988024, -0.10645, -0.1117, 0.154113, 0.64515, 0.748352, -0.007599, -0.756604, 0.653829, -429.736, 574.975, 574.125)
 light_color = Color(0.288163, 0.545028, 0.637563, 1)
-
-[node name="Player" parent="." instance=ExtResource("2_2gwwc")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -130.574, 48.7571, -5.87465)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
-light_color = Color(1, 0.969167, 0.63, 1)
-light_energy = 3.0
-light_specular = 0.0
-spot_range = 13.139
-spot_angle = 69.14
-
-[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59400177, 1.1009998, 6.303001)
-keep_aspect = 0
-current = true
-fov = 80.0
-far = 250.0
-script = ExtResource("3_cqgpt")
-target = NodePath("..")
-follow_speed = 12.0
-offset = Vector3(2.97, 5.505, 31.515)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 2
@@ -83,4 +65,36 @@ light_color = Color(0.921569, 0.686275, 0.258824, 1)
 light_energy = 4.717
 omni_range = 5.15084
 
+[node name="Odil" parent="." instance=ExtResource("4_2gwwc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.96933, 61.001442, -26.614252)
+
+[node name="Player" parent="." instance=ExtResource("2_2gwwc")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -127.96131, 43.583378, -5.87465)
+
+[node name="AnimationPlayer" parent="Player/Aura/player" index="1"]
+blend_times = [&"Dash", &"Dead", 0.2, &"Dash", &"Fall", 0.1, &"Dash", &"Jump", 0.2, &"Dash", &"idle", 0.2, &"Fall", &"Dash", 0.5, &"Fall", &"Dead", 0.2, &"Fall", &"Fall", 0.1, &"Fall", &"Jump", 0.5, &"Fall", &"Land", 0.5, &"Fall", &"Run", 0.5, &"Fall", &"Walk", 0.5, &"Fall", &"idle", 0.2, &"Jump", &"Dash", 0.2, &"Jump", &"Dead", 0.2, &"Jump", &"Fall", 0.5, &"Jump", &"idle", 0.2, &"Land", &"idle", 0.5, &"Lumiere", &"Dead", 0.2, &"Lumiere", &"Run", 1.0, &"Lumiere", &"Walk", 1.0, &"Lumiere", &"idle", 1.0, &"Run", &"Dead", 0.2, &"Run", &"Fall", 0.2, &"Run", &"Jump", 0.5, &"Run", &"Lumiere", 1.0, &"Run", &"Run", 1.0, &"Run", &"Walk", 1.0, &"Run", &"idle", 0.5, &"Walk", &"Dead", 0.2, &"Walk", &"Fall", 0.2, &"Walk", &"Jump", 0.5, &"Walk", &"Lumiere", 1.0, &"Walk", &"Run", 1.0, &"Walk", &"Walk", 0.5, &"Walk", &"idle", 1.0, &"idle", &"Dead", 0.2, &"idle", &"Jump", 0.5, &"idle", &"Lumiere", 1.0, &"idle", &"Walk", 0.5]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
+light_color = Color(1, 0.969167, 0.63, 1)
+light_energy = 3.0
+light_specular = 0.0
+spot_range = 13.139
+spot_angle = 69.14
+
+[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59400177, 1.1010008, 8.358998)
+keep_aspect = 0
+fov = 80.0
+far = 300.0
+script = ExtResource("3_cqgpt")
+target = NodePath("..")
+follow_speed = 12.0
+offset = Vector3(2.97, 5.505, 41.795)
+
 [editable path="BlockingBossBattlePT2"]
+[editable path="Odil"]
+[editable path="Odil/Odil"]
+[editable path="Player"]
+[editable path="Player/Aura"]
+[editable path="Player/Aura/player"]
