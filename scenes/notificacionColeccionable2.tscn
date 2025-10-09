@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bs31w23111jso"]
+[gd_scene load_steps=3 format=3 uid="uid://bs31w23111jso"]
 
 [ext_resource type="Texture2D" uid="uid://bddf0gdlddfhn" path="res://textures/Silueta2.3_CascoPluma.png" id="1_aa2us"]
+[ext_resource type="Script" uid="uid://dmcx81h2k2ijq" path="res://scenes/notificacion_coleccionable_2.gd" id="1_ms44v"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 10
+script = ExtResource("1_ms44v")
 
 [node name="Control" type="Control" parent="."]
 process_mode = 3

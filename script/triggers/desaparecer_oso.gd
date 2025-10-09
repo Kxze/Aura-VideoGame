@@ -1,10 +1,10 @@
 extends Area3D
 
-@onready var particulas_oso: GPUParticles3D = $"../GPUParticles3D"
 @onready var osopeluche: MeshInstance3D = $"../OSO_EspacioColeccionable/OSOPELUCHE"
+@onready var particulas_oso: GPUParticles3D = $"../GPUParticles3D"
 @onready var sonido_oso = preload("res://sonidos/desbloqueaColeccionable.wav")
 @onready var dialogo_aura = preload("res://dialogos/aura/Aura3-RV.wav")  # 🎙️ diálogo de Aura
-@onready var notificacion_scene = preload("res://scenes/notificacionColeccionable2.tscn")
+@onready var notificacion_scene = preload("res://scenes/notificacionColeccionable3.tscn")
 
 func _ready() -> void:
 	# 🧠 Si ya se obtuvo antes en esta partida, ocultarlo al cargar la escena
@@ -24,8 +24,8 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 
 	# 🧸 Apagar partículas y ocultar el oso
-	particulas_oso.emitting = false
 	osopeluche.visible = false
+	particulas_oso.emitting = false
 
 	# 🔒 Marcar globalmente como obtenido
 	AudioManager.oso_obtenido = true
@@ -36,11 +36,11 @@ func _on_body_entered(body: Node3D) -> void:
 		if am.has_method("play_sonidoOso"):
 			am.play_sonidoOso(sonido_oso)
 		if am.has_method("play_dialogo_aura"):
-			am.play_dialogo_aura(dialogo_aura)  # 🎧 voz de Aura encima de la música
+			am.play_dialogo_aura(dialogo_aura)
 	else:
 		print("⚠️ No se encontró AudioManager o sus métodos de sonido.")
 
-	# 💬 Mostrar notificación visual (CanvasLayer se maneja solo)
+	# 💬 Mostrar notificación visual temporal
 	_mostrar_notificacion()
 
 	# 🚫 Desactivar el área para que no vuelva a usarse
@@ -51,5 +51,10 @@ func _on_body_entered(body: Node3D) -> void:
 
 func _mostrar_notificacion() -> void:
 	var notif = notificacion_scene.instantiate()
-	get_tree().root.add_child(notif)
+	get_tree().root.add_child(notif)  # CanvasLayer se renderiza sobre todo el 3D
 	notif.visible = true
+
+	# 🕒 Esperar 4 segundos y luego eliminar la notificación
+	await get_tree().create_timer(4.0).timeout
+	if is_instance_valid(notif):
+		notif.queue_free()
