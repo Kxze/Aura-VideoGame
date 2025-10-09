@@ -26,9 +26,9 @@ func physics_update(delta: float):
 
 		# --- Invertir la escala según dirección ---
 		if direction.x < -0.1:
-			cisne.scale = Vector3(-1, 1, 1)  # mira hacia la izquierda
+			cisne.scale = Vector3(1, 1, 1)  # mira hacia la izquierda
 		elif direction.x > 0.1:
-			cisne.scale = Vector3(1, 1, 1)   # mira hacia la derecha
+			cisne.scale = Vector3(-1, 1, 1)   # mira hacia la derecha
 
 		# --- Mantenerlo en plano (sin rotación en X/Z) ---
 		cisne.rotation.x = 0

@@ -15,8 +15,6 @@ var damage = 1
 @export var odilFase2 : bool = false
 
 
-@export var odilFase2 : bool = false
-
 
 func Make_damage(body: Node3D):
 	Player.health -= damage
