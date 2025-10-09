@@ -674,3 +674,62 @@ func fade_in():
 		await get_tree().process_frame
 	fading = false
 	
+	
+# ---------------------------------------------------------
+# 🎚️ CONTROL GLOBAL DE AUDIO SEGÚN EL POPUP DE AJUSTES
+# ---------------------------------------------------------
+var ajustes_popup_abierto := false
+
+func set_ajustes_popup_abierto(valor: bool) -> void:
+	ajustes_popup_abierto = valor
+
+	if ajustes_popup_abierto:
+		# 🔇 Pausar música y diálogos
+		if musica_player and musica_player.playing:
+			musica_player.stream_paused = true
+			print("🎵 Música pausada por menú de ajustes.")
+
+		if dialogo_player_actual and dialogo_player_actual.playing:
+			dialogo_player_actual.stream_paused = true
+			print("💬 Diálogo pausado por menú de ajustes.")
+
+		# 🔇 Silenciar el bus MASTER completo (excepto efectos del menú)
+		var master_idx = AudioServer.get_bus_index("Master")
+		if master_idx != -1:
+			AudioServer.set_bus_mute(master_idx, true)
+			print("🔇 Bus MASTER silenciado temporalmente.")
+	else:
+		# 🔊 Reanudar música y diálogos
+		if musica_player and musica_player.stream_paused:
+			musica_player.stream_paused = false
+			print("🎵 Música reanudada tras cerrar ajustes.")
+
+		if dialogo_player_actual and dialogo_player_actual.stream_paused:
+			dialogo_player_actual.stream_paused = false
+			print("💬 Diálogo reanudado tras cerrar ajustes.")
+
+		# 🔊 Reactivar bus MASTER
+		var master_idx = AudioServer.get_bus_index("Master")
+		if master_idx != -1:
+			AudioServer.set_bus_mute(master_idx, false)
+			print("🔊 Bus MASTER reactivado.")
+			
+			# ---------------------------------------------------------
+# 🌍 FUNCIÓN GLOBAL PARA REACTIVAR TODO EL AUDIO
+# ---------------------------------------------------------
+func _reactivar_audio_total() -> void:
+	# 🔊 Reactiva el bus Master (por si quedó silenciado)
+	var master_idx = AudioServer.get_bus_index("Master")
+	if master_idx != -1 and AudioServer.is_bus_mute(master_idx):
+		AudioServer.set_bus_mute(master_idx, false)
+		print("🔊 Bus MASTER reactivado globalmente.")
+
+	# ▶️ Reanudar música si estaba pausada
+	if musica_player and musica_player.stream_paused:
+		musica_player.stream_paused = false
+		print("🎵 Música reanudada automáticamente.")
+
+	# 💬 Reanudar diálogo si estaba pausado
+	if dialogo_player_actual and dialogo_player_actual.stream_paused:
+		dialogo_player_actual.stream_paused = false
+		print("💬 Diálogo reanudado automáticamente.")

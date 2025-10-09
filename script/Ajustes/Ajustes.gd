@@ -12,7 +12,7 @@ signal cerrado_por_esc
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	# Asegura que el AudioManager siga procesando aunque el juego esté pausado
+	# Mantener el AudioManager activo aunque el juego esté pausado
 	var am = get_node_or_null("/root/AudioManager")
 	if am:
 		am.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -20,8 +20,10 @@ func _ready() -> void:
 	# Conectar señales de botones
 	btn_salir.pressed.connect(_on_btn_salir_pressed)
 	btn_inicio.pressed.connect(_on_btn_inicio_pressed)
-	btn_continuar.pressed.connect(_on_btn_continuar_pressed)
 	btn_cerrar.pressed.connect(_on_btn_cerrar_pressed)
+
+	# Detectar apertura/cierre del popup para pausar o reanudar audio
+	visibility_changed.connect(_on_visibility_changed)
 
 
 # ---------------------------------------------------------
@@ -31,12 +33,11 @@ func mostrar_banners(origen: String):
 	match origen:
 		"inicio":
 			btn_cerrar.visible = true
-			btn_continuar.visible = false
+	
 			btn_inicio.visible = false
 			btn_salir.visible = false
 		"pausa":
 			btn_cerrar.visible = false
-			btn_continuar.visible = true
 			btn_inicio.visible = true
 			btn_salir.visible = true
 
@@ -44,29 +45,26 @@ func mostrar_banners(origen: String):
 # ---------------------------------------------------------
 # 🧭 BOTONES
 # ---------------------------------------------------------
+
 func _on_btn_cerrar_pressed() -> void:
 	_play_click()
+	_reactivar_audio_total()
 	popup_ajustes.visible = false
 	get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
 
-func _on_btn_continuar_pressed() -> void:
-	_play_click()
-	_reanudar_audio_y_juego()
-
-	if has_node("/root/UiGlobal"):
-		get_node("/root/UiGlobal").cerrar_ajustes()
-	else:
-		hide()
 
 func _on_btn_inicio_pressed() -> void:
 	_play_click()
-	_reanudar_audio_y_juego()
+	_reactivar_audio_total()
+	var am = get_node_or_null("/root/AudioManager")
+	if am:
+		am.stop_music()
 	popup_ajustes.visible = false
-	AudioManager.stop_music()
 	get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
 
 func _on_btn_salir_pressed() -> void:
 	_play_click()
+	_reactivar_audio_total()
 	get_tree().quit()
 
 
@@ -76,8 +74,8 @@ func _on_btn_salir_pressed() -> void:
 func _unhandled_input(event):
 	if visible and event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_ESCAPE:
-			_reanudar_audio_y_juego()
 			hide()
+			_reactivar_audio_total()
 			emit_signal("cerrado_por_esc")
 			get_viewport().set_input_as_handled()
 
@@ -94,17 +92,31 @@ func _play_click():
 
 
 # ---------------------------------------------------------
-# 🎮 CONTROL DE PAUSA Y AUDIO
+# 🎚️ DETECTAR ESTADO DEL POPUP → PAUSAR/REANUDAR AUDIO
 # ---------------------------------------------------------
-func _reanudar_audio_y_juego():
-	get_tree().paused = false
+func _on_visibility_changed() -> void:
 	var am = get_node_or_null("/root/AudioManager")
-	if am:
-		am.set_pausa_activa(false)  # ▶️ Reanudar diálogos si estaban pausados
+	if not am:
+		return
 
-func _on_about_to_show() -> void:
-	# Este callback se ejecuta automáticamente al abrir el popup
-	get_tree().paused = true
+	if visible:
+		get_tree().paused = true
+		am.set_ajustes_popup_abierto(true)
+		print("⚙️ Popup de ajustes abierto → audio pausado.")
+	else:
+		get_tree().paused = false
+		am.set_ajustes_popup_abierto(false)
+		print("⚙️ Popup de ajustes cerrado → audio reanudado.")
+
+
+# ---------------------------------------------------------
+# 🩵 REACTIVAR TODO EL AUDIO AL SALIR AL MENÚ O CERRAR POPUP
+# ---------------------------------------------------------
+func _reactivar_audio_total() -> void:
 	var am = get_node_or_null("/root/AudioManager")
-	if am:
-		am.set_pausa_activa(true)  # ⏸️ Pausar diálogos
+	if not am:
+		return
+
+	get_tree().paused = false
+	am.set_ajustes_popup_abierto(false)
+	print("🔊 Audio restaurado completamente tras cerrar o cambiar de escena.")

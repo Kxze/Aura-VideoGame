@@ -7,6 +7,14 @@ var _buttons = []
 var _mouse_mode := false   # 🔄 modo actual (teclado o mouse)
 
 func _ready():
+
+	var audio_manager = get_node_or_null("/root/AudioManager")
+	if audio_manager:
+		var musica_menu = preload("res://musica/MelodiaMenu.mp3")
+		audio_manager.play_music(musica_menu, true)
+	else:
+		push_warning("No se encontró AudioManager en /root/")
+
 	# Guardamos los botones en una lista
 	_buttons = [$Button, $Button2, $Button3, $Button4, $Button5]
 
