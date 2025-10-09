@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://k7pa03jtbhwd"]
+[gd_scene load_steps=2 format=3 uid="uid://bs31w23111jso"]
 
-[ext_resource type="Script" uid="uid://ce3qygyldylkn" path="res://scenes/notificacion_coleccionable.gd" id="1_0ogjr"]
-[ext_resource type="Texture2D" uid="uid://ddxkt1grywfcn" path="res://textures/Silueta2.2_Casco.png" id="2_0ogjr"]
+[ext_resource type="Texture2D" uid="uid://bddf0gdlddfhn" path="res://textures/Silueta2.3_CascoPluma.png" id="1_aa2us"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 10
-script = ExtResource("1_0ogjr")
 
 [node name="Control" type="Control" parent="."]
 process_mode = 3
@@ -25,5 +23,5 @@ offset_top = 780.0
 offset_right = 1193.0
 offset_bottom = 1150.0
 scale = Vector2(0.810995, 0.810995)
-texture = ExtResource("2_0ogjr")
+texture = ExtResource("1_aa2us")
 stretch_mode = 5
