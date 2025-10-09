@@ -27,6 +27,7 @@ func exit():
 func _on_lumiere_body_entered(body: Node3D) -> void:
 	if body is Cisne and Input.is_action_pressed("Lumiere") and player.can_lumiere:
 		body.health -= damage
+		body.transitionParticles.emitting = true
 		print("HP del cisne:", body.health)
 		
 		if body.health <= 0:

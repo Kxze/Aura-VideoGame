@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0fxg0vh4knx5"]
+[gd_scene load_steps=10 format=3 uid="uid://qrci8wcjriup"]
 
 [ext_resource type="Script" uid="uid://drgokyv2kmsrd" path="res://script/BossBattleOdil/Pt3/boss_battlept_3.gd" id="1_k8ca0"]
 [ext_resource type="PackedScene" uid="uid://cs48c2btwtf1b" path="res://Art/Levels/BlockingBossBattlePT3.blend" id="1_wwjcn"]
@@ -101,7 +101,7 @@ follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 41.795)
 
 [node name="SpawnPath" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 59.273884, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 45.216854, 0)
 curve = SubResource("Curve3D_x8vyx")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]

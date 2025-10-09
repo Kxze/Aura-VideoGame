@@ -6,6 +6,7 @@ var is_walking_sound_played := false
 
 func enter(previous_state_path: String, data := {}):
 	# 🧠 Marca globalmente que ya está convertido
+	
 	AudioManager.cisne_convertido = true
 	print("🌙 El Cisne se ha convertido definitivamente en Cisne Blanco.")
 

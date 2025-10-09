@@ -1,6 +1,7 @@
 class_name Cisne
 extends CharacterBody3D
 
+@onready var transitionParticles: GPUParticles3D = $Transition
 
 @onready var black: Node3D = $CisneNegro
 @onready var white: Node3D = $CisneBlanco

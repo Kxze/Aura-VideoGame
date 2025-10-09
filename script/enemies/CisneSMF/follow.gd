@@ -35,4 +35,5 @@ func physics_update(delta: float):
 		cisne.rotation.z = 0
 
 	else:
+		cisne.transitionParticles.emitting = true
 		emit_signal("finished", "Convert")

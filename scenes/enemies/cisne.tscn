@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bnoyn8qc3q0ot"]
+[gd_scene load_steps=19 format=3 uid="uid://bnoyn8qc3q0ot"]
 
 [ext_resource type="Script" uid="uid://c6yuwt30vb3e6" path="res://script/enemies/CisneSMF/cisne.gd" id="1_7rci3"]
 [ext_resource type="PackedScene" uid="uid://dev8jli4qpmsb" path="res://Art/Model3D/CISNES/CisneNegro.blend" id="1_x3gho"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://w14pbh0662wk" path="res://script/enemies/CisneSMF/idle.gd" id="5_543op"]
 [ext_resource type="Script" uid="uid://yt7lmmssbeks" path="res://script/enemies/CisneSMF/attack.gd" id="6_6uxv3"]
 [ext_resource type="Script" uid="uid://1plouly8dkdi" path="res://script/enemies/CisneSMF/convert.gd" id="7_nlunq"]
+[ext_resource type="Shader" uid="uid://c75qow1l4hw1h" path="res://magia_particulas.gdshader" id="9_nlunq"]
+[ext_resource type="Texture2D" uid="uid://dy6yw77o37b3l" path="res://Art/textures/Magia.png" id="10_eevix"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_diio0"]
 radius = 1.5771484
@@ -20,6 +22,34 @@ height = 6.945038
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6uxv3"]
 radius = 2.5859375
 height = 6.9782715
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lj5am"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 3.9999776
+gravity = Vector3(0, 3, 0)
+turbulence_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_fiks6"]
+offsets = PackedFloat32Array(0, 0.95364237)
+colors = PackedColorArray(0.58418196, 0.72980577, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l6b01"]
+gradient = SubResource("Gradient_fiks6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxq0a"]
+render_priority = 0
+shader = ExtResource("9_nlunq")
+shader_parameter/albedo_tex = SubResource("GradientTexture1D_l6b01")
+shader_parameter/mask_tex = ExtResource("10_eevix")
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_strength = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_o0i8m"]
+material = SubResource("ShaderMaterial_nxq0a")
+radius = 1.0
+height = 2.0
 
 [node name="Cisne_negro" type="CharacterBody3D"]
 collision_layer = 8
@@ -99,6 +129,15 @@ debug_color = Color(0.9975118, 0, 0.1742886, 0.41960785)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5092342, 0)
 shape = SubResource("CapsuleShape3D_6uxv3")
 debug_color = Color(7.2196127e-07, 0.6352078, 0.423717, 0.41960785)
+
+[node name="Transition" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0163507, 0)
+emitting = false
+amount = 100
+one_shot = true
+preprocess = 1.0
+process_material = SubResource("ParticleProcessMaterial_lj5am")
+draw_pass_1 = SubResource("SphereMesh_o0i8m")
 
 [connection signal="body_entered" from="AreaDamage" to="." method="_on_area_damage_body_entered"]
 [connection signal="body_entered" from="AttackArea" to="StateMachine/Attack" method="_on_attack_area_body_entered"]
