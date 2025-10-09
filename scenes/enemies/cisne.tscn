@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnoyn8qc3q0ot"]
+[gd_scene load_steps=12 format=3 uid="uid://bnoyn8qc3q0ot"]
 
 [ext_resource type="Script" uid="uid://c6yuwt30vb3e6" path="res://script/enemies/CisneSMF/cisne.gd" id="1_7rci3"]
 [ext_resource type="PackedScene" uid="uid://dev8jli4qpmsb" path="res://Art/Model3D/CISNES/CisneNegro.blend" id="1_x3gho"]
@@ -16,9 +16,6 @@ height = 6.154999
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_543op"]
 radius = 2.5527344
 height = 6.945038
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_543op"]
-size = Vector3(18, 0.6, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6uxv3"]
 radius = 2.5859375
@@ -94,14 +91,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4264355, 0)
 shape = SubResource("CapsuleShape3D_543op")
 debug_color = Color(0.9975118, 0, 0.1742886, 0.41960785)
 
-[node name="AlertZone" type="Area3D" parent="."]
-collision_layer = 8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AlertZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25163573, 0)
-shape = SubResource("BoxShape3D_543op")
-debug_color = Color(0.9322021, 0.63778704, 0, 0.41960785)
-
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="AttackArea" type="Area3D" parent="."]
@@ -112,8 +101,6 @@ shape = SubResource("CapsuleShape3D_6uxv3")
 debug_color = Color(7.2196127e-07, 0.6352078, 0.423717, 0.41960785)
 
 [connection signal="body_entered" from="AreaDamage" to="." method="_on_area_damage_body_entered"]
-[connection signal="body_entered" from="AlertZone" to="StateMachine/Idle" method="_on_alert_zone_body_entered"]
-[connection signal="body_exited" from="AlertZone" to="StateMachine/Follow" method="_on_alert_zone_body_exited"]
 [connection signal="body_entered" from="AttackArea" to="StateMachine/Attack" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="StateMachine/Attack" method="_on_attack_area_body_exited"]
 

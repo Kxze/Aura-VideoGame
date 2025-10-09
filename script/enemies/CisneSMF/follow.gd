@@ -3,33 +3,25 @@ extends CisneState
 #este apartado sobreescribe el estado que viene
 func enter(previous_state_path : String, data := {}):
 	cisne.animationCisneNegro.play("Caminar")
-
+	
 #Esta funcion sobreescribe la funcion physics process
 func physics_update(delta: float):
+	if not cisne.Target or not cisne.navAgent:
+		emit_signal("finished","Idle")
 	if cisne.isAgressive:
-		var CurrentLocation = cisne.global_transform.origin
-		var nextLocation = cisne.navAgent.get_next_path_position()
+		var distancia = cisne.global_position.distance_to(cisne.Target.global_position)
 		
-		var nextVelocity = (nextLocation - CurrentLocation).normalized() * cisne.speed
-		var dir_x = (nextLocation - CurrentLocation).normalized().x
-		if dir_x > 0:
-			cisne.pivot.scale = Vector3(-1,1,1)
-		else:
-			cisne.pivot.scale = Vector3(1,1,1)
-
+		if distancia > cisne.max_distance_from_player:
+			emit_signal("finished", "Idle")
 		
-		cisne.velocity = cisne.velocity.move_toward(nextVelocity, 0.2)
+		cisne.navAgent.target_position = cisne.Target.global_position
 		
-		_target_position(cisne.Target)
-		cisne.position.z = 0
+		var next_point = cisne.navAgent.get_next_path_position()
+		var direction = (next_point - cisne.global_position).normalized()
+		
+		cisne.velocity = direction * cisne.speed
+		
 		cisne.move_and_slide()
 	else:
 		emit_signal("finished","Convert")
-#Esta funcion sobreescribe la funcion process
-
-func _target_position(target):
-	cisne.navAgent.target_position = cisne.Target.global_transform.origin
-
-func _on_alert_zone_body_exited(body: Node3D) -> void:
-	if body.name == "Player":
-		emit_signal("finished","Idle")
+	
