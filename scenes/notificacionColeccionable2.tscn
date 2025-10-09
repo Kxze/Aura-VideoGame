@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://b47t313xjb7m7"]
+
+[ext_resource type="Script" uid="uid://ce3qygyldylkn" path="res://scenes/notificacion_coleccionable.gd" id="1_ms44v"]
+[ext_resource type="Texture2D" uid="uid://b2rttb8v823ob" path="res://textures/NotificacionColeccionable.png" id="2_q3otk"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_ms44v")
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+process_mode = 3
+layout_mode = 0
+offset_left = -2.9999998
+offset_top = 780.0
+offset_right = 1193.0
+offset_bottom = 1150.0
+scale = Vector2(0.810995, 0.810995)
+texture = ExtResource("2_q3otk")
+stretch_mode = 5
