@@ -9,9 +9,25 @@ var _mouse_mode := false   # 🔄 modo actual (teclado o mouse)
 func _ready():
 
 	var audio_manager = get_node_or_null("/root/AudioManager")
+	var musica_menu = preload("res://musica/MelodiaMenu.mp3")
+
 	if audio_manager:
-		var musica_menu = preload("res://musica/MelodiaMenu.mp3")
-		audio_manager.play_music(musica_menu, true)
+		# Comprobaciones seguras: obtenemos la propiedad con get() (no da error si no existe)
+		var mp = audio_manager.get("musica_player")
+		if mp and mp is AudioStreamPlayer:
+			# Si ya está reproduciendo la misma pista, no reiniciar
+			if mp.playing and mp.stream and musica_menu.resource_path == mp.stream.resource_path:
+				print("🎵 Música del menú ya sonando — no se reinicia.")
+			# Si está pausado y es la misma pista, reanudar
+			elif mp.stream and musica_menu.resource_path == mp.stream.resource_path and mp.stream_paused:
+				audio_manager.resume_music()
+				print("▶️ Música del menú reanudada.")
+			else:
+				# Reproducir la pista del menú (si es otra pista o no está sonando)
+				audio_manager.play_music(musica_menu, true)
+		else:
+			# Si no hay musica_player definido aún, pedir al AudioManager reproducir la pista
+			audio_manager.play_music(musica_menu, true)
 	else:
 		push_warning("No se encontró AudioManager en /root/")
 
@@ -67,7 +83,7 @@ func _on_nueva_partida_pressed(button):
 	AudioManager.stop_music()
 	get_tree().change_scene_to_file("res://scenes/levels/level_1.tscn")
 
-#⚠ ⚠ ⚠ ⚠ AHORA ES LA PANTALLA DE CRÉDITOS ⚠ ⚠ ⚠ ⚠
+#AHORA ES LA PANTALLA DE CRÉDITOS
 func _on_continuar_pressed(button):
 	_play_click()
 	print("Continuar partida (cargar juego)")

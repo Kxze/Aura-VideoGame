@@ -32,4 +32,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 # ---------------------------------------------------------
 func _play_skeleton():
-	AudioManager.play_skeleton(skeleton_sound)
+	AudioManager.play_sfx(skeleton_sound)
