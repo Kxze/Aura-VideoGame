@@ -85,16 +85,12 @@ theme = ExtResource("6_woxkn")
 icon = ExtResource("7_rl8us")
 flat = true
 
-[node name="MarginContainerAjustes" type="MarginContainer" parent="Panel"]
+[node name="Ajustes" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 739.0
-offset_top = 321.0
-offset_right = 1189.0
-offset_bottom = 757.0
-theme = ExtResource("8_8vq27")
-
-[node name="Ajustes" type="Label" parent="Panel/MarginContainerAjustes"]
-layout_mode = 2
+offset_left = 900.0
+offset_top = 309.0
+offset_right = 1028.0
+offset_bottom = 368.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = SubResource("Theme_4g77v")
@@ -102,6 +98,14 @@ theme_override_font_sizes/font_size = 40
 text = "Ajustes"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MarginContainerAjustes" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 739.0
+offset_top = 352.0
+offset_right = 1189.0
+offset_bottom = 788.0
+theme = ExtResource("8_8vq27")
 
 [node name="GridContainerAjustes" type="GridContainer" parent="Panel/MarginContainerAjustes"]
 layout_mode = 2
@@ -131,6 +135,20 @@ size_flags_horizontal = 8
 text = "Música   "
 
 [node name="SliderM" type="HSlider" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 6
+min_value = -30.0
+max_value = 0.0
+
+[node name="Dialogos" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Diálogos   "
+
+[node name="SliderDialogos" type="HSlider" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 custom_minimum_size = Vector2(230, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -370,6 +388,7 @@ text = "Regresar
 [connection signal="pressed" from="Panel/BtnCerrar" to="." method="_on_btn_cerrar_pressed"]
 [connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderVG" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_slider_vg_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderM" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_slider_m_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderDialogos" to="." method="_on_slider_dialogos_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderSFX" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_slider_sfx_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainerAjustes/GridContainerAjustes/SliderBR" to="Panel/MarginContainerAjustes/GridContainerAjustes/SliderBR" method="_on_value_changed"]
 [connection signal="toggled" from="Panel/MarginContainerAjustes/GridContainerAjustes/CheckModo" to="Panel/MarginContainerAjustes/GridContainerAjustes" method="_on_check_modo_toggled"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dw0p74lmevffi"]
 
 [ext_resource type="Texture2D" uid="uid://daxcp3lrk7c2a" path="res://Fondos/PortadaMainMenu.png" id="1_486ty"]
-[ext_resource type="Texture2D" uid="uid://c2lu64lmj3asw" path="res://textures/LogoAURA_BrilloAmarillo.png" id="2_qcl6i"]
+[ext_resource type="Texture2D" uid="uid://cvxl6gobvibbb" path="res://textures/LogoAURA_BrilloAmarillo.png" id="2_qcl6i"]
 [ext_resource type="Script" uid="uid://7avlqe3u305i" path="res://script/menu_principal.gd" id="2_w5ui5"]
 [ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="3_qcl6i"]
 [ext_resource type="Texture2D" uid="uid://iu6jutuwau5c" path="res://textures/Starr.svg" id="4_486ty"]
