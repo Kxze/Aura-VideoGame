@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d30vdm7b5ol13"]
+[gd_scene load_steps=28 format=3 uid="uid://d30vdm7b5ol13"]
 
 [ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
 [ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cjqqdmoins05k" path="res://script/player/StateMachine/dead.gd" id="10_7pqot"]
 [ext_resource type="PackedScene" uid="uid://dxiojj86hdb04" path="res://scenes/Effects/ghost_dash.tscn" id="10_i0eca"]
 [ext_resource type="Script" uid="uid://sm7vtmqcyw1j" path="res://script/light_dash.gd" id="11_ky4hv"]
+[ext_resource type="Script" uid="uid://coqkdxncq8xre" path="res://script/player/StateMachine/run.gd" id="11_ohnoo"]
 [ext_resource type="Script" uid="uid://duhvl1urrncli" path="res://script/dashAura.gd" id="12_nk4e2"]
 [ext_resource type="Texture2D" uid="uid://bxuyc3vwly1er" path="res://Art/textures/effect_dash.png" id="15_75g7i"]
 
@@ -182,6 +183,9 @@ script = ExtResource("9_ky4hv")
 
 [node name="Dead" type="Node" parent="StateMachine"]
 script = ExtResource("10_7pqot")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("11_ohnoo")
 
 [node name="AuraGhost" parent="." instance=ExtResource("10_i0eca")]
 transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 0.012677, 1.10246, -0.141001)
