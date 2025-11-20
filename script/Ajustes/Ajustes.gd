@@ -104,10 +104,7 @@ func _on_visibility_changed() -> void:
 	var am = get_node_or_null("/root/AudioManager")
 	if not am:
 		# Si no hay AudioManager, solo gestionamos pausa del árbol
-		if visible:
-			get_tree().paused = true
-		else:
-			get_tree().paused = false
+		get_tree().paused = visible
 		return
 
 	if visible:
@@ -115,13 +112,15 @@ func _on_visibility_changed() -> void:
 		get_tree().paused = true
 
 		# Indicar al AudioManager que pause SFX y diálogos, mantenga música
-		am.pausar_por_ajustes(true)
+		am.set_pausa_activa(true)
+		am.set_ajustes_popup_abierto(true)
 	else:
 		# Reanudar escena
 		get_tree().paused = false
 
 		# Indicar al AudioManager que restaure SFX y diálogos
-		am.pausar_por_ajustes(false)
+		am.set_ajustes_popup_abierto(false)
+		am.set_pausa_activa(false)
 
 
 func _reactivar_audio_total() -> void:
@@ -133,3 +132,7 @@ func _reactivar_audio_total() -> void:
 	# Aseguramos restauración completa por si algo quedó marcado
 	am.set_ajustes_popup_abierto(false)
 	am.set_pausa_activa(false)
+
+
+func _on_slider_dialogos_value_changed(value: float) -> void:
+	pass # Replace with function body.
