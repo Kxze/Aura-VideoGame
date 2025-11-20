@@ -3,7 +3,7 @@ extends SpotLight3D
   # Timer hijo del nodo
 @onready var light_timer: Timer = $light_timer
 
-var current_color: Color
+var current_color: Color = Color(0.744, 0.592, 0.17, 1.0)
 var tween : Tween
 var current_attenuation: float
 var color_blue_light: Color = Color(0.4,0.6,1.0)

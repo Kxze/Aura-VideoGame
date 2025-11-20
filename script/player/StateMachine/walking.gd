@@ -74,7 +74,8 @@ func physics_update(delta: float):
 		emit_signal("finished", "InAir", {"Jump" : true})
 
 	# --- Dash ---
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and player.can_dash and not player.is_dashing:
+	# iniciar dash (por ejemplo: cambiar estado)
 		player.invencible = true
 		emit_signal("finished", "Dash")
 		
