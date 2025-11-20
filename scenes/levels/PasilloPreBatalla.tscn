@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://5dok73vvktmu"]
+[gd_scene load_steps=7 format=3 uid="uid://5dok73vvktmu"]
 
 [ext_resource type="Script" uid="uid://doi7t0xa02wj3" path="res://scenes/levels/pasillo_pre_batalla.gd" id="1_eu3t2"]
 [ext_resource type="PackedScene" uid="uid://q07jx7owribv" path="res://Art/Levels/PruebaPasilloyaporfavor.blend" id="1_vel31"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_eu3t2"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_s3c16"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="5_s3c16"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s3c16"]
+size = Vector3(5.5178223, 48.143555, 16.572266)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_eu3t2")
@@ -33,7 +36,7 @@ collision_layer = 2
 collision_layer = 2
 
 [node name="Player" parent="." instance=ExtResource("2_eu3t2")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -100.553, -8.60515, -5.87465)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -93.66461, -8.60515, -5.87465)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157528, 1.73671, 1.35148)
@@ -152,5 +155,13 @@ light_energy = 1.161
 
 [node name="Area3D" parent="." instance=ExtResource("5_s3c16")]
 next_level_path = "res://scenes/levels/BossBattlePT1.tscn"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.55778, 0, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.474121, 0)
+shape = SubResource("BoxShape3D_s3c16")
 
 [editable path="PruebaPasilloyaporfavor"]
