@@ -17,6 +17,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if not sonido_reproducido:
 		AudioManager.play_sfx(sonido_coleccionable)
 		sonido_reproducido = true
+		set_monitoring(false)
 
 
 func _on_body_exited(body: Node3D) -> void:
