@@ -12,7 +12,7 @@ extends PlayerState
 
 var step_timer := 0.0
 var step_interval := 0.4
-var isRunning : bool = false
+
 
 # RayCast3D hacia abajo (asegúrate de tenerlo en el nodo Player)
 @onready var floor_ray: RayCast3D = $"../../RayCast3D"
@@ -20,7 +20,7 @@ var isRunning : bool = false
 func enter(previous_state_path : String, data := {}):
 	player.lumiere_area.visible = false
 	player.animationPlayer.play("Walk")
-	isRunning = false
+	player.isRunning = false
 	step_timer = 0.0
 	player.invencible = false
 
@@ -47,12 +47,9 @@ func physics_update(delta: float):
 	player.speed = player.speed_normal
 
 	if Input.is_action_pressed("run"):
-		isRunning = true
-		player.speed = player.speed_run
-		if player.animationPlayer.current_animation != "Run":
-			player.animationPlayer.play("Run")
+		emit_signal("finished","Run")
 	elif player.movInput.x != 0:
-		isRunning = false
+		player.isRunning = false
 		if player.animationPlayer.current_animation != "Walk":
 			player.animationPlayer.play("Walk")
 	else:
@@ -63,7 +60,7 @@ func physics_update(delta: float):
 		step_timer -= delta
 		if step_timer <= 0.0:
 			AudioManager.play_random_sfx(pasos)
-			step_interval = 0.25 if isRunning else 0.4
+			step_interval = 0.25 if player.isRunning else 0.4
 			step_timer = step_interval
 	else:
 		step_timer = 0.0
@@ -74,7 +71,8 @@ func physics_update(delta: float):
 		emit_signal("finished", "InAir", {"Jump" : true})
 
 	# --- Dash ---
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and player.can_dash and not player.is_dashing:
+	# iniciar dash (por ejemplo: cambiar estado)
 		player.invencible = true
 		emit_signal("finished", "Dash")
 		
