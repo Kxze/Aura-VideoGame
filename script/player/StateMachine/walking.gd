@@ -50,7 +50,12 @@ func physics_update(delta: float):
 
 	if Input.is_action_pressed("run"):
 		applyRun()
-
+	elif player.movInput.x != 0:
+		isRunning = false
+		if player.animationPlayer.current_animation != "Walk":
+			player.animationPlayer.play("Walk")
+	else:
+		emit_signal("finished", "Idle")
 	# --- Sonidos de pasos 👟 ---
 	if player.is_on_floor() and player.can_play_steps and player.movInput.x != 0:
 		step_timer -= delta
@@ -116,12 +121,7 @@ func applyRun():
 		player.invencible = true
 		emit_signal("finished", "Dash")
 		
-	elif player.movInput.x != 0:
-		isRunning = false
-		if player.animationPlayer.current_animation != "Walk":
-			player.animationPlayer.play("Walk")
-	else:
-		emit_signal("finished", "Idle")
+	
 	
 func accelerate(movInput: Vector2):
 	player.velocity = player.velocity.move_toward(player.speed + player.movInput, player.acceleration)
