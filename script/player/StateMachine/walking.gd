@@ -13,6 +13,7 @@ extends PlayerState
 var step_timer := 0.0
 var step_interval := 0.4
 var isRunning : bool = false
+var was_on_floor: bool
 
 # RayCast3D hacia abajo (asegúrate de tenerlo en el nodo Player)
 @onready var floor_ray: RayCast3D = $"../../RayCast3D"
@@ -55,6 +56,9 @@ func physics_update(delta: float):
 				player.can_play_steps = false
 				emit_signal("finished", "Fall")
 				return
+			elif floor_distance == 0:
+				player.land.emitting = true
+				player.land.restart()
 		else:
 			# Si el raycast no detecta nada, se asume caída libre
 			player.can_play_steps = false
