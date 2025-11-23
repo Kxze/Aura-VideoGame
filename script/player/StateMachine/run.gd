@@ -73,9 +73,9 @@ func physics_update(delta: float):
 		emit_signal("finished", "Dead")
 
 	# ---- Movimiento horizontal ----
-	player.velocity.x = lerp(player.velocity.x, player.movInput.x * player.speed, 0.9)
-	player.move_and_slide()
 	player.global_position.z = 0
+	player.move_and_slide()
+	
 
 
 func update(_delta: float):

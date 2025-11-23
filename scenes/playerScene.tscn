@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d30vdm7b5ol13"]
+[gd_scene load_steps=34 format=3 uid="uid://d30vdm7b5ol13"]
 
 [ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
 [ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
@@ -13,9 +13,11 @@
 [ext_resource type="Script" uid="uid://cjqqdmoins05k" path="res://script/player/StateMachine/dead.gd" id="10_7pqot"]
 [ext_resource type="PackedScene" uid="uid://dxiojj86hdb04" path="res://scenes/Effects/ghost_dash.tscn" id="10_i0eca"]
 [ext_resource type="Script" uid="uid://sm7vtmqcyw1j" path="res://script/light_dash.gd" id="11_ky4hv"]
-[ext_resource type="Script" uid="uid://coqkdxncq8xre" path="res://script/player/StateMachine/run.gd" id="11_ohnoo"]
 [ext_resource type="Script" uid="uid://duhvl1urrncli" path="res://script/dashAura.gd" id="12_nk4e2"]
 [ext_resource type="Texture2D" uid="uid://bxuyc3vwly1er" path="res://Art/textures/effect_dash.png" id="15_75g7i"]
+[ext_resource type="Shader" uid="uid://cldcf4dhpe82w" path="res://Shaders/dust_player.tres" id="16_rs72w"]
+[ext_resource type="Texture2D" uid="uid://dac1pslb631m3" path="res://Art/particles/T_PerlinNoise_Tiled11_inv.png" id="17_ttj2a"]
+[ext_resource type="ArrayMesh" uid="uid://cwq62u4pc1wip" path="res://Art/particles/cloud.obj" id="18_uov4s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_75g7i"]
 size = Vector3(13.848511, 9.811876, 1)
@@ -89,6 +91,37 @@ lightmap_size_hint = Vector2i(2, 2)
 material = SubResource("StandardMaterial3D_yd6d6")
 size = Vector2(0.1, 0.1)
 orientation = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yd6d6"]
+render_priority = 0
+shader = ExtResource("16_rs72w")
+shader_parameter/Disolver_texture = ExtResource("17_ttj2a")
+
+[sub_resource type="Curve" id="Curve_2gyp5"]
+_data = [Vector2(0.005988024, 0.6270492), 0.0, 0.0, 0, 0, Vector2(0.99800396, 0.08941877), -0.61768067, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dbg8j"]
+curve = SubResource("Curve_2gyp5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_it33q"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.2
+emission_ring_radius = 0.1
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(-0.3, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.7
+scale_curve = SubResource("CurveTexture_dbg8j")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 30
@@ -184,9 +217,6 @@ script = ExtResource("9_ky4hv")
 [node name="Dead" type="Node" parent="StateMachine"]
 script = ExtResource("10_7pqot")
 
-[node name="Run" type="Node" parent="StateMachine"]
-script = ExtResource("11_ohnoo")
-
 [node name="AuraGhost" parent="." instance=ExtResource("10_i0eca")]
 transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 0.012677, 1.10246, -0.141001)
 visible = false
@@ -226,6 +256,20 @@ speed_scale = 2.0
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_rs72w")
 draw_pass_1 = SubResource("PlaneMesh_2gyp5")
+
+[node name="pivotDust" type="Node3D" parent="."]
+
+[node name="Dust" type="GPUParticles3D" parent="pivotDust"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24342674, 0.12998652, -0.038635105)
+material_override = SubResource("ShaderMaterial_yd6d6")
+transparency = 0.73
+ignore_occlusion_culling = true
+emitting = false
+amount = 201
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_it33q")
+draw_pass_1 = ExtResource("18_uov4s")
 
 [connection signal="body_entered" from="Aura/player/Armature/Skeleton3D/BoneAttachment3D/Sprite3D/Lumiere" to="StateMachine/Lumiere" method="_on_lumiere_body_entered"]
 [connection signal="animation_finished" from="Aura/player/AnimationPlayer" to="StateMachine/Dead" method="_on_animation_player_animation_finished"]
