@@ -48,7 +48,7 @@ light_energy = 7.626
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -41.6673, -1.37546, -0.0374346)
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.594001, 1.101, 6.303)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.5940013, 1.1009998, 6.3029995)
 keep_aspect = 0
 environment = ExtResource("3_bn35m")
 fov = 80.0
@@ -88,3 +88,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11158, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, 0)
 
 [editable path="BlockingPasilloPreTorre"]
+[editable path="KillZone"]

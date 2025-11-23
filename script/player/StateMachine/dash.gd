@@ -11,31 +11,30 @@ var timer := 0.0
 var dash_dir := 1
 var suspend_air_time := 0.5
 var suspended := false
-
-var dash_cooldown := 0.5
+var cooldown_running := false
+var dash_cooldown := 1
 
 signal dash_started
 signal dash_finished
 @onready var dash_sfx = preload("res://sonidos/dash.mp3")
 func enter(previous_state_path: String, data := {}):
-	player.lumiere_area.visible = false
-	if not player.can_dash:
+	# bloqueo preventivo: no reentrar al dash si ya se está dashing o si hay cooldown en curso
+	if player.is_dashing or not player.can_dash or cooldown_running:
 		emit_signal("finished", "Idle")
 		return
 
-	timer = 0.0
-	dash_dir = player.last_facing
+	player.lumiere_area.visible = false
 	player.is_dashing = true
 	player.can_dash = false
-	
-	
-	# Reproducir animación Dash
+	timer = 0.0
+	dash_dir = player.last_facing
+
+	# reproducir anim/efectos
 	if player.animationPlayer:
 		player.animationPlayer.play("Dash")
-		
-		AudioManager.play_and_get_duration(dash_sfx)
-		spawn_dash_trail()
-		emit_signal("dash_started")
+	AudioManager.play_and_get_duration(dash_sfx)
+	spawn_dash_trail()
+
 	# Suspensión en aire
 	if not player.is_on_floor():
 		suspended = true
@@ -43,8 +42,12 @@ func enter(previous_state_path: String, data := {}):
 		await get_tree().create_timer(suspend_air_time).timeout
 		suspended = false
 		player.jump_locked = true  # Bloquear salto tras dash aéreo
+
 	player.sprite.visible = false
-	reset_dash_cooldown()
+
+	# Iniciamos cooldown (solo si no hay otro en curso)
+	# Notar: llamarlo sin await para que corra paralelo
+	_reset_dash_cooldown()
 
 func physics_update(delta: float):
 	timer += delta
@@ -61,7 +64,7 @@ func physics_update(delta: float):
 
 	# Terminar dash
 	if timer >= dash_time:
-		player.is_dashing = false
+		player.is_dashing = false	
 		if player.is_on_floor():
 			if player.animationPlayer:
 				player.animationPlayer.play("idle")
@@ -71,11 +74,19 @@ func physics_update(delta: float):
 				player.animationPlayer.play("Fall")
 			emit_signal("finished", "InAir", {"FromDash": true})
 
-func reset_dash_cooldown():
+func _reset_dash_cooldown() -> void:
+	# si ya hay un cooldown, no crear otro
+	if cooldown_running:
+		return
+	cooldown_running = true
+	# espera sin bloquear el hilo principal (await)
 	await get_tree().create_timer(dash_cooldown).timeout
 	player.can_dash = true
+	cooldown_running = false
+	emit_signal("dash_finished") # opcional: señal para debug/sonido
 
 func spawn_dash_trail(num_copies: int = 4) -> void:
+	emit_signal("dash_started")
 	player.sprite.visible = true
 	player.dash_particle.emitting = true
 	for i in range(num_copies):
