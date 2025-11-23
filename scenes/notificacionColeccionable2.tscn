@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b47t313xjb7m7"]
 
 [ext_resource type="Script" uid="uid://ce3qygyldylkn" path="res://scenes/notificacion_coleccionable.gd" id="1_ms44v"]
-[ext_resource type="Texture2D" uid="uid://h0hl70j457an" path="res://textures/NotificacionColeccionable2.png" id="2_ms44v"]
+[ext_resource type="Texture2D" uid="uid://couj5rrv1727c" path="res://textures/NotificacionColeccionable3.png" id="2_ms44v"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 10
