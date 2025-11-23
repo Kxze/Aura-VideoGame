@@ -27,6 +27,26 @@ func enter(previous_state_path : String, data := {}):
 
 
 func physics_update(delta: float):
+	# --- Lectura de inputs horizontales (A y D) ---
+	# Ajusta los nombres si tus acciones son distintas ("move_left"/"move_right")
+	var left_pressed = Input.is_action_pressed("move_left")
+	var right_pressed = Input.is_action_pressed("move_right")
+
+	# --- Si ambas teclas están presionadas: detener movimiento y mostrar Idle visualmente ---
+	if left_pressed and right_pressed:
+		player.movInput.x = 0
+		# Solo cambiar la animación si no está ya en Idle (evita reinicios)
+		if player.animationPlayer.current_animation != "Idle":
+			player.animationPlayer.play("Idle")
+	else:
+		# Resolver movimiento horizontal normalmente
+		if left_pressed:
+			player.movInput.x = -1
+		elif right_pressed:
+			player.movInput.x = 1
+		else:
+			player.movInput.x = 0
+
 	# --- Checar distancia al piso ---
 	if not player.is_on_floor():
 		if floor_ray.is_colliding():
@@ -48,14 +68,18 @@ func physics_update(delta: float):
 	# --- Movimiento y animaciones ---
 	player.speed = player.speed_normal
 
-	if Input.is_action_pressed("run"):
+	# Si se presiona run y hay input horizontal, aplicar correr
+	if Input.is_action_pressed("run") and player.movInput.x != 0:
 		applyRun()
 	elif player.movInput.x != 0:
+		# caminar
 		isRunning = false
 		if player.animationPlayer.current_animation != "Walk":
 			player.animationPlayer.play("Walk")
 	else:
+		# Si no se mueve y no está en Idle, emitir finished Idle
 		emit_signal("finished", "Idle")
+
 	# --- Sonidos de pasos 👟 ---
 	if player.is_on_floor() and player.can_play_steps and player.movInput.x != 0:
 		step_timer -= delta
@@ -82,7 +106,7 @@ func physics_update(delta: float):
 	if player.health <= 0:
 		emit_signal("finished","Dead")
 
-	# --- Movimiento horizontal ---
+	# --- Movimiento horizontal (aplicar velocidad) ---
 	player.velocity.x = lerp(player.velocity.x, player.movInput.x * player.speed, 0.9)
 	player.move_and_slide()
 	player.global_position.z = 0
@@ -138,13 +162,19 @@ func applyRun():
 		
 	if Input.is_action_just_pressed("Lumiere") and player.can_lumiere:
 		emit_signal("finished","Lumiere")
-	
-func accelerate(movInput: Vector2):
-	player.velocity = player.velocity.move_toward(player.speed + player.movInput, player.acceleration)
-
-
-func apply_friction():
-	player.velocity = player.velocity.move_toward(Vector3.ZERO, player.friction)
+		
+	# --- Si se cae mientras corre, manejar pasos/dust ---
+	if not player.is_on_floor():
+		if floor_ray.is_colliding():
+			var floor_distance = player.global_position.y - floor_ray.get_collision_point().y
+			if floor_distance > .3:
+				player.can_play_steps = false
+				player.dust.emitting = false
+				return
+		else:
+			player.dust.emitting = false
+			player.can_play_steps = false
+			return
 
 
 func exit():
