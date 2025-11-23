@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqoy6ky1re0x6"]
+[gd_scene load_steps=15 format=3 uid="uid://dqoy6ky1re0x6"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_fwh58"]
 [ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_tkyk7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="8_vtho0"]
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="9_tkyk7"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="10_6j18j"]
+[ext_resource type="PackedScene" uid="uid://b5dlcs120d4fy" path="res://scenes/SubtitleManager.tscn" id="11_efj64"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts8eg"]
 albedo_color = Color(0.118605, 0, 0.677026, 1)
@@ -245,6 +246,8 @@ next_level_path = "res://scenes/levels/TransicionTorreLago.tscn"
 
 [node name="KillZone3" parent="." instance=ExtResource("6_ou5g1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 627.2856, -72.145, 0)
+
+[node name="SubtitleManager" parent="." instance=ExtResource("11_efj64")]
 
 [editable path="Blocking4"]
 [editable path="back_level"]

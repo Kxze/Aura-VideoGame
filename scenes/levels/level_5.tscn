@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2yu70n2vogoj"]
+[gd_scene load_steps=18 format=3 uid="uid://d2yu70n2vogoj"]
 
 [ext_resource type="PackedScene" uid="uid://dnms5rm70a8ir" path="res://Art/Levels/Blocking_level5.blend" id="1_845dy"]
 [ext_resource type="Script" uid="uid://djsr5x3la6drq" path="res://scenes/levels/level_5.gd" id="1_tqnj0"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="6_hldbq"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="7_fsnos"]
 [ext_resource type="PackedScene" uid="uid://bnoyn8qc3q0ot" path="res://scenes/enemies/cisne.tscn" id="8_mxx4w"]
+[ext_resource type="PackedScene" uid="uid://b5dlcs120d4fy" path="res://scenes/SubtitleManager.tscn" id="11_6xwso"]
 [ext_resource type="LightmapGIData" uid="uid://d3eifu7q6b3oq" path="res://scenes/levels/bakes_lights/level_5.lmbake" id="11_dwyms"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_laj7o"]
@@ -44,9 +45,9 @@ environment = ExtResource("3_fi56y")
 fov = 80.0
 far = 250.0
 script = ExtResource("3_dswqx")
+target = NodePath("..")
 follow_speed = 12.0
 offset = Vector3(2.97, 5.505, 31.515)
-target = NodePath("..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9895711, 0.0142490165, 0.14333883, 1.3268379e-08, -0.9950954, 0.098920286, 0.14404537, -0.09788865, -0.98471755, -315.21643, 40.3015, 54.6983)
@@ -102,25 +103,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -354.83676, 0, 0)
 
 [node name="Cisnes" type="Node" parent="."]
 
-[node name="Cisne_negro" parent="Cisnes" node_paths=PackedStringArray("Target") instance=ExtResource("8_mxx4w")]
+[node name="Cisne_negro" parent="Cisnes" instance=ExtResource("8_mxx4w")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -287.57877, 1.2773681, 0)
-Target = NodePath("../../Player")
 
-[node name="Cisne_negro2" parent="Cisnes" node_paths=PackedStringArray("Target") instance=ExtResource("8_mxx4w")]
+[node name="Cisne_negro2" parent="Cisnes" instance=ExtResource("8_mxx4w")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -247.44313, 5.234713, 0)
-Target = NodePath("../../Player")
 
-[node name="Cisne_negro3" parent="Cisnes" node_paths=PackedStringArray("Target") instance=ExtResource("8_mxx4w")]
+[node name="Cisne_negro3" parent="Cisnes" instance=ExtResource("8_mxx4w")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -184.5655, 5.234713, 0)
-Target = NodePath("../../Player")
 
-[node name="Cisne_negro4" parent="Cisnes" node_paths=PackedStringArray("Target") instance=ExtResource("8_mxx4w")]
+[node name="Cisne_negro4" parent="Cisnes" instance=ExtResource("8_mxx4w")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -138.92986, 2.234713, 0)
-Target = NodePath("../../Player")
 
-[node name="Cisne_negro7" parent="Cisnes" node_paths=PackedStringArray("Target") instance=ExtResource("8_mxx4w")]
+[node name="Cisne_negro7" parent="Cisnes" instance=ExtResource("8_mxx4w")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.125832, 0.23471308, 0)
-Target = NodePath("../../Player")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.400846, -2.7334232, -7)
@@ -156,6 +152,8 @@ collision_layer = 2
 
 [node name="StaticBody3D" parent="NavigationRegion3D/Blocking_level5/Caminoprincipal" index="0"]
 collision_layer = 2
+
+[node name="SubtitleManager" parent="." instance=ExtResource("11_6xwso")]
 
 [editable path="KillZone"]
 [editable path="Area3D"]

@@ -1,5 +1,7 @@
 extends Node
 
+signal dialogo_iniciado_con_stream(stream: AudioStream)
+
 # -----------------------
 # Flags y estado
 # -----------------------
@@ -16,7 +18,7 @@ var dialogos_bus: int = -1
 var efectos_player: AudioStreamPlayer
 var musica_player: AudioStreamPlayer
 
-# Pool opcional (no usado por defecto)
+# Pool opcional
 var _sfx_pool: Array = []
 @export var sfx_pool_size := 6
 
@@ -46,13 +48,14 @@ var pluma_obtenida := false
 # Diálogos
 var dialogo_en_progreso := false
 var dialogo_player_actual: AudioStreamPlayer = null
-var alex_dialogos_sonados := {}
 
 var cisne_convertido := false
 
 # ---------------------------------------------------------
+# INICIALIZACIÓN
+# ---------------------------------------------------------
 func _ready():
-	# SFX player (usado para play_and_get_duration/efectos cortos si se necesita)
+	# SFX player
 	efectos_player = AudioStreamPlayer.new()
 	efectos_player.name = "SFX_Player"
 	add_child(efectos_player)
@@ -74,15 +77,6 @@ func _ready():
 	dialogos_bus = AudioServer.get_bus_index("Dialogos")
 	if dialogos_bus == -1:
 		print("Aviso: no se encontró el bus 'Dialogos'. Crea el bus en Project Settings → Audio → Buses.")
-
-	# opcional: inicializar pool de sfx (puedes comentar si no quieres)
-	#for i in range(sfx_pool_size):
-	#	var p := AudioStreamPlayer.new()
-	#	p.bus = "Efectos"
-	#	p.process_mode = Node.PROCESS_MODE_ALWAYS
-	#	add_child(p)
-	#	p.owner = null
-	#	_sfx_pool.append(p)
 
 	get_tree().connect("scene_changed", Callable(self, "_on_scene_changed_global"))
 
@@ -115,7 +109,7 @@ func normalize_audio(stream: AudioStream) -> float:
 
 
 # ---------------------------------------------------------
-# SFX (temporal) - no interfiere con diálogos/música
+# SFX
 # ---------------------------------------------------------
 func play_and_get_duration(sound: AudioStream) -> float:
 	if sound == null:
@@ -136,7 +130,6 @@ func play_and_get_duration(sound: AudioStream) -> float:
 	return 0.0
 
 
-# Reproductor temporal por SFX (no corta diálogos ni música)
 func play_sfx(sound: AudioStream) -> void:
 	if sound == null:
 		return
@@ -194,8 +187,19 @@ func play_sfx_persistente(sound: AudioStream) -> void:
 	await get_tree().create_timer(duracion).timeout
 	temp_player.queue_free()
 
+# Carga dinámica por ruta (para Lumiere y otros)
+func play_sfx_by_path(path: String) -> void:
+	if path.is_empty():
+		push_warning("Ruta de audio vacía.")
+		return
 
-# Wrappers de compatibilidad para coleccionables (opcional)
+	var sound: AudioStream = load(path)
+	if sound:
+		play_sfx(sound)
+	else:
+		push_warning("No se pudo cargar el AudioStream desde la ruta: " + path)
+
+# Wrappers de compatibilidad
 func play_sonidoCasco(sound: AudioStream) -> void:
 	play_sfx(sound)
 
@@ -207,7 +211,7 @@ func play_sonidoOso(sound: AudioStream) -> void:
 
 
 # ---------------------------------------------------------
-# Diálogos
+# Diálogos (CORREGIDOS Y CON SEÑAL)
 # ---------------------------------------------------------
 func play_dialogo_aura(stream: AudioStream) -> void:
 	if not stream:
@@ -230,16 +234,21 @@ func play_dialogo_aura(stream: AudioStream) -> void:
 
 	dialogo_player_actual = AudioStreamPlayer.new()
 	dialogo_player_actual.name = "AuraDialogPlayer"
+	
 	dialogo_player_actual.stream = stream
-	# asignar al bus de diálogos (si existe)
+	
 	if dialogos_bus != -1:
 		dialogo_player_actual.bus = "Dialogos"
 	else:
 		dialogo_player_actual.bus = "Dialogos"
+		
 	dialogo_player_actual.volume_db = +6.0
 	add_child(dialogo_player_actual)
 	dialogo_player_actual.owner = null
 	dialogo_player_actual.play()
+
+	# ✅ CORRECCIÓN AQUÍ: Solo enviamos el stream
+	emit_signal("dialogo_iniciado_con_stream", stream)
 
 	dialogo_player_actual.finished.connect(func():
 		dialogo_en_progreso = false
@@ -248,55 +257,6 @@ func play_dialogo_aura(stream: AudioStream) -> void:
 		dialogo_player_actual = null
 	)
 	print("Diálogo de Aura iniciado.")
-
-
-func play_dialogo_alex(stream: AudioStream, id: String = "") -> void:
-	if not stream:
-		push_warning("No se encontró el audio del diálogo de Alex.")
-		return
-
-	if get_tree().paused:
-		print("Juego pausado → no iniciar diálogo de Alex (%s)." % id)
-		return
-
-	if id != "" and alex_dialogos_sonados.has(id) and alex_dialogos_sonados[id]:
-		print("Diálogo de Alex '%s' ya fue reproducido." % id)
-		return
-
-	if id != "":
-		alex_dialogos_sonados[id] = true
-
-	if dialogo_en_progreso:
-		print("Esperando a que termine el diálogo anterior antes de reproducir Alex (%s)..." % id)
-		await esperar_dialogo_anterior()
-
-	dialogo_en_progreso = true
-
-	if dialogo_player_actual:
-		dialogo_player_actual.stop()
-		dialogo_player_actual.queue_free()
-
-	dialogo_player_actual = AudioStreamPlayer.new()
-	dialogo_player_actual.name = "AlexDialogPlayer_%s" % id
-	dialogo_player_actual.stream = stream
-	if dialogos_bus != -1:
-		dialogo_player_actual.bus = "Dialogos"
-	else:
-		dialogo_player_actual.bus = "Dialogos"
-	dialogo_player_actual.volume_db = +10.0
-	add_child(dialogo_player_actual)
-	dialogo_player_actual.owner = null
-
-	dialogo_player_actual.play()
-
-	dialogo_player_actual.finished.connect(func():
-		dialogo_en_progreso = false
-		if dialogo_player_actual and dialogo_player_actual.is_inside_tree():
-			dialogo_player_actual.queue_free()
-		dialogo_player_actual = null
-	)
-	print("Diálogo de Alex (%s) iniciado." % id)
-
 
 # Aux
 func esperar_dialogo_anterior() -> void:
@@ -342,16 +302,14 @@ func set_pausa_activa(valor: bool) -> void:
 
 
 # ---------------------------------------------------------
-# Ajustes popup: solo pausar diálogos y efectos, mantener la música
+# Ajustes popup
 # ---------------------------------------------------------
 func set_ajustes_popup_abierto(valor: bool) -> void:
-	# aplicamos el estado solicitado siempre (no retornamos temprano)
 	ajustes_popup_abierto = valor
-
 	var efectos_idx = AudioServer.get_bus_index("Efectos")
 
 	if ajustes_popup_abierto:
-		# Pausar diálogo si está sonando y no está ya en pausa
+		# Pausar diálogo
 		if dialogo_player_actual:
 			if dialogo_player_actual.playing and not dialogo_player_actual.stream_paused:
 				dialogo_player_actual.stream_paused = true
@@ -362,39 +320,36 @@ func set_ajustes_popup_abierto(valor: bool) -> void:
 		else:
 			_dialogo_pausado_por_ajustes = false
 
-		# Mutear bus de efectos solo si no estaba muteado
+		# Mutear efectos
 		_efectos_muteados_por_ajustes = false
 		if efectos_idx != -1:
 			if not AudioServer.is_bus_mute(efectos_idx):
 				AudioServer.set_bus_mute(efectos_idx, true)
 				_efectos_muteados_por_ajustes = true
 				print("Bus 'Efectos' muteado por ajustes.")
-			else:
-				print("Bus 'Efectos' ya estaba muteado; no se tocará.")
 
-		# Mutear bus de dialogos solo si no estaba muteado
+		# Mutear dialogos
 		_dialogos_muteados_por_ajustes = false
 		if dialogos_bus != -1:
 			if not AudioServer.is_bus_mute(dialogos_bus):
 				AudioServer.set_bus_mute(dialogos_bus, true)
 				_dialogos_muteados_por_ajustes = true
 				print("Bus 'Dialogos' muteado por ajustes.")
-			else:
-				print("Bus 'Dialogos' ya estaba muteado; no se tocará.")
+
 	else:
-		# Restaurar diálogo si fuimos nosotros quien lo pausó
+		# Restaurar diálogo
 		if _dialogo_pausado_por_ajustes and dialogo_player_actual and dialogo_player_actual.stream_paused:
 			dialogo_player_actual.stream_paused = false
 			print("Diálogo reanudado tras cerrar ajustes.")
 		_dialogo_pausado_por_ajustes = false
 
-		# Restaurar bus de efectos solo si fuimos quienes lo muteamos
+		# Restaurar efectos
 		if _efectos_muteados_por_ajustes and efectos_idx != -1 and AudioServer.is_bus_mute(efectos_idx):
 			AudioServer.set_bus_mute(efectos_idx, false)
 			print("Bus 'Efectos' desmuteado tras cerrar ajustes.")
 		_efectos_muteados_por_ajustes = false
 
-		# Restaurar bus de dialogos solo si fuimos quienes lo muteamos
+		# Restaurar dialogos
 		if _dialogos_muteados_por_ajustes and dialogos_bus != -1 and AudioServer.is_bus_mute(dialogos_bus):
 			AudioServer.set_bus_mute(dialogos_bus, false)
 			print("Bus 'Dialogos' desmuteado tras cerrar ajustes.")
@@ -402,12 +357,11 @@ func set_ajustes_popup_abierto(valor: bool) -> void:
 
 
 # ---------------------------------------------------------
-# SFX específicos (daño, ataque, etc.)
+# SFX específicos
 # ---------------------------------------------------------
 func play_daño(sound: AudioStream) -> void:
 	if sound == null:
 		return
-	# Reproductor temporal para no interferir con diálogo
 	var tmp := AudioStreamPlayer.new()
 	tmp.stream = sound
 	tmp.bus = "Efectos"
@@ -451,7 +405,6 @@ func play_daño_odette(sonido):
 	sfx.process_mode = Node.PROCESS_MODE_ALWAYS
 	sfx.owner = null
 	sfx.play()
-	# cleanup
 	var dur := 2.0
 	if sonido.has_method("get_length"):
 		dur = sonido.get_length()
@@ -459,23 +412,9 @@ func play_daño_odette(sonido):
 	if sfx and sfx.is_inside_tree():
 		sfx.queue_free()
 
-func play_sfx_by_path(path: String) -> void:
-	if path.is_empty():
-		push_warning("Ruta de audio vacía.")
-		return
-
-	# Carga dinámica del recurso
-	var sound: AudioStream = load(path)
-	
-	if sound:
-		# Llama a la función base para reproducir.
-		# Usaremos play_sfx ya que crea un reproductor temporal para no cortar otros.
-		play_sfx(sound)
-	else:
-		push_warning("No se pudo cargar el AudioStream desde la ruta: " + path)
 
 # ---------------------------------------------------------
-# Ejemplo Julieta (sin cambios)
+# Ejemplo Julieta
 # ---------------------------------------------------------
 var julieta_player: AudioStreamPlayer = null
 var julieta_sounds: Array[AudioStream] = []
@@ -551,7 +490,7 @@ func stop_julieta():
 	print("Llanto de Julieta detenido.")
 
 
-func _on_scene_changed_global(new_scene):
+func _on_scene_changed_global(new_scene = null):
 	if julieta_activa:
 		stop_julieta()
 		print("Escena cambiada → llanto de Julieta detenido.")
