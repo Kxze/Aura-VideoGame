@@ -106,19 +106,34 @@ func flip_character(target_scale: int):
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(player.aura, "scale:y", 1, 0.13) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	var tween2 = create_tween()
+	tween.parallel().tween_property(player.pivot_dust, "scale:x", 0, 0.13) \
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.parallel().tween_property(player.pivot_dust, "scale:y", 1.2, 0.13) \
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.tween_property(player.pivot_dust, "scale:x", target_scale, 0.13) \
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(player.pivot_dust, "scale:y", 1, 0.13) \
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func applyRun():
 	isRunning = true
-	player.speed = player.speed_run	
+	player.speed = player.speed_run
+	if player.is_on_floor():
+		player.dust.emitting = true	
+	else:
+		player.dust.emitting = false
 	if player.animationPlayer.current_animation != "Run":
 			player.animationPlayer.play("Run")
 	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
 		player.can_play_steps = false
+		player.dust.emitting = false
 		emit_signal("finished", "InAir", {"Jump" : true})
 
 	# --- Dash ---
 	if Input.is_action_just_pressed("dash"):
 		player.invencible = true
+		player.dust.emitting = false	
 		emit_signal("finished", "Dash")
 		
 	if Input.is_action_just_pressed("Lumiere") and player.can_lumiere:
