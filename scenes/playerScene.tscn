@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://d30vdm7b5ol13"]
+[gd_scene load_steps=34 format=3 uid="uid://d30vdm7b5ol13"]
 
 [ext_resource type="Script" uid="uid://bpib4ts88h76w" path="res://scenes/player.gd" id="1_72l0f"]
 [ext_resource type="PackedScene" uid="uid://d3ssyl05c7cbh" path="res://scenes/sprite_3d.tscn" id="2_72l0f"]
@@ -122,25 +122,6 @@ initial_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.7
 scale_curve = SubResource("CurveTexture_dbg8j")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rs72w"]
-render_priority = 0
-shader = ExtResource("16_rs72w")
-
-[sub_resource type="Curve" id="Curve_ttj2a"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_uov4s"]
-curve = SubResource("Curve_ttj2a")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ttj2a"]
-direction = Vector3(0, 1, 0)
-spread = 90.0
-initial_velocity_min = 3.0
-initial_velocity_max = 3.0
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_uov4s")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 30
@@ -288,19 +269,6 @@ amount = 201
 one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_it33q")
-draw_pass_1 = ExtResource("18_uov4s")
-
-[node name="LandParticles" type="GPUParticles3D" parent="."]
-material_override = SubResource("ShaderMaterial_rs72w")
-transparency = 0.8
-emitting = false
-amount = 20
-lifetime = 0.5
-one_shot = true
-speed_scale = 0.7
-explosiveness = 1.0
-fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_ttj2a")
 draw_pass_1 = ExtResource("18_uov4s")
 
 [connection signal="body_entered" from="Aura/player/Armature/Skeleton3D/BoneAttachment3D/Sprite3D/Lumiere" to="StateMachine/Lumiere" method="_on_lumiere_body_entered"]

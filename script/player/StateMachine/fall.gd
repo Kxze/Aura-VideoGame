@@ -8,10 +8,6 @@ func enter(previous_state_path : String, data := {}):
 	player.invencible = false
 
 func physics_update(delta: float):
-	if was_on_floor == false and player.is_on_floor():
-		player.land.emitting = true
-		player.land.restart()
-	was_on_floor = player.is_on_floor()
 	# Si el jugador está en el suelo, actualizamos la altura de referencia
 	if player.is_on_floor():
 		fall_start_y = player.global_position.y
