@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2uqyr6n6ine3"]
+[gd_scene load_steps=3 format=3 uid="uid://cre3p7atwlk"]
 
-[ext_resource type="Script" uid="uid://oh512hyy7hlb" path="res://dialogos/Aura/subs_1.gd" id="1_7vt5h"]
-[ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="1_pr0wy"]
+[ext_resource type="Script" uid="uid://ttma8ijvxcm0" path="res://subs_2.gd" id="1_s8gqc"]
+[ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="2_cartm"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource("1_7vt5h")
+script = ExtResource("1_s8gqc")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 top_level = true
@@ -18,9 +18,9 @@ offset_top = -78.0
 offset_right = 859.5
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/normal_font = ExtResource("1_pr0wy")
+theme_override_fonts/normal_font = ExtResource("2_cartm")
 theme_override_font_sizes/normal_font_size = 40
-text = "Tantos cuentos de caballeros,"
+text = "Alex escribió su historia,"
 scroll_active = false
 horizontal_alignment = 1
 
@@ -36,9 +36,9 @@ offset_top = -78.0
 offset_right = 859.5
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/normal_font = ExtResource("1_pr0wy")
+theme_override_fonts/normal_font = ExtResource("2_cartm")
 theme_override_font_sizes/normal_font_size = 40
-text = "y aún así, ninguno pudo protegerlo a él"
+text = "nuestra historia,"
 scroll_active = false
 horizontal_alignment = 1
 
@@ -54,8 +54,26 @@ offset_top = -78.0
 offset_right = 859.5
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/normal_font = ExtResource("1_pr0wy")
+theme_override_fonts/normal_font = ExtResource("2_cartm")
 theme_override_font_sizes/normal_font_size = 40
-text = "ni siquiera yo."
+text = "esta debe ser compartida,"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+top_level = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -859.5
+offset_top = -78.0
+offset_right = 859.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("2_cartm")
+theme_override_font_sizes/normal_font_size = 40
+text = "para que nunca sea olvidada."
 scroll_active = false
 horizontal_alignment = 1

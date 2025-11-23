@@ -18,7 +18,7 @@ func iniciar_secuencia_subtitulos() -> void:
 	# --- FRASE 1 ---
 	label_1.visible = true
 	# Ajusta el tiempo (3.0) a lo que dure el audio de esta parte
-	await get_tree().create_timer(3.0).timeout 
+	await get_tree().create_timer(2.5).timeout 
 	label_1.visible = false
 	
 	# --- FRASE 2 ---
@@ -28,7 +28,7 @@ func iniciar_secuencia_subtitulos() -> void:
 	
 	# --- FRASE 3 ---
 	label_3.visible = true
-	await get_tree().create_timer(4.0).timeout # Quizás la última dure más
+	await get_tree().create_timer(3.0).timeout # Quizás la última dure más
 	label_3.visible = false
 	
 	# 3. Al terminar, borramos la escena de subtítulos para liberar memoria

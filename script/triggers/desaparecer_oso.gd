@@ -1,116 +1,72 @@
 extends Area3D
 
+# --- REFERENCIAS VISUALES ---
 @onready var particulas_oso: GPUParticles3D = $"../GPUParticles3D"
 @onready var osopeluche: MeshInstance3D = $"../OSO_EspacioColeccionable/OSOPELUCHE"
+
+# --- ASSETS (Audio y Escenas) ---
 @onready var sonido_oso = preload("res://sonidos/desbloqueaColeccionable.wav")
 @onready var dialogo_aura = preload("res://dialogos/aura/Aura3-RV.wav")
 @onready var notificacion_scene = preload("res://scenes/notificacionColeccionable3.tscn")
 
+# --- NUEVO: Cargamos los subtítulos 3 ---
+@onready var subtitulos_scene = preload("res://dialogos/Aura/subs_3.tscn")
+
+var puede_activarse := false
+
 func _ready() -> void:
-	# Si ya se obtuvo antes en esta partida, ocultarlo al cargar la escena
+	# Si ya tenemos el oso, eliminamos el objeto al cargar la escena
 	if AudioManager.oso_obtenido:
-		if osopeluche:
-			osopeluche.visible = false
-		if particulas_oso:
-			particulas_oso.emitting = false
-		monitoring = false
-		collision_layer = 0
-		collision_mask = 0
+		queue_free()
+		return
+	
+	# Pequeño delay de seguridad para evitar activaciones instantáneas al nacer
+	await get_tree().create_timer(0.1).timeout
+	puede_activarse = true
 
 func _on_body_entered(body: Node3D) -> void:
-	if body == null or body.name != "Player":
-		return
+	if not puede_activarse: return
+	
+	# Verificamos que sea el Player
+	if body.name != "Player" and not body.is_in_group("Player"): return
+	
+	if AudioManager.oso_obtenido: return
 
-	# Si ya fue recogido, no hacer nada
-	if AudioManager.oso_obtenido:
-		return
+	print("Coleccionable Oso: Recogido")
 
-	# Detener partículas y ocultar visual
+	# 1. Marcar como obtenido
+	AudioManager.oso_obtenido = true
+	puede_activarse = false
+
+	# 2. Apagar visuales
+	_apagar_visuales()
+
+	# 3. Reproducir Audio (Directo al nuevo AudioManager limpio)
+	AudioManager.play_sfx(sonido_oso)
+	AudioManager.play_dialogo_aura(dialogo_aura)
+
+	# 4. Mostrar UI (Notificación y Subtítulos)
+	_mostrar_notificacion()
+	_mostrar_subtitulos()
+
+	# 5. Desactivar monitoreo (o puedes usar queue_free() si prefieres borrarlo)
+	set_deferred("monitoring", false)
+
+func _apagar_visuales() -> void:
 	if particulas_oso:
 		particulas_oso.emitting = false
 	if osopeluche:
 		osopeluche.visible = false
 
-	# Marcar globalmente como obtenido
-	AudioManager.oso_obtenido = true
-
-	# Reproducir sonido del coleccionable y diálogo (con fallback seguro)
-	_reproducir_sonido_coleccionable(sonido_oso)
-	_reproducir_dialogo_seguro(dialogo_aura)
-
-	# Mostrar notificación visual
-	_mostrar_notificacion()
-
-	# Desactivar el área para que no vuelva a usarse
-	monitoring = false
-	collision_layer = 0
-	collision_mask = 0
-
-
-func _reproducir_sonido_coleccionable(sound: AudioStream) -> void:
-	if sound == null:
-		print("Oso: resource de sonido es null")
-		return
-
-	var am = get_node_or_null("/root/AudioManager")
-	if not am:
-		_play_temp_sfx(sound)
-		return
-
-	if am.has_method("play_sonidoOso"):
-		am.play_sonidoOso(sound)
-		return
-
-	if am.has_method("play_sfx"):
-		am.play_sfx(sound)
-		return
-
-	_play_temp_sfx(sound)
-
-
-func _reproducir_dialogo_seguro(stream: AudioStream) -> void:
-	if stream == null:
-		print("Oso: resource de diálogo es null")
-		return
-
-	var am = get_node_or_null("/root/AudioManager")
-	if am and am.has_method("play_dialogo_aura"):
-		am.play_dialogo_aura(stream)
-		return
-
-	# Fallback: reproducir diálogo con player temporal en bus "Dialogos" si existe
-	var p := AudioStreamPlayer.new()
-	p.stream = stream
-	var idx = AudioServer.get_bus_index("Dialogos")
-	if idx != -1:
-		p.bus = "Dialogos"
-	get_tree().get_root().add_child(p)
-	p.play()
-	var dur := 2.0
-	if stream.has_method("get_length"):
-		dur = stream.get_length()
-	await get_tree().create_timer(dur).timeout
-	if p and p.is_inside_tree():
-		p.queue_free()
-
-
-func _play_temp_sfx(sound: AudioStream) -> void:
-	var tmp := AudioStreamPlayer.new()
-	tmp.stream = sound
-	var idx = AudioServer.get_bus_index("Efectos")
-	if idx != -1:
-		tmp.bus = "Efectos"
-	get_tree().get_root().add_child(tmp)
-	tmp.play()
-	var dur := 2.0
-	if sound.has_method("get_length"):
-		dur = sound.get_length()
-	await get_tree().create_timer(dur).timeout
-	if tmp and tmp.is_inside_tree():
-		tmp.queue_free()
-
-
 func _mostrar_notificacion() -> void:
-	var notif = notificacion_scene.instantiate()
-	get_tree().get_root().add_child(notif)
-	notif.visible = true
+	if notificacion_scene:
+		var notif = notificacion_scene.instantiate()
+		get_tree().root.add_child(notif)
+		if "visible" in notif:
+			notif.visible = true
+
+# --- FUNCION PARA MOSTRAR SUBTITULOS 3 ---
+func _mostrar_subtitulos() -> void:
+	if subtitulos_scene:
+		var subs = subtitulos_scene.instantiate()
+		get_tree().root.add_child(subs)
