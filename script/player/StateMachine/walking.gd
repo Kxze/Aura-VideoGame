@@ -109,7 +109,6 @@ func flip_character(target_scale: int):
 
 func applyRun():
 	isRunning = true
-	player.speed = player.speed_run
 	player.speed = player.speed_run	
 	if player.animationPlayer.current_animation != "Run":
 			player.animationPlayer.play("Run")
