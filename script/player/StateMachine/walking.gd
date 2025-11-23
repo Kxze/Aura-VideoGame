@@ -72,7 +72,7 @@ func physics_update(delta: float):
 		emit_signal("finished", "InAir", {"Jump" : true})
 
 	# --- Dash ---
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and player.can_dash:
 		player.invencible = true
 		emit_signal("finished", "Dash")
 
@@ -110,6 +110,7 @@ func flip_character(target_scale: int):
 func applyRun():
 	isRunning = true
 	player.speed = player.speed_run
+	player.speed = player.speed_run	
 	if player.animationPlayer.current_animation != "Run":
 			player.animationPlayer.play("Run")
 	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
@@ -121,7 +122,8 @@ func applyRun():
 		player.invencible = true
 		emit_signal("finished", "Dash")
 		
-	
+	if Input.is_action_just_pressed("Lumiere") and player.can_lumiere:
+		emit_signal("finished","Lumiere")
 	
 func accelerate(movInput: Vector2):
 	player.velocity = player.velocity.move_toward(player.speed + player.movInput, player.acceleration)
