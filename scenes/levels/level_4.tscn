@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://gj6xmv4ch22p"]
+[gd_scene load_steps=14 format=3 uid="uid://gj6xmv4ch22p"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_w6h2s"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_ogj6a"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="8_ts8eg"]
 [ext_resource type="PackedScene" uid="uid://dwn7fewbx87ob" path="res://scenes/triggers/unlock_lumiere_noEffects.tscn" id="9_um320"]
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="10_glw47"]
-[ext_resource type="PackedScene" uid="uid://b5dlcs120d4fy" path="res://scenes/SubtitleManager.tscn" id="11_4wsov"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts8eg"]
 albedo_color = Color(0.118605, 0, 0.677026, 1)
@@ -242,8 +241,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 405.405, -89, 0)
 
 [node name="Portal_to_collect" parent="door_collect" index="1"]
 next_level_path = "res://scenes/levels/Coleccionable2.tscn"
-
-[node name="SubtitleManager" parent="." instance=ExtResource("11_4wsov")]
 
 [editable path="Blocking4"]
 [editable path="back_level"]

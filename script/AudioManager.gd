@@ -1,6 +1,7 @@
 extends Node
 
 signal dialogo_iniciado_con_stream(stream: AudioStream)
+signal dialogo_terminado(stream_path: String)
 
 # -----------------------
 # Flags y estado
@@ -213,50 +214,141 @@ func play_sonidoOso(sound: AudioStream) -> void:
 # ---------------------------------------------------------
 # Diálogos (CORREGIDOS Y CON SEÑAL)
 # ---------------------------------------------------------
+# arriba con las otras vars (si no existe)
+var last_dialog_stream_path: String = ""
+
+# ---------------------------------------------------------
+# Diálogos (mejorado: evita loop y añade watchdog)
+# ---------------------------------------------------------
 func play_dialogo_aura(stream: AudioStream) -> void:
 	if not stream:
 		push_warning("No se encontró el audio del diálogo de Aura.")
 		return
 
+	# Debug
+	print("[AudioManager] play_dialogo_aura pedido ->", stream.resource_path, " frame:", Engine.get_frames_drawn())
+
+	# Evitar reproducir justo al inicio si algo lo llama por accidente (opcional)
+	if Engine.get_frames_drawn() < 1:
+		# comentar esta línea si quieres permitir en frame 0
+		# print("[AudioManager] Ignorando petición en frames muy tempranos.")
+		# return
+		pass
+
+	# Evitar reproducir el mismo diálogo si ya está en curso
+	if dialogo_en_progreso and last_dialog_stream_path == stream.resource_path:
+		if dialogo_player_actual and dialogo_player_actual.playing:
+			print("[AudioManager] Mismo diálogo ya en curso, ignorando petición:", stream.resource_path)
+			return
+
 	if get_tree().paused:
-		print("Juego pausado → no iniciar diálogo de Aura.")
+		print("Juego pausado → no iniciar diálogo.")
 		return
 
+	# Esperar diálogo anterior si existe
 	if dialogo_en_progreso:
-		print("Esperando a que termine el diálogo anterior antes de reproducir Aura.")
 		await esperar_dialogo_anterior()
 
 	dialogo_en_progreso = true
 
+	# Limpiar player previo si existe
 	if dialogo_player_actual:
 		dialogo_player_actual.stop()
-		dialogo_player_actual.queue_free()
-
-	dialogo_player_actual = AudioStreamPlayer.new()
-	dialogo_player_actual.name = "AuraDialogPlayer"
-	
-	dialogo_player_actual.stream = stream
-	
-	if dialogos_bus != -1:
-		dialogo_player_actual.bus = "Dialogos"
-	else:
-		dialogo_player_actual.bus = "Dialogos"
-		
-	dialogo_player_actual.volume_db = +6.0
-	add_child(dialogo_player_actual)
-	dialogo_player_actual.owner = null
-	dialogo_player_actual.play()
-
-	# ✅ CORRECCIÓN AQUÍ: Solo enviamos el stream
-	emit_signal("dialogo_iniciado_con_stream", stream)
-
-	dialogo_player_actual.finished.connect(func():
-		dialogo_en_progreso = false
-		if dialogo_player_actual and dialogo_player_actual.is_inside_tree():
+		if dialogo_player_actual.is_inside_tree():
 			dialogo_player_actual.queue_free()
 		dialogo_player_actual = null
-	)
-	print("Diálogo de Aura iniciado.")
+
+	# Intentar forzar que el recurso no haga loop
+	if stream.has_method("set_loop"):
+		stream.set_loop(false)
+	elif "loop" in stream:
+		# si el resource expone la propiedad loop
+		stream.loop = false
+
+	# Crear y configurar player
+	dialogo_player_actual = AudioStreamPlayer.new()
+	dialogo_player_actual.name = "AuraDialogPlayer"
+	dialogo_player_actual.stream = stream
+	dialogo_player_actual.bus = "Dialogos"
+	dialogo_player_actual.volume_db = +6.0
+	dialogo_player_actual.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(dialogo_player_actual)
+	dialogo_player_actual.owner = null
+
+	# Aseguramos que el player no esté en loop por si acaso (defensa)
+	# Nota: AudioStreamPlayer no siempre tiene la propiedad 'loop' directamente; se controla en el stream.
+	# Pero intentamos limpiarlo por si acaso:
+	if "loop" in dialogo_player_actual:
+		dialogo_player_actual.loop = false
+
+	# Conectar finished con callable (más fiable que lambdas anónimas en algunos casos)
+	if not dialogo_player_actual.is_connected("finished", Callable(self, "_on_dialogo_player_finished")):
+		dialogo_player_actual.finished.connect(Callable(self, "_on_dialogo_player_finished"))
+
+	# Guardar ruta para evitar reentradas
+	last_dialog_stream_path = stream.resource_path
+
+	# Reproducir
+	dialogo_player_actual.play()
+
+	# Emitir señal para SubtitleManager (tal como lo tienes)
+	emit_signal("dialogo_iniciado_con_stream", stream)
+
+	# Watchdog: si la señal 'finished' no llega (por ejemplo el stream reporta longitud 0),
+	# forzamos stop después de la duración conocida + un pequeño margen.
+	var dur := 0.0
+	if stream.has_method("get_length"):
+		dur = stream.get_length()
+	# si la duración no es válida, ponemos un fallback corto
+	if dur <= 0.0:
+		dur = 10.0
+	# lanzamos una espera asíncrona no bloqueante
+	_spawn_watchdog(dur + 0.2)
+
+	print("[AudioManager] Diálogo iniciado (watchdog en", dur + 0.2, "s ) ->", stream.resource_path)
+
+
+func _spawn_watchdog(wait_time: float) -> void:
+	await get_tree().create_timer(wait_time).timeout
+
+	# Si sigue sonando, forzamos detener y limpiar
+	if dialogo_player_actual and dialogo_player_actual.playing:
+		print("[AudioManager][WATCHDOG] El diálogo sigue sonando tras timeout. Forzando stop.")
+		dialogo_player_actual.stop()
+		
+		var path := ""
+		if dialogo_player_actual and dialogo_player_actual.stream:
+			path = dialogo_player_actual.stream.resource_path
+# ... luego
+		if dialogo_player_actual and dialogo_player_actual.is_inside_tree():
+			dialogo_player_actual.queue_free()
+			dialogo_player_actual = null
+			dialogo_en_progreso = false
+			last_dialog_stream_path = ""
+			emit_signal("dialogo_terminado", path)
+			print("[AudioManager][WATCHDOG] limpieza completada y señal emitida.")
+
+
+# Handler llamado cuando el player emite 'finished'
+func _on_dialogo_player_finished() -> void:
+	print("[AudioManager] Señal finished recibida.")
+	# Emitir señal para que quien esté mostrando subtítulos sepa que terminó
+	var path := ""
+	if dialogo_player_actual and dialogo_player_actual.stream:
+		path = dialogo_player_actual.stream.resource_path
+
+	# Limpiar player
+	if dialogo_player_actual and dialogo_player_actual.is_inside_tree():
+		dialogo_player_actual.queue_free()
+
+	dialogo_player_actual = null
+	dialogo_en_progreso = false
+	last_dialog_stream_path = ""
+
+	# Emitir la señal *después* de limpiar para que otros nodos puedan reaccionar
+	emit_signal("dialogo_terminado", path)
+	print("[AudioManager] dialogo terminado. señal emitida y limpieza completada.")
+
 
 # Aux
 func esperar_dialogo_anterior() -> void:
@@ -491,9 +583,25 @@ func stop_julieta():
 
 
 func _on_scene_changed_global(new_scene = null):
+	# detener sonido de Julieta (tu codigo)
 	if julieta_activa:
 		stop_julieta()
 		print("Escena cambiada → llanto de Julieta detenido.")
+
+	# Si hay un diálogo en curso, pararlo y emitir terminado (limpieza)
+	if dialogo_player_actual:
+		print("[AudioManager] Escena cambiada → deteniendo diálogo activo.")
+		var path := ""
+		if dialogo_player_actual.stream:
+			path = dialogo_player_actual.stream.resource_path
+		dialogo_player_actual.stop()
+		if dialogo_player_actual.is_inside_tree():
+			dialogo_player_actual.queue_free()
+		dialogo_player_actual = null
+		dialogo_en_progreso = false
+		last_dialog_stream_path = ""
+		emit_signal("dialogo_terminado", path)
+
 
 
 # ---------------------------------------------------------

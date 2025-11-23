@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2yu70n2vogoj"]
+[gd_scene load_steps=17 format=3 uid="uid://d2yu70n2vogoj"]
 
 [ext_resource type="PackedScene" uid="uid://dnms5rm70a8ir" path="res://Art/Levels/Blocking_level5.blend" id="1_845dy"]
 [ext_resource type="Script" uid="uid://djsr5x3la6drq" path="res://scenes/levels/level_5.gd" id="1_tqnj0"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="6_hldbq"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="7_fsnos"]
 [ext_resource type="PackedScene" uid="uid://bnoyn8qc3q0ot" path="res://scenes/enemies/cisne.tscn" id="8_mxx4w"]
-[ext_resource type="PackedScene" uid="uid://b5dlcs120d4fy" path="res://scenes/SubtitleManager.tscn" id="11_6xwso"]
 [ext_resource type="LightmapGIData" uid="uid://d3eifu7q6b3oq" path="res://scenes/levels/bakes_lights/level_5.lmbake" id="11_dwyms"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_laj7o"]
@@ -152,8 +151,6 @@ collision_layer = 2
 
 [node name="StaticBody3D" parent="NavigationRegion3D/Blocking_level5/Caminoprincipal" index="0"]
 collision_layer = 2
-
-[node name="SubtitleManager" parent="." instance=ExtResource("11_6xwso")]
 
 [editable path="KillZone"]
 [editable path="Area3D"]

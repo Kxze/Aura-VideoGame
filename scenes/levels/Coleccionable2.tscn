@@ -6,7 +6,7 @@
 [ext_resource type="LightmapGIData" uid="uid://0lfh8og5poga" path="res://scenes/levels/bakes_lights/Coleccionable2.lmbake" id="4_ctirw"]
 [ext_resource type="Script" uid="uid://bej2g6frpuv0k" path="res://script/triggers/desaparecer_colecionable.gd" id="4_fk3at"]
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="5_nnueb"]
-[ext_resource type="PackedScene" uid="uid://oebm7ciebtke" path="res://Shaders/particulas_colecionables_oso.tscn" id="7_fk3at"]
+[ext_resource type="PackedScene" uid="uid://dvqmydds1pxey" path="res://Shaders/particulas_colecionables_oso.tscn" id="7_fk3at"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_er62o"]
 size = Vector3(1, 37.5034, 40.328)

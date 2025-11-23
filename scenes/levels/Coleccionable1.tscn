@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://8nvqy1n3mstq" path="res://Art/Levels/OSO_EspacioColeccionable.blend" id="3_k1hd5"]
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="5_j8aoj"]
 [ext_resource type="LightmapGIData" uid="uid://6lmwh5w0d3yl" path="res://scenes/levels/bakes_lights/Coleccionable1.lmbake" id="6_ygpj1"]
-[ext_resource type="PackedScene" uid="uid://oebm7ciebtke" path="res://Shaders/particulas_colecionables_oso.tscn" id="7_727t2"]
+[ext_resource type="PackedScene" uid="uid://dvqmydds1pxey" path="res://Shaders/particulas_colecionables_oso.tscn" id="7_727t2"]
 [ext_resource type="Script" uid="uid://1n63l0h85jbx" path="res://script/triggers/desaparecer_oso.gd" id="8_kyh10"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k1hd5"]
