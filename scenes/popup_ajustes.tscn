@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://lamcax8x6dtt"]
+[gd_scene load_steps=19 format=3 uid="uid://lamcax8x6dtt"]
 
 [ext_resource type="Script" uid="uid://j127wrukrjub" path="res://script/Ajustes/Ajustes.gd" id="1_sfv8a"]
 [ext_resource type="Texture2D" uid="uid://jg7d4006vfh8" path="res://Fondos/tarjeta_ajustes.png" id="2_02847"]
@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://dntvqdxo8k3u8" path="res://Temas/ajustes.tres" id="8_8vq27"]
 [ext_resource type="FontFile" uid="uid://cstcjqrqa2oe1" path="res://Fonts/DarumadropOne-Regular.ttf" id="9_nxi8b"]
 [ext_resource type="Script" uid="uid://c2h8jm01g0or5" path="res://script/Ajustes/grid_container.gd" id="10_7kpvj"]
+[ext_resource type="Script" uid="uid://bp5sjse0jfx4k" path="res://scenes/boton_subtitulos.gd" id="10_sfv8a"]
 [ext_resource type="Script" uid="uid://c80d8klh8c1y" path="res://script/Ajustes/slider_br.gd" id="11_vcfbj"]
 [ext_resource type="Theme" uid="uid://caol8loxsat7k" path="res://Temas/modoCheck.tres" id="12_1nwcj"]
 [ext_resource type="Script" uid="uid://b3dkl1j2hoi4j" path="res://script/Ajustes/check_modo.gd" id="13_7fdjt"]
@@ -188,6 +189,7 @@ popup/item_1/text = "           English"
 popup/item_1/id = 2
 popup/item_2/text = "      Desactivados      "
 popup/item_2/id = 0
+script = ExtResource("10_sfv8a")
 
 [node name="Brillo" type="Label" parent="Panel/MarginContainerAjustes/GridContainerAjustes"]
 layout_mode = 2

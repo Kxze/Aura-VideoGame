@@ -81,7 +81,7 @@ func _unhandled_input(event):
 func _on_nueva_partida_pressed(button):
 	_play_click()
 	AudioManager.stop_music()
-	get_tree().change_scene_to_file("res://scenes/levels/level_1.tscn")
+	get_tree().change_scene_to_file("res://scenes/cinematica_incial.tscn")
 
 #AHORA ES LA PANTALLA DE CRÉDITOS
 func _on_continuar_pressed(button):

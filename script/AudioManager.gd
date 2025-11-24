@@ -12,6 +12,8 @@ var _efectos_muteados_por_ajustes: bool = false
 var _dialogo_pausado_por_ajustes: bool = false
 var _dialogos_muteados_por_ajustes: bool = false
 
+var mostrar_subtitulos := true
+
 # Bus index para Dialogos
 var dialogos_bus: int = -1
 
