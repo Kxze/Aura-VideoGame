@@ -3,7 +3,7 @@ extends Popup
 @onready var click_sound = preload("res://sonidos/botón2.wav")
 @onready var popup_ajustes: Popup = self
 
-# evitar null instance si el botón no existe en esta escena
+# Referencias a botones (con null safety)
 @onready var btn_cerrar: Button = get_node_or_null("Panel/BtnCerrar")
 @onready var btn_continuar: Button = get_node_or_null("Panel/BtnContinuar")
 @onready var btn_inicio: Button = get_node_or_null("Panel/BtnInicio")
@@ -19,120 +19,102 @@ func _ready() -> void:
 
 	var am = get_node_or_null("/root/AudioManager")
 	if am:
+		# Asegurar que el AudioManager siga corriendo aunque pausemos el árbol
 		am.process_mode = Node.PROCESS_MODE_ALWAYS
 
-	# conectar señales de botones solo si existen
-	if btn_salir:
-		btn_salir.pressed.connect(Callable(self, "_on_btn_salir_pressed"))
-	if btn_inicio:
-		btn_inicio.pressed.connect(Callable(self, "_on_btn_inicio_pressed"))
-	if btn_cerrar:
-		btn_cerrar.pressed.connect(Callable(self, "_on_btn_cerrar_pressed"))
-	if btn_continuar:
-		btn_continuar.pressed.connect(Callable(self, "_on_btn_continuar_pressed"))
+	# Conectar señales
+	if btn_salir: btn_salir.pressed.connect(Callable(self, "_on_btn_salir_pressed"))
+	if btn_inicio: btn_inicio.pressed.connect(Callable(self, "_on_btn_inicio_pressed"))
+	if btn_cerrar: btn_cerrar.pressed.connect(Callable(self, "_on_btn_cerrar_pressed"))
+	if btn_continuar: btn_continuar.pressed.connect(Callable(self, "_on_btn_continuar_pressed"))
 
-	# detectar apertura/cierre del popup
+	# Detectar apertura/cierre
 	connect("visibility_changed", Callable(self, "_on_visibility_changed"))
 
 
 func mostrar_banners(origen: String) -> void:
-	# origen debe ser "inicio" o "pausa"
 	origen_actual = origen
-
 	match origen:
 		"inicio":
-			if btn_cerrar:
-				btn_cerrar.visible = true
-			if btn_inicio:
-				btn_inicio.visible = false
-			if btn_salir:
-				btn_salir.visible = false
+			if btn_cerrar: btn_cerrar.visible = true
+			if btn_inicio: btn_inicio.visible = false
+			if btn_salir: btn_salir.visible = false
 		"pausa":
-			if btn_cerrar:
-				btn_cerrar.visible = false
-			if btn_inicio:
-				btn_inicio.visible = true
-			if btn_salir:
-				btn_salir.visible = true
+			if btn_cerrar: btn_cerrar.visible = false
+			if btn_inicio: btn_inicio.visible = true
+			if btn_salir: btn_salir.visible = true
 
 
-# botones
+# --- LOGICA CRÍTICA DE VISIBILIDAD (AQUÍ ESTABA EL ERROR) ---
+func _on_visibility_changed() -> void:
+	var am = get_node_or_null("/root/AudioManager")
+	
+	if visible:
+		# 1. Pausar el juego (física, enemigos)
+		get_tree().paused = true
+
+		# 2. Avisar al AudioManager (SOLO usamos esta función)
+		if am:
+			# Esta función ya se encarga de congelar diálogos y mutear efectos
+			am.set_ajustes_popup_abierto(true)
+			
+	else:
+		# 1. Reanudar el juego
+		get_tree().paused = false
+
+		# 2. Reanudar audio
+		if am:
+			# Esta función fuerza el des-muteo y la reanudación del diálogo
+			am.set_ajustes_popup_abierto(false)
+			# NOTA: Borré 'am.set_pausa_activa' para evitar conflictos
+
+
+# --- BOTONES ---
+
 func _on_btn_cerrar_pressed() -> void:
 	_play_click()
+	# Al cambiar de escena, reactivamos todo por seguridad
 	_reactivar_audio_total()
 	popup_ajustes.visible = false
 	get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
 
-
 func _on_btn_continuar_pressed() -> void:
 	_play_click()
-	hide() # disparará _on_visibility_changed y restablecerá audio/estado
-
+	hide() # Esto dispara _on_visibility_changed automáticamente
 
 func _on_btn_inicio_pressed() -> void:
 	_play_click()
 	_reactivar_audio_total()
 	var am = get_node_or_null("/root/AudioManager")
-	if am:
-		am.stop_music()
+	if am: am.stop_music()
 	popup_ajustes.visible = false
 	get_tree().change_scene_to_file("res://scenes/menu_principal.tscn")
 
-
 func _on_btn_salir_pressed() -> void:
 	_play_click()
-	_reactivar_audio_total()
 	get_tree().quit()
 
+
+# --- UTILIDADES ---
 
 func _unhandled_input(event) -> void:
 	if visible and event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_ESCAPE:
 			hide()
-			_reactivar_audio_total()
+			# No llamamos a _reactivar_audio_total aquí, hide() ya dispara _on_visibility_changed
 			emit_signal("cerrado_por_esc")
 			get_viewport().set_input_as_handled()
 
-
 func _play_click() -> void:
 	var am = get_node_or_null("/root/AudioManager")
-	if am:
-		am.play_click(click_sound)
-
-
-func _on_visibility_changed() -> void:
-	var am = get_node_or_null("/root/AudioManager")
-	if not am:
-		# Si no hay AudioManager, solo gestionamos pausa del árbol
-		get_tree().paused = visible
-		return
-
-	if visible:
-		# Pausar la escena (física, timers, entrada)
-		get_tree().paused = true
-
-		# Indicar al AudioManager que pause SFX y diálogos, mantenga música
-		am.set_pausa_activa(true)
-		am.set_ajustes_popup_abierto(true)
-	else:
-		# Reanudar escena
-		get_tree().paused = false
-
-		# Indicar al AudioManager que restaure SFX y diálogos
-		am.set_ajustes_popup_abierto(false)
-		am.set_pausa_activa(false)
-
+	if am: am.play_click(click_sound)
 
 func _reactivar_audio_total() -> void:
 	var am = get_node_or_null("/root/AudioManager")
-	if not am:
-		return
-
 	get_tree().paused = false
-	# Aseguramos restauración completa por si algo quedó marcado
-	am.set_ajustes_popup_abierto(false)
-	am.set_pausa_activa(false)
-
+	if am:
+		am.set_ajustes_popup_abierto(false)
+		am.set_pausa_activa(false)
 
 func _on_slider_dialogos_value_changed(value: float) -> void:
-	pass # Replace with function body.
+	pass

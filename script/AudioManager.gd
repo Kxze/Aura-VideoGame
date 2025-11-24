@@ -398,9 +398,36 @@ func set_pausa_activa(valor: bool) -> void:
 # ---------------------------------------------------------
 # Ajustes popup
 # ---------------------------------------------------------
+# ---------------------------------------------------------
+# Ajustes popup (VERSIÓN "FUERZA BRUTA")
+# ---------------------------------------------------------
 func set_ajustes_popup_abierto(valor: bool) -> void:
 	ajustes_popup_abierto = valor
+	
 	var efectos_idx = AudioServer.get_bus_index("Efectos")
+
+	if ajustes_popup_abierto:
+		# --- AL ABRIR EL MENÚ ---
+		
+		# 1. Congelamos el diálogo sí o sí
+		if dialogo_player_actual:
+			dialogo_player_actual.stream_paused = true
+		
+		# 2. Silenciamos efectos de fondo (pasos, ambiente)
+		if efectos_idx != -1: 
+			AudioServer.set_bus_mute(efectos_idx, true)
+
+	else:
+		# --- AL CERRAR EL MENÚ ---
+		
+		# 1. Descongelamos el diálogo SIEMPRE.
+		# No preguntamos condiciones. Si hay un diálogo, que suene.
+		if dialogo_player_actual:
+			dialogo_player_actual.stream_paused = false
+
+		# 2. Reactivamos efectos
+		if efectos_idx != -1: 
+			AudioServer.set_bus_mute(efectos_idx, false)
 
 	if ajustes_popup_abierto:
 		# Pausar diálogo
