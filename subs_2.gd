@@ -7,9 +7,6 @@ extends CanvasLayer
 @onready var label_4: RichTextLabel = $RichTextLabel4
 
 func _ready() -> void:
-	# NOTA: Ya NO borramos el nodo al inicio si están desactivados.
-	# Lo dejamos vivo pero invisible para que puedas activarlo desde el menú.
-
 	# 1. Ocultamos todo al inicio
 	label_1.visible = false
 	label_2.visible = false
@@ -40,6 +37,14 @@ func _iniciar_secuencia() -> void:
 	await _esperar_pausable(3.0)
 	label_4.visible = false
 	
+	# -------------------------------------------------------------
+	# CORRECCIÓN DE SINCRONIZACIÓN
+	# -------------------------------------------------------------
+	# Verificamos si el audio sigue sonando (por si dura más de 9 segundos)
+	if AudioManager.dialogo_player_actual and AudioManager.dialogo_player_actual.playing:
+		await AudioManager.dialogo_terminado
+	# -------------------------------------------------------------
+
 	# 3. Al terminar, eliminamos los subtítulos
 	queue_free()
 
@@ -53,8 +58,7 @@ func _esperar_pausable(tiempo_objetivo: float) -> void:
 		# --- ACTUALIZACIÓN EN TIEMPO REAL ---
 		# Ocultamos o mostramos todo el CanvasLayer según la opción del menú
 		visible = AudioManager.mostrar_subtitulos
-		# ------------------------------------
-
+		
 		# Solo avanzamos el tiempo si el popup NO está abierto
 		if not AudioManager.ajustes_popup_abierto:
 			tiempo_actual += get_process_delta_time()

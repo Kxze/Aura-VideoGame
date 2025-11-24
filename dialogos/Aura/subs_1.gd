@@ -6,10 +6,7 @@ extends CanvasLayer
 @onready var label_3: RichTextLabel = $RichTextLabel3
 
 func _ready() -> void:
-	# NOTA: Ya no borramos el nodo al inicio.
-	# Lo mantenemos vivo (pero invisible si la opción está apagada) para poder activarlo después.
-
-	# 1. Ocultamos todos al inicio por seguridad
+	# 1. Ocultamos todos al inicio
 	label_1.visible = false
 	label_2.visible = false
 	label_3.visible = false
@@ -20,7 +17,6 @@ func _ready() -> void:
 func iniciar_secuencia_subtitulos() -> void:
 	# --- FRASE 1 ---
 	label_1.visible = true
-	# Usamos la espera inteligente (2.5 seg)
 	await _esperar_pausable(2.5) 
 	label_1.visible = false
 	
@@ -34,7 +30,20 @@ func iniciar_secuencia_subtitulos() -> void:
 	await _esperar_pausable(3.0) 
 	label_3.visible = false
 	
-	# 3. Al terminar, borramos la escena
+	# -------------------------------------------------------------
+	# CORRECCIÓN PARA EVITAR CORTES DE AUDIO
+	# -------------------------------------------------------------
+	# Si desactivaste los subtítulos, este código llega aquí muy rápido.
+	# Pero el audio puede seguir sonando. Antes de borrar este nodo,
+	# verificamos si el AudioManager sigue ocupado.
+	
+	if AudioManager.dialogo_player_actual and AudioManager.dialogo_player_actual.playing:
+		# El audio sigue sonando. Esperamos la señal de que terminó.
+		await AudioManager.dialogo_terminado
+
+	# -------------------------------------------------------------
+	
+	# 3. Ahora sí, es seguro borrar la escena
 	queue_free()
 
 # --- FUNCIÓN DE ESPERA INTELIGENTE Y REACTIVA ---
@@ -47,8 +56,7 @@ func _esperar_pausable(tiempo_objetivo: float) -> void:
 		# --- ACTUALIZACIÓN EN TIEMPO REAL ---
 		# Ocultamos o mostramos todo el CanvasLayer según la opción del menú
 		visible = AudioManager.mostrar_subtitulos
-		# ------------------------------------
-
+		
 		# Si el popup de ajustes está abierto, NO sumamos tiempo (se congela)
 		if not AudioManager.ajustes_popup_abierto:
 			tiempo_actual += get_process_delta_time()

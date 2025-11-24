@@ -689,7 +689,6 @@ func fade_out():
 	musica_player.volume_db = start_vol
 	fading = false
 
-
 func fade_in():
 	if fading:
 		return
