@@ -103,19 +103,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -354.83676, 0, 0)
 [node name="Cisnes" type="Node" parent="."]
 
 [node name="Cisne_negro" parent="Cisnes" instance=ExtResource("8_mxx4w")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -287.57877, 1.2773681, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -287.57877, 1.2773681, 0)
 
 [node name="Cisne_negro2" parent="Cisnes" instance=ExtResource("8_mxx4w")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -247.44313, 5.234713, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247.44313, 5.234713, 0)
 
 [node name="Cisne_negro3" parent="Cisnes" instance=ExtResource("8_mxx4w")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -184.5655, 5.234713, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184.5655, 5.234713, 0)
 
 [node name="Cisne_negro4" parent="Cisnes" instance=ExtResource("8_mxx4w")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -138.92986, 2.234713, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.92986, 2.234713, 0)
 
 [node name="Cisne_negro7" parent="Cisnes" instance=ExtResource("8_mxx4w")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.125832, 0.23471308, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.125832, 0.23471308, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.400846, -2.7334232, -7)
@@ -151,6 +151,9 @@ collision_layer = 2
 
 [node name="StaticBody3D" parent="NavigationRegion3D/Blocking_level5/Caminoprincipal" index="0"]
 collision_layer = 2
+
+[node name="2d" parent="NavigationRegion3D/Blocking_level5" index="8"]
+transform = Transform3D(8.713361, -0.048501242, 0.0033667504, 0.00010763156, -0.58415633, -8.693891, 0.04861783, 8.693757, -0.5841469, -150.06021, -7.1617684, 2.9495878)
 
 [editable path="KillZone"]
 [editable path="Area3D"]

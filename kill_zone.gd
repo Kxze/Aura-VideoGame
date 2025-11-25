@@ -15,7 +15,9 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
 		# 🔊 Reproduce el sonido de caída
 		pierde_punto_sound.play()
-
+		body.restarPrimerVida()
+		body.restarSegundaVida()
+		body.restarTercerVida()
 		# Opcional: desactivar controles durante la transición
 		body.controls_enabled = false
 

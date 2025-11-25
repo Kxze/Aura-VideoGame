@@ -69,5 +69,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.670311, 0, 0)
 [node name="unlock_lumiere" parent="." instance=ExtResource("5_cb1m8")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -26.248413, 0, 0)
 
-[node name="Cisne_negro" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("6_cb1m8")]
-Target = NodePath("../Player")
+[node name="Cisne_negro" parent="." instance=ExtResource("6_cb1m8")]

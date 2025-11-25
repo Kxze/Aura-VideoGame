@@ -35,9 +35,9 @@ fractal_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ibugp"]
 resource_name = "_emission"
-normalize = false
-color_ramp = SubResource("Gradient_l37oo")
 noise = SubResource("FastNoiseLite_qpwj6")
+color_ramp = SubResource("Gradient_l37oo")
+normalize = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpwj6"]
 emission_enabled = true

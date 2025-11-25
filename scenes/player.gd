@@ -36,18 +36,26 @@ static var spawnPoint
 @onready var sprite: Sprite3D = $AuraGhost
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
+#vidas
+@onready var vida: Path3D = $Vida
+@onready var vida_2: Path3D = $Vida2
+@onready var vida_3: Path3D = $Vida3
 
 #Particulas
 @onready var dash_particle: GPUParticles3D = $DashParticle
 @onready var lumiere_area: Area3D = $Aura/player/Armature/Skeleton3D/BoneAttachment3D/Sprite3D/Lumiere
 @onready var dust: GPUParticles3D = $pivotDust/Dust
-@onready var land: GPUParticles3D = $Land
 @onready var pivot_dust: Node3D = $pivotDust
 
 func _input(_event: InputEvent) -> void:
 	movInput.x = Input.get_axis("ui_left","ui_right")
-
+	
+	
 func _process(_delta: float) -> void:
+	const move_speed_life = 1.0
+	$Vida/PathVida.progress += move_speed_life * _delta
+	$Vida2/PathVida.progress += move_speed_life * _delta
+	$Vida3/PathVida.progress += move_speed_life * _delta
 	if can_lumiere:
 		lamp.visible = true
 		lamp_light.visible = true
@@ -74,12 +82,33 @@ func set_controls_enabled(enable: bool) -> void:
 		jump_locked = false
 		can_dash = false
 
+func restarPrimerVida():
+	var tween = create_tween()
+	tween.tween_property(vida, "scale", Vector3.ZERO, 0.4)
+	tween.connect("finished", Callable(self, "_ocultar_path3d").bind(vida))
+func restarSegundaVida():
+	var tween = create_tween()
+	tween.tween_property(vida_2, "scale", Vector3.ZERO, 0.4)
+	tween.connect("finished", Callable(self, "_ocultar_path3d").bind(vida_2))
+	
+func restarTercerVida():
+	var tween = create_tween()
+	tween.tween_property(vida_3, "scale", Vector3.ZERO, 0.4)
+	tween.connect("finished", Callable(self, "_ocultar_path3d").bind(vida_3))
+
+	
+func _ocultar_path3d(path):
+	path.visible = false
+	path.scale = Vector3.ONE   # reset para siguiente uso
+
 func jump_side_per_damage(x):
 	velocity.y = jump
 	velocity.x = -x
 
-
-
+func restablecerVidas():
+	vida.visible = true
+	vida_2.visible = true
+	vida_3.visible = true
 
 func _change_light():
 	if lumiere_ready:
