@@ -335,7 +335,7 @@ process_material = SubResource("ParticleProcessMaterial_it33q")
 draw_pass_1 = ExtResource("18_uov4s")
 
 [node name="Vida" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3193557, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4684091, 0)
 curve = SubResource("Curve3D_rs72w")
 
 [node name="PathVida" type="PathFollow3D" parent="Vida"]
@@ -355,7 +355,7 @@ transparency = 0.45
 mesh = SubResource("SphereMesh_ttj2a")
 
 [node name="Vida2" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5178609, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9076736, 0)
 curve = SubResource("Curve3D_rs72w")
 
 [node name="PathVida" type="PathFollow3D" parent="Vida2"]
@@ -375,7 +375,7 @@ transparency = 0.45
 mesh = SubResource("SphereMesh_ttj2a")
 
 [node name="Vida3" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5143325, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43835354, 0)
 curve = SubResource("Curve3D_rs72w")
 
 [node name="PathVida" type="PathFollow3D" parent="Vida3"]
