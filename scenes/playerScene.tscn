@@ -398,6 +398,7 @@ mesh = SubResource("SphereMesh_ttj2a")
 [connection signal="timeout" from="StateMachine/InAir/FallTimer" to="StateMachine/InAir" method="_on_fall_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/JumpBufferTimer" to="StateMachine/InAir" method="_on_jump_buffer_timer_timeout"]
+[connection signal="dash_charged" from="StateMachine/Dash" to="dash_Light" method="_on_dash_dash_charged"]
 [connection signal="dash_finished" from="StateMachine/Dash" to="." method="_on_dash_dash_finished"]
 [connection signal="dash_started" from="StateMachine/Dash" to="." method="_on_dash_dash_started"]
 [connection signal="dash_started" from="StateMachine/Dash" to="dash_Light" method="_on_dash_dash_started"]
