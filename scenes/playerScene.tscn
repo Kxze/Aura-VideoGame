@@ -173,8 +173,6 @@ turbulence_enabled = true
 turbulence_noise_speed_random = 1.48
 
 [sub_resource type="SphereMesh" id="SphereMesh_uov4s"]
-radius = 0.75
-height = 1.5
 radial_segments = 16
 rings = 8
 
@@ -185,8 +183,8 @@ emission = Color(5.968213e-06, 0.7548368, 0.97552556, 1)
 emission_energy_multiplier = 4.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_ttj2a"]
-radius = 0.1
-height = 0.2
+radius = 0.05
+height = 0.1
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 30
@@ -330,14 +328,14 @@ material_override = SubResource("ShaderMaterial_yd6d6")
 transparency = 0.73
 ignore_occlusion_culling = true
 emitting = false
-amount = 201
+amount = 20
 one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_it33q")
 draw_pass_1 = ExtResource("18_uov4s")
 
 [node name="Vida" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8721964, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3193557, 0)
 curve = SubResource("Curve3D_rs72w")
 
 [node name="PathVida" type="PathFollow3D" parent="Vida"]
@@ -357,7 +355,7 @@ transparency = 0.45
 mesh = SubResource("SphereMesh_ttj2a")
 
 [node name="Vida2" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3455181, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5178609, 0)
 curve = SubResource("Curve3D_rs72w")
 
 [node name="PathVida" type="PathFollow3D" parent="Vida2"]
@@ -368,7 +366,7 @@ progress = 0.8934243
 material_override = SubResource("ShaderMaterial_rs72w")
 material_overlay = SubResource("StandardMaterial3D_ttj2a")
 amount = 20
-process_material = SubResource("ParticleProcessMaterial_it33q")
+process_material = SubResource("ParticleProcessMaterial_ttj2a")
 draw_pass_1 = SubResource("SphereMesh_uov4s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Vida2/PathVida"]
@@ -377,7 +375,7 @@ transparency = 0.45
 mesh = SubResource("SphereMesh_ttj2a")
 
 [node name="Vida3" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5082236, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5143325, 0)
 curve = SubResource("Curve3D_rs72w")
 
 [node name="PathVida" type="PathFollow3D" parent="Vida3"]
@@ -387,7 +385,7 @@ transform = Transform3D(0.4432731, -0.6741248, -0.5907433, 0, 0.6590326, -0.7520
 material_override = SubResource("ShaderMaterial_rs72w")
 material_overlay = SubResource("StandardMaterial3D_ttj2a")
 amount = 20
-process_material = SubResource("ParticleProcessMaterial_it33q")
+process_material = SubResource("ParticleProcessMaterial_ttj2a")
 draw_pass_1 = SubResource("SphereMesh_uov4s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Vida3/PathVida"]

@@ -83,13 +83,24 @@ func set_controls_enabled(enable: bool) -> void:
 		can_dash = false
 
 func restarPrimerVida():
-	vida.visible = false
-
+	var tween = create_tween()
+	tween.tween_property(vida, "scale", Vector3.ZERO, 0.4)
+	tween.connect("finished", Callable(self, "_ocultar_path3d").bind(vida))
 func restarSegundaVida():
-	vida_2.visible = false
+	var tween = create_tween()
+	tween.tween_property(vida_2, "scale", Vector3.ZERO, 0.4)
+	tween.connect("finished", Callable(self, "_ocultar_path3d").bind(vida_2))
 	
 func restarTercerVida():
-	vida_3.visible = false
+	var tween = create_tween()
+	tween.tween_property(vida_3, "scale", Vector3.ZERO, 0.4)
+	tween.connect("finished", Callable(self, "_ocultar_path3d").bind(vida_3))
+
+	
+func _ocultar_path3d(path):
+	path.visible = false
+	path.scale = Vector3.ONE   # reset para siguiente uso
+
 func jump_side_per_damage(x):
 	velocity.y = jump
 	velocity.x = -x

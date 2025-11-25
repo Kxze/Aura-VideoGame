@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv8ronj6iohup"]
+[gd_scene load_steps=9 format=3 uid="uid://dv8ronj6iohup"]
 
 [ext_resource type="PackedScene" uid="uid://c4qplnqjrcndx" path="res://Art/Levels/BlockingPasilloPreTorre.blend" id="1_wjhgk"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_tlhwn"]
+[ext_resource type="Environment" uid="uid://cm6w1o8o4nilk" path="res://enviroment_level_2.tres" id="3_fkfo0"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_gxebg"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="4_tlhwn"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="5_gxebg"]
@@ -49,6 +50,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 126.367, -1.77456, -0.0374346
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.59400177, 1.101, 6.3029995)
 keep_aspect = 0
+environment = ExtResource("3_fkfo0")
 current = true
 fov = 80.0
 far = 250.0
