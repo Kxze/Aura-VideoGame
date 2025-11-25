@@ -1,10 +1,11 @@
 extends PlayerState
-@export var dash_trail_scene: PackedScene # opcional si quieres Node3D base para cada copia
+
+@export var dash_trail_scene: PackedScene 
 @export var num_copies := 4
-@export var fade_time := 5.0       # cuánto tarda en desvanecerse
-@export var solid_time := 0.5      # cuánto tiempo queda sólido antes de desvanecer
+@export var fade_time := 5.0
+@export var solid_time := 0.5
 @export var delay_step := 0.05
-@export var offset_x := 0.5  # distancia entre copias
+@export var offset_x := 0.5
 var dash_time := 0.3
 var dash_speed := 50
 var timer := 0.0
@@ -19,8 +20,9 @@ signal dash_started
 signal dash_finished
 
 @onready var dash_sfx = preload("res://sonidos/dash.mp3")
+@onready var dash_recargado_sfx = preload("res://sonidos/dash_recargado.wav")
+
 func enter(previous_state_path: String, data := {}):
-	# bloqueo preventivo: no reentrar al dash si ya se está dashing o si hay cooldown en curso
 	if player.is_dashing or not player.can_dash or cooldown_running:
 		emit_signal("finished", "Idle")
 		return
@@ -31,24 +33,20 @@ func enter(previous_state_path: String, data := {}):
 	timer = 0.0
 	dash_dir = player.last_facing
 
-	# reproducir anim/efectos
 	if player.animationPlayer:
 		player.animationPlayer.play("Dash")
 	AudioManager.play_and_get_duration(dash_sfx)
 	spawn_dash_trail()
 
-	# Suspensión en aire
 	if not player.is_on_floor():
 		suspended = true
 		player.velocity.y = 0
 		await get_tree().create_timer(suspend_air_time).timeout
 		suspended = false
-		player.jump_locked = true  # Bloquear salto tras dash aéreo
+		player.jump_locked = true 
 
 	player.sprite.visible = false
 
-	# Iniciamos cooldown (solo si no hay otro en curso)
-	# Notar: llamarlo sin await para que corra paralelo
 	_reset_dash_cooldown()
 
 func physics_update(delta: float):
@@ -60,11 +58,10 @@ func physics_update(delta: float):
 
 	player.move_and_slide()
 	player.global_position.z = 0
-	# Desbloquear salto al tocar piso
+	
 	if player.is_on_floor():
 		player.jump_locked = false
 
-	# Terminar dash
 	if timer >= dash_time:
 		player.is_dashing = false	
 		if player.is_on_floor():
@@ -77,16 +74,23 @@ func physics_update(delta: float):
 			emit_signal("finished", "InAir", {"FromDash": true})
 
 func _reset_dash_cooldown() -> void:
-	# si ya hay un cooldown, no crear otro
 	if cooldown_running:
 		return
 	cooldown_running = true
-	# espera sin bloquear el hilo principal (await)
+	
+	# Espera el tiempo de cooldown
 	await get_tree().create_timer(dash_cooldown).timeout
+	
+	# Una vez termina la espera:
 	player.can_dash = true
 	cooldown_running = false
+	
+	# Usamos tu AudioManager igual que arriba
+	if AudioManager:
+		AudioManager.play_and_get_duration(dash_recargado_sfx)
+	
 	emit_signal("dash_charged")
-	emit_signal("dash_finished") # opcional: señal para debug/sonido
+	emit_signal("dash_finished")
 
 func spawn_dash_trail(num_copies: int = 4) -> void:
 	emit_signal("dash_started")
@@ -104,9 +108,8 @@ func spawn_dash_trail(num_copies: int = 4) -> void:
 		effect.add_child(aura_copy)
 		aura_copy.scale.x = player.last_facing * abs(aura_copy.scale.x)
 		
-		# Tween con tiempo sólido + fade
 		var tween: Tween = effect.create_tween()
 		tween.set_ease(Tween.EASE_OUT)
-		tween.tween_interval(i * delay_step)                     # escalona las copias
-		tween.tween_interval(solid_time)                         # tiempo sólido
+		tween.tween_interval(i * delay_step)
+		tween.tween_interval(solid_time)
 		tween.tween_callback(effect.queue_free)
