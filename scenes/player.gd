@@ -70,8 +70,13 @@ func _process(_delta: float) -> void:
 		animationPlayer.play("Dead")
 func take_damage(damage: int):
 	health -= damage
+
+	# Sacudir cámara al recibir daño
+	$Camera3D.shake_camera()   # Usa valores por defecto
+
 	if health <= 0:
 		respawned.emit()
+
 		
 func set_controls_enabled(enable: bool) -> void:
 	controls_enabled = enable
