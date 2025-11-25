@@ -1,6 +1,6 @@
 extends Area3D
 
-@onready var sonido_desbloquea = preload("res://sonidos/desbloquea.wav")
+@onready var sonido_desbloquea = preload("res://sonidos/dash_recargado.wav")
 @onready var notificacion_scene = preload("res://scenes/notificacionHabilidad2.tscn")  # 💬 escena tipo CanvasLayer
 
 
