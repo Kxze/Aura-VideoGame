@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://djsr5x3la6drq" path="res://scenes/levels/level_5.gd" id="1_tqnj0"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_dswqx"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_dswqx"]
-[ext_resource type="Environment" uid="uid://crl6agjc1cr61" path="res://scenes/levels/enviroment_lago.tres" id="3_fi56y"]
+[ext_resource type="Environment" uid="uid://bv6wv6e6h2jsr" path="res://scenes/levels/level_5.tres" id="3_dwyms"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="4_laj7o"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="6_hldbq"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="7_fsnos"]
@@ -48,7 +48,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -356.48697, 5.5519824, -11.51
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
 transform = Transform3D(0.2, 3.4924602e-10, -9.313226e-10, -3.4924597e-10, 0.2, 7.4505815e-09, 9.313226e-10, -7.4505815e-09, 0.2, 0.59399414, 1.1010004, 6.3030005)
 keep_aspect = 0
-environment = ExtResource("3_fi56y")
+environment = ExtResource("3_dwyms")
 fov = 80.0
 far = 250.0
 script = ExtResource("3_dswqx")

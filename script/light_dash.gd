@@ -44,11 +44,11 @@ func _on_dash_dash_charged() -> void:
 	tween.tween_property(dash_light,"light_energy",  3, .2)\
 	.set_ease(Tween.EASE_IN_OUT)\
 	.set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(dash_light,"light_energy",  100, .2)\
+	tween.tween_property(dash_light,"light_energy",  50, .2)\
 	.set_ease(Tween.EASE_IN_OUT)\
 	.set_trans(Tween.TRANS_CUBIC)
 	tween.set_parallel(false)
-	tween.tween_property(dash_light,"light_energy",  100, .2)\
+	tween.tween_property(dash_light,"light_energy",  50, .2)\
 	.set_ease(Tween.EASE_IN_OUT)\
 	.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(dash_light,"light_energy",  3, .2)\

@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_o7ulk"]
 [ext_resource type="LightmapGIData" uid="uid://dxu3ovsb6ckud" path="res://scenes/levels/bakes_lights/Coleccionable3.lmbake" id="5_o7ulk"]
 [ext_resource type="Script" uid="uid://dtwyd3gi31maf" path="res://script/triggers/desaparecer_pluma.gd" id="6_iv7l7"]
-[ext_resource type="PackedScene" uid="uid://dvqmydds1pxey" path="res://Shaders/particulas_colecionables_oso.tscn" id="7_iv7l7"]
+[ext_resource type="PackedScene" uid="uid://oebm7ciebtke" path="res://Shaders/particulas_colecionables_oso.tscn" id="7_iv7l7"]
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="8_g8uq7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1gml"]

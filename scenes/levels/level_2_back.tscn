@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=4 uid="uid://bcm1wkrmei7xs"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_x3eyt"]
-[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_h51e1"]
+[ext_resource type="Environment" uid="uid://cm6w1o8o4nilk" path="res://enviroment_level_2.tres" id="2_wdeu0"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_p1o1m"]
 [ext_resource type="Material" uid="uid://cchvhub8830n6" path="res://Materials/emissive.tres" id="4_wdeu0"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="5_k5ly5"]
@@ -195,7 +195,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 618.518, 99.5679, 1.96833)
 [node name="Camera3D2" type="Camera3D" parent="Player"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
 keep_aspect = 0
-environment = ExtResource("2_h51e1")
+environment = ExtResource("2_wdeu0")
 fov = 80.0
 far = 250.0
 script = ExtResource("3_p1o1m")
@@ -265,19 +265,19 @@ checkpoint_marker = NodePath("Marker3D")
 [node name="Marker3D" type="Marker3D" parent="Triggers/CheckPoint3"]
 
 [node name="Luztorre" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.0902609, -0.369882, 0.924684, 0.3883, 0.841925, 0.374681, -0.917102, 0.392873, 0.0676321, 653.239, 133.695, 6.377)
+transform = Transform3D(-0.09026091, -0.369882, 0.9246839, 0.38830003, 0.8419249, 0.37468067, -0.91710204, 0.39287376, 0.06763228, 658.15564, 133.695, 6.377)
 light_color = Color(1, 0.766667, 0, 1)
-light_energy = 50.0
+light_energy = 100.0
 light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
+light_volumetric_fog_energy = 4.381
 light_projector = ExtResource("8_w5eyk")
 light_size = 0.364
-light_specular = 0.899
+light_specular = 0.216
 shadow_enabled = true
 shadow_bias = 2.353
 spot_range = 241.906
 spot_attenuation = 0.6
-spot_angle = 15.91
+spot_angle = 20.15538
 spot_angle_attenuation = 2.37842
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
@@ -285,7 +285,12 @@ visible = false
 occluder = ExtResource("9_cvlh2")
 
 [node name="Cascanueces" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("11_k5ly5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 394.933, 47.1519, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.91147, 47.1519, 0)
+platform_floor_layers = 4294967042
+Target = NodePath("../Player")
+
+[node name="Cascanueces6" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("11_k5ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 458.61914, 47.1519, 0)
 platform_floor_layers = 4294967042
 Target = NodePath("../Player")
 

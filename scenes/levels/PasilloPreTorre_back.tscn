@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c4qplnqjrcndx" path="res://Art/Levels/BlockingPasilloPreTorre.blend" id="1_wjhgk"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_tlhwn"]
-[ext_resource type="Environment" uid="uid://cm6w1o8o4nilk" path="res://enviroment_level_2.tres" id="3_fkfo0"]
+[ext_resource type="Environment" uid="uid://me2j2w4cle6e" path="res://scenes/levels/level_4.tres" id="3_fkfo0"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_gxebg"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="4_tlhwn"]
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="5_gxebg"]

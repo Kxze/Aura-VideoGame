@@ -342,7 +342,7 @@ transform = Transform3D(7.718162, 0, 0, 0, -3.3737157e-07, -7.718162, 0, 7.71816
 transform = Transform3D(6.0939646, 0, 0, 0, -2.6637565e-07, -6.0939646, 0, 6.0939646, -2.6637565e-07, -16.926533, 69.259026, -4.442649)
 
 [node name="cuerdaIz" parent="BlockingBossBattlePT1" index="4"]
-transform = Transform3D(2.508719, 0, 0, 0, -2.1571786e-07, -8.297789, 0, 4.9350495, -3.6270785e-07, -16.514404, 69.98044, -2.3156197)
+transform = Transform3D(2.508719, 0, 0, 0, -2.1571786e-07, -8.297789, 0, 4.9350495, -3.6270785e-07, -16.514, 73.33931, -2.316)
 
 [node name="SacoD" parent="BlockingBossBattlePT1" index="5"]
 transform = Transform3D(6.509828, 0, 0, 0, 3.88016e-07, -6.509828, 0, 6.509828, 3.88016e-07, 5.719659, 44.806328, -1.1693995)
@@ -589,7 +589,7 @@ draw_pass_1 = SubResource("QuadMesh_na0o8")
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -67.4819, 44.20757, -5.311248)
 
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.2, 3.4924602e-10, -9.313226e-10, -3.4924597e-10, 0.2, 7.4505815e-09, 9.313226e-10, -7.4505815e-09, 0.2, 0.59400177, 1.1009989, 8.879002)
+transform = Transform3D(0.2, 3.4924602e-10, -9.313226e-10, -3.4924597e-10, 0.2, 7.4505815e-09, 9.313226e-10, -7.4505815e-09, 0.2, 0.59399986, 1.1009989, 8.879002)
 keep_aspect = 0
 environment = ExtResource("8_hqx6d")
 fov = 80.0

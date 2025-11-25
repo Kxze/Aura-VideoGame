@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqoy6ky1re0x6"]
+[gd_scene load_steps=14 format=3 uid="uid://dqoy6ky1re0x6"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_fwh58"]
-[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_tkyk7"]
+[ext_resource type="Environment" uid="uid://me2j2w4cle6e" path="res://scenes/levels/level_4.tres" id="2_6j18j"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_6j18j"]
 [ext_resource type="PackedScene" uid="uid://dfshr2qtet0kq" path="res://Art/Levels/Blocking4.blend" id="4_efj64"]
 [ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="5_dwwqg"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://c87c0acdkwbsf" path="res://scenes/triggers/unlock_dash.tscn" id="8_vtho0"]
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="9_tkyk7"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="10_6j18j"]
-[ext_resource type="PackedScene" uid="uid://b5dlcs120d4fy" path="res://scenes/SubtitleManager.tscn" id="11_efj64"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts8eg"]
 albedo_color = Color(0.118605, 0, 0.677026, 1)
@@ -30,7 +29,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 431.073, -58.8223, 1.96833)
 [node name="Camera3D2" type="Camera3D" parent="Player"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
 keep_aspect = 0
-environment = ExtResource("2_tkyk7")
+environment = ExtResource("2_6j18j")
 fov = 80.0
 far = 250.0
 script = ExtResource("3_6j18j")
@@ -247,7 +246,17 @@ next_level_path = "res://scenes/levels/TransicionTorreLago.tscn"
 [node name="KillZone3" parent="." instance=ExtResource("6_ou5g1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 627.2856, -72.145, 0)
 
-[node name="SubtitleManager" parent="." instance=ExtResource("11_efj64")]
+[node name="SubtitleManager" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+script = null
 
 [editable path="Blocking4"]
 [editable path="back_level"]

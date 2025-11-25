@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_3ky6d"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="2_kusig"]
-[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_v7u0g"]
+[ext_resource type="Environment" uid="uid://me2j2w4cle6e" path="res://scenes/levels/level_4.tres" id="2_v7u0g"]
 [ext_resource type="PackedScene" uid="uid://btl7r0mv42dlj" path="res://Art/Levels/blocking_level_3.blend" id="3_v7u0g"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="9_yf5jl"]
 [ext_resource type="LightmapGIData" uid="uid://h2jr2slm832a" path="res://scenes/levels/level_3.lmbake" id="10_wj03r"]

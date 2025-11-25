@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://04e1pbmtvhtd"]
+[gd_scene load_steps=12 format=3 uid="uid://04e1pbmtvhtd"]
 
+[ext_resource type="Environment" uid="uid://cm6w1o8o4nilk" path="res://enviroment_level_2.tres" id="2_5c0uv"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_ctirw"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_nnueb"]
 [ext_resource type="PackedScene" uid="uid://c7ls7aiko36ni" path="res://Art/Levels/casco_espacioColeccionable.blend" id="3_tv8sy"]
 [ext_resource type="LightmapGIData" uid="uid://0lfh8og5poga" path="res://scenes/levels/bakes_lights/Coleccionable2.lmbake" id="4_ctirw"]
 [ext_resource type="Script" uid="uid://bej2g6frpuv0k" path="res://script/triggers/desaparecer_colecionable.gd" id="4_fk3at"]
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="5_nnueb"]
-[ext_resource type="PackedScene" uid="uid://dvqmydds1pxey" path="res://Shaders/particulas_colecionables_oso.tscn" id="7_fk3at"]
+[ext_resource type="PackedScene" uid="uid://oebm7ciebtke" path="res://Shaders/particulas_colecionables_oso.tscn" id="7_fk3at"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_er62o"]
 size = Vector3(1, 37.5034, 40.328)
@@ -30,6 +31,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -60.3575, 21.6356, -5.87465)
 [node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("target")]
 transform = Transform3D(0.2, 0, 8.84756e-09, 0, 0.2, 0, -8.84756e-09, 0, 0.2, 0.59400177, 1.1009998, 6.303001)
 keep_aspect = 0
+environment = ExtResource("2_5c0uv")
 current = true
 fov = 80.0
 far = 250.0

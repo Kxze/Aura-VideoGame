@@ -1,5 +1,5 @@
 extends PathFollow3D
-@export var speed = .3
+@export var speed = .4
 
 func _process(delta: float) -> void:
 	if Odil.isMoving:

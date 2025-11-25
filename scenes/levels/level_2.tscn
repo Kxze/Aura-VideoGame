@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://j6j1k5y12a47" path="res://scenes/levels/level_2.gd" id="1_ndlae"]
 [ext_resource type="PackedScene" uid="uid://bdj1svdqbupp" path="res://Art/Levels/blockin_level_2.blend" id="1_ra442"]
-[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_8qukl"]
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="2_fiq81"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_l37oo"]
+[ext_resource type="Environment" uid="uid://cm6w1o8o4nilk" path="res://enviroment_level_2.tres" id="3_ndlae"]
 [ext_resource type="Material" uid="uid://cchvhub8830n6" path="res://Materials/emissive.tres" id="4_fiq81"]
 [ext_resource type="PackedScene" uid="uid://cwdq3ki6diy6s" path="res://scenes/kill_zone.tscn" id="5_l37oo"]
 [ext_resource type="Texture2D" uid="uid://ooud6k3iv8jc" path="res://Materials/light.jpeg" id="6_qpwj6"]
@@ -198,7 +198,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.80719, 3.07766, 1.96833)
 [node name="Camera3D2" type="Camera3D" parent="Player"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.741064, 1.06937, 6.40885)
 keep_aspect = 0
-environment = ExtResource("2_8qukl")
+environment = ExtResource("3_ndlae")
 current = true
 fov = 80.0
 far = 250.0
@@ -265,9 +265,9 @@ checkpoint_marker = NodePath("Marker3D")
 [node name="Luztorre" type="SpotLight3D" parent="."]
 transform = Transform3D(-0.0902609, -0.369882, 0.924684, 0.3883, 0.841925, 0.374681, -0.917102, 0.392873, 0.0676321, 653.239, 133.695, 6.377)
 light_color = Color(1, 0.766667, 0, 1)
-light_energy = 50.0
+light_energy = 100.0
 light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
+light_volumetric_fog_energy = 4.0
 light_projector = ExtResource("6_qpwj6")
 light_size = 0.364
 light_specular = 0.899
@@ -283,7 +283,7 @@ visible = false
 occluder = ExtResource("7_ibugp")
 
 [node name="Cascanueces" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("14_r88tb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 394.933, 47.1519, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 368.65277, 47.1519, 0)
 platform_floor_layers = 4294967042
 Target = NodePath("../Player")
 

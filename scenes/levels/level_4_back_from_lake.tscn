@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dvmyxq1oac8h4"]
+[gd_scene load_steps=15 format=3 uid="uid://dvmyxq1oac8h4"]
 
 [ext_resource type="PackedScene" uid="uid://d30vdm7b5ol13" path="res://scenes/playerScene.tscn" id="1_7a6v1"]
-[ext_resource type="Environment" uid="uid://dlgtkwyv01v6x" path="res://scenes/levels/enviroment_level_2.tres" id="2_ene00"]
+[ext_resource type="Environment" uid="uid://me2j2w4cle6e" path="res://scenes/levels/level_4.tres" id="2_ene00"]
 [ext_resource type="Script" uid="uid://cfdldafq50ydp" path="res://scenes/CameraFollow.gd" id="3_5tdxs"]
 [ext_resource type="PackedScene" uid="uid://dfshr2qtet0kq" path="res://Art/Levels/Blocking4.blend" id="4_ryfl6"]
 [ext_resource type="PackedScene" uid="uid://bcgtoiioevtf8" path="res://scenes/triggers/Back_level.tscn" id="5_acodg"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://b4rqrrrtawlac" path="res://scenes/triggers/door_collect.tscn" id="9_vpj8v"]
 [ext_resource type="PackedScene" uid="uid://bkk08sa3k3x8c" path="res://scenes/triggers/next_level.tscn" id="10_fwvf8"]
 [ext_resource type="PackedScene" uid="uid://2ltdbcdy2ip8" path="res://scenes/triggers/spawn_point.tscn" id="11_ene00"]
-[ext_resource type="PackedScene" uid="uid://b5dlcs120d4fy" path="res://scenes/SubtitleManager.tscn" id="12_5tdxs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts8eg"]
 albedo_color = Color(0.118605, 0, 0.677026, 1)
@@ -258,7 +257,17 @@ checkpoint_marker = NodePath("Marker3D")
 [node name="Marker3D" type="Marker3D" parent="CheckPoint2"]
 metadata/_edit_lock_ = true
 
-[node name="SubtitleManager" parent="." instance=ExtResource("12_5tdxs")]
+[node name="SubtitleManager" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+script = null
 
 [editable path="Blocking4"]
 [editable path="back_level"]
