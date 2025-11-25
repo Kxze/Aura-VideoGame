@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bnoyn8qc3q0ot"]
+[gd_scene load_steps=20 format=3 uid="uid://bnoyn8qc3q0ot"]
 
 [ext_resource type="Script" uid="uid://c6yuwt30vb3e6" path="res://script/enemies/CisneSMF/cisne.gd" id="1_7rci3"]
 [ext_resource type="PackedScene" uid="uid://dev8jli4qpmsb" path="res://Art/Model3D/CISNES/CisneNegro.blend" id="1_x3gho"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://1plouly8dkdi" path="res://script/enemies/CisneSMF/convert.gd" id="7_nlunq"]
 [ext_resource type="Shader" uid="uid://c75qow1l4hw1h" path="res://magia_particulas.gdshader" id="9_nlunq"]
 [ext_resource type="Texture2D" uid="uid://dy6yw77o37b3l" path="res://Art/textures/Magia.png" id="10_eevix"]
+[ext_resource type="LightmapGIData" uid="uid://1c88wlqkjcx5" path="res://scenes/enemies/cisne.lmbake" id="11_eevix"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_diio0"]
 radius = 1.5771484
@@ -63,36 +64,6 @@ shape = SubResource("CapsuleShape3D_diio0")
 [node name="CisneNegro" parent="." instance=ExtResource("1_x3gho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14892292, 0)
 
-[node name="Skeleton3D" parent="CisneNegro/Armature" index="0"]
-bones/1/rotation = Quaternion(5.8996203e-08, -4.7443727e-08, -0.06425601, 0.99793345)
-bones/1/scale = Vector3(1, 0.99999994, 1)
-bones/2/rotation = Quaternion(1.242564e-07, -1.468731e-07, 0.69277704, 0.7211518)
-bones/3/rotation = Quaternion(3.259346e-07, -1.1028157e-07, 0.6699229, 0.74243075)
-bones/4/position = Vector3(2.061751, -0.7575935, -2.2434976e-07)
-bones/4/rotation = Quaternion(1.2813561e-07, 1.410942e-07, -0.7383882, 0.67437595)
-bones/5/position = Vector3(9.493712, 1.7255217, 5.2081194e-08)
-bones/5/rotation = Quaternion(6.182911e-08, -8.878387e-09, -0.25736314, 0.9663148)
-bones/6/position = Vector3(6.214927, 4.3218226, 4.4631645e-07)
-bones/6/rotation = Quaternion(1.0465789e-07, 1.10339954e-07, -0.26293162, 0.96481454)
-
-[node name="Bone_006" parent="CisneNegro/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.9634183, -0.26800132, 4.778942e-07, 0.2680013, -0.9634183, -3.2313383e-07, 5.470125e-07, -1.8323658e-07, 1.0000001, -5.3598, 11.533781, 4.6592243e-07)
-
-[node name="Bone_005" parent="CisneNegro/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.16793181, -0.9857985, -1.9069913e-07, 0.9857985, 0.1679318, -4.861195e-07, 5.1124033e-07, -1.0635599e-07, 1.0000001, 1.2172843, 10.413367, 1.1755121e-06)
-
-[node name="Bone_001" parent="CisneNegro/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.99174225, 0.12824641, -1.02273084e-07, -0.12824643, 0.9917422, -1.11651474e-07, 8.710964e-08, 1.2384565e-07, 1, 2.3841847e-07, 0.999999, 7.727152e-14)
-
-[node name="Bone_002" parent="CisneNegro/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.09043416, 0.99590224, 1.0734468e-09, -0.9959021, -0.09043417, -3.811877e-07, -3.7952861e-07, -3.5541426e-08, 1, 2.061751, -0.7575937, -2.2434972e-07)
-
-[node name="Bone_003" parent="CisneNegro/Armature/Skeleton3D" index="4"]
-transform = Transform3D(0.8675283, 0.49738747, -4.8983697e-08, -0.4973875, 0.86752826, -1.14922805e-07, -1.4666435e-08, 1.2406268e-07, 1, 9.493711, 1.7255213, 5.2081226e-08)
-
-[node name="Bone_004" parent="CisneNegro/Armature/Skeleton3D" index="5"]
-transform = Transform3D(0.86173373, 0.50736034, 1.5787941e-07, -0.50736034, 0.86173373, -2.5997457e-07, -2.6795087e-07, 1.4392715e-07, 1, 6.2149267, 4.321822, 4.463165e-07)
-
 [node name="CisneBlanco" parent="." instance=ExtResource("2_7rci3")]
 visible = false
 
@@ -138,6 +109,9 @@ one_shot = true
 preprocess = 1.0
 process_material = SubResource("ParticleProcessMaterial_lj5am")
 draw_pass_1 = SubResource("SphereMesh_o0i8m")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("11_eevix")
 
 [connection signal="body_entered" from="AreaDamage" to="." method="_on_area_damage_body_entered"]
 [connection signal="body_entered" from="AttackArea" to="StateMachine/Attack" method="_on_attack_area_body_entered"]

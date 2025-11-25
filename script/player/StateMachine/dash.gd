@@ -14,8 +14,10 @@ var suspended := false
 var cooldown_running := false
 var dash_cooldown := 1
 
+signal dash_charged
 signal dash_started
 signal dash_finished
+
 @onready var dash_sfx = preload("res://sonidos/dash.mp3")
 func enter(previous_state_path: String, data := {}):
 	# bloqueo preventivo: no reentrar al dash si ya se está dashing o si hay cooldown en curso
@@ -83,6 +85,7 @@ func _reset_dash_cooldown() -> void:
 	await get_tree().create_timer(dash_cooldown).timeout
 	player.can_dash = true
 	cooldown_running = false
+	emit_signal("dash_charged")
 	emit_signal("dash_finished") # opcional: señal para debug/sonido
 
 func spawn_dash_trail(num_copies: int = 4) -> void:

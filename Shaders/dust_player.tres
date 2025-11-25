@@ -10,7 +10,7 @@ source = 5
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_disabled, diffuse_toon, specular_toon;
+render_mode blend_mix, depth_draw_always, depth_test_default, cull_disabled, diffuse_toon, specular_toon;
 
 uniform sampler2D Disolver_texture : source_color;
 
@@ -29,6 +29,7 @@ void vertex() {
 
 }
 "
+modes/depth_draw = 1
 modes/cull = 2
 modes/diffuse = 3
 modes/specular = 1

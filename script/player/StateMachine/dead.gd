@@ -7,7 +7,7 @@ func enter(previous_state_path : String, data := {}):
 	# 🔊 Reproducir sonido de muerte una sola vez
 	_play_skeleton()
 	player.animationPlayer.play("Dead")
-
+	
 # ---------------------------------------------------------
 func physics_update(delta: float):
 	# Evita repetir la animación si ya está sonando o en curso
@@ -28,6 +28,7 @@ func exit():
 # Cuando termina la animación "Dead"
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Dead":
+		player.restablecerVidas()
 		emit_signal("finished", "Idle")
 
 # ---------------------------------------------------------

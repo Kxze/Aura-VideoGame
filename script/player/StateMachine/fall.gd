@@ -2,6 +2,7 @@ extends PlayerState
 
 var fall_start_y: float = 0.0        # Guarda la altura donde comenzó la caída
 var altura_minima_fall: float = 1.0  # Altura mínima para reproducir animación
+var was_on_floor: bool
 
 func enter(previous_state_path : String, data := {}):
 	player.invencible = false

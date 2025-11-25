@@ -18,9 +18,15 @@ var damage = 1
 
 func Make_damage(body: Node3D):
 	Player.health -= damage
+	
 	body.jump_side_per_damage(10)
 	print("Daño recibido. Salud actual:", Player.health)
-
+	if Player.health == 2:
+		body.restarPrimerVida()
+	if Player.health == 1:
+		body.restarSegundaVida()
+	if Player.health <= 0:
+		body.restarTercerVida()
 	if Player.health <= 0:
 		print("Jugador sin vidas... reiniciando nivel")
 

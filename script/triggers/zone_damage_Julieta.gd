@@ -7,7 +7,9 @@ var damage: int = 3
 
 func Make_damage(body):
 	Player.health -= damage
-	
+	body.restarPrimerVida()
+	body.restarSegundaVida()
+	body.restarTercerVida()
 	print(Player.health)
 	if Player.health <= 0:
 		print("jugador ya no tiene vidas...muere")

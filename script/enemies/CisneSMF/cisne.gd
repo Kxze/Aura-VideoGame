@@ -41,10 +41,13 @@ func Make_damage(body: Node3D):
 	Player.health -= damage
 	body.jump_side_per_damage(5)
 	print("Daño recibido. Salud actual:", Player.health)
-
+	if Player.health == 1:
+		body.restarPrimerVida()
+		body.restarSegundaVida()
 	if Player.health <= 0:
+		body.restarTercerVida()
 		print("Jugador sin vidas... reiniciando nivel")
-
+	
 		if Player.spawnPoint:
 			TransitionScreen.transition()
 			await TransitionScreen.on_transition_finished

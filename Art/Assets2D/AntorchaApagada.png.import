@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwc5vq46xg53o"
-path.s3tc="res://.godot/imported/T_Noise_001R.png-5839d9eefe3c5fdedc54716ead6e3897.s3tc.ctex"
+uid="uid://by10pcxymtr3i"
+path.s3tc="res://.godot/imported/AntorchaApagada.png-954b2d4534ddbdf9f48b5f7e3c78d063.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/particles/T_Noise_001R.png"
-dest_files=["res://.godot/imported/T_Noise_001R.png-5839d9eefe3c5fdedc54716ead6e3897.s3tc.ctex"]
+source_file="res://Art/Assets2D/AntorchaApagada.png"
+dest_files=["res://.godot/imported/AntorchaApagada.png-954b2d4534ddbdf9f48b5f7e3c78d063.s3tc.ctex"]
 
 [params]
 

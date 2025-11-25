@@ -37,6 +37,7 @@ func _on_cuerpo_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		_play_daño()
 		Make_damage(body)
+		
 
 # ---------------------------------------------------------
 func _on_espada_area_body_entered(body: Node3D) -> void:
@@ -53,8 +54,12 @@ func Make_damage(body: Node3D):
 	Player.health -= damage
 	body.jump_side_per_damage(1)
 	print("Daño recibido. Salud actual:", Player.health)
-
+	if Player.health == 2:
+		body.restarPrimerVida()
+	if Player.health == 1:
+		body.restarSegundaVida()
 	if Player.health <= 0:
+		body.restarTercerVida()
 		print("Jugador sin vidas... reiniciando nivel")
 
 		if Player.spawnPoint:

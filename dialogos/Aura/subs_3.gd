@@ -7,10 +7,6 @@ extends CanvasLayer
 @onready var label_4: RichTextLabel = $RichTextLabel4
 
 func _ready() -> void:
-	# NOTA: Quitamos el "queue_free" del inicio.
-	# Ahora permitimos que el script exista aunque los subtítulos estén apagados,
-	# pero estarán invisibles. Así, si el jugador los activa a mitad, aparecerán.
-
 	# 1. Ocultamos todo al iniciar
 	label_1.visible = false
 	label_2.visible = false
@@ -41,6 +37,15 @@ func _iniciar_secuencia() -> void:
 	await _esperar_pausable(3.0)
 	label_4.visible = false
 	
+	# -------------------------------------------------------------
+	# CORRECCIÓN DE SINCRONIZACIÓN
+	# -------------------------------------------------------------
+	# Si el audio dura más de 9 segundos (2+2+2+3), esperamos aquí
+	# a que termine de hablar antes de matar el nodo.
+	if AudioManager.dialogo_player_actual and AudioManager.dialogo_player_actual.playing:
+		await AudioManager.dialogo_terminado
+	# -------------------------------------------------------------
+	
 	# 3. Limpieza final
 	queue_free()
 
@@ -51,11 +56,9 @@ func _esperar_pausable(tiempo_objetivo: float) -> void:
 	while tiempo_actual < tiempo_objetivo:
 		await get_tree().process_frame
 		
-		# --- NUEVO: ACTUALIZACIÓN EN TIEMPO REAL ---
-		# En cada frame, verificamos si el interruptor está encendido o apagado.
-		# Como este script es un CanvasLayer, "visible = false" oculta todo lo que tiene dentro.
+		# --- ACTUALIZACIÓN EN TIEMPO REAL ---
+		# Verificamos visibilidad en cada frame
 		visible = AudioManager.mostrar_subtitulos
-		# -------------------------------------------
 		
 		# Solo sumamos tiempo si el popup NO está abierto
 		if not AudioManager.ajustes_popup_abierto:

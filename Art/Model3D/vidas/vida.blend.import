@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://3muaa4mvj7xb"
-path="res://.godot/imported/CisneBlanco.blend-d6bf787ab721c7a4dd3e75e38d7d7d39.scn"
+uid="uid://dju4dpafsfuqb"
+path="res://.godot/imported/vida.blend-aaed586a252ac4a03a219e0d9be14f2f.scn"
 
 [deps]
 
-source_file="res://Art/Model3D/CISNES/CisneBlanco.blend"
-dest_files=["res://.godot/imported/CisneBlanco.blend-d6bf787ab721c7a4dd3e75e38d7d7d39.scn"]
+source_file="res://Art/Model3D/vidas/vida.blend"
+dest_files=["res://.godot/imported/vida.blend-aaed586a252ac4a03a219e0d9be14f2f.scn"]
 
 [params]
 
@@ -37,46 +37,7 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"meshes": {
-"CisneBlanco_CBAlaAtras": {
-"generate/lightmap_uv": 1,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": false,
-"save_to_file/fallback_path": "",
-"save_to_file/path": ""
-},
-"CisneBlanco_CBAlaFrente": {
-"generate/lightmap_uv": 1,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": false,
-"save_to_file/fallback_path": "",
-"save_to_file/path": ""
-},
-"CisneBlanco_CBCabeza": {
-"generate/lightmap_uv": 1,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": false,
-"save_to_file/fallback_path": "",
-"save_to_file/path": ""
-},
-"CisneBlanco_CBCuerpo": {
-"generate/lightmap_uv": 1,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": false,
-"save_to_file/fallback_path": "",
-"save_to_file/path": ""
-}
-}
-}
+_subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

@@ -22,6 +22,7 @@ func physics_update(delta: float):
 
 		# --- Movimiento ---
 		cisne.velocity = direction * cisne.speed
+		cisne.global_position.z = 0
 		cisne.move_and_slide()
 
 		# --- Invertir la escala según dirección ---
