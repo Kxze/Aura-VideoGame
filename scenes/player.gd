@@ -36,6 +36,10 @@ static var spawnPoint
 @onready var sprite: Sprite3D = $AuraGhost
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
+#vidas
+@onready var vida: Path3D = $Vida
+@onready var vida_2: Path3D = $Vida2
+@onready var vida_3: Path3D = $Vida3
 
 #Particulas
 @onready var dash_particle: GPUParticles3D = $DashParticle
@@ -45,8 +49,13 @@ static var spawnPoint
 
 func _input(_event: InputEvent) -> void:
 	movInput.x = Input.get_axis("ui_left","ui_right")
-
+	
+	
 func _process(_delta: float) -> void:
+	const move_speed_life = 1.0
+	$Vida/PathVida.progress += move_speed_life * _delta
+	$Vida2/PathVida.progress += move_speed_life * _delta
+	$Vida3/PathVida.progress += move_speed_life * _delta
 	if can_lumiere:
 		lamp.visible = true
 		lamp_light.visible = true
@@ -73,12 +82,22 @@ func set_controls_enabled(enable: bool) -> void:
 		jump_locked = false
 		can_dash = false
 
+func restarPrimerVida():
+	vida.visible = false
+
+func restarSegundaVida():
+	vida_2.visible = false
+	
+func restarTercerVida():
+	vida_3.visible = false
 func jump_side_per_damage(x):
 	velocity.y = jump
 	velocity.x = -x
 
-
-
+func restablecerVidas():
+	vida.visible = true
+	vida_2.visible = true
+	vida_3.visible = true
 
 func _change_light():
 	if lumiere_ready:
